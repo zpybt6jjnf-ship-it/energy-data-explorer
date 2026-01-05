@@ -82,6 +82,8 @@ export interface ChartFilters {
   showTrendLine: boolean
   reliabilityMetric: 'saidi' | 'saifi'
   swapAxes: boolean
+  // View mode: states (default), utilities (individual utility points)
+  viewMode: 'states' | 'utilities'
   // Aggregation settings
   groupBy: string | null           // Group category ID (e.g., 'rto-regions', 'market-structure')
   groupLevel: 'state' | 'utility'  // Whether grouping at state or utility level

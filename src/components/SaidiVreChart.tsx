@@ -32,6 +32,9 @@ const METRIC_INFO: Record<ReliabilityMetric, { label: string; unit: string; desc
   }
 }
 
+// WebGL threshold - use scattergl for better performance with many points
+const WEBGL_THRESHOLD = 1000
+
 // T-distribution critical values for 95% CI (two-tailed)
 function getTCritical(df: number): number {
   if (df >= 120) return 1.96
@@ -256,17 +259,31 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     }
   }, [regression, metric])
 
-  // Load utility data when needed for utility-level aggregation
+  // Load utility data when needed for utility-level aggregation or utility view mode
   const [utilityData, setUtilityData] = useState<UtilityData | null>(null)
 
   useEffect(() => {
-    if (filters.groupLevel === 'utility' && filters.groupBy && !utilityData) {
+    const needsUtilityData = filters.viewMode === 'utilities' ||
+      (filters.groupLevel === 'utility' && filters.groupBy)
+    if (needsUtilityData && !utilityData) {
       fetch('/data/utilities.json')
         .then(res => res.json())
         .then(data => setUtilityData(data))
         .catch(err => console.error('Failed to load utility data:', err))
     }
-  }, [filters.groupLevel, filters.groupBy, utilityData])
+  }, [filters.viewMode, filters.groupLevel, filters.groupBy, utilityData])
+
+  // Filter utility data by year range and selected states
+  const filteredUtilities = useMemo(() => {
+    if (!utilityData || filters.viewMode !== 'utilities') return []
+    return utilityData.utilities.filter(u => {
+      const yearMatch = u.year >= filters.yearStart && u.year <= filters.yearEnd
+      const stateMatch = filters.selectedStates.length === 0 ||
+        filters.selectedStates.includes(u.stateCode)
+      const hasMetric = u[metric] !== null
+      return yearMatch && stateMatch && hasMetric
+    })
+  }, [utilityData, filters.viewMode, filters.yearStart, filters.yearEnd, filters.selectedStates, metric])
 
   // Calculate aggregated data when groupBy is set
   const aggregatedData = useMemo((): AggregatedDataPoint[] => {
@@ -364,6 +381,15 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
 
+    // Hover template for utility points
+    const utilityHoverTemplate =
+      '<b>%{customdata.utilityName}</b><br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.state} · %{customdata.ownership}</span><br><br>` +
+      `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
+      'State VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.customers:,.0f} customers</span>` +
+      '<extra></extra>'
+
     // Hover template for aggregated group points
     const groupHoverTemplate =
       '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
@@ -373,6 +399,59 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
+
+    // Utilities view mode - show individual utilities with WebGL for performance
+    if (filters.viewMode === 'utilities' && filteredUtilities.length > 0) {
+      const useWebGL = filteredUtilities.length > WEBGL_THRESHOLD
+      const chartType = useWebGL ? 'scattergl' : 'scatter'
+
+      // Group by ownership type for coloring
+      const ownershipTypes = [...new Set(filteredUtilities.map(u => u.ownership))]
+      const ownershipColors: Record<string, string> = {
+        'Investor Owned': '#e41a1c',
+        'Cooperative': '#377eb8',
+        'Municipal': '#4daf4a',
+        'Political Subdivision': '#984ea3',
+        'State': '#ff7f00',
+        'Federal': '#a65628'
+      }
+
+      ownershipTypes.forEach(ownership => {
+        const ownershipUtilities = filteredUtilities.filter(u => u.ownership === ownership)
+        const color = ownershipColors[ownership] || COLORS.inkMuted
+
+        traces.push({
+          x: swapAxes
+            ? ownershipUtilities.map(u => u[metric]!)
+            : ownershipUtilities.map(u => u.stateVrePenetration),
+          y: swapAxes
+            ? ownershipUtilities.map(u => u.stateVrePenetration)
+            : ownershipUtilities.map(u => u[metric]!),
+          customdata: ownershipUtilities.map(u => ({
+            utilityName: u.utilityName,
+            utilityId: u.utilityId,
+            state: u.state,
+            stateCode: u.stateCode,
+            ownership: u.ownership,
+            metricValue: u[metric],
+            vrePenetration: u.stateVrePenetration,
+            customers: u.customers || 0
+          })),
+          mode: 'markers' as const,
+          type: chartType as 'scatter',
+          name: ownership,
+          marker: {
+            color: color,
+            size: useWebGL ? 5 : 7,
+            opacity: 0.7,
+            line: useWebGL ? undefined : { color: COLORS.ink, width: 0.5 }
+          },
+          hovertemplate: utilityHoverTemplate
+        })
+      })
+
+      return traces
+    }
 
     // If groupBy is set, show aggregated data
     if (filters.groupBy && aggregatedData.length > 0) {
@@ -587,7 +666,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     }
 
     return traces
-  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, filters.groupBy, filters.showGroupMembers, aggregatedData, regression, avgMetricValue, metric, metricInfo, swapAxes])
+  }, [enrichedData, filteredData, filteredUtilities, filters.viewMode, filters.colorBy, filters.showTrendLine, filters.groupBy, filters.showGroupMembers, aggregatedData, regression, avgMetricValue, metric, metricInfo, swapAxes])
 
   const layout = useMemo(() => ({
     ...baseLayout,
@@ -681,12 +760,30 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
         </div>
 
         <div className="control-group">
+          <label>View</label>
+          <select
+            value={filters.viewMode}
+            onChange={(e) => onFilterChange({
+              viewMode: e.target.value as 'states' | 'utilities',
+              // Clear grouping when switching to utilities view
+              groupBy: e.target.value === 'utilities' ? null : filters.groupBy
+            })}
+          >
+            <option value="states">States ({filteredData.length} pts)</option>
+            <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length} pts)` : '(loading...)'}</option>
+          </select>
+          {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
+            <span className="control-hint">WebGL enabled</span>
+          )}
+        </div>
+
+        <div className="control-group">
           <label>Color By</label>
           <select
             value={filters.colorBy}
             onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
-            disabled={!!filters.groupBy}
-            title={filters.groupBy ? 'Disabled when grouping is active' : undefined}
+            disabled={!!filters.groupBy || filters.viewMode === 'utilities'}
+            title={filters.viewMode === 'utilities' ? 'Utilities are colored by ownership type' : filters.groupBy ? 'Disabled when grouping is active' : undefined}
           >
             <option value="year">Year</option>
             <option value="region">Region</option>
@@ -736,7 +833,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
         </div>
 
         <div className="control-group">
-          <label>View</label>
+          <label>Zoom</label>
           <div className="button-group">
             <button
               onClick={onResetViewport}

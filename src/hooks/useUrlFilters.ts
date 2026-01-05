@@ -10,6 +10,7 @@ const DEFAULT_FILTERS: ChartFilters = {
   showTrendLine: false,
   reliabilityMetric: 'saidi',
   swapAxes: false,
+  viewMode: 'states',
   groupBy: null,
   groupLevel: 'state',
   showGroupMembers: false,
@@ -42,6 +43,7 @@ export function useUrlFilters() {
     showTrendLine: searchParams.get('trend') === 'true',
     reliabilityMetric: (searchParams.get('metric') as 'saidi' | 'saifi') || DEFAULT_FILTERS.reliabilityMetric,
     swapAxes: searchParams.get('swap') === 'true',
+    viewMode: (searchParams.get('view') as 'states' | 'utilities') || DEFAULT_FILTERS.viewMode,
     groupBy: searchParams.get('groupBy') || null,
     groupLevel: (searchParams.get('groupLevel') as 'state' | 'utility') || DEFAULT_FILTERS.groupLevel,
     showGroupMembers: searchParams.get('showMembers') === 'true',
@@ -69,6 +71,9 @@ export function useUrlFilters() {
       }
       if (filters.swapAxes) {
         params.set('swap', 'true')
+      }
+      if (filters.viewMode !== 'states') {
+        params.set('view', filters.viewMode)
       }
       if (filters.groupBy) {
         params.set('groupBy', filters.groupBy)
