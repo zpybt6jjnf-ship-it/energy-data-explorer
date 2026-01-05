@@ -8,6 +8,14 @@ const AVAILABLE_CHARTS = [
     href: '/explore/saidi-vre',
     thumbnail: '/thumbnails/saidi-vre.svg',
     tags: ['SAIDI', 'VRE', 'Trends', 'Reliability']
+  },
+  {
+    id: 'affordability',
+    title: 'Electricity Affordability Explorer',
+    description: 'Explore retail electricity prices across U.S. states. Compare rates against renewable energy penetration to see how clean energy affects costs.',
+    href: '/explore/affordability',
+    thumbnail: '/thumbnails/saidi-vre.svg',
+    tags: ['Rates', 'VRE', 'Affordability', 'Prices']
   }
 ]
 

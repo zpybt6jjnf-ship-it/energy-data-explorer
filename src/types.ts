@@ -10,6 +10,11 @@ export interface StateDataPoint {
   totalGeneration: number // MWh
   customerCount: number
   region: string
+  // Retail electricity rates (cents per kWh)
+  rateResidential: number | null
+  rateCommercial: number | null
+  rateIndustrial: number | null
+  rateAll: number | null
 }
 
 export interface ChartData {

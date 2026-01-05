@@ -11,7 +11,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6497.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 18.12,
+      "rateCommercial": 15.58,
+      "rateIndustrial": 15.83,
+      "rateAll": 16.49
     },
     {
       "state": "Alabama",
@@ -24,7 +28,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 150573.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.26,
+      "rateCommercial": 10.51,
+      "rateIndustrial": 5.95,
+      "rateAll": 9.02
     },
     {
       "state": "Arkansas",
@@ -37,7 +45,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 60322.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.59,
+      "rateCommercial": 8.05,
+      "rateIndustrial": 6.04,
+      "rateAll": 7.93
     },
     {
       "state": "Arizona",
@@ -50,7 +62,11 @@
       "solarPenetration": 1.86,
       "totalGeneration": 113326.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.71,
+      "rateCommercial": 9.85,
+      "rateIndustrial": 6.66,
+      "rateAll": 10.14
     },
     {
       "state": "California",
@@ -63,7 +79,11 @@
       "solarPenetration": 1.91,
       "totalGeneration": 200077.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 16.23,
+      "rateCommercial": 14.2,
+      "rateIndustrial": 11.44,
+      "rateAll": 14.3
     },
     {
       "state": "Colorado",
@@ -76,7 +96,11 @@
       "solarPenetration": 0.47,
       "totalGeneration": 52937.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.93,
+      "rateCommercial": 9.86,
+      "rateIndustrial": 7.34,
+      "rateAll": 9.88
     },
     {
       "state": "Connecticut",
@@ -89,7 +113,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 35611.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.55,
+      "rateCommercial": 14.63,
+      "rateIndustrial": 12.61,
+      "rateAll": 15.66
     },
     {
       "state": "District of Columbia",
@@ -102,7 +130,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 66.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.57,
+      "rateCommercial": 11.94,
+      "rateIndustrial": 5.54,
+      "rateAll": 11.85
     },
     {
       "state": "Delaware",
@@ -115,7 +147,11 @@
       "solarPenetration": 0.58,
       "totalGeneration": 7761.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.95,
+      "rateCommercial": 10.2,
+      "rateIndustrial": 8.43,
+      "rateAll": 10.9
     },
     {
       "state": "Florida",
@@ -128,7 +164,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 222399.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.27,
+      "rateCommercial": 9.39,
+      "rateIndustrial": 7.61,
+      "rateAll": 10.22
     },
     {
       "state": "Georgia",
@@ -141,7 +181,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 120954.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.46,
+      "rateCommercial": 9.99,
+      "rateIndustrial": 6.27,
+      "rateAll": 9.69
     },
     {
       "state": "Iowa",
@@ -154,7 +198,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56671.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.04,
+      "rateCommercial": 8.44,
+      "rateIndustrial": 5.62,
+      "rateAll": 8.07
     },
     {
       "state": "Idaho",
@@ -167,7 +215,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 15186.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.32,
+      "rateCommercial": 7.37,
+      "rateIndustrial": 6.09,
+      "rateAll": 7.57
     },
     {
       "state": "Illinois",
@@ -180,7 +232,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 203005.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.63,
+      "rateCommercial": 8.14,
+      "rateIndustrial": 5.94,
+      "rateAll": 8.26
     },
     {
       "state": "Indiana",
@@ -193,7 +249,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 110403.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.99,
+      "rateCommercial": 9.6,
+      "rateIndustrial": 6.7,
+      "rateAll": 8.73
     },
     {
       "state": "Kansas",
@@ -206,7 +266,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 48473.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.64,
+      "rateCommercial": 9.68,
+      "rateIndustrial": 7.39,
+      "rateAll": 9.72
     },
     {
       "state": "Kentucky",
@@ -219,7 +283,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 89741.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.79,
+      "rateCommercial": 8.56,
+      "rateIndustrial": 5.66,
+      "rateAll": 7.69
     },
     {
       "state": "Louisiana",
@@ -232,7 +300,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 102010.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.43,
+      "rateCommercial": 8.96,
+      "rateIndustrial": 5.92,
+      "rateAll": 8.04
     },
     {
       "state": "Massachusetts",
@@ -245,7 +317,11 @@
       "solarPenetration": 0.32,
       "totalGeneration": 32885.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.83,
+      "rateCommercial": 14.23,
+      "rateIndustrial": 13.18,
+      "rateAll": 14.51
     },
     {
       "state": "Maryland",
@@ -258,7 +334,11 @@
       "solarPenetration": 0.18,
       "totalGeneration": 35851.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.25,
+      "rateCommercial": 10.68,
+      "rateIndustrial": 8.36,
+      "rateAll": 11.66
     },
     {
       "state": "Maine",
@@ -271,7 +351,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 14030.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 14.35,
+      "rateCommercial": 11.74,
+      "rateIndustrial": 8.34,
+      "rateAll": 11.86
     },
     {
       "state": "Michigan",
@@ -284,7 +368,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 105418.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.59,
+      "rateCommercial": 11.06,
+      "rateIndustrial": 7.72,
+      "rateAll": 11.21
     },
     {
       "state": "Minnesota",
@@ -297,7 +385,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 51297.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.81,
+      "rateCommercial": 9.42,
+      "rateIndustrial": 6.98,
+      "rateAll": 9.41
     },
     {
       "state": "Missouri",
@@ -310,7 +402,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 91627.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.6,
+      "rateCommercial": 8.8,
+      "rateIndustrial": 6.29,
+      "rateAll": 9.04
     },
     {
       "state": "Mississippi",
@@ -323,7 +419,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 52810.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.78,
+      "rateCommercial": 10.1,
+      "rateIndustrial": 6.34,
+      "rateAll": 9.11
     },
     {
       "state": "Montana",
@@ -336,7 +436,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 27687.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.33,
+      "rateCommercial": 9.54,
+      "rateIndustrial": 5.43,
+      "rateAll": 8.58
     },
     {
       "state": "North Carolina",
@@ -349,7 +453,11 @@
       "solarPenetration": 0.27,
       "totalGeneration": 125936.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.97,
+      "rateCommercial": 8.76,
+      "rateIndustrial": 6.45,
+      "rateAll": 9.24
     },
     {
       "state": "North Dakota",
@@ -362,7 +470,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 35022.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 9.12,
+      "rateCommercial": 8.39,
+      "rateIndustrial": 7.13,
+      "rateAll": 8.2
     },
     {
       "state": "Nebraska",
@@ -375,7 +487,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 37105.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.31,
+      "rateCommercial": 8.6,
+      "rateIndustrial": 7.44,
+      "rateAll": 8.74
     },
     {
       "state": "New Hampshire",
@@ -388,7 +504,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 19779.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.33,
+      "rateCommercial": 13.52,
+      "rateIndustrial": 11.4,
+      "rateAll": 14.3
     },
     {
       "state": "New Jersey",
@@ -401,7 +521,11 @@
       "solarPenetration": 0.68,
       "totalGeneration": 64751.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.73,
+      "rateCommercial": 12.77,
+      "rateIndustrial": 10.8,
+      "rateAll": 13.69
     },
     {
       "state": "New Mexico",
@@ -414,7 +538,11 @@
       "solarPenetration": 1.08,
       "totalGeneration": 35871.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.68,
+      "rateCommercial": 9.74,
+      "rateIndustrial": 6.36,
+      "rateAll": 9.25
     },
     {
       "state": "Nevada",
@@ -427,7 +555,11 @@
       "solarPenetration": 2.05,
       "totalGeneration": 36444.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.89,
+      "rateCommercial": 9.01,
+      "rateIndustrial": 6.52,
+      "rateAll": 9.03
     },
     {
       "state": "New York",
@@ -440,7 +572,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 136117.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.79,
+      "rateCommercial": 15.35,
+      "rateIndustrial": 6.58,
+      "rateAll": 15.44
     },
     {
       "state": "Ohio",
@@ -453,7 +589,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 137284.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.01,
+      "rateCommercial": 9.35,
+      "rateIndustrial": 6.22,
+      "rateAll": 9.2
     },
     {
       "state": "Oklahoma",
@@ -466,7 +606,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 73674.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.67,
+      "rateCommercial": 7.77,
+      "rateIndustrial": 5.49,
+      "rateAll": 7.86
     },
     {
       "state": "Oregon",
@@ -479,7 +623,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 59896.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.9,
+      "rateCommercial": 8.68,
+      "rateIndustrial": 5.8,
+      "rateAll": 8.44
     },
     {
       "state": "Pennsylvania",
@@ -492,7 +640,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 226786.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 12.79,
+      "rateCommercial": 9.25,
+      "rateIndustrial": 6.97,
+      "rateAll": 9.81
     },
     {
       "state": "Rhode Island",
@@ -505,7 +657,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 6247.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.2,
+      "rateCommercial": 12.92,
+      "rateIndustrial": 11.82,
+      "rateAll": 13.72
     },
     {
       "state": "South Carolina",
@@ -518,7 +674,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 95250.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.99,
+      "rateCommercial": 9.88,
+      "rateIndustrial": 6.01,
+      "rateAll": 9.24
     },
     {
       "state": "South Dakota",
@@ -531,7 +691,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 10109.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.26,
+      "rateCommercial": 8.51,
+      "rateIndustrial": 6.97,
+      "rateAll": 8.86
     },
     {
       "state": "Tennessee",
@@ -544,7 +708,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 79652.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.98,
+      "rateCommercial": 10.0,
+      "rateIndustrial": 6.29,
+      "rateAll": 9.13
     },
     {
       "state": "Texas",
@@ -557,7 +725,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 433380.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.35,
+      "rateCommercial": 8.02,
+      "rateIndustrial": 5.81,
+      "rateAll": 8.66
     },
     {
       "state": "Utah",
@@ -570,7 +742,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 42517.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.37,
+      "rateCommercial": 8.32,
+      "rateIndustrial": 5.87,
+      "rateAll": 8.15
     },
     {
       "state": "Virginia",
@@ -583,7 +759,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 76897.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.84,
+      "rateCommercial": 8.0,
+      "rateIndustrial": 6.63,
+      "rateAll": 8.96
     },
     {
       "state": "Vermont",
@@ -596,7 +776,11 @@
       "solarPenetration": 0.25,
       "totalGeneration": 6885.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.14,
+      "rateCommercial": 14.66,
+      "rateIndustrial": 10.84,
+      "rateAll": 14.61
     },
     {
       "state": "Washington",
@@ -609,7 +793,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 114173.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 8.7,
+      "rateCommercial": 7.78,
+      "rateIndustrial": 4.23,
+      "rateAll": 7.09
     },
     {
       "state": "Wisconsin",
@@ -622,7 +810,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 65963.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.55,
+      "rateCommercial": 10.74,
+      "rateIndustrial": 7.4,
+      "rateAll": 10.51
     },
     {
       "state": "West Virginia",
@@ -635,7 +827,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 75863.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.52,
+      "rateCommercial": 8.17,
+      "rateIndustrial": 6.2,
+      "rateAll": 7.91
     },
     {
       "state": "Wyoming",
@@ -648,7 +844,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 52483.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.16,
+      "rateCommercial": 8.57,
+      "rateIndustrial": 6.42,
+      "rateAll": 7.55
     },
     {
       "state": "Alaska",
@@ -661,7 +861,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6043.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 19.14,
+      "rateCommercial": 17.09,
+      "rateIndustrial": 15.66,
+      "rateAll": 17.46
     },
     {
       "state": "Alabama",
@@ -674,7 +878,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 149340.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.48,
+      "rateCommercial": 10.79,
+      "rateIndustrial": 6.15,
+      "rateAll": 9.27
     },
     {
       "state": "Arkansas",
@@ -687,7 +895,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 61592.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.51,
+      "rateCommercial": 8.05,
+      "rateIndustrial": 6.02,
+      "rateAll": 7.9
     },
     {
       "state": "Arizona",
@@ -700,7 +912,11 @@
       "solarPenetration": 2.8,
       "totalGeneration": 112257.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.9,
+      "rateCommercial": 10.13,
+      "rateIndustrial": 6.46,
+      "rateAll": 10.18
     },
     {
       "state": "California",
@@ -713,7 +929,11 @@
       "solarPenetration": 5.0,
       "totalGeneration": 198808.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 16.25,
+      "rateCommercial": 15.62,
+      "rateIndustrial": 12.34,
+      "rateAll": 15.15
     },
     {
       "state": "Colorado",
@@ -726,7 +946,11 @@
       "solarPenetration": 0.47,
       "totalGeneration": 53847.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.18,
+      "rateCommercial": 10.08,
+      "rateIndustrial": 7.47,
+      "rateAll": 10.06
     },
     {
       "state": "Connecticut",
@@ -739,7 +963,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 33677.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.75,
+      "rateCommercial": 15.55,
+      "rateIndustrial": 12.92,
+      "rateAll": 17.05
     },
     {
       "state": "District of Columbia",
@@ -752,7 +980,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 68.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.74,
+      "rateCommercial": 12.19,
+      "rateIndustrial": 8.41,
+      "rateAll": 12.11
     },
     {
       "state": "Delaware",
@@ -765,7 +997,11 @@
       "solarPenetration": 0.64,
       "totalGeneration": 7704.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.29,
+      "rateCommercial": 10.5,
+      "rateIndustrial": 8.58,
+      "rateAll": 11.22
     },
     {
       "state": "Florida",
@@ -778,7 +1014,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 230016.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.89,
+      "rateCommercial": 9.87,
+      "rateIndustrial": 7.9,
+      "rateAll": 10.77
     },
     {
       "state": "Georgia",
@@ -791,7 +1031,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 125837.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.65,
+      "rateCommercial": 10.36,
+      "rateIndustrial": 6.64,
+      "rateAll": 10.03
     },
     {
       "state": "Iowa",
@@ -804,7 +1048,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56853.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.16,
+      "rateCommercial": 8.67,
+      "rateIndustrial": 5.71,
+      "rateAll": 8.15
     },
     {
       "state": "Idaho",
@@ -817,7 +1065,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 15184.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.72,
+      "rateCommercial": 7.78,
+      "rateIndustrial": 6.4,
+      "rateAll": 7.93
     },
     {
       "state": "Illinois",
@@ -830,7 +1082,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 202144.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.91,
+      "rateCommercial": 9.26,
+      "rateIndustrial": 6.85,
+      "rateAll": 9.36
     },
     {
       "state": "Indiana",
@@ -843,7 +1099,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 115395.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.46,
+      "rateCommercial": 9.96,
+      "rateIndustrial": 6.97,
+      "rateAll": 9.06
     },
     {
       "state": "Kansas",
@@ -856,7 +1116,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 49728.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.17,
+      "rateCommercial": 10.13,
+      "rateIndustrial": 7.8,
+      "rateAll": 10.16
     },
     {
       "state": "Kentucky",
@@ -869,7 +1133,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 90896.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.16,
+      "rateCommercial": 9.44,
+      "rateIndustrial": 5.68,
+      "rateAll": 8.15
     },
     {
       "state": "Louisiana",
@@ -882,7 +1150,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 104229.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.57,
+      "rateCommercial": 9.1,
+      "rateIndustrial": 6.05,
+      "rateAll": 8.09
     },
     {
       "state": "Massachusetts",
@@ -895,7 +1167,11 @@
       "solarPenetration": 0.98,
       "totalGeneration": 31119.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.39,
+      "rateCommercial": 14.68,
+      "rateIndustrial": 12.74,
+      "rateAll": 15.35
     },
     {
       "state": "Maryland",
@@ -908,7 +1184,11 @@
       "solarPenetration": 0.26,
       "totalGeneration": 37834.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.63,
+      "rateCommercial": 11.15,
+      "rateIndustrial": 9.04,
+      "rateAll": 12.1
     },
     {
       "state": "Maine",
@@ -921,7 +1201,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 13249.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.27,
+      "rateCommercial": 12.7,
+      "rateIndustrial": 8.95,
+      "rateAll": 12.65
     },
     {
       "state": "Michigan",
@@ -934,7 +1218,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 106817.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.46,
+      "rateCommercial": 10.87,
+      "rateIndustrial": 7.68,
+      "rateAll": 11.03
     },
     {
       "state": "Minnesota",
@@ -947,7 +1235,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56998.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.01,
+      "rateCommercial": 9.85,
+      "rateIndustrial": 6.72,
+      "rateAll": 9.52
     },
     {
       "state": "Missouri",
@@ -960,7 +1252,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 87834.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.64,
+      "rateCommercial": 8.9,
+      "rateIndustrial": 6.36,
+      "rateAll": 9.11
     },
     {
       "state": "Mississippi",
@@ -973,7 +1269,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 55127.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.32,
+      "rateCommercial": 10.76,
+      "rateIndustrial": 6.6,
+      "rateAll": 9.6
     },
     {
       "state": "Montana",
@@ -986,7 +1286,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 30258.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.18,
+      "rateCommercial": 9.64,
+      "rateIndustrial": 5.49,
+      "rateAll": 8.59
     },
     {
       "state": "North Carolina",
@@ -999,7 +1303,11 @@
       "solarPenetration": 0.57,
       "totalGeneration": 128144.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.1,
+      "rateCommercial": 8.75,
+      "rateIndustrial": 6.5,
+      "rateAll": 9.33
     },
     {
       "state": "North Dakota",
@@ -1012,7 +1320,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 36463.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 9.15,
+      "rateCommercial": 8.79,
+      "rateIndustrial": 7.62,
+      "rateAll": 8.41
     },
     {
       "state": "Nebraska",
@@ -1025,7 +1337,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 39431.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.4,
+      "rateCommercial": 8.73,
+      "rateIndustrial": 7.47,
+      "rateAll": 8.84
     },
     {
       "state": "New Hampshire",
@@ -1038,7 +1354,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 19538.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.53,
+      "rateCommercial": 14.34,
+      "rateIndustrial": 11.93,
+      "rateAll": 15.22
     },
     {
       "state": "New Jersey",
@@ -1051,7 +1371,11 @@
       "solarPenetration": 0.76,
       "totalGeneration": 68051.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.78,
+      "rateCommercial": 13.15,
+      "rateIndustrial": 11.38,
+      "rateAll": 13.95
     },
     {
       "state": "New Mexico",
@@ -1064,7 +1388,11 @@
       "solarPenetration": 1.59,
       "totalGeneration": 32306.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.28,
+      "rateCommercial": 10.27,
+      "rateIndustrial": 6.61,
+      "rateAll": 9.65
     },
     {
       "state": "Nevada",
@@ -1077,7 +1405,11 @@
       "solarPenetration": 2.82,
       "totalGeneration": 36001.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.93,
+      "rateCommercial": 9.47,
+      "rateIndustrial": 7.12,
+      "rateAll": 9.73
     },
     {
       "state": "New York",
@@ -1090,7 +1422,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 137077.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.07,
+      "rateCommercial": 16.12,
+      "rateIndustrial": 6.58,
+      "rateAll": 16.25
     },
     {
       "state": "Ohio",
@@ -1103,7 +1439,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 134476.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.5,
+      "rateCommercial": 9.83,
+      "rateIndustrial": 6.77,
+      "rateAll": 9.73
     },
     {
       "state": "Oklahoma",
@@ -1116,7 +1456,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 70156.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.03,
+      "rateCommercial": 8.09,
+      "rateIndustrial": 5.85,
+      "rateAll": 8.18
     },
     {
       "state": "Oregon",
@@ -1129,7 +1473,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 60120.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.47,
+      "rateCommercial": 8.75,
+      "rateIndustrial": 5.97,
+      "rateAll": 8.68
     },
     {
       "state": "Pennsylvania",
@@ -1142,7 +1490,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 221035.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.32,
+      "rateCommercial": 9.73,
+      "rateIndustrial": 7.41,
+      "rateAll": 10.28
     },
     {
       "state": "Rhode Island",
@@ -1155,7 +1507,11 @@
       "solarPenetration": 0.16,
       "totalGeneration": 6282.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.17,
+      "rateCommercial": 14.56,
+      "rateIndustrial": 12.86,
+      "rateAll": 15.41
     },
     {
       "state": "South Carolina",
@@ -1168,7 +1524,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 97158.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.45,
+      "rateCommercial": 10.28,
+      "rateIndustrial": 6.29,
+      "rateAll": 9.67
     },
     {
       "state": "South Dakota",
@@ -1181,7 +1541,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 10995.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.47,
+      "rateCommercial": 8.89,
+      "rateIndustrial": 6.99,
+      "rateAll": 9.05
     },
     {
       "state": "Tennessee",
@@ -1194,7 +1558,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 79507.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.32,
+      "rateCommercial": 10.38,
+      "rateIndustrial": 6.4,
+      "rateAll": 9.4
     },
     {
       "state": "Texas",
@@ -1207,7 +1575,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 437630.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.86,
+      "rateCommercial": 8.16,
+      "rateIndustrial": 6.16,
+      "rateAll": 8.94
     },
     {
       "state": "Utah",
@@ -1220,7 +1592,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 43785.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.65,
+      "rateCommercial": 8.53,
+      "rateIndustrial": 6.08,
+      "rateAll": 8.35
     },
     {
       "state": "Virginia",
@@ -1233,7 +1609,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 77137.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.1,
+      "rateCommercial": 8.15,
+      "rateIndustrial": 6.89,
+      "rateAll": 9.17
     },
     {
       "state": "Vermont",
@@ -1246,7 +1626,11 @@
       "solarPenetration": 0.33,
       "totalGeneration": 7031.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.47,
+      "rateCommercial": 14.56,
+      "rateIndustrial": 10.23,
+      "rateAll": 14.57
     },
     {
       "state": "Washington",
@@ -1259,7 +1643,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 116334.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 8.67,
+      "rateCommercial": 7.97,
+      "rateIndustrial": 4.32,
+      "rateAll": 7.13
     },
     {
       "state": "Wisconsin",
@@ -1272,7 +1660,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 61065.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.67,
+      "rateCommercial": 10.77,
+      "rateIndustrial": 7.52,
+      "rateAll": 10.57
     },
     {
       "state": "West Virginia",
@@ -1285,7 +1677,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 81060.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.34,
+      "rateCommercial": 7.99,
+      "rateIndustrial": 5.87,
+      "rateAll": 7.65
     },
     {
       "state": "Wyoming",
@@ -1298,7 +1694,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 49696.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.5,
+      "rateCommercial": 8.88,
+      "rateIndustrial": 6.61,
+      "rateAll": 7.76
     },
     {
       "state": "Alaska",
@@ -1311,7 +1711,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6285.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 19.83,
+      "rateCommercial": 17.44,
+      "rateIndustrial": 14.53,
+      "rateAll": 17.59
     },
     {
       "state": "Alabama",
@@ -1324,7 +1728,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 152477.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.7,
+      "rateCommercial": 10.83,
+      "rateIndustrial": 6.03,
+      "rateAll": 9.33
     },
     {
       "state": "Arkansas",
@@ -1337,7 +1745,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 55559.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.82,
+      "rateCommercial": 8.32,
+      "rateIndustrial": 6.23,
+      "rateAll": 8.19
     },
     {
       "state": "Arizona",
@@ -1350,7 +1762,11 @@
       "solarPenetration": 3.06,
       "totalGeneration": 113142.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.13,
+      "rateCommercial": 10.39,
+      "rateIndustrial": 6.26,
+      "rateAll": 10.34
     },
     {
       "state": "California",
@@ -1363,7 +1779,11 @@
       "solarPenetration": 7.53,
       "totalGeneration": 196704.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 16.99,
+      "rateCommercial": 15.73,
+      "rateIndustrial": 12.17,
+      "rateAll": 15.42
     },
     {
       "state": "Colorado",
@@ -1376,7 +1796,11 @@
       "solarPenetration": 0.48,
       "totalGeneration": 52393.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.12,
+      "rateCommercial": 9.88,
+      "rateIndustrial": 7.4,
+      "rateAll": 9.94
     },
     {
       "state": "Connecticut",
@@ -1389,7 +1813,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 37471.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.94,
+      "rateCommercial": 15.97,
+      "rateIndustrial": 12.95,
+      "rateAll": 17.77
     },
     {
       "state": "District of Columbia",
@@ -1402,7 +1830,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 54.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.99,
+      "rateCommercial": 12.01,
+      "rateIndustrial": 8.78,
+      "rateAll": 12.07
     },
     {
       "state": "Delaware",
@@ -1415,7 +1847,11 @@
       "solarPenetration": 0.62,
       "totalGeneration": 7810.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.42,
+      "rateCommercial": 10.25,
+      "rateIndustrial": 8.28,
+      "rateAll": 11.17
     },
     {
       "state": "Florida",
@@ -1428,7 +1864,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 237413.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.58,
+      "rateCommercial": 9.5,
+      "rateIndustrial": 8.22,
+      "rateAll": 10.49
     },
     {
       "state": "Georgia",
@@ -1441,7 +1881,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 128818.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.54,
+      "rateCommercial": 9.89,
+      "rateIndustrial": 5.87,
+      "rateAll": 9.62
     },
     {
       "state": "Hawaii",
@@ -1454,7 +1898,11 @@
       "solarPenetration": 0.54,
       "totalGeneration": 10120.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 29.6,
+      "rateCommercial": 26.93,
+      "rateIndustrial": 23.06,
+      "rateAll": 26.17
     },
     {
       "state": "Iowa",
@@ -1467,7 +1915,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56659.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.63,
+      "rateCommercial": 8.92,
+      "rateIndustrial": 5.9,
+      "rateAll": 8.35
     },
     {
       "state": "Idaho",
@@ -1480,7 +1932,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 15667.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.93,
+      "rateCommercial": 7.8,
+      "rateIndustrial": 6.6,
+      "rateAll": 8.09
     },
     {
       "state": "Illinois",
@@ -1493,7 +1949,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 193952.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.5,
+      "rateCommercial": 9.02,
+      "rateIndustrial": 6.67,
+      "rateAll": 9.4
     },
     {
       "state": "Indiana",
@@ -1506,7 +1966,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 104019.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.57,
+      "rateCommercial": 9.78,
+      "rateIndustrial": 6.86,
+      "rateAll": 8.99
     },
     {
       "state": "Kansas",
@@ -1519,7 +1983,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 45527.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.34,
+      "rateCommercial": 10.1,
+      "rateIndustrial": 7.61,
+      "rateAll": 10.14
     },
     {
       "state": "Kentucky",
@@ -1532,7 +2000,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 83544.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.24,
+      "rateCommercial": 9.44,
+      "rateIndustrial": 5.48,
+      "rateAll": 8.14
     },
     {
       "state": "Louisiana",
@@ -1545,7 +2017,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 107812.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.33,
+      "rateCommercial": 8.66,
+      "rateIndustrial": 5.41,
+      "rateAll": 7.65
     },
     {
       "state": "Massachusetts",
@@ -1558,7 +2034,11 @@
       "solarPenetration": 1.41,
       "totalGeneration": 32086.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.83,
+      "rateCommercial": 15.79,
+      "rateIndustrial": 13.54,
+      "rateAll": 16.9
     },
     {
       "state": "Maryland",
@@ -1571,7 +2051,11 @@
       "solarPenetration": 0.33,
       "totalGeneration": 36366.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.82,
+      "rateCommercial": 11.0,
+      "rateIndustrial": 8.53,
+      "rateAll": 12.07
     },
     {
       "state": "Maine",
@@ -1584,7 +2068,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 11741.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.61,
+      "rateCommercial": 12.47,
+      "rateIndustrial": 9.05,
+      "rateAll": 12.78
     },
     {
       "state": "Michigan",
@@ -1597,7 +2085,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 113008.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.42,
+      "rateCommercial": 10.55,
+      "rateIndustrial": 7.02,
+      "rateAll": 10.76
     },
     {
       "state": "Minnesota",
@@ -1610,7 +2102,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56980.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.12,
+      "rateCommercial": 9.44,
+      "rateIndustrial": 7.02,
+      "rateAll": 9.53
     },
     {
       "state": "Missouri",
@@ -1623,7 +2119,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 83640.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.21,
+      "rateCommercial": 9.16,
+      "rateIndustrial": 6.44,
+      "rateAll": 9.44
     },
     {
       "state": "Mississippi",
@@ -1636,7 +2136,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 64758.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.27,
+      "rateCommercial": 10.55,
+      "rateIndustrial": 6.56,
+      "rateAll": 9.53
     },
     {
       "state": "Montana",
@@ -1649,7 +2153,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 29302.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.88,
+      "rateCommercial": 10.23,
+      "rateIndustrial": 5.32,
+      "rateAll": 8.9
     },
     {
       "state": "North Carolina",
@@ -1662,7 +2170,11 @@
       "solarPenetration": 1.07,
       "totalGeneration": 128388.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.28,
+      "rateCommercial": 8.73,
+      "rateIndustrial": 6.51,
+      "rateAll": 9.37
     },
     {
       "state": "North Dakota",
@@ -1675,7 +2187,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 37157.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 9.62,
+      "rateCommercial": 8.83,
+      "rateIndustrial": 8.07,
+      "rateAll": 8.75
     },
     {
       "state": "Nebraska",
@@ -1688,7 +2204,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 39883.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.6,
+      "rateCommercial": 8.67,
+      "rateIndustrial": 7.59,
+      "rateAll": 8.91
     },
     {
       "state": "New Hampshire",
@@ -1701,7 +2221,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 20016.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.5,
+      "rateCommercial": 14.96,
+      "rateIndustrial": 12.74,
+      "rateAll": 16.02
     },
     {
       "state": "New Jersey",
@@ -1714,7 +2238,11 @@
       "solarPenetration": 0.84,
       "totalGeneration": 74609.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.81,
+      "rateCommercial": 12.79,
+      "rateIndustrial": 10.64,
+      "rateAll": 13.74
     },
     {
       "state": "New Mexico",
@@ -1727,7 +2255,11 @@
       "solarPenetration": 1.88,
       "totalGeneration": 32701.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.47,
+      "rateCommercial": 10.3,
+      "rateIndustrial": 6.33,
+      "rateAll": 9.62
     },
     {
       "state": "Nevada",
@@ -1740,7 +2272,11 @@
       "solarPenetration": 4.24,
       "totalGeneration": 39047.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.76,
+      "rateCommercial": 9.25,
+      "rateIndustrial": 6.75,
+      "rateAll": 9.48
     },
     {
       "state": "New York",
@@ -1753,7 +2289,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 138582.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.54,
+      "rateCommercial": 15.31,
+      "rateIndustrial": 6.31,
+      "rateAll": 15.28
     },
     {
       "state": "Ohio",
@@ -1766,7 +2306,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 121893.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.8,
+      "rateCommercial": 10.07,
+      "rateIndustrial": 7.02,
+      "rateAll": 9.98
     },
     {
       "state": "Oklahoma",
@@ -1779,7 +2323,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 76136.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.14,
+      "rateCommercial": 7.68,
+      "rateIndustrial": 5.35,
+      "rateAll": 7.9
     },
     {
       "state": "Oregon",
@@ -1792,7 +2340,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 57867.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.66,
+      "rateCommercial": 8.8,
+      "rateIndustrial": 5.97,
+      "rateAll": 8.75
     },
     {
       "state": "Pennsylvania",
@@ -1805,7 +2357,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 214545.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.64,
+      "rateCommercial": 9.6,
+      "rateIndustrial": 7.2,
+      "rateAll": 10.31
     },
     {
       "state": "Rhode Island",
@@ -1818,7 +2374,11 @@
       "solarPenetration": 0.21,
       "totalGeneration": 6939.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.29,
+      "rateCommercial": 15.78,
+      "rateIndustrial": 13.76,
+      "rateAll": 17.01
     },
     {
       "state": "South Carolina",
@@ -1831,7 +2391,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 96532.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.57,
+      "rateCommercial": 10.21,
+      "rateIndustrial": 6.05,
+      "rateAll": 9.58
     },
     {
       "state": "South Dakota",
@@ -1844,7 +2408,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 9633.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.08,
+      "rateCommercial": 9.16,
+      "rateIndustrial": 7.37,
+      "rateAll": 9.47
     },
     {
       "state": "Tennessee",
@@ -1857,7 +2425,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 75215.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.3,
+      "rateCommercial": 10.16,
+      "rateIndustrial": 6.17,
+      "rateAll": 9.3
     },
     {
       "state": "Texas",
@@ -1870,7 +2442,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 449826.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.56,
+      "rateCommercial": 8.15,
+      "rateIndustrial": 5.59,
+      "rateAll": 8.7
     },
     {
       "state": "Utah",
@@ -1883,7 +2459,11 @@
       "solarPenetration": 0.08,
       "totalGeneration": 41949.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.88,
+      "rateCommercial": 8.62,
+      "rateIndustrial": 6.17,
+      "rateAll": 8.54
     },
     {
       "state": "Virginia",
@@ -1896,7 +2476,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 84412.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.37,
+      "rateCommercial": 8.21,
+      "rateIndustrial": 6.95,
+      "rateAll": 9.31
     },
     {
       "state": "Vermont",
@@ -1909,7 +2493,11 @@
       "solarPenetration": 2.42,
       "totalGeneration": 1982.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.09,
+      "rateCommercial": 14.54,
+      "rateIndustrial": 10.27,
+      "rateAll": 14.41
     },
     {
       "state": "Washington",
@@ -1922,7 +2510,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 109287.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.09,
+      "rateCommercial": 8.22,
+      "rateIndustrial": 4.35,
+      "rateAll": 7.4
     },
     {
       "state": "Wisconsin",
@@ -1935,7 +2527,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 66360.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.11,
+      "rateCommercial": 10.89,
+      "rateIndustrial": 7.58,
+      "rateAll": 10.73
     },
     {
       "state": "West Virginia",
@@ -1948,7 +2544,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 72295.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.08,
+      "rateCommercial": 8.61,
+      "rateIndustrial": 6.09,
+      "rateAll": 8.11
     },
     {
       "state": "Wyoming",
@@ -1961,7 +2561,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 48967.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.97,
+      "rateCommercial": 9.12,
+      "rateIndustrial": 6.76,
+      "rateAll": 7.97
     },
     {
       "state": "Alaska",
@@ -1974,7 +2578,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6335.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 20.3,
+      "rateCommercial": 17.56,
+      "rateIndustrial": 15.22,
+      "rateAll": 17.93
     },
     {
       "state": "Alabama",
@@ -1987,7 +2595,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 142385.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.99,
+      "rateCommercial": 11.11,
+      "rateIndustrial": 6.04,
+      "rateAll": 9.56
     },
     {
       "state": "Arkansas",
@@ -2000,7 +2612,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 60445.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.92,
+      "rateCommercial": 8.23,
+      "rateIndustrial": 6.08,
+      "rateAll": 8.13
     },
     {
       "state": "Arizona",
@@ -2013,7 +2629,11 @@
       "solarPenetration": 3.46,
       "totalGeneration": 108763.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.15,
+      "rateCommercial": 10.41,
+      "rateIndustrial": 6.07,
+      "rateAll": 10.33
     },
     {
       "state": "California",
@@ -2026,7 +2646,11 @@
       "solarPenetration": 9.55,
       "totalGeneration": 196963.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 17.39,
+      "rateCommercial": 15.07,
+      "rateIndustrial": 11.92,
+      "rateAll": 15.23
     },
     {
       "state": "Colorado",
@@ -2039,7 +2663,11 @@
       "solarPenetration": 0.99,
       "totalGeneration": 54418.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.07,
+      "rateCommercial": 9.6,
+      "rateIndustrial": 7.35,
+      "rateAll": 9.83
     },
     {
       "state": "Connecticut",
@@ -2052,7 +2680,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 36497.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.01,
+      "rateCommercial": 15.75,
+      "rateIndustrial": 12.81,
+      "rateAll": 17.24
     },
     {
       "state": "District of Columbia",
@@ -2065,7 +2697,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 76.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.29,
+      "rateCommercial": 11.72,
+      "rateIndustrial": 8.8,
+      "rateAll": 11.73
     },
     {
       "state": "Delaware",
@@ -2078,7 +2714,11 @@
       "solarPenetration": 0.59,
       "totalGeneration": 8731.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.42,
+      "rateCommercial": 10.07,
+      "rateIndustrial": 8.11,
+      "rateAll": 11.09
     },
     {
       "state": "Florida",
@@ -2091,7 +2731,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 238262.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.98,
+      "rateCommercial": 8.9,
+      "rateIndustrial": 7.69,
+      "rateAll": 9.91
     },
     {
       "state": "Georgia",
@@ -2104,7 +2748,11 @@
       "solarPenetration": 0.66,
       "totalGeneration": 133380.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.5,
+      "rateCommercial": 9.81,
+      "rateIndustrial": 5.84,
+      "rateAll": 9.59
     },
     {
       "state": "Hawaii",
@@ -2117,7 +2765,11 @@
       "solarPenetration": 0.89,
       "totalGeneration": 9949.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 27.47,
+      "rateCommercial": 24.64,
+      "rateIndustrial": 20.69,
+      "rateAll": 23.87
     },
     {
       "state": "Iowa",
@@ -2130,7 +2782,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 54393.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.94,
+      "rateCommercial": 9.17,
+      "rateIndustrial": 6.05,
+      "rateAll": 8.55
     },
     {
       "state": "Idaho",
@@ -2143,7 +2799,11 @@
       "solarPenetration": 0.19,
       "totalGeneration": 15661.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.95,
+      "rateCommercial": 7.76,
+      "rateIndustrial": 6.55,
+      "rateAll": 8.08
     },
     {
       "state": "Illinois",
@@ -2156,7 +2816,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 187289.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.54,
+      "rateCommercial": 9.02,
+      "rateIndustrial": 6.51,
+      "rateAll": 9.38
     },
     {
       "state": "Indiana",
@@ -2169,7 +2833,11 @@
       "solarPenetration": 0.22,
       "totalGeneration": 101759.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.79,
+      "rateCommercial": 10.01,
+      "rateIndustrial": 6.97,
+      "rateAll": 9.22
     },
     {
       "state": "Kansas",
@@ -2182,7 +2850,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 47600.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.06,
+      "rateCommercial": 10.47,
+      "rateIndustrial": 7.49,
+      "rateAll": 10.49
     },
     {
       "state": "Kentucky",
@@ -2195,7 +2867,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 80274.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.49,
+      "rateCommercial": 9.57,
+      "rateIndustrial": 5.67,
+      "rateAll": 8.42
     },
     {
       "state": "Louisiana",
@@ -2208,7 +2884,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 107269.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.34,
+      "rateCommercial": 8.59,
+      "rateIndustrial": 5.08,
+      "rateAll": 7.46
     },
     {
       "state": "Massachusetts",
@@ -2221,7 +2901,11 @@
       "solarPenetration": 1.91,
       "totalGeneration": 31955.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.0,
+      "rateCommercial": 15.6,
+      "rateIndustrial": 13.38,
+      "rateAll": 16.48
     },
     {
       "state": "Maryland",
@@ -2234,7 +2918,11 @@
       "solarPenetration": 0.56,
       "totalGeneration": 37167.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.23,
+      "rateCommercial": 10.99,
+      "rateIndustrial": 7.89,
+      "rateAll": 12.21
     },
     {
       "state": "Maine",
@@ -2247,7 +2935,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 11514.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.83,
+      "rateCommercial": 12.08,
+      "rateIndustrial": 8.96,
+      "rateAll": 12.8
     },
     {
       "state": "Michigan",
@@ -2260,7 +2952,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 112122.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.22,
+      "rateCommercial": 10.64,
+      "rateIndustrial": 6.91,
+      "rateAll": 11.05
     },
     {
       "state": "Minnesota",
@@ -2273,7 +2969,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 59479.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.67,
+      "rateCommercial": 9.86,
+      "rateIndustrial": 7.37,
+      "rateAll": 9.99
     },
     {
       "state": "Missouri",
@@ -2286,7 +2986,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 78612.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.21,
+      "rateCommercial": 9.26,
+      "rateIndustrial": 7.12,
+      "rateAll": 9.74
     },
     {
       "state": "Mississippi",
@@ -2299,7 +3003,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 62881.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.47,
+      "rateCommercial": 9.57,
+      "rateIndustrial": 5.79,
+      "rateAll": 8.67
     },
     {
       "state": "Montana",
@@ -2312,7 +3020,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 27784.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.94,
+      "rateCommercial": 10.19,
+      "rateIndustrial": 5.06,
+      "rateAll": 8.84
     },
     {
       "state": "North Carolina",
@@ -2325,7 +3037,11 @@
       "solarPenetration": 2.62,
       "totalGeneration": 130779.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.03,
+      "rateCommercial": 8.62,
+      "rateIndustrial": 6.31,
+      "rateAll": 9.2
     },
     {
       "state": "North Dakota",
@@ -2338,7 +3054,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 37856.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.16,
+      "rateCommercial": 9.15,
+      "rateIndustrial": 7.98,
+      "rateAll": 8.94
     },
     {
       "state": "Nebraska",
@@ -2351,7 +3071,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 36525.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.84,
+      "rateCommercial": 8.8,
+      "rateIndustrial": 7.69,
+      "rateAll": 9.05
     },
     {
       "state": "New Hampshire",
@@ -2364,7 +3088,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 19282.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.38,
+      "rateCommercial": 14.43,
+      "rateIndustrial": 12.34,
+      "rateAll": 15.66
     },
     {
       "state": "New Jersey",
@@ -2377,7 +3105,11 @@
       "solarPenetration": 1.08,
       "totalGeneration": 77611.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.72,
+      "rateCommercial": 12.26,
+      "rateIndustrial": 10.16,
+      "rateAll": 13.38
     },
     {
       "state": "New Mexico",
@@ -2390,7 +3122,11 @@
       "solarPenetration": 2.28,
       "totalGeneration": 32912.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.03,
+      "rateCommercial": 9.75,
+      "rateIndustrial": 5.84,
+      "rateAll": 9.12
     },
     {
       "state": "Nevada",
@@ -2403,7 +3139,11 @@
       "solarPenetration": 7.85,
       "totalGeneration": 39787.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.41,
+      "rateCommercial": 7.93,
+      "rateIndustrial": 5.88,
+      "rateAll": 8.38
     },
     {
       "state": "New York",
@@ -2416,7 +3156,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 134377.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.58,
+      "rateCommercial": 14.45,
+      "rateIndustrial": 6.03,
+      "rateAll": 14.47
     },
     {
       "state": "Ohio",
@@ -2429,7 +3173,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 118922.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.47,
+      "rateCommercial": 9.97,
+      "rateIndustrial": 6.98,
+      "rateAll": 9.84
     },
     {
       "state": "Oklahoma",
@@ -2442,7 +3190,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 78655.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.2,
+      "rateCommercial": 7.66,
+      "rateIndustrial": 5.02,
+      "rateAll": 7.83
     },
     {
       "state": "Oregon",
@@ -2455,7 +3207,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 60182.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.66,
+      "rateCommercial": 8.91,
+      "rateIndustrial": 6.05,
+      "rateAll": 8.83
     },
     {
       "state": "Pennsylvania",
@@ -2468,7 +3224,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 215042.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.86,
+      "rateCommercial": 9.22,
+      "rateIndustrial": 6.92,
+      "rateAll": 10.19
     },
     {
       "state": "Rhode Island",
@@ -2481,7 +3241,11 @@
       "solarPenetration": 0.22,
       "totalGeneration": 6565.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.62,
+      "rateCommercial": 14.88,
+      "rateIndustrial": 13.48,
+      "rateAll": 16.28
     },
     {
       "state": "South Carolina",
@@ -2494,7 +3258,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 96986.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.65,
+      "rateCommercial": 10.28,
+      "rateIndustrial": 6.09,
+      "rateAll": 9.79
     },
     {
       "state": "South Dakota",
@@ -2507,7 +3275,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 11524.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.47,
+      "rateCommercial": 9.58,
+      "rateIndustrial": 7.57,
+      "rateAll": 9.83
     },
     {
       "state": "Tennessee",
@@ -2520,7 +3292,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 79341.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.41,
+      "rateCommercial": 10.19,
+      "rateIndustrial": 5.68,
+      "rateAll": 9.23
     },
     {
       "state": "Texas",
@@ -2533,7 +3309,11 @@
       "solarPenetration": 0.16,
       "totalGeneration": 454048.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.99,
+      "rateCommercial": 8.26,
+      "rateIndustrial": 5.33,
+      "rateAll": 8.43
     },
     {
       "state": "Utah",
@@ -2546,7 +3326,11 @@
       "solarPenetration": 2.76,
       "totalGeneration": 38134.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.02,
+      "rateCommercial": 8.75,
+      "rateIndustrial": 6.33,
+      "rateAll": 8.72
     },
     {
       "state": "Virginia",
@@ -2559,7 +3343,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 92555.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.36,
+      "rateCommercial": 7.93,
+      "rateIndustrial": 6.56,
+      "rateAll": 9.09
     },
     {
       "state": "Vermont",
@@ -2572,7 +3360,11 @@
       "solarPenetration": 3.09,
       "totalGeneration": 1911.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.37,
+      "rateCommercial": 14.54,
+      "rateIndustrial": 10.23,
+      "rateAll": 14.46
     },
     {
       "state": "Washington",
@@ -2585,7 +3377,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 114087.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.48,
+      "rateCommercial": 8.43,
+      "rateIndustrial": 4.43,
+      "rateAll": 7.68
     },
     {
       "state": "Wisconsin",
@@ -2598,7 +3394,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 64967.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.07,
+      "rateCommercial": 10.77,
+      "rateIndustrial": 7.49,
+      "rateAll": 10.67
     },
     {
       "state": "West Virginia",
@@ -2611,7 +3411,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 75943.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.44,
+      "rateCommercial": 9.35,
+      "rateIndustrial": 6.57,
+      "rateAll": 8.98
     },
     {
       "state": "Wyoming",
@@ -2624,7 +3428,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 46657.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.13,
+      "rateCommercial": 9.4,
+      "rateIndustrial": 6.92,
+      "rateAll": 8.19
     },
     {
       "state": "Alaska",
@@ -2637,7 +3445,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6497.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 21.27,
+      "rateCommercial": 18.89,
+      "rateIndustrial": 16.34,
+      "rateAll": 19.1
     },
     {
       "state": "Alabama",
@@ -2650,7 +3462,11 @@
       "solarPenetration": 0.13,
       "totalGeneration": 139964.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.55,
+      "rateCommercial": 11.6,
+      "rateIndustrial": 6.16,
+      "rateAll": 9.83
     },
     {
       "state": "Arkansas",
@@ -2663,7 +3479,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 60775.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.28,
+      "rateCommercial": 8.51,
+      "rateIndustrial": 6.07,
+      "rateAll": 8.26
     },
     {
       "state": "Arizona",
@@ -2676,7 +3496,11 @@
       "solarPenetration": 4.67,
       "totalGeneration": 105852.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.44,
+      "rateCommercial": 10.5,
+      "rateIndustrial": 6.45,
+      "rateAll": 10.64
     },
     {
       "state": "California",
@@ -2689,7 +3513,11 @@
       "solarPenetration": 11.81,
       "totalGeneration": 206147.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 18.31,
+      "rateCommercial": 15.76,
+      "rateIndustrial": 12.73,
+      "rateAll": 16.06
     },
     {
       "state": "Colorado",
@@ -2702,7 +3530,11 @@
       "solarPenetration": 1.77,
       "totalGeneration": 53844.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.17,
+      "rateCommercial": 9.89,
+      "rateIndustrial": 7.5,
+      "rateAll": 9.99
     },
     {
       "state": "Connecticut",
@@ -2715,7 +3547,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 34563.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.29,
+      "rateCommercial": 16.06,
+      "rateIndustrial": 13.1,
+      "rateAll": 17.55
     },
     {
       "state": "District of Columbia",
@@ -2728,7 +3564,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 67.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.94,
+      "rateCommercial": 11.66,
+      "rateIndustrial": 8.23,
+      "rateAll": 11.8
     },
     {
       "state": "Delaware",
@@ -2741,7 +3581,11 @@
       "solarPenetration": 0.67,
       "totalGeneration": 7496.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.35,
+      "rateCommercial": 9.89,
+      "rateIndustrial": 7.78,
+      "rateAll": 10.9
     },
     {
       "state": "Florida",
@@ -2754,7 +3598,11 @@
       "solarPenetration": 0.37,
       "totalGeneration": 238413.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.61,
+      "rateCommercial": 9.35,
+      "rateIndustrial": 7.83,
+      "rateAll": 10.42
     },
     {
       "state": "Georgia",
@@ -2767,7 +3615,11 @@
       "solarPenetration": 1.56,
       "totalGeneration": 127455.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.9,
+      "rateCommercial": 10.09,
+      "rateIndustrial": 5.96,
+      "rateAll": 9.83
     },
     {
       "state": "Hawaii",
@@ -2780,7 +3632,11 @@
       "solarPenetration": 1.78,
       "totalGeneration": 9813.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 29.5,
+      "rateCommercial": 26.77,
+      "rateIndustrial": 22.92,
+      "rateAll": 26.05
     },
     {
       "state": "Iowa",
@@ -2793,7 +3649,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 57910.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.34,
+      "rateCommercial": 9.46,
+      "rateIndustrial": 6.21,
+      "rateAll": 8.73
     },
     {
       "state": "Idaho",
@@ -2806,7 +3666,11 @@
       "solarPenetration": 2.64,
       "totalGeneration": 17396.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.04,
+      "rateCommercial": 7.98,
+      "rateIndustrial": 6.66,
+      "rateAll": 8.26
     },
     {
       "state": "Illinois",
@@ -2819,7 +3683,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 183592.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.95,
+      "rateCommercial": 9.09,
+      "rateIndustrial": 6.47,
+      "rateAll": 9.49
     },
     {
       "state": "Indiana",
@@ -2832,7 +3700,11 @@
       "solarPenetration": 0.28,
       "totalGeneration": 98930.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.29,
+      "rateCommercial": 10.54,
+      "rateIndustrial": 7.54,
+      "rateAll": 9.77
     },
     {
       "state": "Kansas",
@@ -2845,7 +3717,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 50933.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.31,
+      "rateCommercial": 10.59,
+      "rateIndustrial": 7.54,
+      "rateAll": 10.6
     },
     {
       "state": "Kentucky",
@@ -2858,7 +3734,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 73179.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.85,
+      "rateCommercial": 9.85,
+      "rateIndustrial": 5.72,
+      "rateAll": 8.57
     },
     {
       "state": "Louisiana",
@@ -2871,7 +3751,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 97719.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.74,
+      "rateCommercial": 8.95,
+      "rateIndustrial": 5.48,
+      "rateAll": 7.79
     },
     {
       "state": "Massachusetts",
@@ -2884,7 +3768,11 @@
       "solarPenetration": 2.45,
       "totalGeneration": 32204.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.06,
+      "rateCommercial": 15.93,
+      "rateIndustrial": 13.88,
+      "rateAll": 17.12
     },
     {
       "state": "Maryland",
@@ -2897,7 +3785,11 @@
       "solarPenetration": 0.78,
       "totalGeneration": 34104.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.96,
+      "rateCommercial": 10.75,
+      "rateIndustrial": 8.37,
+      "rateAll": 11.98
     },
     {
       "state": "Maine",
@@ -2910,7 +3802,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 11264.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.97,
+      "rateCommercial": 12.12,
+      "rateIndustrial": 9.2,
+      "rateAll": 13.02
     },
     {
       "state": "Michigan",
@@ -2923,7 +3819,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 112314.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.4,
+      "rateCommercial": 11.0,
+      "rateIndustrial": 7.19,
+      "rateAll": 11.28
     },
     {
       "state": "Minnesota",
@@ -2936,7 +3836,11 @@
       "solarPenetration": 1.01,
       "totalGeneration": 58749.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.04,
+      "rateCommercial": 10.48,
+      "rateIndustrial": 7.37,
+      "rateAll": 10.27
     },
     {
       "state": "Missouri",
@@ -2949,7 +3853,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 84607.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.63,
+      "rateCommercial": 9.47,
+      "rateIndustrial": 7.33,
+      "rateAll": 10.03
     },
     {
       "state": "Mississippi",
@@ -2962,7 +3870,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 59728.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.08,
+      "rateCommercial": 10.17,
+      "rateIndustrial": 5.99,
+      "rateAll": 9.09
     },
     {
       "state": "Montana",
@@ -2975,7 +3887,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 28221.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.95,
+      "rateCommercial": 10.12,
+      "rateIndustrial": 5.25,
+      "rateAll": 8.92
     },
     {
       "state": "North Carolina",
@@ -2988,7 +3904,11 @@
       "solarPenetration": 3.98,
       "totalGeneration": 128468.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.94,
+      "rateCommercial": 8.44,
+      "rateIndustrial": 6.2,
+      "rateAll": 9.04
     },
     {
       "state": "North Dakota",
@@ -3001,7 +3921,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 41505.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.29,
+      "rateCommercial": 9.19,
+      "rateIndustrial": 7.63,
+      "rateAll": 8.78
     },
     {
       "state": "Nebraska",
@@ -3014,7 +3938,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 35407.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.97,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 7.66,
+      "rateAll": 9.08
     },
     {
       "state": "New Hampshire",
@@ -3027,7 +3955,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 17447.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.2,
+      "rateCommercial": 14.81,
+      "rateIndustrial": 12.34,
+      "rateAll": 16.17
     },
     {
       "state": "New Jersey",
@@ -3040,7 +3972,11 @@
       "solarPenetration": 1.22,
       "totalGeneration": 75645.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.65,
+      "rateCommercial": 12.28,
+      "rateIndustrial": 10.12,
+      "rateAll": 13.32
     },
     {
       "state": "New Mexico",
@@ -3053,7 +3989,11 @@
       "solarPenetration": 3.55,
       "totalGeneration": 33597.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.88,
+      "rateCommercial": 10.19,
+      "rateIndustrial": 6.15,
+      "rateAll": 9.59
     },
     {
       "state": "Nevada",
@@ -3066,7 +4006,11 @@
       "solarPenetration": 10.85,
       "totalGeneration": 38201.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.99,
+      "rateCommercial": 7.96,
+      "rateIndustrial": 6.15,
+      "rateAll": 8.76
     },
     {
       "state": "New York",
@@ -3079,7 +4023,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 128025.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.03,
+      "rateCommercial": 14.75,
+      "rateIndustrial": 5.92,
+      "rateAll": 14.74
     },
     {
       "state": "Ohio",
@@ -3092,7 +4040,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 119554.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.63,
+      "rateCommercial": 10.05,
+      "rateIndustrial": 6.92,
+      "rateAll": 9.84
     },
     {
       "state": "Oklahoma",
@@ -3105,7 +4057,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 73732.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.61,
+      "rateCommercial": 8.11,
+      "rateIndustrial": 5.42,
+      "rateAll": 8.2
     },
     {
       "state": "Oregon",
@@ -3118,7 +4074,11 @@
       "solarPenetration": 0.31,
       "totalGeneration": 62714.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.66,
+      "rateCommercial": 8.86,
+      "rateIndustrial": 5.98,
+      "rateAll": 8.81
     },
     {
       "state": "Pennsylvania",
@@ -3131,7 +4091,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 213591.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 14.23,
+      "rateCommercial": 8.98,
+      "rateIndustrial": 6.77,
+      "rateAll": 10.13
     },
     {
       "state": "Rhode Island",
@@ -3144,7 +4108,11 @@
       "solarPenetration": 0.18,
       "totalGeneration": 7615.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.32,
+      "rateCommercial": 15.2,
+      "rateIndustrial": 14.57,
+      "rateAll": 16.42
     },
     {
       "state": "South Carolina",
@@ -3157,7 +4125,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 93081.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.02,
+      "rateCommercial": 10.57,
+      "rateIndustrial": 6.19,
+      "rateAll": 9.97
     },
     {
       "state": "South Dakota",
@@ -3170,7 +4142,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 10936.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.77,
+      "rateCommercial": 9.74,
+      "rateIndustrial": 7.84,
+      "rateAll": 10.05
     },
     {
       "state": "Tennessee",
@@ -3183,7 +4159,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 79046.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.72,
+      "rateCommercial": 10.55,
+      "rateIndustrial": 5.83,
+      "rateAll": 9.45
     },
     {
       "state": "Texas",
@@ -3196,7 +4176,11 @@
       "solarPenetration": 0.48,
       "totalGeneration": 452794.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.01,
+      "rateCommercial": 8.26,
+      "rateIndustrial": 5.35,
+      "rateAll": 8.38
     },
     {
       "state": "Utah",
@@ -3209,7 +4193,11 @@
       "solarPenetration": 5.91,
       "totalGeneration": 37412.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.95,
+      "rateCommercial": 8.64,
+      "rateIndustrial": 6.13,
+      "rateAll": 8.6
     },
     {
       "state": "Virginia",
@@ -3222,7 +4210,11 @@
       "solarPenetration": 0.35,
       "totalGeneration": 90417.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.55,
+      "rateCommercial": 8.01,
+      "rateIndustrial": 6.51,
+      "rateAll": 9.18
     },
     {
       "state": "Vermont",
@@ -3235,7 +4227,11 @@
       "solarPenetration": 4.61,
       "totalGeneration": 2141.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.68,
+      "rateCommercial": 14.61,
+      "rateIndustrial": 10.21,
+      "rateAll": 14.6
     },
     {
       "state": "Washington",
@@ -3248,7 +4244,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 115912.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.66,
+      "rateCommercial": 8.57,
+      "rateIndustrial": 4.6,
+      "rateAll": 7.94
     },
     {
       "state": "Wisconsin",
@@ -3261,7 +4261,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 65107.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.35,
+      "rateCommercial": 10.87,
+      "rateIndustrial": 7.49,
+      "rateAll": 10.76
     },
     {
       "state": "West Virginia",
@@ -3274,7 +4278,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 73357.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.63,
+      "rateCommercial": 9.58,
+      "rateIndustrial": 6.64,
+      "rateAll": 9.0
     },
     {
       "state": "Wyoming",
@@ -3287,7 +4295,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 46742.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.37,
+      "rateCommercial": 9.7,
+      "rateIndustrial": 6.92,
+      "rateAll": 8.28
     },
     {
       "state": "Alaska",
@@ -3300,7 +4312,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6247.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 21.94,
+      "rateCommercial": 18.58,
+      "rateIndustrial": 17.1,
+      "rateAll": 19.36
     },
     {
       "state": "Alabama",
@@ -3313,7 +4329,11 @@
       "solarPenetration": 0.25,
       "totalGeneration": 145058.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.18,
+      "rateCommercial": 11.24,
+      "rateIndustrial": 6.01,
+      "rateAll": 9.63
     },
     {
       "state": "Arkansas",
@@ -3326,7 +4346,11 @@
       "solarPenetration": 0.3,
       "totalGeneration": 67999.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.81,
+      "rateCommercial": 7.75,
+      "rateIndustrial": 5.64,
+      "rateAll": 7.78
     },
     {
       "state": "Arizona",
@@ -3339,7 +4363,11 @@
       "solarPenetration": 4.59,
       "totalGeneration": 111925.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.77,
+      "rateCommercial": 10.64,
+      "rateIndustrial": 6.55,
+      "rateAll": 10.85
     },
     {
       "state": "California",
@@ -3352,7 +4380,11 @@
       "solarPenetration": 13.81,
       "totalGeneration": 195466.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 18.84,
+      "rateCommercial": 16.34,
+      "rateIndustrial": 13.2,
+      "rateAll": 16.58
     },
     {
       "state": "Colorado",
@@ -3365,7 +4397,11 @@
       "solarPenetration": 1.92,
       "totalGeneration": 55386.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.15,
+      "rateCommercial": 10.02,
+      "rateIndustrial": 7.47,
+      "rateAll": 10.02
     },
     {
       "state": "Connecticut",
@@ -3378,7 +4414,11 @@
       "solarPenetration": 0.27,
       "totalGeneration": 39454.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.2,
+      "rateCommercial": 16.76,
+      "rateIndustrial": 13.77,
+      "rateAll": 18.41
     },
     {
       "state": "District of Columbia",
@@ -3391,7 +4431,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 79.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.84,
+      "rateCommercial": 11.97,
+      "rateIndustrial": 8.3,
+      "rateAll": 12.03
     },
     {
       "state": "Delaware",
@@ -3404,7 +4448,11 @@
       "solarPenetration": 0.8,
       "totalGeneration": 6241.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.53,
+      "rateCommercial": 9.65,
+      "rateIndustrial": 7.95,
+      "rateAll": 10.55
     },
     {
       "state": "Florida",
@@ -3417,7 +4465,11 @@
       "solarPenetration": 0.99,
       "totalGeneration": 244252.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.54,
+      "rateCommercial": 9.19,
+      "rateIndustrial": 7.65,
+      "rateAll": 10.32
     },
     {
       "state": "Georgia",
@@ -3430,7 +4482,11 @@
       "solarPenetration": 1.54,
       "totalGeneration": 129239.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.47,
+      "rateCommercial": 9.79,
+      "rateIndustrial": 6.0,
+      "rateAll": 9.62
     },
     {
       "state": "Hawaii",
@@ -3443,7 +4499,11 @@
       "solarPenetration": 1.88,
       "totalGeneration": 9797.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 32.47,
+      "rateCommercial": 29.9,
+      "rateIndustrial": 26.1,
+      "rateAll": 29.18
     },
     {
       "state": "Iowa",
@@ -3456,7 +4516,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 63381.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.24,
+      "rateCommercial": 9.68,
+      "rateIndustrial": 6.45,
+      "rateAll": 8.92
     },
     {
       "state": "Idaho",
@@ -3469,7 +4533,11 @@
       "solarPenetration": 3.06,
       "totalGeneration": 18172.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.15,
+      "rateCommercial": 7.93,
+      "rateIndustrial": 6.47,
+      "rateAll": 8.17
     },
     {
       "state": "Illinois",
@@ -3482,7 +4550,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 188003.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.77,
+      "rateCommercial": 9.12,
+      "rateIndustrial": 6.8,
+      "rateAll": 9.6
     },
     {
       "state": "Indiana",
@@ -3495,7 +4567,11 @@
       "solarPenetration": 0.26,
       "totalGeneration": 113460.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.26,
+      "rateCommercial": 10.6,
+      "rateIndustrial": 7.38,
+      "rateAll": 9.75
     },
     {
       "state": "Kansas",
@@ -3508,7 +4584,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 51710.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.35,
+      "rateCommercial": 10.66,
+      "rateIndustrial": 7.6,
+      "rateAll": 10.72
     },
     {
       "state": "Kentucky",
@@ -3521,7 +4601,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 78804.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.6,
+      "rateCommercial": 9.74,
+      "rateIndustrial": 5.68,
+      "rateAll": 8.52
     },
     {
       "state": "Louisiana",
@@ -3534,7 +4618,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 102128.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.59,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 5.35,
+      "rateAll": 7.71
     },
     {
       "state": "Massachusetts",
@@ -3547,7 +4635,11 @@
       "solarPenetration": 3.6,
       "totalGeneration": 27173.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.61,
+      "rateCommercial": 17.17,
+      "rateIndustrial": 14.89,
+      "rateAll": 18.5
     },
     {
       "state": "Maryland",
@@ -3560,7 +4652,11 @@
       "solarPenetration": 0.91,
       "totalGeneration": 43810.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.3,
+      "rateCommercial": 10.43,
+      "rateIndustrial": 8.23,
+      "rateAll": 11.57
     },
     {
       "state": "Maine",
@@ -3573,7 +4669,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 11281.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.84,
+      "rateCommercial": 12.51,
+      "rateIndustrial": 9.32,
+      "rateAll": 13.44
     },
     {
       "state": "Michigan",
@@ -3586,7 +4686,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 115837.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.45,
+      "rateCommercial": 11.15,
+      "rateIndustrial": 7.1,
+      "rateAll": 11.4
     },
     {
       "state": "Minnesota",
@@ -3599,7 +4703,11 @@
       "solarPenetration": 1.69,
       "totalGeneration": 61517.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.14,
+      "rateCommercial": 10.38,
+      "rateIndustrial": 7.52,
+      "rateAll": 10.37
     },
     {
       "state": "Missouri",
@@ -3612,7 +4720,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 85095.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.34,
+      "rateCommercial": 9.4,
+      "rateIndustrial": 7.22,
+      "rateAll": 9.93
     },
     {
       "state": "Mississippi",
@@ -3625,7 +4737,11 @@
       "solarPenetration": 0.51,
       "totalGeneration": 63474.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.12,
+      "rateCommercial": 10.43,
+      "rateIndustrial": 6.0,
+      "rateAll": 9.24
     },
     {
       "state": "Montana",
@@ -3638,7 +4754,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 28213.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.96,
+      "rateCommercial": 10.11,
+      "rateIndustrial": 5.19,
+      "rateAll": 8.84
     },
     {
       "state": "North Carolina",
@@ -3651,7 +4771,11 @@
       "solarPenetration": 4.55,
       "totalGeneration": 134249.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.09,
+      "rateCommercial": 8.58,
+      "rateIndustrial": 6.33,
+      "rateAll": 9.25
     },
     {
       "state": "North Dakota",
@@ -3664,7 +4788,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 42615.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.25,
+      "rateCommercial": 9.1,
+      "rateIndustrial": 7.98,
+      "rateAll": 8.91
     },
     {
       "state": "Nebraska",
@@ -3677,7 +4805,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 36966.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.7,
+      "rateCommercial": 8.83,
+      "rateIndustrial": 7.6,
+      "rateAll": 9.02
     },
     {
       "state": "New Hampshire",
@@ -3690,7 +4822,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 17087.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.69,
+      "rateCommercial": 15.81,
+      "rateIndustrial": 13.42,
+      "rateAll": 17.01
     },
     {
       "state": "New Jersey",
@@ -3703,7 +4839,11 @@
       "solarPenetration": 1.32,
       "totalGeneration": 75034.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.41,
+      "rateCommercial": 12.21,
+      "rateIndustrial": 10.07,
+      "rateAll": 13.23
     },
     {
       "state": "New Mexico",
@@ -3716,7 +4856,11 @@
       "solarPenetration": 4.13,
       "totalGeneration": 32674.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.68,
+      "rateCommercial": 10.02,
+      "rateIndustrial": 5.84,
+      "rateAll": 9.35
     },
     {
       "state": "Nevada",
@@ -3729,7 +4873,11 @@
       "solarPenetration": 11.9,
       "totalGeneration": 39640.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.85,
+      "rateCommercial": 7.74,
+      "rateIndustrial": 6.1,
+      "rateAll": 8.67
     },
     {
       "state": "New York",
@@ -3742,7 +4890,11 @@
       "solarPenetration": 0.22,
       "totalGeneration": 132521.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.52,
+      "rateCommercial": 14.5,
+      "rateIndustrial": 6.02,
+      "rateAll": 14.83
     },
     {
       "state": "Ohio",
@@ -3755,7 +4907,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 126185.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.56,
+      "rateCommercial": 10.11,
+      "rateIndustrial": 7.01,
+      "rateAll": 9.94
     },
     {
       "state": "Oklahoma",
@@ -3768,7 +4924,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 86224.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.3,
+      "rateCommercial": 8.07,
+      "rateIndustrial": 5.34,
+      "rateAll": 8.09
     },
     {
       "state": "Oregon",
@@ -3781,7 +4941,11 @@
       "solarPenetration": 0.89,
       "totalGeneration": 64114.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.98,
+      "rateCommercial": 8.91,
+      "rateIndustrial": 5.86,
+      "rateAll": 8.85
     },
     {
       "state": "Pennsylvania",
@@ -3794,7 +4958,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 215386.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.89,
+      "rateCommercial": 8.94,
+      "rateIndustrial": 6.84,
+      "rateAll": 10.1
     },
     {
       "state": "Rhode Island",
@@ -3807,7 +4975,11 @@
       "solarPenetration": 0.34,
       "totalGeneration": 8375.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.55,
+      "rateCommercial": 16.58,
+      "rateIndustrial": 15.39,
+      "rateAll": 18.1
     },
     {
       "state": "South Carolina",
@@ -3820,7 +4992,11 @@
       "solarPenetration": 0.51,
       "totalGeneration": 99364.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.44,
+      "rateCommercial": 10.11,
+      "rateIndustrial": 6.1,
+      "rateAll": 9.67
     },
     {
       "state": "South Dakota",
@@ -3833,7 +5009,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 12616.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.59,
+      "rateCommercial": 9.62,
+      "rateIndustrial": 7.77,
+      "rateAll": 9.97
     },
     {
       "state": "Tennessee",
@@ -3846,7 +5026,11 @@
       "solarPenetration": 0.21,
       "totalGeneration": 81555.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.71,
+      "rateCommercial": 10.51,
+      "rateIndustrial": 5.68,
+      "rateAll": 9.58
     },
     {
       "state": "Texas",
@@ -3859,7 +5043,11 @@
       "solarPenetration": 0.67,
       "totalGeneration": 477352.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.2,
+      "rateCommercial": 8.16,
+      "rateIndustrial": 5.39,
+      "rateAll": 8.48
     },
     {
       "state": "Utah",
@@ -3872,7 +5060,11 @@
       "solarPenetration": 5.65,
       "totalGeneration": 39375.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.41,
+      "rateCommercial": 8.23,
+      "rateIndustrial": 5.9,
+      "rateAll": 8.21
     },
     {
       "state": "Virginia",
@@ -3885,7 +5077,11 @@
       "solarPenetration": 0.8,
       "totalGeneration": 95509.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.73,
+      "rateCommercial": 8.32,
+      "rateIndustrial": 6.86,
+      "rateAll": 9.48
     },
     {
       "state": "Vermont",
@@ -3898,7 +5094,11 @@
       "solarPenetration": 4.9,
       "totalGeneration": 2179.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.02,
+      "rateCommercial": 15.24,
+      "rateIndustrial": 10.66,
+      "rateAll": 15.13
     },
     {
       "state": "Washington",
@@ -3911,7 +5111,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 116757.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.75,
+      "rateCommercial": 8.72,
+      "rateIndustrial": 4.71,
+      "rateAll": 8.0
     },
     {
       "state": "Wisconsin",
@@ -3924,7 +5128,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 65937.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.02,
+      "rateCommercial": 10.67,
+      "rateIndustrial": 7.33,
+      "rateAll": 10.58
     },
     {
       "state": "West Virginia",
@@ -3937,7 +5145,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 67249.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.18,
+      "rateCommercial": 9.24,
+      "rateIndustrial": 6.4,
+      "rateAll": 8.72
     },
     {
       "state": "Wyoming",
@@ -3950,7 +5162,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 46112.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.29,
+      "rateCommercial": 9.58,
+      "rateIndustrial": 6.71,
+      "rateAll": 8.09
     },
     {
       "state": "Alaska",
@@ -3963,7 +5179,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6071.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 22.92,
+      "rateCommercial": 19.8,
+      "rateIndustrial": 16.94,
+      "rateAll": 20.22
     },
     {
       "state": "Alabama",
@@ -3976,7 +5196,11 @@
       "solarPenetration": 0.27,
       "totalGeneration": 142679.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.53,
+      "rateCommercial": 11.52,
+      "rateIndustrial": 5.95,
+      "rateAll": 9.83
     },
     {
       "state": "Arkansas",
@@ -3989,7 +5213,11 @@
       "solarPenetration": 0.33,
       "totalGeneration": 64443.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.8,
+      "rateCommercial": 8.78,
+      "rateIndustrial": 6.13,
+      "rateAll": 8.22
     },
     {
       "state": "Arizona",
@@ -4002,7 +5230,11 @@
       "solarPenetration": 4.65,
       "totalGeneration": 113552.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.43,
+      "rateCommercial": 10.25,
+      "rateIndustrial": 6.28,
+      "rateAll": 10.52
     },
     {
       "state": "California",
@@ -4015,7 +5247,11 @@
       "solarPenetration": 14.04,
       "totalGeneration": 201784.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 19.15,
+      "rateCommercial": 16.67,
+      "rateIndustrial": 13.4,
+      "rateAll": 16.89
     },
     {
       "state": "Colorado",
@@ -4028,7 +5264,11 @@
       "solarPenetration": 2.16,
       "totalGeneration": 56338.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.18,
+      "rateCommercial": 10.43,
+      "rateIndustrial": 7.4,
+      "rateAll": 10.17
     },
     {
       "state": "Connecticut",
@@ -4041,7 +5281,11 @@
       "solarPenetration": 0.35,
       "totalGeneration": 40050.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.87,
+      "rateCommercial": 16.75,
+      "rateIndustrial": 13.44,
+      "rateAll": 18.66
     },
     {
       "state": "District of Columbia",
@@ -4054,7 +5298,11 @@
       "solarPenetration": 5.07,
       "totalGeneration": 174.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.98,
+      "rateCommercial": 12.26,
+      "rateIndustrial": 8.22,
+      "rateAll": 12.27
     },
     {
       "state": "Delaware",
@@ -4067,7 +5315,11 @@
       "solarPenetration": 1.02,
       "totalGeneration": 5259.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.55,
+      "rateCommercial": 9.53,
+      "rateIndustrial": 7.7,
+      "rateAll": 10.52
     },
     {
       "state": "Florida",
@@ -4080,7 +5332,11 @@
       "solarPenetration": 1.59,
       "totalGeneration": 245603.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.7,
+      "rateCommercial": 9.27,
+      "rateIndustrial": 7.65,
+      "rateAll": 10.44
     },
     {
       "state": "Georgia",
@@ -4093,7 +5349,11 @@
       "solarPenetration": 1.68,
       "totalGeneration": 128692.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.76,
+      "rateCommercial": 10.02,
+      "rateIndustrial": 6.17,
+      "rateAll": 9.86
     },
     {
       "state": "Hawaii",
@@ -4106,7 +5366,11 @@
       "solarPenetration": 2.75,
       "totalGeneration": 9750.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 32.06,
+      "rateCommercial": 29.23,
+      "rateIndustrial": 25.76,
+      "rateAll": 28.72
     },
     {
       "state": "Iowa",
@@ -4119,7 +5383,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 62650.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.46,
+      "rateCommercial": 9.99,
+      "rateIndustrial": 6.6,
+      "rateAll": 9.08
     },
     {
       "state": "Idaho",
@@ -4132,7 +5400,11 @@
       "solarPenetration": 3.03,
       "totalGeneration": 18408.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.89,
+      "rateCommercial": 7.67,
+      "rateIndustrial": 6.08,
+      "rateAll": 7.89
     },
     {
       "state": "Illinois",
@@ -4145,7 +5417,11 @@
       "solarPenetration": 0.03,
       "totalGeneration": 184470.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.03,
+      "rateCommercial": 9.08,
+      "rateIndustrial": 6.52,
+      "rateAll": 9.56
     },
     {
       "state": "Indiana",
@@ -4158,7 +5434,11 @@
       "solarPenetration": 0.31,
       "totalGeneration": 102505.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.58,
+      "rateCommercial": 11.03,
+      "rateIndustrial": 7.36,
+      "rateAll": 9.91
     },
     {
       "state": "Kansas",
@@ -4171,7 +5451,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 50888.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.71,
+      "rateCommercial": 10.29,
+      "rateIndustrial": 7.35,
+      "rateAll": 10.26
     },
     {
       "state": "Kentucky",
@@ -4184,7 +5468,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 71804.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.8,
+      "rateCommercial": 10.15,
+      "rateIndustrial": 5.57,
+      "rateAll": 8.61
     },
     {
       "state": "Louisiana",
@@ -4197,7 +5485,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 100175.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.8,
+      "rateCommercial": 8.91,
+      "rateIndustrial": 5.23,
+      "rateAll": 7.71
     },
     {
       "state": "Massachusetts",
@@ -4210,7 +5502,11 @@
       "solarPenetration": 5.41,
       "totalGeneration": 21516.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.92,
+      "rateCommercial": 16.8,
+      "rateIndustrial": 14.76,
+      "rateAll": 18.4
     },
     {
       "state": "Maryland",
@@ -4223,7 +5519,11 @@
       "solarPenetration": 1.26,
       "totalGeneration": 39326.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.12,
+      "rateCommercial": 9.97,
+      "rateIndustrial": 7.8,
+      "rateAll": 11.24
     },
     {
       "state": "Maine",
@@ -4236,7 +5536,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 10491.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.89,
+      "rateCommercial": 12.83,
+      "rateIndustrial": 9.22,
+      "rateAll": 14.04
     },
     {
       "state": "Michigan",
@@ -4249,7 +5553,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 116701.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.74,
+      "rateCommercial": 11.39,
+      "rateIndustrial": 7.07,
+      "rateAll": 11.56
     },
     {
       "state": "Minnesota",
@@ -4262,7 +5570,11 @@
       "solarPenetration": 2.1,
       "totalGeneration": 59379.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.04,
+      "rateCommercial": 10.34,
+      "rateIndustrial": 7.53,
+      "rateAll": 10.33
     },
     {
       "state": "Missouri",
@@ -4275,7 +5587,11 @@
       "solarPenetration": 0.13,
       "totalGeneration": 78279.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.14,
+      "rateCommercial": 9.07,
+      "rateIndustrial": 7.11,
+      "rateAll": 9.68
     },
     {
       "state": "Mississippi",
@@ -4288,7 +5604,11 @@
       "solarPenetration": 0.49,
       "totalGeneration": 65959.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.27,
+      "rateCommercial": 10.52,
+      "rateIndustrial": 5.85,
+      "rateAll": 9.28
     },
     {
       "state": "Montana",
@@ -4301,7 +5621,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 27797.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.13,
+      "rateCommercial": 10.41,
+      "rateIndustrial": 5.45,
+      "rateAll": 9.02
     },
     {
       "state": "North Carolina",
@@ -4314,7 +5638,11 @@
       "solarPenetration": 5.68,
       "totalGeneration": 131174.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.42,
+      "rateCommercial": 8.81,
+      "rateIndustrial": 6.3,
+      "rateAll": 9.45
     },
     {
       "state": "North Dakota",
@@ -4327,7 +5655,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 41147.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.3,
+      "rateCommercial": 9.01,
+      "rateIndustrial": 7.94,
+      "rateAll": 8.85
     },
     {
       "state": "Nebraska",
@@ -4340,7 +5672,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 37298.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.77,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 7.65,
+      "rateAll": 9.08
     },
     {
       "state": "New Hampshire",
@@ -4353,7 +5689,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 18027.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.05,
+      "rateCommercial": 15.93,
+      "rateIndustrial": 13.09,
+      "rateAll": 17.15
     },
     {
       "state": "New Jersey",
@@ -4366,7 +5706,11 @@
       "solarPenetration": 1.64,
       "totalGeneration": 71019.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.85,
+      "rateCommercial": 12.23,
+      "rateIndustrial": 10.16,
+      "rateAll": 13.42
     },
     {
       "state": "New Mexico",
@@ -4379,7 +5723,11 @@
       "solarPenetration": 3.88,
       "totalGeneration": 35175.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.51,
+      "rateCommercial": 9.79,
+      "rateIndustrial": 5.48,
+      "rateAll": 8.99
     },
     {
       "state": "Nevada",
@@ -4392,7 +5740,11 @@
       "solarPenetration": 12.06,
       "totalGeneration": 39890.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.0,
+      "rateCommercial": 8.04,
+      "rateIndustrial": 6.14,
+      "rateAll": 8.78
     },
     {
       "state": "New York",
@@ -4405,7 +5757,11 @@
       "solarPenetration": 0.4,
       "totalGeneration": 131603.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.94,
+      "rateCommercial": 14.06,
+      "rateIndustrial": 5.61,
+      "rateAll": 14.34
     },
     {
       "state": "Ohio",
@@ -4418,7 +5774,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 120001.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.38,
+      "rateCommercial": 9.72,
+      "rateIndustrial": 6.55,
+      "rateAll": 9.58
     },
     {
       "state": "Oklahoma",
@@ -4431,7 +5791,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 85217.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.21,
+      "rateCommercial": 7.98,
+      "rateIndustrial": 5.07,
+      "rateAll": 7.86
     },
     {
       "state": "Oregon",
@@ -4444,7 +5808,11 @@
       "solarPenetration": 1.09,
       "totalGeneration": 62258.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.01,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 5.86,
+      "rateAll": 8.81
     },
     {
       "state": "Pennsylvania",
@@ -4457,7 +5825,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 228995.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.8,
+      "rateCommercial": 8.71,
+      "rateIndustrial": 6.41,
+      "rateAll": 9.81
     },
     {
       "state": "Rhode Island",
@@ -4470,7 +5842,11 @@
       "solarPenetration": 0.72,
       "totalGeneration": 7624.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.73,
+      "rateCommercial": 16.38,
+      "rateIndustrial": 15.59,
+      "rateAll": 18.49
     },
     {
       "state": "South Carolina",
@@ -4483,7 +5859,11 @@
       "solarPenetration": 0.86,
       "totalGeneration": 100108.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.99,
+      "rateCommercial": 10.58,
+      "rateIndustrial": 6.11,
+      "rateAll": 10.02
     },
     {
       "state": "South Dakota",
@@ -4496,7 +5876,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 14507.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.55,
+      "rateCommercial": 9.59,
+      "rateIndustrial": 7.81,
+      "rateAll": 9.96
     },
     {
       "state": "Tennessee",
@@ -4509,7 +5893,11 @@
       "solarPenetration": 0.4,
       "totalGeneration": 82327.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.87,
+      "rateCommercial": 10.65,
+      "rateIndustrial": 5.68,
+      "rateAll": 9.69
     },
     {
       "state": "Texas",
@@ -4522,7 +5910,11 @@
       "solarPenetration": 0.9,
       "totalGeneration": 483201.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.76,
+      "rateCommercial": 8.06,
+      "rateIndustrial": 5.45,
+      "rateAll": 8.6
     },
     {
       "state": "Utah",
@@ -4535,7 +5927,11 @@
       "solarPenetration": 5.59,
       "totalGeneration": 39117.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.4,
+      "rateCommercial": 8.26,
+      "rateIndustrial": 5.98,
+      "rateAll": 8.24
     },
     {
       "state": "Virginia",
@@ -4548,7 +5944,11 @@
       "solarPenetration": 0.98,
       "totalGeneration": 96828.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.07,
+      "rateCommercial": 8.18,
+      "rateIndustrial": 6.85,
+      "rateAll": 9.52
     },
     {
       "state": "Vermont",
@@ -4561,7 +5961,11 @@
       "solarPenetration": 6.43,
       "totalGeneration": 2290.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.71,
+      "rateCommercial": 15.98,
+      "rateIndustrial": 11.05,
+      "rateAll": 15.36
     },
     {
       "state": "Washington",
@@ -4574,7 +5978,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 106464.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.71,
+      "rateCommercial": 8.75,
+      "rateIndustrial": 4.8,
+      "rateAll": 8.04
     },
     {
       "state": "Wisconsin",
@@ -4587,7 +5995,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 62774.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.18,
+      "rateCommercial": 10.72,
+      "rateIndustrial": 7.31,
+      "rateAll": 10.66
     },
     {
       "state": "West Virginia",
@@ -4600,7 +6012,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 63926.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.25,
+      "rateCommercial": 9.16,
+      "rateIndustrial": 6.02,
+      "rateAll": 8.49
     },
     {
       "state": "Wyoming",
@@ -4613,7 +6029,11 @@
       "solarPenetration": 0.43,
       "totalGeneration": 42146.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.18,
+      "rateCommercial": 9.64,
+      "rateIndustrial": 6.73,
+      "rateAll": 8.1
     },
     {
       "state": "Alaska",
@@ -4626,7 +6046,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6276.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 22.57,
+      "rateCommercial": 19.58,
+      "rateIndustrial": 15.88,
+      "rateAll": 19.82
     },
     {
       "state": "Alabama",
@@ -4639,7 +6063,11 @@
       "solarPenetration": 0.27,
       "totalGeneration": 137543.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.57,
+      "rateCommercial": 11.55,
+      "rateIndustrial": 5.87,
+      "rateAll": 9.84
     },
     {
       "state": "Arkansas",
@@ -4652,7 +6080,11 @@
       "solarPenetration": 0.5,
       "totalGeneration": 54641.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.41,
+      "rateCommercial": 8.61,
+      "rateIndustrial": 5.89,
+      "rateAll": 8.32
     },
     {
       "state": "Arizona",
@@ -4665,7 +6097,11 @@
       "solarPenetration": 5.34,
       "totalGeneration": 109305.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.27,
+      "rateCommercial": 10.11,
+      "rateIndustrial": 6.07,
+      "rateAll": 10.44
     },
     {
       "state": "California",
@@ -4678,7 +6114,11 @@
       "solarPenetration": 15.68,
       "totalGeneration": 193075.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 20.45,
+      "rateCommercial": 17.53,
+      "rateIndustrial": 14.27,
+      "rateAll": 18.0
     },
     {
       "state": "Colorado",
@@ -4691,7 +6131,11 @@
       "solarPenetration": 2.78,
       "totalGeneration": 54115.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.36,
+      "rateCommercial": 10.29,
+      "rateIndustrial": 7.48,
+      "rateAll": 10.27
     },
     {
       "state": "Connecticut",
@@ -4704,7 +6148,11 @@
       "solarPenetration": 0.52,
       "totalGeneration": 41191.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.71,
+      "rateCommercial": 16.58,
+      "rateIndustrial": 13.07,
+      "rateAll": 19.13
     },
     {
       "state": "District of Columbia",
@@ -4717,7 +6165,11 @@
       "solarPenetration": 6.31,
       "totalGeneration": 201.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.63,
+      "rateCommercial": 11.85,
+      "rateIndustrial": 7.99,
+      "rateAll": 11.9
     },
     {
       "state": "Delaware",
@@ -4730,7 +6182,11 @@
       "solarPenetration": 1.04,
       "totalGeneration": 5205.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.56,
+      "rateCommercial": 9.18,
+      "rateIndustrial": 6.7,
+      "rateAll": 10.24
     },
     {
       "state": "Florida",
@@ -4743,7 +6199,11 @@
       "solarPenetration": 2.6,
       "totalGeneration": 250828.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.27,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 7.15,
+      "rateAll": 10.06
     },
     {
       "state": "Georgia",
@@ -4756,7 +6216,11 @@
       "solarPenetration": 3.15,
       "totalGeneration": 120126.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.02,
+      "rateCommercial": 10.08,
+      "rateIndustrial": 5.77,
+      "rateAll": 9.93
     },
     {
       "state": "Hawaii",
@@ -4769,7 +6233,11 @@
       "solarPenetration": 5.33,
       "totalGeneration": 9079.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 30.28,
+      "rateCommercial": 28.41,
+      "rateIndustrial": 24.45,
+      "rateAll": 27.55
     },
     {
       "state": "Iowa",
@@ -4782,7 +6250,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 59637.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.46,
+      "rateCommercial": 9.96,
+      "rateIndustrial": 6.43,
+      "rateAll": 8.97
     },
     {
       "state": "Idaho",
@@ -4795,7 +6267,11 @@
       "solarPenetration": 3.2,
       "totalGeneration": 17686.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.95,
+      "rateCommercial": 7.75,
+      "rateIndustrial": 6.23,
+      "rateAll": 7.99
     },
     {
       "state": "Illinois",
@@ -4808,7 +6284,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 173395.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.04,
+      "rateCommercial": 9.15,
+      "rateIndustrial": 6.7,
+      "rateAll": 9.75
     },
     {
       "state": "Indiana",
@@ -4821,7 +6301,11 @@
       "solarPenetration": 0.4,
       "totalGeneration": 90073.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.83,
+      "rateCommercial": 11.21,
+      "rateIndustrial": 6.98,
+      "rateAll": 9.92
     },
     {
       "state": "Kansas",
@@ -4834,7 +6318,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 54542.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.85,
+      "rateCommercial": 10.4,
+      "rateIndustrial": 7.3,
+      "rateAll": 10.38
     },
     {
       "state": "Kentucky",
@@ -4847,7 +6335,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 63540.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.87,
+      "rateCommercial": 10.34,
+      "rateIndustrial": 5.31,
+      "rateAll": 8.58
     },
     {
       "state": "Louisiana",
@@ -4860,7 +6352,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 100774.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 9.67,
+      "rateCommercial": 8.85,
+      "rateIndustrial": 4.88,
+      "rateAll": 7.51
     },
     {
       "state": "Massachusetts",
@@ -4873,7 +6369,11 @@
       "solarPenetration": 7.71,
       "totalGeneration": 18214.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.97,
+      "rateCommercial": 16.03,
+      "rateIndustrial": 14.51,
+      "rateAll": 18.19
     },
     {
       "state": "Maryland",
@@ -4886,7 +6386,11 @@
       "solarPenetration": 1.46,
       "totalGeneration": 36029.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.01,
+      "rateCommercial": 9.72,
+      "rateIndustrial": 7.81,
+      "rateAll": 11.15
     },
     {
       "state": "Maine",
@@ -4899,7 +6403,11 @@
       "solarPenetration": 0.28,
       "totalGeneration": 10002.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.81,
+      "rateCommercial": 12.56,
+      "rateIndustrial": 8.86,
+      "rateAll": 13.54
     },
     {
       "state": "Michigan",
@@ -4912,7 +6420,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 106625.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 16.26,
+      "rateCommercial": 11.71,
+      "rateIndustrial": 7.24,
+      "rateAll": 12.21
     },
     {
       "state": "Minnesota",
@@ -4925,7 +6437,11 @@
       "solarPenetration": 2.89,
       "totalGeneration": 56510.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.17,
+      "rateCommercial": 10.43,
+      "rateIndustrial": 7.67,
+      "rateAll": 10.57
     },
     {
       "state": "Missouri",
@@ -4938,7 +6454,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 72568.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.22,
+      "rateCommercial": 8.93,
+      "rateIndustrial": 6.84,
+      "rateAll": 9.64
     },
     {
       "state": "Mississippi",
@@ -4951,7 +6471,11 @@
       "solarPenetration": 0.65,
       "totalGeneration": 66582.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.17,
+      "rateCommercial": 10.38,
+      "rateIndustrial": 5.63,
+      "rateAll": 9.13
     },
     {
       "state": "Montana",
@@ -4964,7 +6488,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 23353.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.24,
+      "rateCommercial": 10.51,
+      "rateIndustrial": 5.18,
+      "rateAll": 9.13
     },
     {
       "state": "North Carolina",
@@ -4977,7 +6505,11 @@
       "solarPenetration": 6.65,
       "totalGeneration": 124363.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.38,
+      "rateCommercial": 8.69,
+      "rateIndustrial": 6.31,
+      "rateAll": 9.43
     },
     {
       "state": "North Dakota",
@@ -4990,7 +6522,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 42176.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.44,
+      "rateCommercial": 9.02,
+      "rateIndustrial": 7.26,
+      "rateAll": 8.53
     },
     {
       "state": "Nebraska",
@@ -5003,7 +6539,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 36849.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.8,
+      "rateCommercial": 8.89,
+      "rateIndustrial": 7.38,
+      "rateAll": 8.97
     },
     {
       "state": "New Hampshire",
@@ -5016,7 +6556,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 16351.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.04,
+      "rateCommercial": 15.41,
+      "rateIndustrial": 13.11,
+      "rateAll": 16.63
     },
     {
       "state": "New Jersey",
@@ -5029,7 +6573,11 @@
       "solarPenetration": 2.14,
       "totalGeneration": 61106.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.03,
+      "rateCommercial": 12.35,
+      "rateIndustrial": 10.01,
+      "rateAll": 13.63
     },
     {
       "state": "New Mexico",
@@ -5042,7 +6590,11 @@
       "solarPenetration": 5.13,
       "totalGeneration": 34076.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.94,
+      "rateCommercial": 10.28,
+      "rateIndustrial": 5.58,
+      "rateAll": 9.33
     },
     {
       "state": "Nevada",
@@ -5055,7 +6607,11 @@
       "solarPenetration": 13.69,
       "totalGeneration": 40425.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.34,
+      "rateCommercial": 7.45,
+      "rateIndustrial": 5.61,
+      "rateAll": 8.33
     },
     {
       "state": "New York",
@@ -5068,7 +6624,11 @@
       "solarPenetration": 0.65,
       "totalGeneration": 129430.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.36,
+      "rateCommercial": 14.56,
+      "rateIndustrial": 5.54,
+      "rateAll": 14.87
     },
     {
       "state": "Ohio",
@@ -5081,7 +6641,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 120993.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.29,
+      "rateCommercial": 9.53,
+      "rateIndustrial": 6.16,
+      "rateAll": 9.44
     },
     {
       "state": "Oklahoma",
@@ -5094,7 +6658,11 @@
       "solarPenetration": 0.08,
       "totalGeneration": 82298.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.12,
+      "rateCommercial": 7.82,
+      "rateIndustrial": 4.61,
+      "rateAll": 7.63
     },
     {
       "state": "Oregon",
@@ -5107,7 +6675,11 @@
       "solarPenetration": 1.69,
       "totalGeneration": 63625.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.17,
+      "rateCommercial": 9.0,
+      "rateIndustrial": 5.7,
+      "rateAll": 8.82
     },
     {
       "state": "Pennsylvania",
@@ -5120,7 +6692,11 @@
       "solarPenetration": 0.06,
       "totalGeneration": 230143.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.58,
+      "rateCommercial": 8.5,
+      "rateIndustrial": 6.16,
+      "rateAll": 9.7
     },
     {
       "state": "Rhode Island",
@@ -5133,7 +6709,11 @@
       "solarPenetration": 2.19,
       "totalGeneration": 8895.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.01,
+      "rateCommercial": 15.94,
+      "rateIndustrial": 15.76,
+      "rateAll": 18.54
     },
     {
       "state": "South Carolina",
@@ -5146,7 +6726,11 @@
       "solarPenetration": 1.75,
       "totalGeneration": 98529.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.78,
+      "rateCommercial": 10.35,
+      "rateIndustrial": 5.98,
+      "rateAll": 9.9
     },
     {
       "state": "South Dakota",
@@ -5159,7 +6743,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 14147.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.75,
+      "rateCommercial": 9.65,
+      "rateIndustrial": 7.79,
+      "rateAll": 10.06
     },
     {
       "state": "Tennessee",
@@ -5172,7 +6760,11 @@
       "solarPenetration": 0.4,
       "totalGeneration": 80566.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 10.76,
+      "rateCommercial": 10.56,
+      "rateIndustrial": 5.33,
+      "rateAll": 9.52
     },
     {
       "state": "Texas",
@@ -5185,7 +6777,11 @@
       "solarPenetration": 1.8,
       "totalGeneration": 473515.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.71,
+      "rateCommercial": 7.6,
+      "rateIndustrial": 5.07,
+      "rateAll": 8.36
     },
     {
       "state": "Utah",
@@ -5198,7 +6794,11 @@
       "solarPenetration": 6.93,
       "totalGeneration": 37087.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.44,
+      "rateCommercial": 8.27,
+      "rateIndustrial": 5.9,
+      "rateAll": 8.27
     },
     {
       "state": "Virginia",
@@ -5211,7 +6811,11 @@
       "solarPenetration": 1.33,
       "totalGeneration": 103056.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.03,
+      "rateCommercial": 7.63,
+      "rateIndustrial": 6.28,
+      "rateAll": 9.16
     },
     {
       "state": "Vermont",
@@ -5224,7 +6828,11 @@
       "solarPenetration": 8.48,
       "totalGeneration": 2156.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.54,
+      "rateCommercial": 16.39,
+      "rateIndustrial": 11.2,
+      "rateAll": 16.33
     },
     {
       "state": "Washington",
@@ -5237,7 +6845,11 @@
       "solarPenetration": 0.04,
       "totalGeneration": 116114.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 9.87,
+      "rateCommercial": 8.92,
+      "rateIndustrial": 5.08,
+      "rateAll": 8.33
     },
     {
       "state": "Wisconsin",
@@ -5250,7 +6862,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 61449.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.32,
+      "rateCommercial": 10.75,
+      "rateIndustrial": 7.29,
+      "rateAll": 10.82
     },
     {
       "state": "West Virginia",
@@ -5263,7 +6879,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56662.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.8,
+      "rateCommercial": 9.4,
+      "rateIndustrial": 6.09,
+      "rateAll": 8.75
     },
     {
       "state": "Wyoming",
@@ -5276,7 +6896,11 @@
       "solarPenetration": 0.39,
       "totalGeneration": 42011.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.11,
+      "rateCommercial": 9.65,
+      "rateIndustrial": 6.88,
+      "rateAll": 8.27
     },
     {
       "state": "Alaska",
@@ -5289,7 +6913,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6596.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 22.55,
+      "rateCommercial": 19.61,
+      "rateIndustrial": 16.85,
+      "rateAll": 20.02
     },
     {
       "state": "Alabama",
@@ -5302,7 +6930,11 @@
       "solarPenetration": 0.35,
       "totalGeneration": 142733.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.96,
+      "rateCommercial": 11.84,
+      "rateIndustrial": 6.33,
+      "rateAll": 10.18
     },
     {
       "state": "Arkansas",
@@ -5315,7 +6947,11 @@
       "solarPenetration": 0.76,
       "totalGeneration": 61100.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.27,
+      "rateCommercial": 9.56,
+      "rateIndustrial": 6.57,
+      "rateAll": 9.1
     },
     {
       "state": "Arizona",
@@ -5328,7 +6964,11 @@
       "solarPenetration": 6.18,
       "totalGeneration": 108605.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.54,
+      "rateCommercial": 10.33,
+      "rateIndustrial": 6.79,
+      "rateAll": 10.73
     },
     {
       "state": "California",
@@ -5341,7 +6981,11 @@
       "solarPenetration": 17.68,
       "totalGeneration": 197165.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 22.82,
+      "rateCommercial": 19.18,
+      "rateIndustrial": 14.82,
+      "rateAll": 19.65
     },
     {
       "state": "Colorado",
@@ -5354,7 +6998,11 @@
       "solarPenetration": 3.04,
       "totalGeneration": 56838.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.07,
+      "rateCommercial": 10.84,
+      "rateIndustrial": 8.01,
+      "rateAll": 10.9
     },
     {
       "state": "Connecticut",
@@ -5367,7 +7015,11 @@
       "solarPenetration": 0.6,
       "totalGeneration": 44080.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 21.91,
+      "rateCommercial": 16.46,
+      "rateIndustrial": 9.63,
+      "rateAll": 18.32
     },
     {
       "state": "District of Columbia",
@@ -5380,7 +7032,11 @@
       "solarPenetration": 8.65,
       "totalGeneration": 211.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.09,
+      "rateCommercial": 13.0,
+      "rateIndustrial": 7.87,
+      "rateAll": 12.81
     },
     {
       "state": "Delaware",
@@ -5393,7 +7049,11 @@
       "solarPenetration": 1.33,
       "totalGeneration": 4305.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.52,
+      "rateCommercial": 9.48,
+      "rateIndustrial": 7.6,
+      "rateAll": 10.5
     },
     {
       "state": "Florida",
@@ -5406,7 +7066,11 @@
       "solarPenetration": 3.65,
       "totalGeneration": 247907.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.9,
+      "rateCommercial": 9.51,
+      "rateIndustrial": 7.65,
+      "rateAll": 10.67
     },
     {
       "state": "Georgia",
@@ -5419,7 +7083,11 @@
       "solarPenetration": 3.92,
       "totalGeneration": 124201.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.51,
+      "rateCommercial": 10.61,
+      "rateIndustrial": 6.49,
+      "rateAll": 10.43
     },
     {
       "state": "Iowa",
@@ -5432,7 +7100,11 @@
       "solarPenetration": 0.33,
       "totalGeneration": 67207.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.73,
+      "rateCommercial": 10.17,
+      "rateIndustrial": 6.63,
+      "rateAll": 9.13
     },
     {
       "state": "Idaho",
@@ -5445,7 +7117,11 @@
       "solarPenetration": 3.36,
       "totalGeneration": 16836.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.16,
+      "rateCommercial": 7.89,
+      "rateIndustrial": 6.39,
+      "rateAll": 8.17
     },
     {
       "state": "Illinois",
@@ -5458,7 +7134,11 @@
       "solarPenetration": 0.28,
       "totalGeneration": 181638.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.18,
+      "rateCommercial": 9.65,
+      "rateIndustrial": 7.3,
+      "rateAll": 10.14
     },
     {
       "state": "Indiana",
@@ -5471,7 +7151,11 @@
       "solarPenetration": 0.61,
       "totalGeneration": 94165.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.37,
+      "rateCommercial": 11.58,
+      "rateIndustrial": 7.39,
+      "rateAll": 10.36
     },
     {
       "state": "Kansas",
@@ -5484,7 +7168,11 @@
       "solarPenetration": 0.11,
       "totalGeneration": 56631.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.98,
+      "rateCommercial": 10.52,
+      "rateIndustrial": 7.38,
+      "rateAll": 10.47
     },
     {
       "state": "Kentucky",
@@ -5497,7 +7185,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 69908.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.5,
+      "rateCommercial": 10.75,
+      "rateIndustrial": 5.95,
+      "rateAll": 9.12
     },
     {
       "state": "Massachusetts",
@@ -5510,7 +7202,11 @@
       "solarPenetration": 8.15,
       "totalGeneration": 19477.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.89,
+      "rateCommercial": 16.99,
+      "rateIndustrial": 15.18,
+      "rateAll": 19.06
     },
     {
       "state": "Maryland",
@@ -5523,7 +7219,11 @@
       "solarPenetration": 1.65,
       "totalGeneration": 38235.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.12,
+      "rateCommercial": 10.26,
+      "rateIndustrial": 8.46,
+      "rateAll": 11.48
     },
     {
       "state": "Maine",
@@ -5536,7 +7236,11 @@
       "solarPenetration": 1.44,
       "totalGeneration": 10908.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.02,
+      "rateCommercial": 12.9,
+      "rateIndustrial": 9.55,
+      "rateAll": 13.96
     },
     {
       "state": "Michigan",
@@ -5549,7 +7253,11 @@
       "solarPenetration": 0.37,
       "totalGeneration": 115513.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 17.54,
+      "rateCommercial": 12.31,
+      "rateIndustrial": 7.69,
+      "rateAll": 12.93
     },
     {
       "state": "Minnesota",
@@ -5562,7 +7270,11 @@
       "solarPenetration": 3.2,
       "totalGeneration": 59196.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.5,
+      "rateCommercial": 11.22,
+      "rateIndustrial": 8.29,
+      "rateAll": 11.08
     },
     {
       "state": "Missouri",
@@ -5575,7 +7287,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 76941.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.41,
+      "rateCommercial": 9.17,
+      "rateIndustrial": 7.11,
+      "rateAll": 9.85
     },
     {
       "state": "Mississippi",
@@ -5588,7 +7304,11 @@
       "solarPenetration": 0.63,
       "totalGeneration": 67723.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.56,
+      "rateCommercial": 10.81,
+      "rateIndustrial": 5.95,
+      "rateAll": 9.5
     },
     {
       "state": "Montana",
@@ -5601,7 +7321,11 @@
       "solarPenetration": 0.13,
       "totalGeneration": 24948.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.22,
+      "rateCommercial": 10.54,
+      "rateIndustrial": 6.24,
+      "rateAll": 9.5
     },
     {
       "state": "North Carolina",
@@ -5614,7 +7338,11 @@
       "solarPenetration": 7.79,
       "totalGeneration": 129923.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.32,
+      "rateCommercial": 8.5,
+      "rateIndustrial": 6.14,
+      "rateAll": 9.29
     },
     {
       "state": "North Dakota",
@@ -5627,7 +7355,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 43032.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.85,
+      "rateCommercial": 9.17,
+      "rateIndustrial": 7.37,
+      "rateAll": 8.65
     },
     {
       "state": "Nebraska",
@@ -5640,7 +7372,11 @@
       "solarPenetration": 0.16,
       "totalGeneration": 37911.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.75,
+      "rateCommercial": 8.81,
+      "rateIndustrial": 7.26,
+      "rateAll": 8.84
     },
     {
       "state": "New Hampshire",
@@ -5653,7 +7389,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 17193.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.85,
+      "rateCommercial": 16.13,
+      "rateIndustrial": 13.81,
+      "rateAll": 17.37
     },
     {
       "state": "New Jersey",
@@ -5666,7 +7406,11 @@
       "solarPenetration": 2.24,
       "totalGeneration": 61434.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.35,
+      "rateCommercial": 12.69,
+      "rateIndustrial": 10.7,
+      "rateAll": 14.01
     },
     {
       "state": "New Mexico",
@@ -5679,7 +7423,11 @@
       "solarPenetration": 4.97,
       "totalGeneration": 35192.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.52,
+      "rateCommercial": 10.8,
+      "rateIndustrial": 6.16,
+      "rateAll": 9.79
     },
     {
       "state": "Nevada",
@@ -5692,7 +7440,11 @@
       "solarPenetration": 15.77,
       "totalGeneration": 41755.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.49,
+      "rateCommercial": 7.77,
+      "rateIndustrial": 6.02,
+      "rateAll": 8.58
     },
     {
       "state": "New York",
@@ -5705,7 +7457,11 @@
       "solarPenetration": 0.93,
       "totalGeneration": 124772.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.48,
+      "rateCommercial": 16.07,
+      "rateIndustrial": 6.34,
+      "rateAll": 16.11
     },
     {
       "state": "Ohio",
@@ -5718,7 +7474,11 @@
       "solarPenetration": 0.53,
       "totalGeneration": 125948.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.77,
+      "rateCommercial": 9.75,
+      "rateIndustrial": 6.55,
+      "rateAll": 9.76
     },
     {
       "state": "Oklahoma",
@@ -5731,7 +7491,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 80755.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.0,
+      "rateCommercial": 8.7,
+      "rateIndustrial": 5.5,
+      "rateAll": 8.52
     },
     {
       "state": "Oregon",
@@ -5744,7 +7508,11 @@
       "solarPenetration": 2.39,
       "totalGeneration": 61017.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.37,
+      "rateCommercial": 9.1,
+      "rateIndustrial": 5.97,
+      "rateAll": 8.95
     },
     {
       "state": "Pennsylvania",
@@ -5757,7 +7525,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 241331.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 13.76,
+      "rateCommercial": 8.91,
+      "rateIndustrial": 6.54,
+      "rateAll": 9.97
     },
     {
       "state": "Rhode Island",
@@ -5770,7 +7542,11 @@
       "solarPenetration": 3.05,
       "totalGeneration": 9323.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.3,
+      "rateCommercial": 15.51,
+      "rateIndustrial": 16.06,
+      "rateAll": 18.44
     },
     {
       "state": "South Carolina",
@@ -5783,7 +7559,11 @@
       "solarPenetration": 2.32,
       "totalGeneration": 98390.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.86,
+      "rateCommercial": 10.67,
+      "rateIndustrial": 6.07,
+      "rateAll": 9.96
     },
     {
       "state": "South Dakota",
@@ -5796,7 +7576,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 17322.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.22,
+      "rateCommercial": 10.15,
+      "rateIndustrial": 8.02,
+      "rateAll": 10.43
     },
     {
       "state": "Tennessee",
@@ -5809,7 +7593,11 @@
       "solarPenetration": 0.43,
       "totalGeneration": 79057.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.07,
+      "rateCommercial": 10.87,
+      "rateIndustrial": 5.51,
+      "rateAll": 9.78
     },
     {
       "state": "Texas",
@@ -5822,7 +7610,11 @@
       "solarPenetration": 3.1,
       "totalGeneration": 481844.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.11,
+      "rateCommercial": 8.72,
+      "rateIndustrial": 6.12,
+      "rateAll": 9.14
     },
     {
       "state": "Utah",
@@ -5835,7 +7627,11 @@
       "solarPenetration": 8.17,
       "totalGeneration": 42566.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.43,
+      "rateCommercial": 8.13,
+      "rateIndustrial": 6.19,
+      "rateAll": 8.34
     },
     {
       "state": "Virginia",
@@ -5848,7 +7644,11 @@
       "solarPenetration": 3.5,
       "totalGeneration": 93478.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.96,
+      "rateCommercial": 7.79,
+      "rateIndustrial": 6.49,
+      "rateAll": 9.14
     },
     {
       "state": "Vermont",
@@ -5861,7 +7661,11 @@
       "solarPenetration": 8.22,
       "totalGeneration": 2108.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.26,
+      "rateCommercial": 16.59,
+      "rateIndustrial": 11.38,
+      "rateAll": 16.34
     },
     {
       "state": "Washington",
@@ -5874,7 +7678,11 @@
       "solarPenetration": 0.05,
       "totalGeneration": 110808.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.11,
+      "rateCommercial": 9.14,
+      "rateIndustrial": 5.81,
+      "rateAll": 8.75
     },
     {
       "state": "Wisconsin",
@@ -5887,7 +7695,11 @@
       "solarPenetration": 0.57,
       "totalGeneration": 64276.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.52,
+      "rateCommercial": 10.95,
+      "rateIndustrial": 7.63,
+      "rateAll": 11.01
     },
     {
       "state": "West Virginia",
@@ -5900,7 +7712,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 65836.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.15,
+      "rateCommercial": 9.5,
+      "rateIndustrial": 6.07,
+      "rateAll": 8.87
     },
     {
       "state": "Wyoming",
@@ -5913,7 +7729,11 @@
       "solarPenetration": 0.41,
       "totalGeneration": 43461.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.17,
+      "rateCommercial": 9.68,
+      "rateIndustrial": 6.83,
+      "rateAll": 8.25
     },
     {
       "state": "Alaska",
@@ -5926,7 +7746,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6694.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 23.1,
+      "rateCommercial": 20.06,
+      "rateIndustrial": 18.43,
+      "rateAll": 20.73
     },
     {
       "state": "Alabama",
@@ -5939,7 +7763,11 @@
       "solarPenetration": 0.62,
       "totalGeneration": 144789.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.25,
+      "rateCommercial": 13.16,
+      "rateIndustrial": 7.72,
+      "rateAll": 11.59
     },
     {
       "state": "Arkansas",
@@ -5952,7 +7780,11 @@
       "solarPenetration": 1.12,
       "totalGeneration": 65905.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.05,
+      "rateCommercial": 10.26,
+      "rateIndustrial": 7.38,
+      "rateAll": 9.91
     },
     {
       "state": "Arizona",
@@ -5965,7 +7797,11 @@
       "solarPenetration": 6.75,
       "totalGeneration": 104699.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.02,
+      "rateCommercial": 10.8,
+      "rateIndustrial": 7.86,
+      "rateAll": 11.31
     },
     {
       "state": "California",
@@ -5978,7 +7814,11 @@
       "solarPenetration": 19.07,
       "totalGeneration": 203384.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 25.84,
+      "rateCommercial": 21.81,
+      "rateIndustrial": 17.09,
+      "rateAll": 22.33
     },
     {
       "state": "Colorado",
@@ -5991,7 +7831,11 @@
       "solarPenetration": 4.14,
       "totalGeneration": 58044.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 14.19,
+      "rateCommercial": 11.58,
+      "rateIndustrial": 8.63,
+      "rateAll": 11.75
     },
     {
       "state": "Connecticut",
@@ -6004,7 +7848,11 @@
       "solarPenetration": 0.96,
       "totalGeneration": 43054.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 24.61,
+      "rateCommercial": 18.54,
+      "rateIndustrial": 15.07,
+      "rateAll": 21.08
     },
     {
       "state": "District of Columbia",
@@ -6017,7 +7865,11 @@
       "solarPenetration": 13.88,
       "totalGeneration": 160.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.18,
+      "rateCommercial": 15.6,
+      "rateIndustrial": 7.74,
+      "rateAll": 14.94
     },
     {
       "state": "Delaware",
@@ -6030,7 +7882,11 @@
       "solarPenetration": 1.2,
       "totalGeneration": 5308.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.71,
+      "rateCommercial": 10.98,
+      "rateIndustrial": 8.79,
+      "rateAll": 11.83
     },
     {
       "state": "Florida",
@@ -6043,7 +7899,11 @@
       "solarPenetration": 4.38,
       "totalGeneration": 258910.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.9,
+      "rateCommercial": 11.19,
+      "rateIndustrial": 9.16,
+      "rateAll": 12.51
     },
     {
       "state": "Georgia",
@@ -6056,7 +7916,11 @@
       "solarPenetration": 5.49,
       "totalGeneration": 126485.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.8,
+      "rateCommercial": 12.1,
+      "rateIndustrial": 8.65,
+      "rateAll": 12.0
     },
     {
       "state": "Iowa",
@@ -6069,7 +7933,11 @@
       "solarPenetration": 0.53,
       "totalGeneration": 72982.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.15,
+      "rateCommercial": 10.55,
+      "rateIndustrial": 7.06,
+      "rateAll": 9.57
     },
     {
       "state": "Idaho",
@@ -6082,7 +7950,11 @@
       "solarPenetration": 3.28,
       "totalGeneration": 16278.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.37,
+      "rateCommercial": 8.27,
+      "rateIndustrial": 6.71,
+      "rateAll": 8.51
     },
     {
       "state": "Illinois",
@@ -6095,7 +7967,11 @@
       "solarPenetration": 0.84,
       "totalGeneration": 185223.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.65,
+      "rateCommercial": 11.32,
+      "rateIndustrial": 8.57,
+      "rateAll": 11.94
     },
     {
       "state": "Indiana",
@@ -6108,7 +7984,11 @@
       "solarPenetration": 1.1,
       "totalGeneration": 98055.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.59,
+      "rateCommercial": 12.86,
+      "rateIndustrial": 8.65,
+      "rateAll": 11.66
     },
     {
       "state": "Kansas",
@@ -6121,7 +8001,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 62198.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.99,
+      "rateCommercial": 11.51,
+      "rateIndustrial": 8.3,
+      "rateAll": 11.47
     },
     {
       "state": "Kentucky",
@@ -6134,7 +8018,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 69147.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.91,
+      "rateCommercial": 11.78,
+      "rateIndustrial": 7.41,
+      "rateAll": 10.51
     },
     {
       "state": "Louisiana",
@@ -6147,7 +8035,11 @@
       "solarPenetration": 0.19,
       "totalGeneration": 105505.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.93,
+      "rateCommercial": 11.93,
+      "rateIndustrial": 7.54,
+      "rateAll": 10.41
     },
     {
       "state": "Massachusetts",
@@ -6160,7 +8052,11 @@
       "solarPenetration": 9.2,
       "totalGeneration": 21026.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 25.97,
+      "rateCommercial": 18.67,
+      "rateIndustrial": 17.06,
+      "rateAll": 21.27
     },
     {
       "state": "Maryland",
@@ -6173,7 +8069,11 @@
       "solarPenetration": 1.92,
       "totalGeneration": 37139.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.46,
+      "rateCommercial": 12.65,
+      "rateIndustrial": 10.01,
+      "rateAll": 13.32
     },
     {
       "state": "Maine",
@@ -6186,7 +8086,11 @@
       "solarPenetration": 3.38,
       "totalGeneration": 12764.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.44,
+      "rateCommercial": 15.4,
+      "rateIndustrial": 11.03,
+      "rateAll": 17.44
     },
     {
       "state": "Michigan",
@@ -6199,7 +8103,11 @@
       "solarPenetration": 0.73,
       "totalGeneration": 117497.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 17.86,
+      "rateCommercial": 12.55,
+      "rateIndustrial": 8.33,
+      "rateAll": 13.2
     },
     {
       "state": "Minnesota",
@@ -6212,7 +8120,11 @@
       "solarPenetration": 3.22,
       "totalGeneration": 58967.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.25,
+      "rateCommercial": 12.3,
+      "rateIndustrial": 9.25,
+      "rateAll": 12.04
     },
     {
       "state": "Missouri",
@@ -6225,7 +8137,11 @@
       "solarPenetration": 0.19,
       "totalGeneration": 79361.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.74,
+      "rateCommercial": 9.55,
+      "rateIndustrial": 7.67,
+      "rateAll": 10.26
     },
     {
       "state": "Mississippi",
@@ -6238,7 +8154,11 @@
       "solarPenetration": 0.74,
       "totalGeneration": 67781.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.41,
+      "rateCommercial": 11.76,
+      "rateIndustrial": 6.71,
+      "rateAll": 10.36
     },
     {
       "state": "Montana",
@@ -6251,7 +8171,11 @@
       "solarPenetration": 0.12,
       "totalGeneration": 27089.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.33,
+      "rateCommercial": 10.68,
+      "rateIndustrial": 7.49,
+      "rateAll": 9.97
     },
     {
       "state": "North Carolina",
@@ -6264,7 +8188,11 @@
       "solarPenetration": 8.39,
       "totalGeneration": 134257.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.62,
+      "rateCommercial": 8.75,
+      "rateIndustrial": 6.54,
+      "rateAll": 9.6
     },
     {
       "state": "North Dakota",
@@ -6277,7 +8205,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 44401.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.92,
+      "rateCommercial": 8.45,
+      "rateIndustrial": 7.28,
+      "rateAll": 8.42
     },
     {
       "state": "Nebraska",
@@ -6290,7 +8222,11 @@
       "solarPenetration": 0.18,
       "totalGeneration": 40693.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 10.79,
+      "rateCommercial": 8.82,
+      "rateIndustrial": 7.21,
+      "rateAll": 8.83
     },
     {
       "state": "New Hampshire",
@@ -6303,7 +8239,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 18764.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 25.46,
+      "rateCommercial": 18.69,
+      "rateIndustrial": 15.15,
+      "rateAll": 21.07
     },
     {
       "state": "New Jersey",
@@ -6316,7 +8256,11 @@
       "solarPenetration": 2.33,
       "totalGeneration": 65061.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 16.74,
+      "rateCommercial": 13.75,
+      "rateIndustrial": 12.12,
+      "rateAll": 14.8
     },
     {
       "state": "New Mexico",
@@ -6329,7 +8273,11 @@
       "solarPenetration": 4.84,
       "totalGeneration": 40889.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.84,
+      "rateCommercial": 11.07,
+      "rateIndustrial": 6.56,
+      "rateAll": 10.02
     },
     {
       "state": "Nevada",
@@ -6342,7 +8290,11 @@
       "solarPenetration": 21.2,
       "totalGeneration": 42592.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.78,
+      "rateCommercial": 10.14,
+      "rateIndustrial": 8.5,
+      "rateAll": 10.94
     },
     {
       "state": "New York",
@@ -6355,7 +8307,11 @@
       "solarPenetration": 1.43,
       "totalGeneration": 125185.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.08,
+      "rateCommercial": 18.19,
+      "rateIndustrial": 7.55,
+      "rateAll": 18.33
     },
     {
       "state": "Ohio",
@@ -6368,7 +8324,11 @@
       "solarPenetration": 0.68,
       "totalGeneration": 135810.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.85,
+      "rateCommercial": 10.39,
+      "rateIndustrial": 7.45,
+      "rateAll": 10.64
     },
     {
       "state": "Oklahoma",
@@ -6381,7 +8341,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 84635.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.44,
+      "rateCommercial": 10.34,
+      "rateIndustrial": 6.96,
+      "rateAll": 10.05
     },
     {
       "state": "Oregon",
@@ -6394,7 +8358,11 @@
       "solarPenetration": 2.62,
       "totalGeneration": 61318.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.42,
+      "rateCommercial": 9.35,
+      "rateIndustrial": 6.81,
+      "rateAll": 9.26
     },
     {
       "state": "Pennsylvania",
@@ -6407,7 +8375,11 @@
       "solarPenetration": 0.1,
       "totalGeneration": 239261.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 15.94,
+      "rateCommercial": 10.73,
+      "rateIndustrial": 8.21,
+      "rateAll": 11.86
     },
     {
       "state": "Rhode Island",
@@ -6420,7 +8392,11 @@
       "solarPenetration": 4.62,
       "totalGeneration": 7819.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 23.21,
+      "rateCommercial": 16.23,
+      "rateIndustrial": 17.96,
+      "rateAll": 19.3
     },
     {
       "state": "South Carolina",
@@ -6433,7 +8409,11 @@
       "solarPenetration": 2.45,
       "totalGeneration": 98710.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.59,
+      "rateCommercial": 10.86,
+      "rateIndustrial": 7.13,
+      "rateAll": 10.74
     },
     {
       "state": "South Dakota",
@@ -6446,7 +8426,11 @@
       "solarPenetration": 0.01,
       "totalGeneration": 17900.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.09,
+      "rateCommercial": 10.21,
+      "rateIndustrial": 8.04,
+      "rateAll": 10.44
     },
     {
       "state": "Tennessee",
@@ -6459,7 +8443,11 @@
       "solarPenetration": 0.87,
       "totalGeneration": 78036.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.25,
+      "rateCommercial": 12.02,
+      "rateIndustrial": 6.55,
+      "rateAll": 10.89
     },
     {
       "state": "Texas",
@@ -6472,7 +8460,11 @@
       "solarPenetration": 4.27,
       "totalGeneration": 525563.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.76,
+      "rateCommercial": 9.05,
+      "rateIndustrial": 7.13,
+      "rateAll": 10.16
     },
     {
       "state": "Utah",
@@ -6485,7 +8477,11 @@
       "solarPenetration": 9.78,
       "totalGeneration": 39386.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.84,
+      "rateCommercial": 8.39,
+      "rateIndustrial": 6.84,
+      "rateAll": 8.8
     },
     {
       "state": "Virginia",
@@ -6498,7 +8494,11 @@
       "solarPenetration": 5.17,
       "totalGeneration": 89477.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.34,
+      "rateCommercial": 9.66,
+      "rateIndustrial": 7.99,
+      "rateAll": 10.75
     },
     {
       "state": "Vermont",
@@ -6511,7 +8511,11 @@
       "solarPenetration": 9.26,
       "totalGeneration": 2184.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 19.93,
+      "rateCommercial": 17.29,
+      "rateIndustrial": 11.88,
+      "rateAll": 16.99
     },
     {
       "state": "Washington",
@@ -6524,7 +8528,11 @@
       "solarPenetration": 0.07,
       "totalGeneration": 116691.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.26,
+      "rateCommercial": 9.49,
+      "rateIndustrial": 6.17,
+      "rateAll": 9.05
     },
     {
       "state": "Wisconsin",
@@ -6537,7 +8545,11 @@
       "solarPenetration": 1.31,
       "totalGeneration": 61239.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.62,
+      "rateCommercial": 11.85,
+      "rateIndustrial": 8.49,
+      "rateAll": 11.95
     },
     {
       "state": "West Virginia",
@@ -6550,7 +8562,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 56665.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.23,
+      "rateCommercial": 10.42,
+      "rateIndustrial": 6.74,
+      "rateAll": 9.74
     },
     {
       "state": "Wyoming",
@@ -6563,7 +8579,11 @@
       "solarPenetration": 0.4,
       "totalGeneration": 46347.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.09,
+      "rateCommercial": 9.55,
+      "rateIndustrial": 6.89,
+      "rateAll": 8.24
     },
     {
       "state": "Alaska",
@@ -6576,7 +8596,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 6718.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 23.9,
+      "rateCommercial": 20.87,
+      "rateIndustrial": 18.7,
+      "rateAll": 21.41
     },
     {
       "state": "Alabama",
@@ -6589,7 +8613,11 @@
       "solarPenetration": 0.86,
       "totalGeneration": 139435.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.63,
+      "rateCommercial": 13.16,
+      "rateIndustrial": 7.1,
+      "rateAll": 11.47
     },
     {
       "state": "Arkansas",
@@ -6602,7 +8630,11 @@
       "solarPenetration": 1.26,
       "totalGeneration": 63196.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.25,
+      "rateCommercial": 10.34,
+      "rateIndustrial": 6.87,
+      "rateAll": 9.73
     },
     {
       "state": "Arizona",
@@ -6615,7 +8647,11 @@
       "solarPenetration": 6.65,
       "totalGeneration": 111839.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 14.02,
+      "rateCommercial": 11.79,
+      "rateIndustrial": 8.11,
+      "rateAll": 12.19
     },
     {
       "state": "California",
@@ -6628,7 +8664,11 @@
       "solarPenetration": 18.93,
       "totalGeneration": 216629.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 29.51,
+      "rateCommercial": 23.91,
+      "rateIndustrial": 18.64,
+      "rateAll": 24.87
     },
     {
       "state": "Colorado",
@@ -6641,7 +8681,11 @@
       "solarPenetration": 6.28,
       "totalGeneration": 57542.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 14.3,
+      "rateCommercial": 11.64,
+      "rateIndustrial": 8.5,
+      "rateAll": 11.76
     },
     {
       "state": "Connecticut",
@@ -6654,7 +8698,11 @@
       "solarPenetration": 1.04,
       "totalGeneration": 40666.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 29.88,
+      "rateCommercial": 19.99,
+      "rateIndustrial": 15.69,
+      "rateAll": 24.24
     },
     {
       "state": "District of Columbia",
@@ -6667,7 +8715,11 @@
       "solarPenetration": 14.31,
       "totalGeneration": 172.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 16.45,
+      "rateCommercial": 16.94,
+      "rateIndustrial": 10.85,
+      "rateAll": 16.5
     },
     {
       "state": "Delaware",
@@ -6680,7 +8732,11 @@
       "solarPenetration": 3.25,
       "totalGeneration": 4772.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 15.73,
+      "rateCommercial": 11.83,
+      "rateIndustrial": 7.85,
+      "rateAll": 12.85
     },
     {
       "state": "Florida",
@@ -6693,7 +8749,11 @@
       "solarPenetration": 5.41,
       "totalGeneration": 259798.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 15.21,
+      "rateCommercial": 11.95,
+      "rateIndustrial": 9.39,
+      "rateAll": 13.53
     },
     {
       "state": "Georgia",
@@ -6706,7 +8766,11 @@
       "solarPenetration": 5.84,
       "totalGeneration": 129222.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.69,
+      "rateCommercial": 10.7,
+      "rateIndustrial": 6.88,
+      "rateAll": 11.06
     },
     {
       "state": "Hawaii",
@@ -6719,7 +8783,11 @@
       "solarPenetration": 7.1,
       "totalGeneration": 9194.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 42.39,
+      "rateCommercial": 39.03,
+      "rateIndustrial": 35.28,
+      "rateAll": 38.6
     },
     {
       "state": "Iowa",
@@ -6732,7 +8800,11 @@
       "solarPenetration": 0.75,
       "totalGeneration": 69837.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.31,
+      "rateCommercial": 10.33,
+      "rateIndustrial": 6.91,
+      "rateAll": 9.42
     },
     {
       "state": "Idaho",
@@ -6745,7 +8817,11 @@
       "solarPenetration": 4.79,
       "totalGeneration": 17842.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.05,
+      "rateCommercial": 8.78,
+      "rateIndustrial": 7.17,
+      "rateAll": 9.08
     },
     {
       "state": "Illinois",
@@ -6758,7 +8834,11 @@
       "solarPenetration": 1.08,
       "totalGeneration": 177738.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.71,
+      "rateCommercial": 11.24,
+      "rateIndustrial": 8.2,
+      "rateAll": 11.75
     },
     {
       "state": "Indiana",
@@ -6771,7 +8851,11 @@
       "solarPenetration": 2.06,
       "totalGeneration": 90047.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.94,
+      "rateCommercial": 12.55,
+      "rateIndustrial": 8.24,
+      "rateAll": 11.49
     },
     {
       "state": "Kansas",
@@ -6784,7 +8868,11 @@
       "solarPenetration": 0.14,
       "totalGeneration": 58457.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 13.38,
+      "rateCommercial": 10.85,
+      "rateIndustrial": 7.64,
+      "rateAll": 10.8
     },
     {
       "state": "Kentucky",
@@ -6797,7 +8885,11 @@
       "solarPenetration": 0.25,
       "totalGeneration": 63217.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.65,
+      "rateCommercial": 11.38,
+      "rateIndustrial": 6.55,
+      "rateAll": 9.96
     },
     {
       "state": "Louisiana",
@@ -6810,7 +8902,11 @@
       "solarPenetration": 0.3,
       "totalGeneration": 97785.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 11.55,
+      "rateCommercial": 10.45,
+      "rateIndustrial": 5.88,
+      "rateAll": 8.91
     },
     {
       "state": "Massachusetts",
@@ -6823,7 +8919,11 @@
       "solarPenetration": 10.23,
       "totalGeneration": 19696.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 29.61,
+      "rateCommercial": 19.62,
+      "rateIndustrial": 17.88,
+      "rateAll": 23.21
     },
     {
       "state": "Maryland",
@@ -6836,7 +8936,11 @@
       "solarPenetration": 2.62,
       "totalGeneration": 36001.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 16.6,
+      "rateCommercial": 12.77,
+      "rateIndustrial": 9.94,
+      "rateAll": 14.34
     },
     {
       "state": "Michigan",
@@ -6849,7 +8953,11 @@
       "solarPenetration": 1.05,
       "totalGeneration": 120657.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 18.84,
+      "rateCommercial": 13.4,
+      "rateIndustrial": 8.16,
+      "rateAll": 13.68
     },
     {
       "state": "Minnesota",
@@ -6862,7 +8970,11 @@
       "solarPenetration": 3.66,
       "totalGeneration": 57277.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 14.73,
+      "rateCommercial": 12.39,
+      "rateIndustrial": 9.2,
+      "rateAll": 12.21
     },
     {
       "state": "Missouri",
@@ -6875,7 +8987,11 @@
       "solarPenetration": 0.26,
       "totalGeneration": 66703.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.58,
+      "rateCommercial": 10.14,
+      "rateIndustrial": 7.9,
+      "rateAll": 10.87
     },
     {
       "state": "Mississippi",
@@ -6888,7 +9004,11 @@
       "solarPenetration": 0.87,
       "totalGeneration": 72933.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.23,
+      "rateCommercial": 12.37,
+      "rateIndustrial": 6.96,
+      "rateAll": 10.95
     },
     {
       "state": "Montana",
@@ -6901,7 +9021,11 @@
       "solarPenetration": 0.89,
       "totalGeneration": 26896.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.54,
+      "rateCommercial": 12.11,
+      "rateIndustrial": 7.8,
+      "rateAll": 10.97
     },
     {
       "state": "North Carolina",
@@ -6914,7 +9038,11 @@
       "solarPenetration": 9.05,
       "totalGeneration": 126553.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.93,
+      "rateCommercial": 9.67,
+      "rateIndustrial": 7.15,
+      "rateAll": 10.61
     },
     {
       "state": "North Dakota",
@@ -6927,7 +9055,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 42069.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.01,
+      "rateCommercial": 7.38,
+      "rateIndustrial": 7.37,
+      "rateAll": 8.03
     },
     {
       "state": "Nebraska",
@@ -6940,7 +9072,11 @@
       "solarPenetration": 0.2,
       "totalGeneration": 39446.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 11.2,
+      "rateCommercial": 8.76,
+      "rateIndustrial": 7.63,
+      "rateAll": 9.14
     },
     {
       "state": "New Hampshire",
@@ -6953,7 +9089,11 @@
       "solarPenetration": 0.02,
       "totalGeneration": 16825.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 28.15,
+      "rateCommercial": 20.4,
+      "rateIndustrial": 15.76,
+      "rateAll": 22.96
     },
     {
       "state": "New Jersey",
@@ -6966,7 +9106,11 @@
       "solarPenetration": 2.4,
       "totalGeneration": 64229.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 17.7,
+      "rateCommercial": 14.0,
+      "rateIndustrial": 11.68,
+      "rateAll": 15.27
     },
     {
       "state": "New Mexico",
@@ -6979,7 +9123,11 @@
       "solarPenetration": 6.65,
       "totalGeneration": 39269.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 13.85,
+      "rateCommercial": 10.68,
+      "rateIndustrial": 5.75,
+      "rateAll": 9.47
     },
     {
       "state": "Nevada",
@@ -6992,7 +9140,11 @@
       "solarPenetration": 23.0,
       "totalGeneration": 42164.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 16.67,
+      "rateCommercial": 11.91,
+      "rateIndustrial": 10.36,
+      "rateAll": 13.09
     },
     {
       "state": "New York",
@@ -7005,7 +9157,11 @@
       "solarPenetration": 1.8,
       "totalGeneration": 124040.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 22.24,
+      "rateCommercial": 18.01,
+      "rateIndustrial": 6.87,
+      "rateAll": 18.28
     },
     {
       "state": "Ohio",
@@ -7018,7 +9174,11 @@
       "solarPenetration": 1.04,
       "totalGeneration": 133223.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 15.38,
+      "rateCommercial": 10.75,
+      "rateIndustrial": 7.03,
+      "rateAll": 11.04
     },
     {
       "state": "Oklahoma",
@@ -7031,7 +9191,11 @@
       "solarPenetration": 0.09,
       "totalGeneration": 89236.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.08,
+      "rateCommercial": 9.34,
+      "rateIndustrial": 6.26,
+      "rateAll": 9.3
     },
     {
       "state": "Oregon",
@@ -7044,7 +9208,11 @@
       "solarPenetration": 3.08,
       "totalGeneration": 61692.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 12.73,
+      "rateCommercial": 9.92,
+      "rateIndustrial": 7.52,
+      "rateAll": 10.32
     },
     {
       "state": "Pennsylvania",
@@ -7057,7 +9225,11 @@
       "solarPenetration": 0.15,
       "totalGeneration": 235925.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 18.1,
+      "rateCommercial": 11.26,
+      "rateIndustrial": 7.75,
+      "rateAll": 12.57
     },
     {
       "state": "Rhode Island",
@@ -7070,7 +9242,11 @@
       "solarPenetration": 4.06,
       "totalGeneration": 10431.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 27.02,
+      "rateCommercial": 17.68,
+      "rateIndustrial": 18.98,
+      "rateAll": 21.62
     },
     {
       "state": "South Carolina",
@@ -7083,7 +9259,11 @@
       "solarPenetration": 2.74,
       "totalGeneration": 100853.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 13.68,
+      "rateCommercial": 10.39,
+      "rateIndustrial": 6.68,
+      "rateAll": 10.5
     },
     {
       "state": "South Dakota",
@@ -7096,7 +9276,11 @@
       "solarPenetration": 0.27,
       "totalGeneration": 17436.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 12.32,
+      "rateCommercial": 10.16,
+      "rateIndustrial": 8.01,
+      "rateAll": 10.49
     },
     {
       "state": "Tennessee",
@@ -7109,7 +9293,11 @@
       "solarPenetration": 1.24,
       "totalGeneration": 77791.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 12.19,
+      "rateCommercial": 11.8,
+      "rateIndustrial": 6.23,
+      "rateAll": 10.69
     },
     {
       "state": "Texas",
@@ -7122,7 +9310,11 @@
       "solarPenetration": 5.14,
       "totalGeneration": 547295.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.46,
+      "rateCommercial": 8.82,
+      "rateIndustrial": 6.6,
+      "rateAll": 10.04
     },
     {
       "state": "Utah",
@@ -7135,7 +9327,11 @@
       "solarPenetration": 11.73,
       "totalGeneration": 33497.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.2,
+      "rateCommercial": 8.51,
+      "rateIndustrial": 6.99,
+      "rateAll": 9.03
     },
     {
       "state": "Virginia",
@@ -7148,7 +9344,11 @@
       "solarPenetration": 5.95,
       "totalGeneration": 91059.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.26,
+      "rateCommercial": 8.95,
+      "rateIndustrial": 8.92,
+      "rateAll": 10.68
     },
     {
       "state": "Vermont",
@@ -7161,7 +9361,11 @@
       "solarPenetration": 7.72,
       "totalGeneration": 2480.0,
       "customerCount": 0,
-      "region": "Northeast"
+      "region": "Northeast",
+      "rateResidential": 20.82,
+      "rateCommercial": 18.0,
+      "rateIndustrial": 11.27,
+      "rateAll": 17.53
     },
     {
       "state": "Washington",
@@ -7174,7 +9378,11 @@
       "solarPenetration": 0.35,
       "totalGeneration": 102961.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 10.98,
+      "rateCommercial": 9.92,
+      "rateIndustrial": 6.35,
+      "rateAll": 9.58
     },
     {
       "state": "Wisconsin",
@@ -7187,7 +9395,11 @@
       "solarPenetration": 2.04,
       "totalGeneration": 62549.0,
       "customerCount": 0,
-      "region": "Midwest"
+      "region": "Midwest",
+      "rateResidential": 16.88,
+      "rateCommercial": 12.76,
+      "rateIndustrial": 8.68,
+      "rateAll": 12.72
     },
     {
       "state": "West Virginia",
@@ -7200,7 +9412,11 @@
       "solarPenetration": 0.0,
       "totalGeneration": 52287.0,
       "customerCount": 0,
-      "region": "South"
+      "region": "South",
+      "rateResidential": 14.05,
+      "rateCommercial": 11.03,
+      "rateIndustrial": 7.24,
+      "rateAll": 10.26
     },
     {
       "state": "Wyoming",
@@ -7213,11 +9429,15 @@
       "solarPenetration": 0.4,
       "totalGeneration": 43181.0,
       "customerCount": 0,
-      "region": "West"
+      "region": "West",
+      "rateResidential": 11.46,
+      "rateCommercial": 8.94,
+      "rateIndustrial": 7.06,
+      "rateAll": 8.39
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-01-05T03:15:46.987162",
+    "lastUpdated": "2026-01-05T03:29:44.473943",
     "yearsAvailable": [
       2013,
       2014,

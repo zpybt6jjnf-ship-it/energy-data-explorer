@@ -58,6 +58,23 @@ def load_generation_data(year: int) -> Optional[Dict[str, Dict]]:
         return None
 
 
+def load_rate_data(year: int) -> Optional[List[Dict]]:
+    """Load retail electricity rate data from JSON file."""
+    file_path = RAW_DATA_DIR / "rates" / f"rates_{year}.json"
+
+    if not file_path.exists():
+        print(f"  Warning: Rate file not found for {year}")
+        return None
+
+    try:
+        with open(file_path) as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        print(f"  Error reading rate data for {year}: {e}")
+        return None
+
+
 def load_reliability_data(year: int) -> Optional[List[Dict]]:
     """Load reliability data from JSON file."""
     file_path = RAW_DATA_DIR / "reliability" / f"reliability_{year}.json"
@@ -192,6 +209,7 @@ def build_chart_json():
         # Load data
         gen_data = load_generation_data(year)
         reliability_data = load_reliability_data(year)
+        rate_data = load_rate_data(year)
 
         if gen_data is None or reliability_data is None:
             print(f"  Skipping {year} - missing data")
@@ -203,6 +221,17 @@ def build_chart_json():
 
         # Create reliability lookup by state code
         reliability_by_state = {r["state"]: r for r in reliability_data}
+
+        # Create rate lookup by state code (residential rates as primary)
+        rates_by_state = {}
+        if rate_data:
+            for r in rate_data:
+                state = r["state"]
+                sector = r["sector"]
+                if state not in rates_by_state:
+                    rates_by_state[state] = {}
+                rates_by_state[state][sector] = r["price"]
+            print(f"  Rate data for {len(rates_by_state)} states")
 
         # Combine data for each state
         year_point_count = 0
@@ -220,6 +249,9 @@ def build_chart_json():
             if saidi is None:
                 continue
 
+            # Get rate data for this state
+            state_rates = rates_by_state.get(state_code, {})
+
             point = {
                 "state": state_name,
                 "stateCode": state_code,
@@ -231,7 +263,12 @@ def build_chart_json():
                 "solarPenetration": gen_info["solarPenetration"],
                 "totalGeneration": round(gen_info["total"], 0),
                 "customerCount": 0,  # Not available from this data source
-                "region": region
+                "region": region,
+                # Rate data (cents per kWh)
+                "rateResidential": state_rates.get("RES"),
+                "rateCommercial": state_rates.get("COM"),
+                "rateIndustrial": state_rates.get("IND"),
+                "rateAll": state_rates.get("ALL")
             }
 
             all_points.append(point)
