@@ -231,14 +231,13 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
     const point = event.points[0]
     const customdata = point.customdata as { stateCode?: string; year?: number } | undefined
-    const isTexasOnly = filters.selectedStates.length === 1 && filters.selectedStates[0] === 'TX'
     const clickedTexas2021 = customdata?.stateCode === 'TX' && customdata?.year === 2021
 
-    if (isTexasOnly && clickedTexas2021) {
+    if (clickedTexas2021) {
       setShowSnowflake(true)
-      setTimeout(() => setShowSnowflake(false), 4000)
+      setTimeout(() => setShowSnowflake(false), 5000)
     }
-  }, [filters.selectedStates])
+  }, [])
 
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
@@ -604,7 +603,9 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
       {showSnowflake && (
         <div className="snowflake-overlay">
-          <div className="snowflake">❄</div>
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className={`snowflake snowflake-${i}`}>❄</div>
+          ))}
           <div className="brrr-text">brrrr</div>
         </div>
       )}
