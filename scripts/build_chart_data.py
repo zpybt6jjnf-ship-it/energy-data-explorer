@@ -241,16 +241,18 @@ def build_chart_json():
 
             state_name, region = STATE_INFO[state_code]
 
-            # Get reliability data
+            # Get reliability data (may be None for some states/years)
             rel_data = reliability_by_state.get(state_code, {})
             saidi = rel_data.get("saidi")
             saifi = rel_data.get("saifi")
 
-            if saidi is None:
-                continue
-
             # Get rate data for this state
             state_rates = rates_by_state.get(state_code, {})
+
+            # Include point if we have either SAIDI or rate data
+            # (allows affordability chart to show all states even without reliability data)
+            if saidi is None and not state_rates:
+                continue
 
             point = {
                 "state": state_name,

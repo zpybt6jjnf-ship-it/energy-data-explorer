@@ -188,6 +188,23 @@
       "rateAll": 9.69
     },
     {
+      "state": "Hawaii",
+      "stateCode": "HI",
+      "year": 2013,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 5.09,
+      "windPenetration": 4.9,
+      "solarPenetration": 0.19,
+      "totalGeneration": 10267.0,
+      "customerCount": 0,
+      "region": "West",
+      "rateResidential": 36.98,
+      "rateCommercial": 34.05,
+      "rateIndustrial": 29.87,
+      "rateAll": 33.26
+    },
+    {
       "state": "Iowa",
       "stateCode": "IA",
       "year": 2013,
@@ -1036,6 +1053,23 @@
       "rateCommercial": 10.36,
       "rateIndustrial": 6.64,
       "rateAll": 10.03
+    },
+    {
+      "state": "Hawaii",
+      "stateCode": "HI",
+      "year": 2014,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 6.06,
+      "windPenetration": 5.67,
+      "solarPenetration": 0.38,
+      "totalGeneration": 10204.0,
+      "customerCount": 0,
+      "region": "West",
+      "rateResidential": 37.04,
+      "rateCommercial": 34.21,
+      "rateIndustrial": 30.22,
+      "rateAll": 33.43
     },
     {
       "state": "Iowa",
@@ -7090,6 +7124,23 @@
       "rateAll": 10.43
     },
     {
+      "state": "Hawaii",
+      "stateCode": "HI",
+      "year": 2021,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 12.69,
+      "windPenetration": 7.16,
+      "solarPenetration": 5.52,
+      "totalGeneration": 9182.0,
+      "customerCount": 0,
+      "region": "West",
+      "rateResidential": 33.49,
+      "rateCommercial": 30.88,
+      "rateIndustrial": 27.12,
+      "rateAll": 30.31
+    },
+    {
       "state": "Iowa",
       "stateCode": "IA",
       "year": 2021,
@@ -7190,6 +7241,23 @@
       "rateCommercial": 10.75,
       "rateIndustrial": 5.95,
       "rateAll": 9.12
+    },
+    {
+      "state": "Louisiana",
+      "stateCode": "LA",
+      "year": 2021,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 0.15,
+      "windPenetration": 0.0,
+      "solarPenetration": 0.15,
+      "totalGeneration": 98715.0,
+      "customerCount": 0,
+      "region": "South",
+      "rateResidential": 11.02,
+      "rateCommercial": 10.23,
+      "rateIndustrial": 6.21,
+      "rateAll": 8.82
     },
     {
       "state": "Massachusetts",
@@ -7921,6 +7989,23 @@
       "rateCommercial": 12.1,
       "rateIndustrial": 8.65,
       "rateAll": 12.0
+    },
+    {
+      "state": "Hawaii",
+      "stateCode": "HI",
+      "year": 2022,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 12.64,
+      "windPenetration": 6.7,
+      "solarPenetration": 5.94,
+      "totalGeneration": 9337.0,
+      "customerCount": 0,
+      "region": "West",
+      "rateResidential": 43.03,
+      "rateCommercial": 40.18,
+      "rateIndustrial": 36.71,
+      "rateAll": 39.72
     },
     {
       "state": "Iowa",
@@ -8943,6 +9028,23 @@
       "rateAll": 14.34
     },
     {
+      "state": "Maine",
+      "stateCode": "ME",
+      "year": 2023,
+      "saidi": null,
+      "saifi": null,
+      "vrePenetration": 22.87,
+      "windPenetration": 18.69,
+      "solarPenetration": 4.18,
+      "totalGeneration": 12512.0,
+      "customerCount": 0,
+      "region": "Northeast",
+      "rateResidential": 27.42,
+      "rateCommercial": 17.88,
+      "rateIndustrial": 12.3,
+      "rateAll": 20.84
+    },
+    {
       "state": "Michigan",
       "stateCode": "MI",
       "year": 2023,
@@ -9437,7 +9539,7 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-01-05T03:29:44.473943",
+    "lastUpdated": "2026-01-05T03:53:04.085264",
     "yearsAvailable": [
       2013,
       2014,
