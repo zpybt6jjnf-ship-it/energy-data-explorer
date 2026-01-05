@@ -520,6 +520,12 @@ details[open] .description-toggle::before {
   color: var(--color-ink-muted);
 }
 
+.control-hint {
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
 .control-group select,
 .control-group input {
   padding: var(--space-2) var(--space-3);

@@ -8,6 +8,10 @@ const DEFAULT_FILTERS: ChartFilters = {
   selectedStates: [],
   colorBy: 'year',
   showTrendLine: false,
+  reliabilityMetric: 'saidi',
+  swapAxes: false,
+  groupBy: null,
+  showGroupMembers: false,
   xAxisRange: null,
   yAxisRange: null,
   timeXRange: null,
@@ -35,6 +39,10 @@ export function useUrlFilters() {
     selectedStates: searchParams.get('states')?.split(',').filter(Boolean) || [],
     colorBy: (searchParams.get('colorBy') as 'year' | 'region') || DEFAULT_FILTERS.colorBy,
     showTrendLine: searchParams.get('trend') === 'true',
+    reliabilityMetric: (searchParams.get('metric') as 'saidi' | 'saifi') || DEFAULT_FILTERS.reliabilityMetric,
+    swapAxes: searchParams.get('swap') === 'true',
+    groupBy: searchParams.get('groupBy') || null,
+    showGroupMembers: searchParams.get('showMembers') === 'true',
     xAxisRange: parseAxisRange(searchParams.get('xRange')),
     yAxisRange: parseAxisRange(searchParams.get('yRange')),
     timeXRange: parseAxisRange(searchParams.get('timeXRange')),
@@ -53,6 +61,18 @@ export function useUrlFilters() {
       params.set('colorBy', filters.colorBy)
       if (filters.showTrendLine) {
         params.set('trend', 'true')
+      }
+      if (filters.reliabilityMetric !== 'saidi') {
+        params.set('metric', filters.reliabilityMetric)
+      }
+      if (filters.swapAxes) {
+        params.set('swap', 'true')
+      }
+      if (filters.groupBy) {
+        params.set('groupBy', filters.groupBy)
+      }
+      if (filters.showGroupMembers) {
+        params.set('showMembers', 'true')
       }
       // Only include viewport state if set (keeps URLs cleaner)
       if (filters.xAxisRange) {

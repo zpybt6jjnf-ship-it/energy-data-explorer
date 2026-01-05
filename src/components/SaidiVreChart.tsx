@@ -1,14 +1,34 @@
 import { useMemo, useState, useCallback, useRef } from 'react'
 import Plot from 'react-plotly.js'
-import { ChartData, ChartFilters, REGION_COLORS } from '../types'
+import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint } from '../types'
 import { downloadCSV, downloadJSON } from '../utils/export'
 import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
+import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
+import { aggregateCategoryOverTime } from '../utils/aggregation'
+import GroupSelector, { GroupSelection } from './filters/GroupSelector'
 
 interface Props {
   data: ChartData
   filters: ChartFilters
   onFilterChange: (filters: Partial<ChartFilters>) => void
   onResetViewport?: () => void
+}
+
+type ReliabilityMetric = 'saidi' | 'saifi'
+
+const METRIC_INFO: Record<ReliabilityMetric, { label: string; unit: string; description: string; yAxisLabel: string }> = {
+  saidi: {
+    label: 'SAIDI',
+    unit: 'minutes',
+    description: 'System Average Interruption Duration Index - average outage minutes per customer per year',
+    yAxisLabel: 'SAIDI (minutes) — Higher = longer outages'
+  },
+  saifi: {
+    label: 'SAIFI',
+    unit: 'interruptions',
+    description: 'System Average Interruption Frequency Index - average number of outages per customer per year',
+    yAxisLabel: 'SAIFI (interruptions) — Higher = more frequent outages'
+  }
 }
 
 // T-distribution critical values for 95% CI (two-tailed)
@@ -141,37 +161,47 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     })
   }, [])
 
-  // Filter data by year, state, and valid SAIDI (exclude null values)
+  // Get metric info for current selection
+  const metric = filters.reliabilityMetric
+  const metricInfo = METRIC_INFO[metric]
+
+  // Filter data by year, state, and valid metric value (exclude null values)
   const filteredData = useMemo(() => {
     return data.points.filter(point => {
       const yearMatch = point.year >= filters.yearStart && point.year <= filters.yearEnd
       const stateMatch = filters.selectedStates.length === 0 ||
         filters.selectedStates.includes(point.stateCode)
-      const hasSaidi = point.saidi !== null
-      return yearMatch && stateMatch && hasSaidi
+      const hasMetric = point[metric] !== null
+      return yearMatch && stateMatch && hasMetric
     }) as Array<typeof data.points[0] & { saidi: number; saifi: number }>
-  }, [data.points, filters.yearStart, filters.yearEnd, filters.selectedStates])
+  }, [data.points, filters.yearStart, filters.yearEnd, filters.selectedStates, metric])
+
+  // Get swap axes setting
+  const swapAxes = filters.swapAxes
 
   // Calculate regression statistics
   const regression = useMemo(() => {
-    const points = filteredData.map(p => ({ x: p.vrePenetration, y: p.saidi }))
+    const points = swapAxes
+      ? filteredData.map(p => ({ x: p[metric]!, y: p.vrePenetration }))
+      : filteredData.map(p => ({ x: p.vrePenetration, y: p[metric]! }))
     return calculateRegression(points)
-  }, [filteredData])
+  }, [filteredData, metric, swapAxes])
 
-  // Calculate average SAIDI for reference line
-  const avgSaidi = useMemo(() => {
+  // Calculate average metric value for reference line
+  const avgMetricValue = useMemo(() => {
     if (filteredData.length === 0) return 0
-    return filteredData.reduce((sum, p) => sum + p.saidi, 0) / filteredData.length
-  }, [filteredData])
+    return filteredData.reduce((sum, p) => sum + p[metric]!, 0) / filteredData.length
+  }, [filteredData, metric])
 
   // Compute rankings and enriched data for tooltips
   const enrichedData = useMemo(() => {
     if (filteredData.length === 0) return []
 
-    const sortedBySaidi = [...filteredData].sort((a, b) => a.saidi - b.saidi)
-    const saidiRankMap = new Map<string, number>()
-    sortedBySaidi.forEach((p, i) => {
-      saidiRankMap.set(`${p.stateCode}-${p.year}`, i + 1)
+    // Sort by metric (lower is better for both SAIDI and SAIFI)
+    const sortedByMetric = [...filteredData].sort((a, b) => a[metric]! - b[metric]!)
+    const metricRankMap = new Map<string, number>()
+    sortedByMetric.forEach((p, i) => {
+      metricRankMap.set(`${p.stateCode}-${p.year}`, i + 1)
     })
 
     const sortedByVre = [...filteredData].sort((a, b) => b.vrePenetration - a.vrePenetration)
@@ -184,20 +214,22 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
     return filteredData.map(p => {
       const key = `${p.stateCode}-${p.year}`
-      const saidiRank = saidiRankMap.get(key) || 0
+      const metricRank = metricRankMap.get(key) || 0
       const vreRank = vreRankMap.get(key) || 0
+      const metricValue = p[metric]!
 
       return {
         ...p,
-        saidiRank,
+        metricValue,
+        metricRank,
         vreRank,
         total,
-        saidiRankStr: formatRank(saidiRank, total, 'most reliable'),
+        metricRankStr: formatRank(metricRank, total, 'most reliable'),
         vreDeltaStr: formatPercentDelta(p.vrePenetration, filteredData.reduce((s, pt) => s + pt.vrePenetration, 0) / filteredData.length),
-        saidiDeltaStr: formatPercentDelta(p.saidi, avgSaidi)
+        metricDeltaStr: formatPercentDelta(metricValue, avgMetricValue)
       }
     })
-  }, [filteredData, avgSaidi])
+  }, [filteredData, avgMetricValue, metric])
 
   // Generate plain-language summary
   const summary = useMemo(() => {
@@ -209,9 +241,10 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
     const direction = regression.r > 0 ? 'positive' : 'negative'
 
+    const unitLabel = metric === 'saidi' ? 'minutes of outages' : 'interruptions'
     const slopeText = regression.slope > 0
-      ? `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(1)} more minutes of outages`
-      : `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(1)} fewer minutes of outages`
+      ? `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} more ${unitLabel}`
+      : `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} fewer ${unitLabel}`
 
     return {
       strength,
@@ -220,7 +253,34 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       r: regression.r,
       n: regression.n
     }
-  }, [regression])
+  }, [regression, metric])
+
+  // Calculate aggregated data when groupBy is set
+  const aggregatedData = useMemo((): AggregatedDataPoint[] => {
+    if (!filters.groupBy) return []
+
+    const category = STATE_GROUP_CATEGORIES.find(c => c.id === filters.groupBy)
+    if (!category) return []
+
+    const years = [...new Set(data.points.map(p => p.year))]
+      .filter(y => y >= filters.yearStart && y <= filters.yearEnd)
+
+    return aggregateCategoryOverTime(data.points, category, years)
+      .filter(agg => agg[metric] !== null)
+  }, [data.points, filters.groupBy, filters.yearStart, filters.yearEnd, metric])
+
+  // Get group selection state for the GroupSelector component
+  const groupSelection: GroupSelection = {
+    categoryId: filters.groupBy,
+    showMembers: filters.showGroupMembers
+  }
+
+  const handleGroupChange = useCallback((selection: GroupSelection) => {
+    onFilterChange({
+      groupBy: selection.categoryId,
+      showGroupMembers: selection.showMembers
+    })
+  }, [onFilterChange])
 
   // Easter egg: Texas 2021 winter storm
   const [showSnowflake, setShowSnowflake] = useState(false)
@@ -242,108 +302,205 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
 
-    if (filters.colorBy === 'region') {
-      const regions = [...new Set(enrichedData.map(p => p.region))]
-      regions.forEach(region => {
-        const regionPoints = enrichedData.filter(p => p.region === region)
+    // Build dynamic hover template based on metric
+    const metricFormat = metric === 'saidi' ? '.1f' : '.2f'
+    const hoverTemplate =
+      '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
+      `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit} (%{customdata.metricDeltaStr})<br>` +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.metricRankStr}</span><br><br>` +
+      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+      '  └ Solar: %{customdata.solarPenetration:.1f}%' +
+      '<extra></extra>'
+
+    // Hover template for aggregated group points
+    const groupHoverTemplate =
+      '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} states</span><br><br>` +
+      `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
+      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+      '  └ Solar: %{customdata.solarPenetration:.1f}%' +
+      '<extra></extra>'
+
+    // If groupBy is set, show aggregated data
+    if (filters.groupBy && aggregatedData.length > 0) {
+      // First, optionally add member states as background points (faded)
+      if (filters.showGroupMembers) {
         traces.push({
-          x: regionPoints.map(p => p.vrePenetration),
-          y: regionPoints.map(p => p.saidi),
-          text: regionPoints.map(p => `${p.state} (${p.year})`),
-          customdata: regionPoints.map(p => ({
+          x: swapAxes ? enrichedData.map(p => p.metricValue) : enrichedData.map(p => p.vrePenetration),
+          y: swapAxes ? enrichedData.map(p => p.vrePenetration) : enrichedData.map(p => p.metricValue),
+          text: enrichedData.map(p => `${p.stateCode}`),
+          customdata: enrichedData.map(p => ({
             state: p.state,
             stateCode: p.stateCode,
             year: p.year,
             region: p.region,
-            saidi: p.saidi,
+            metricValue: p.metricValue,
             vrePenetration: p.vrePenetration,
             windPenetration: p.windPenetration,
             solarPenetration: p.solarPenetration,
-            saidiRankStr: p.saidiRankStr,
-            saidiDeltaStr: p.saidiDeltaStr
+            metricRankStr: p.metricRankStr,
+            metricDeltaStr: p.metricDeltaStr
           })),
           mode: 'markers' as const,
           type: 'scatter' as const,
-          name: region,
+          name: 'Individual States',
           marker: {
-            color: REGION_COLORS[region] || COLORS.inkMuted,
-            size: filters.showTrendLine ? 9 : 11,
-            opacity: filters.showTrendLine ? 0.5 : 0.85,
-            line: {
-              color: COLORS.ink,
-              width: filters.showTrendLine ? 0.5 : 1
-            }
+            color: COLORS.inkMuted,
+            size: 6,
+            opacity: 0.25,
+            line: { color: COLORS.ink, width: 0.5 }
           },
-          hovertemplate:
-            '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-            'SAIDI: %{customdata.saidi:.1f} min (%{customdata.saidiDeltaStr})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.saidiRankStr}</span><br><br>` +
-            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
-            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
-            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
-            '<extra></extra>'
+          hovertemplate: hoverTemplate,
+          showlegend: true
+        })
+      }
+
+      // Add aggregated group points (by group, across years)
+      const groups = [...new Set(aggregatedData.map(p => p.groupId))]
+      const groupColors = [
+        '#e41a1c', '#377eb8', '#4daf4a', '#984ea3',
+        '#ff7f00', '#a65628', '#f781bf', '#999999'
+      ]
+
+      groups.forEach((groupId, i) => {
+        const groupPoints = aggregatedData.filter(p => p.groupId === groupId)
+        if (groupPoints.length === 0) return
+
+        const groupName = groupPoints[0].groupName
+        const color = groupColors[i % groupColors.length]
+
+        traces.push({
+          x: swapAxes
+            ? groupPoints.map(p => p[metric]!)
+            : groupPoints.map(p => p.vrePenetration),
+          y: swapAxes
+            ? groupPoints.map(p => p.vrePenetration)
+            : groupPoints.map(p => p[metric]!),
+          text: groupPoints.map(p => `${groupName} (${p.year})`),
+          customdata: groupPoints.map(p => ({
+            groupName: p.groupName,
+            groupId: p.groupId,
+            year: p.year,
+            metricValue: p[metric],
+            vrePenetration: p.vrePenetration,
+            windPenetration: p.windPenetration,
+            solarPenetration: p.solarPenetration,
+            memberCount: p.memberCount,
+            members: p.members.join(', ')
+          })),
+          mode: 'markers+text' as const,
+          type: 'scatter' as const,
+          name: groupName,
+          marker: {
+            color: color,
+            size: 14,
+            opacity: 0.9,
+            symbol: 'diamond',
+            line: { color: COLORS.ink, width: 2 }
+          },
+          textposition: 'top center',
+          textfont: { size: 10, color: COLORS.ink },
+          hovertemplate: groupHoverTemplate
         })
       })
     } else {
-      const years = [...new Set(enrichedData.map(p => p.year))].sort()
-
-      years.forEach((year, i) => {
-        const yearPoints = enrichedData.filter(p => p.year === year)
-        const colorIndex = i % RETRO_COLORS.length
-        traces.push({
-          x: yearPoints.map(p => p.vrePenetration),
-          y: yearPoints.map(p => p.saidi),
-          text: yearPoints.map(p => p.state),
-          customdata: yearPoints.map(p => ({
-            state: p.state,
-            stateCode: p.stateCode,
-            year: p.year,
-            region: p.region,
-            saidi: p.saidi,
-            vrePenetration: p.vrePenetration,
-            windPenetration: p.windPenetration,
-            solarPenetration: p.solarPenetration,
-            saidiRankStr: p.saidiRankStr,
-            saidiDeltaStr: p.saidiDeltaStr
-          })),
-          mode: 'markers' as const,
-          type: 'scatter' as const,
-          name: year.toString(),
-          marker: {
-            color: RETRO_COLORS[colorIndex],
-            size: filters.showTrendLine ? 9 : 11,
-            opacity: filters.showTrendLine ? 0.5 : 0.85,
-            line: {
-              color: COLORS.ink,
-              width: filters.showTrendLine ? 0.5 : 1
-            }
-          },
-          hovertemplate:
-            '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-            'SAIDI: %{customdata.saidi:.1f} min (%{customdata.saidiDeltaStr})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.saidiRankStr}</span><br><br>` +
-            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
-            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
-            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
-            '<extra></extra>'
+      // No grouping - show individual state points (original behavior)
+      if (filters.colorBy === 'region') {
+        const regions = [...new Set(enrichedData.map(p => p.region))]
+        regions.forEach(region => {
+          const regionPoints = enrichedData.filter(p => p.region === region)
+          traces.push({
+            x: swapAxes ? regionPoints.map(p => p.metricValue) : regionPoints.map(p => p.vrePenetration),
+            y: swapAxes ? regionPoints.map(p => p.vrePenetration) : regionPoints.map(p => p.metricValue),
+            text: regionPoints.map(p => `${p.state} (${p.year})`),
+            customdata: regionPoints.map(p => ({
+              state: p.state,
+              stateCode: p.stateCode,
+              year: p.year,
+              region: p.region,
+              metricValue: p.metricValue,
+              vrePenetration: p.vrePenetration,
+              windPenetration: p.windPenetration,
+              solarPenetration: p.solarPenetration,
+              metricRankStr: p.metricRankStr,
+              metricDeltaStr: p.metricDeltaStr
+            })),
+            mode: 'markers' as const,
+            type: 'scatter' as const,
+            name: region,
+            marker: {
+              color: REGION_COLORS[region] || COLORS.inkMuted,
+              size: filters.showTrendLine ? 9 : 11,
+              opacity: filters.showTrendLine ? 0.5 : 0.85,
+              line: {
+                color: COLORS.ink,
+                width: filters.showTrendLine ? 0.5 : 1
+              }
+            },
+            hovertemplate: hoverTemplate
+          })
         })
-      })
+      } else {
+        const years = [...new Set(enrichedData.map(p => p.year))].sort()
+
+        years.forEach((year, i) => {
+          const yearPoints = enrichedData.filter(p => p.year === year)
+          const colorIndex = i % RETRO_COLORS.length
+          traces.push({
+            x: swapAxes ? yearPoints.map(p => p.metricValue) : yearPoints.map(p => p.vrePenetration),
+            y: swapAxes ? yearPoints.map(p => p.vrePenetration) : yearPoints.map(p => p.metricValue),
+            text: yearPoints.map(p => p.state),
+            customdata: yearPoints.map(p => ({
+              state: p.state,
+              stateCode: p.stateCode,
+              year: p.year,
+              region: p.region,
+              metricValue: p.metricValue,
+              vrePenetration: p.vrePenetration,
+              windPenetration: p.windPenetration,
+              solarPenetration: p.solarPenetration,
+              metricRankStr: p.metricRankStr,
+              metricDeltaStr: p.metricDeltaStr
+            })),
+            mode: 'markers' as const,
+            type: 'scatter' as const,
+            name: year.toString(),
+            marker: {
+              color: RETRO_COLORS[colorIndex],
+              size: filters.showTrendLine ? 9 : 11,
+              opacity: filters.showTrendLine ? 0.5 : 0.85,
+              line: {
+                color: COLORS.ink,
+                width: filters.showTrendLine ? 0.5 : 1
+              }
+            },
+            hovertemplate: hoverTemplate
+          })
+        })
+      }
     }
 
     // Add trend line if enabled
     if (filters.showTrendLine && regression) {
-      const xRange = filteredData.length > 0
+      // Calculate range for the independent variable (x-axis)
+      const xRangeVre = filteredData.length > 0
         ? [Math.min(...filteredData.map(p => p.vrePenetration)), Math.max(...filteredData.map(p => p.vrePenetration))]
         : [0, 50]
 
+      const avgLabel = metric === 'saidi'
+        ? `Avg ${metricInfo.label} (${avgMetricValue.toFixed(0)} min)`
+        : `Avg ${metricInfo.label} (${avgMetricValue.toFixed(2)})`
+
+      // Average reference line (horizontal for metric, vertical when swapped)
       traces.push({
-        x: xRange,
-        y: [avgSaidi, avgSaidi],
+        x: swapAxes ? [avgMetricValue, avgMetricValue] : xRangeVre,
+        y: swapAxes ? xRangeVre : [avgMetricValue, avgMetricValue],
         mode: 'lines' as const,
         type: 'scatter' as const,
-        name: `Avg SAIDI (${avgSaidi.toFixed(0)} min)`,
+        name: avgLabel,
         line: {
           color: COLORS.inkMuted,
           width: 1,
@@ -380,25 +537,26 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     }
 
     return traces
-  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, regression, avgSaidi])
+  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, filters.groupBy, filters.showGroupMembers, aggregatedData, regression, avgMetricValue, metric, metricInfo, swapAxes])
 
   const layout = useMemo(() => ({
     ...baseLayout,
     title: { text: '' },
     xaxis: {
       ...axisStyle,
-      title: { text: 'VRE Penetration (%) → More renewables', ...axisTitleStyle },
-      ticksuffix: '%',
+      title: { text: swapAxes ? metricInfo.yAxisLabel : 'VRE Penetration (%) → More renewables', ...axisTitleStyle },
+      ticksuffix: swapAxes ? undefined : '%',
       range: filters.xAxisRange || undefined,
       autorange: filters.xAxisRange ? false : true
     },
     yaxis: {
       ...axisStyle,
-      title: { text: 'SAIDI (minutes) — Higher = more outages', ...axisTitleStyle },
+      title: { text: swapAxes ? 'VRE Penetration (%) → More renewables' : metricInfo.yAxisLabel, ...axisTitleStyle },
+      ticksuffix: swapAxes ? '%' : undefined,
       range: filters.yAxisRange || undefined,
       autorange: filters.yAxisRange ? false : true
     }
-  }), [filters.xAxisRange, filters.yAxisRange])
+  }), [filters.xAxisRange, filters.yAxisRange, metricInfo.yAxisLabel, swapAxes])
 
   const config = {
     ...baseConfig,
@@ -415,7 +573,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     <div
       className="chart-container"
       role="figure"
-      aria-label={`Scatter plot showing SAIDI versus VRE penetration for ${filteredData.length} state-year observations from ${filters.yearStart} to ${filters.yearEnd}. ${summary ? `Shows ${summary.strength} ${summary.direction} correlation.` : ''}`}
+      aria-label={`Scatter plot showing ${metricInfo.label} versus VRE penetration for ${filteredData.length} state-year observations from ${filters.yearStart} to ${filters.yearEnd}. ${summary ? `Shows ${summary.strength} ${summary.direction} correlation.` : ''}`}
     >
       <div className="chart-header">
         <h2>Reliability vs. Renewable Penetration</h2>
@@ -430,6 +588,9 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
             <dl>
               <dt>SAIDI (System Average Interruption Duration Index)</dt>
               <dd>The average number of minutes per year that a customer experiences a power outage. Lower values indicate more reliable grid service.</dd>
+
+              <dt>SAIFI (System Average Interruption Frequency Index)</dt>
+              <dd>The average number of power interruptions per customer per year. Lower values indicate fewer outage events, regardless of duration.</dd>
 
               <dt>VRE Penetration (Variable Renewable Energy)</dt>
               <dd>The percentage of a state's electricity generation from wind and solar sources.</dd>
@@ -474,10 +635,30 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
           <select
             value={filters.colorBy}
             onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
+            disabled={!!filters.groupBy}
+            title={filters.groupBy ? 'Disabled when grouping is active' : undefined}
           >
             <option value="year">Year</option>
             <option value="region">Region</option>
           </select>
+        </div>
+
+        <GroupSelector
+          selection={groupSelection}
+          onChange={handleGroupChange}
+        />
+
+        <div className="control-group">
+          <label>Metric</label>
+          <select
+            value={filters.reliabilityMetric}
+            onChange={(e) => onFilterChange({ reliabilityMetric: e.target.value as 'saidi' | 'saifi' })}
+            title={METRIC_INFO[filters.reliabilityMetric].description}
+          >
+            <option value="saidi">SAIDI (Duration)</option>
+            <option value="saifi">SAIFI (Frequency)</option>
+          </select>
+          <span className="control-hint">{metric === 'saidi' ? 'Outage minutes per customer' : 'Outages per customer'}</span>
         </div>
 
         <div className="control-group">
@@ -506,13 +687,21 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
         <div className="control-group">
           <label>View</label>
-          <button
-            onClick={onResetViewport}
-            disabled={!filters.xAxisRange && !filters.yAxisRange}
-            title="Reset to default zoom level"
-          >
-            Reset Zoom
-          </button>
+          <div className="button-group">
+            <button
+              onClick={onResetViewport}
+              disabled={!filters.xAxisRange && !filters.yAxisRange}
+              title="Reset to default zoom level"
+            >
+              Reset Zoom
+            </button>
+            <button
+              onClick={() => onFilterChange({ swapAxes: !filters.swapAxes })}
+              title="Swap X and Y axes"
+            >
+              ⇄ Swap Axes
+            </button>
+          </div>
         </div>
 
         <div className="control-group">
@@ -551,7 +740,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
           <div className="stats-summary">
             <p className="summary-main">
               The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between
-              renewable energy penetration and grid outage duration.
+              renewable energy penetration and {metric === 'saidi' ? 'grid outage duration' : 'outage frequency'}.
             </p>
             <p className="summary-detail">
               Based on {summary.n} state-year observations, {summary.slopeText}.
@@ -573,12 +762,12 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
                 <span className="stat-value">{regression.pValue < 0.001 ? '< 0.001' : regression.pValue.toFixed(3)}</span>
               </div>
               <div className="stat">
-                <span className="stat-label">Slope <span className="stat-hint">(min per 1% VRE)</span></span>
-                <span className="stat-value">{regression.slope.toFixed(2)} ± {(regression.seSlope * getTCritical(regression.n - 2)).toFixed(2)}</span>
+                <span className="stat-label">Slope <span className="stat-hint">({metricInfo.unit} per 1% VRE)</span></span>
+                <span className="stat-value">{regression.slope.toFixed(metric === 'saidi' ? 2 : 3)} ± {(regression.seSlope * getTCritical(regression.n - 2)).toFixed(metric === 'saidi' ? 2 : 3)}</span>
               </div>
               <div className="stat">
                 <span className="stat-label">Std. Error</span>
-                <span className="stat-value">{regression.se.toFixed(1)} min</span>
+                <span className="stat-value">{regression.se.toFixed(metric === 'saidi' ? 1 : 2)} {metricInfo.unit}</span>
               </div>
               <div className="stat">
                 <span className="stat-label">Sample size</span>

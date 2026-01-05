@@ -3,6 +3,8 @@
 Process EIA data and build chart-ready JSON for the visualization.
 Combines generation data (from API) with reliability data to create
 the SAIDI vs VRE penetration dataset.
+
+Also builds utility-level data with RTO membership for aggregation features.
 """
 
 import json
@@ -14,6 +16,7 @@ from typing import Dict, List, Optional
 PROJECT_ROOT = Path(__file__).parent.parent
 RAW_DATA_DIR = PROJECT_ROOT / "raw_data"
 OUTPUT_DIR = PROJECT_ROOT / "public" / "data"
+UTILITY_RAW_DIR = RAW_DATA_DIR / "utilities"
 
 # State codes to full names and regions
 STATE_INFO = {
@@ -88,11 +91,12 @@ def load_reliability_data(year: int) -> Optional[List[Dict]]:
             data = json.load(f)
 
         # Validate data - filter out unreasonable values
-        # SAIDI typically ranges from 50-500 minutes for most states
+        # SAIDI typically ranges from 50-500 minutes, but can exceed 2000+ during major events
+        # (e.g., Maine 2023 averaged ~2961 due to severe storms)
         valid_data = []
         for record in data:
             saidi = record.get("saidi")
-            if saidi is not None and 0 < saidi < 2000:  # Allow wide range, filter obvious errors
+            if saidi is not None and 0 < saidi < 10000:  # Allow high values for extreme events
                 valid_data.append(record)
 
         if len(valid_data) < len(data):
@@ -101,6 +105,22 @@ def load_reliability_data(year: int) -> Optional[List[Dict]]:
         return valid_data
     except Exception as e:
         print(f"  Error reading reliability data for {year}: {e}")
+        return None
+
+
+def load_utility_data(year: int) -> Optional[List[Dict]]:
+    """Load utility-level data from JSON file."""
+    file_path = UTILITY_RAW_DIR / f"utilities_{year}.json"
+
+    if not file_path.exists():
+        return None
+
+    try:
+        with open(file_path) as f:
+            data = json.load(f)
+        return data
+    except Exception as e:
+        print(f"  Error reading utility data for {year}: {e}")
         return None
 
 
@@ -311,6 +331,117 @@ def build_chart_json():
     print(f"States included: {len(states)}")
 
 
+def build_utility_json():
+    """Build utility-level JSON data file for aggregation features."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    all_utilities = []
+    years_available = []
+
+    # RTO mapping for display names
+    RTO_NAMES = {
+        'rto_caiso': 'CAISO',
+        'rto_ercot': 'ERCOT',
+        'rto_pjm': 'PJM',
+        'rto_nyiso': 'NYISO',
+        'rto_spp': 'SPP',
+        'rto_miso': 'MISO',
+        'rto_isone': 'ISO-NE'
+    }
+
+    print("\nProcessing utility data by year...")
+    for year in range(2013, 2024):
+        utility_data = load_utility_data(year)
+
+        if utility_data is None:
+            print(f"  No utility data for {year}")
+            continue
+
+        # Load generation data to get VRE penetration by state
+        gen_data = load_generation_data(year)
+        state_gen = {}
+        if gen_data:
+            state_gen = process_generation_data(gen_data)
+
+        year_count = 0
+        for u in utility_data:
+            state_code = u.get('state', '')
+            if state_code not in STATE_INFO:
+                continue
+
+            state_name, region = STATE_INFO[state_code]
+
+            # Determine primary RTO (first one that's true)
+            primary_rto = None
+            rto_list = []
+            for rto_key, rto_name in RTO_NAMES.items():
+                if u.get(rto_key, False):
+                    rto_list.append(rto_name)
+                    if primary_rto is None:
+                        primary_rto = rto_name
+
+            # Get VRE data for state
+            state_vre = state_gen.get(state_code, {})
+
+            utility_record = {
+                'utilityId': u.get('utility_id'),
+                'utilityName': u.get('utility_name', ''),
+                'state': state_name,
+                'stateCode': state_code,
+                'region': region,
+                'ownership': u.get('ownership', ''),
+                'nercRegion': u.get('nerc_region', ''),
+                'primaryRto': primary_rto,
+                'rtos': rto_list,
+                'year': year,
+                'saidi': u.get('saidi'),
+                'saifi': u.get('saifi'),
+                'customers': u.get('customers'),
+                # Include state-level VRE for context
+                'stateVrePenetration': state_vre.get('vrePenetration', 0),
+                'stateWindPenetration': state_vre.get('windPenetration', 0),
+                'stateSolarPenetration': state_vre.get('solarPenetration', 0),
+            }
+
+            all_utilities.append(utility_record)
+            year_count += 1
+
+        if year_count > 0:
+            years_available.append(year)
+            print(f"  Year {year}: {year_count} utilities")
+
+    if not all_utilities:
+        print("No utility data found!")
+        return
+
+    # Calculate aggregations for metadata
+    ownership_types = sorted(list(set(u['ownership'] for u in all_utilities if u['ownership'])))
+    rtos = sorted(list(set(rto for u in all_utilities for rto in u.get('rtos', []))))
+
+    output = {
+        'utilities': all_utilities,
+        'metadata': {
+            'lastUpdated': datetime.now().isoformat(),
+            'yearsAvailable': sorted(years_available),
+            'ownershipTypes': ownership_types,
+            'rtos': rtos,
+            'totalUtilities': len(set(u['utilityId'] for u in all_utilities)),
+            'dataSource': 'EIA Form 861 (utility-level reliability and metadata)'
+        }
+    }
+
+    output_file = OUTPUT_DIR / 'utilities.json'
+    with open(output_file, 'w') as f:
+        json.dump(output, f, indent=2)
+
+    print(f"\n{'='*50}")
+    print(f"Utility data saved to: {output_file}")
+    print(f"Total utility records: {len(all_utilities)}")
+    print(f"Unique utilities: {output['metadata']['totalUtilities']}")
+    print(f"Ownership types: {ownership_types}")
+    print(f"RTOs: {rtos}")
+
+
 def create_sample_data():
     """Create sample data for development/testing."""
     print("Creating sample data for development...")
@@ -380,6 +511,9 @@ if __name__ == "__main__":
 
     if "--sample" in sys.argv:
         create_sample_data()
+    elif "--utilities" in sys.argv:
+        # Build only utility data
+        build_utility_json()
     else:
         # Check if we have raw data
         gen_dir = RAW_DATA_DIR / "generation"
@@ -391,4 +525,11 @@ if __name__ == "__main__":
             print("\nCreating sample data instead...")
             create_sample_data()
         else:
+            # Build both state-level and utility-level data
             build_chart_json()
+
+            # Also build utility data if available
+            if UTILITY_RAW_DIR.exists():
+                build_utility_json()
+            else:
+                print("\nNo utility data found. Run 'python fetch_form861.py' to generate.")

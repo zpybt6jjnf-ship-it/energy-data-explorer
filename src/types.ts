@@ -17,6 +17,52 @@ export interface StateDataPoint {
   rateAll: number | null
 }
 
+export interface UtilityDataPoint {
+  utilityId: number
+  utilityName: string
+  state: string
+  stateCode: string
+  region: string
+  ownership: string
+  nercRegion: string
+  primaryRto: string | null
+  rtos: string[]
+  year: number
+  saidi: number | null
+  saifi: number | null
+  customers: number | null
+  // State-level VRE for context
+  stateVrePenetration: number
+  stateWindPenetration: number
+  stateSolarPenetration: number
+}
+
+export interface UtilityData {
+  utilities: UtilityDataPoint[]
+  metadata: {
+    lastUpdated: string
+    yearsAvailable: number[]
+    ownershipTypes: string[]
+    rtos: string[]
+    totalUtilities: number
+    dataSource: string
+  }
+}
+
+export interface AggregatedDataPoint {
+  groupId: string
+  groupName: string
+  year: number
+  saidi: number | null
+  saifi: number | null
+  vrePenetration: number
+  windPenetration: number
+  solarPenetration: number
+  totalCustomers: number
+  memberCount: number // Number of states or utilities in the group
+  members: string[] // State codes or utility IDs
+}
+
 export interface ChartData {
   points: StateDataPoint[]
   metadata: {
@@ -34,6 +80,11 @@ export interface ChartFilters {
   selectedStates: string[]
   colorBy: 'year' | 'region'
   showTrendLine: boolean
+  reliabilityMetric: 'saidi' | 'saifi'
+  swapAxes: boolean
+  // Aggregation settings
+  groupBy: string | null           // Group category ID (e.g., 'rto-regions', 'market-structure')
+  showGroupMembers: boolean        // Show individual state points behind aggregated
   // Viewport state for shareable zoom/pan (scatter chart)
   xAxisRange: [number, number] | null
   yAxisRange: [number, number] | null

@@ -11,6 +11,23 @@ interface Props {
   onResetViewport?: () => void
 }
 
+type ReliabilityMetric = 'saidi' | 'saifi'
+
+const METRIC_INFO: Record<ReliabilityMetric, { label: string; unit: string; description: string; yAxisLabel: string }> = {
+  saidi: {
+    label: 'SAIDI',
+    unit: 'minutes',
+    description: 'System Average Interruption Duration Index - average outage minutes per customer per year',
+    yAxisLabel: 'SAIDI (minutes) — Higher = longer outages'
+  },
+  saifi: {
+    label: 'SAIFI',
+    unit: 'interruptions',
+    description: 'System Average Interruption Frequency Index - average number of outages per customer per year',
+    yAxisLabel: 'SAIFI (interruptions) — Higher = more frequent outages'
+  }
+}
+
 export default function SaidiOverTimeChart({ data, filters, onFilterChange, onResetViewport }: Props) {
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
@@ -42,14 +59,18 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
     })
   }, [])
 
-  // Filter data by year range and valid SAIDI (exclude null values)
+  // Get metric info for current selection
+  const metric = filters.reliabilityMetric
+  const metricInfo = METRIC_INFO[metric]
+
+  // Filter data by year range and valid metric (exclude null values)
   const filteredData = useMemo(() => {
     return data.points.filter(point =>
       point.year >= filters.yearStart &&
       point.year <= filters.yearEnd &&
-      point.saidi !== null
-    ) as Array<typeof data.points[0] & { saidi: number }>
-  }, [data.points, filters.yearStart, filters.yearEnd])
+      point[metric] !== null
+    ) as Array<typeof data.points[0] & { saidi: number; saifi: number }>
+  }, [data.points, filters.yearStart, filters.yearEnd, metric])
 
   // Get unique states
   const availableStates = useMemo(() => {
@@ -61,10 +82,10 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
     const years = [...new Set(filteredData.map(p => p.year))].sort()
     return years.map(year => {
       const yearPoints = filteredData.filter(p => p.year === year)
-      const avg = yearPoints.reduce((sum, p) => sum + p.saidi, 0) / yearPoints.length
+      const avg = yearPoints.reduce((sum, p) => sum + p[metric]!, 0) / yearPoints.length
       return { year, avg }
     })
-  }, [filteredData])
+  }, [filteredData, metric])
 
   // Get state info for selected states
   const selectedStateData = useMemo(() => {
@@ -93,6 +114,8 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
   // Build plot traces
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
+    const metricFormat = metric === 'saidi' ? '.1f' : '.2f'
+    const unitLabel = metricInfo.unit
 
     // National average reference line
     traces.push({
@@ -106,18 +129,18 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
         width: 2,
         dash: 'dot'
       },
-      hovertemplate: '<b>National Average</b><br>Year: %{x}<br>SAIDI: %{y:.1f} min<extra></extra>'
+      hovertemplate: `<b>National Average</b><br>Year: %{x}<br>${metricInfo.label}: %{y:${metricFormat}} ${unitLabel}<extra></extra>`
     })
 
     // State lines
     selectedStateData.forEach(state => {
       const stateAvg = state.points.length > 0
-        ? state.points.reduce((s, p) => s + p.saidi, 0) / state.points.length
+        ? state.points.reduce((s, p) => s + p[metric]!, 0) / state.points.length
         : 0
 
       traces.push({
         x: state.points.map(p => p.year),
-        y: state.points.map(p => p.saidi),
+        y: state.points.map(p => p[metric]),
         mode: 'lines+markers',
         type: 'scatter',
         name: `${state.stateName} (${state.stateCode})`,
@@ -135,22 +158,22 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
           stateCode: p.stateCode,
           year: p.year,
           region: p.region,
-          saidi: p.saidi,
-          stateAvg: stateAvg.toFixed(1),
-          natAvg: (nationalAverage.find(n => n.year === p.year)?.avg || 0).toFixed(1)
+          metricValue: p[metric],
+          stateAvg: stateAvg.toFixed(metric === 'saidi' ? 1 : 2),
+          natAvg: (nationalAverage.find(n => n.year === p.year)?.avg || 0).toFixed(metric === 'saidi' ? 1 : 2)
         })),
         hovertemplate:
           '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
           `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-          'SAIDI: %{customdata.saidi:.1f} min<br>' +
-          'State avg: %{customdata.stateAvg} min<br>' +
-          'National avg: %{customdata.natAvg} min' +
+          `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${unitLabel}<br>` +
+          `State avg: %{customdata.stateAvg} ${unitLabel}<br>` +
+          `National avg: %{customdata.natAvg} ${unitLabel}` +
           '<extra></extra>'
       })
     })
 
     return traces
-  }, [selectedStateData, nationalAverage])
+  }, [selectedStateData, nationalAverage, metric, metricInfo])
 
   const layout = useMemo(() => ({
     ...baseLayout,
@@ -164,11 +187,11 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
     },
     yaxis: {
       ...axisStyle,
-      title: { text: 'SAIDI (minutes) — Higher = more outages', ...axisTitleStyle },
+      title: { text: metricInfo.yAxisLabel, ...axisTitleStyle },
       range: filters.timeYRange || undefined,
       autorange: filters.timeYRange ? false : true
     }
-  }), [filters.timeXRange, filters.timeYRange])
+  }), [filters.timeXRange, filters.timeYRange, metricInfo.yAxisLabel])
 
   const config = {
     ...baseConfig,
@@ -203,7 +226,10 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
             <h3>What are we measuring?</h3>
             <dl>
               <dt>SAIDI (System Average Interruption Duration Index)</dt>
-              <dd>The average number of minutes per year that a customer experiences a power outage. Lower values indicate more reliable grid service. This metric excludes major event days to focus on baseline reliability.</dd>
+              <dd>The average number of minutes per year that a customer experiences a power outage. Lower values indicate more reliable grid service.</dd>
+
+              <dt>SAIFI (System Average Interruption Frequency Index)</dt>
+              <dd>The average number of power interruptions per customer per year. Lower values indicate fewer outage events, regardless of duration.</dd>
             </dl>
           </div>
 
@@ -238,6 +264,19 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
               <option key={year} value={year}>{year}</option>
             ))}
           </select>
+        </div>
+
+        <div className="control-group">
+          <label>Metric</label>
+          <select
+            value={filters.reliabilityMetric}
+            onChange={(e) => onFilterChange({ reliabilityMetric: e.target.value as 'saidi' | 'saifi' })}
+            title={METRIC_INFO[filters.reliabilityMetric].description}
+          >
+            <option value="saidi">SAIDI (Duration)</option>
+            <option value="saifi">SAIFI (Frequency)</option>
+          </select>
+          <span className="control-hint">{metric === 'saidi' ? 'Outage minutes per customer' : 'Outages per customer'}</span>
         </div>
 
         <div className="control-group">

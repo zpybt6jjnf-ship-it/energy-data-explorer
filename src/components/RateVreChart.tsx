@@ -1,8 +1,11 @@
 import { useMemo, useCallback, useRef } from 'react'
 import Plot from 'react-plotly.js'
-import { ChartData, ChartFilters, REGION_COLORS } from '../types'
+import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint } from '../types'
 import { downloadCSV, downloadJSON } from '../utils/export'
 import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
+import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
+import { aggregateCategoryOverTime } from '../utils/aggregation'
+import GroupSelector, { GroupSelection } from './filters/GroupSelector'
 
 interface Props {
   data: ChartData
@@ -155,14 +158,16 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     })
   }, [data.points, filters.yearStart, filters.yearEnd, filters.selectedStates])
 
+  // Get swap axes setting
+  const swapAxes = filters.swapAxes
+
   // Calculate regression statistics (always, for summary availability)
   const regression = useMemo(() => {
-    const points = filteredData.map(p => ({
-      x: p.vrePenetration,
-      y: getRate(p) ?? 0
-    }))
+    const points = swapAxes
+      ? filteredData.map(p => ({ x: getRate(p) ?? 0, y: p.vrePenetration }))
+      : filteredData.map(p => ({ x: p.vrePenetration, y: getRate(p) ?? 0 }))
     return calculateRegression(points)
-  }, [filteredData])
+  }, [filteredData, swapAxes])
 
   // Calculate average rate for reference
   const avgRate = useMemo(() => {
@@ -238,19 +243,80 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     }
   }, [regression])
 
+  // Calculate aggregated data when groupBy is set
+  // Note: aggregated points need a rate value - we use simple average of available residential rates
+  const aggregatedData = useMemo((): (AggregatedDataPoint & { avgRate: number })[] => {
+    if (!filters.groupBy) return []
+
+    const category = STATE_GROUP_CATEGORIES.find(c => c.id === filters.groupBy)
+    if (!category) return []
+
+    const years = [...new Set(data.points.map(p => p.year))]
+      .filter(y => y >= filters.yearStart && y <= filters.yearEnd)
+
+    const baseAggregated = aggregateCategoryOverTime(data.points, category, years)
+
+    // Add average rate for each aggregated point
+    return baseAggregated.map(agg => {
+      const memberStates = category.groups.find(g => g.id === agg.groupId)?.states || []
+      const memberPoints = data.points.filter(
+        p => memberStates.includes(p.stateCode) && p.year === agg.year && p.rateResidential !== null
+      )
+      const avgRate = memberPoints.length > 0
+        ? memberPoints.reduce((sum, p) => sum + (p.rateResidential || 0), 0) / memberPoints.length
+        : 0
+
+      return { ...agg, avgRate }
+    }).filter(p => p.avgRate > 0)
+  }, [data.points, filters.groupBy, filters.yearStart, filters.yearEnd])
+
+  // Get group selection state for the GroupSelector component
+  const groupSelection: GroupSelection = {
+    categoryId: filters.groupBy,
+    showMembers: filters.showGroupMembers
+  }
+
+  const handleGroupChange = useCallback((selection: GroupSelection) => {
+    onFilterChange({
+      groupBy: selection.categoryId,
+      showGroupMembers: selection.showMembers
+    })
+  }, [onFilterChange])
+
   // Build plot traces
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
 
-    if (filters.colorBy === 'region') {
-      const regions = [...new Set(enrichedData.map(p => p.region))]
-      regions.forEach(region => {
-        const regionPoints = enrichedData.filter(p => p.region === region)
+    // Shared hover template (data in customdata, so same regardless of axis swap)
+    const hoverTemplate =
+      '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
+      'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
+      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+      '  └ Solar: %{customdata.solarPenetration:.1f}%' +
+      '<extra></extra>'
+
+    // Hover template for aggregated group points
+    const groupHoverTemplate =
+      '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} states</span><br><br>` +
+      'Rate: %{customdata.avgRate:.1f} ¢/kWh<br>' +
+      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+      '  └ Solar: %{customdata.solarPenetration:.1f}%' +
+      '<extra></extra>'
+
+    // If groupBy is set, show aggregated data
+    if (filters.groupBy && aggregatedData.length > 0) {
+      // First, optionally add member states as background points (faded)
+      if (filters.showGroupMembers) {
         traces.push({
-          x: regionPoints.map(p => p.vrePenetration),
-          y: regionPoints.map(p => p.rate),
-          text: regionPoints.map(p => `${p.state} (${p.year})`),
-          customdata: regionPoints.map(p => ({
+          x: swapAxes ? enrichedData.map(p => p.rate) : enrichedData.map(p => p.vrePenetration),
+          y: swapAxes ? enrichedData.map(p => p.vrePenetration) : enrichedData.map(p => p.rate),
+          text: enrichedData.map(p => `${p.stateCode}`),
+          customdata: enrichedData.map(p => ({
             state: p.state,
             stateCode: p.stateCode,
             year: p.year,
@@ -264,83 +330,152 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
           })),
           mode: 'markers' as const,
           type: 'scatter' as const,
-          name: region,
+          name: 'Individual States',
           marker: {
-            color: REGION_COLORS[region] || COLORS.inkMuted,
-            size: filters.showTrendLine ? 9 : 11,
-            opacity: filters.showTrendLine ? 0.5 : 0.85,
-            line: {
-              color: COLORS.ink,
-              width: filters.showTrendLine ? 0.5 : 1
-            }
+            color: COLORS.inkMuted,
+            size: 6,
+            opacity: 0.25,
+            line: { color: COLORS.ink, width: 0.5 }
           },
-          hovertemplate:
-            '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-            'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
-            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
-            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
-            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
-            '<extra></extra>'
+          hovertemplate: hoverTemplate,
+          showlegend: true
+        })
+      }
+
+      // Add aggregated group points (by group, across years)
+      const groups = [...new Set(aggregatedData.map(p => p.groupId))]
+      const groupColors = [
+        '#e41a1c', '#377eb8', '#4daf4a', '#984ea3',
+        '#ff7f00', '#a65628', '#f781bf', '#999999'
+      ]
+
+      groups.forEach((groupId, i) => {
+        const groupPoints = aggregatedData.filter(p => p.groupId === groupId)
+        if (groupPoints.length === 0) return
+
+        const groupName = groupPoints[0].groupName
+        const color = groupColors[i % groupColors.length]
+
+        traces.push({
+          x: swapAxes
+            ? groupPoints.map(p => p.avgRate)
+            : groupPoints.map(p => p.vrePenetration),
+          y: swapAxes
+            ? groupPoints.map(p => p.vrePenetration)
+            : groupPoints.map(p => p.avgRate),
+          text: groupPoints.map(p => `${groupName} (${p.year})`),
+          customdata: groupPoints.map(p => ({
+            groupName: p.groupName,
+            groupId: p.groupId,
+            year: p.year,
+            avgRate: p.avgRate,
+            vrePenetration: p.vrePenetration,
+            windPenetration: p.windPenetration,
+            solarPenetration: p.solarPenetration,
+            memberCount: p.memberCount,
+            members: p.members.join(', ')
+          })),
+          mode: 'markers+text' as const,
+          type: 'scatter' as const,
+          name: groupName,
+          marker: {
+            color: color,
+            size: 14,
+            opacity: 0.9,
+            symbol: 'diamond',
+            line: { color: COLORS.ink, width: 2 }
+          },
+          textposition: 'top center',
+          textfont: { size: 10, color: COLORS.ink },
+          hovertemplate: groupHoverTemplate
         })
       })
     } else {
-      const years = [...new Set(enrichedData.map(p => p.year))].sort()
-      years.forEach((year, i) => {
-        const yearPoints = enrichedData.filter(p => p.year === year)
-        const colorIndex = i % RETRO_COLORS.length
-        traces.push({
-          x: yearPoints.map(p => p.vrePenetration),
-          y: yearPoints.map(p => p.rate),
-          text: yearPoints.map(p => p.state),
-          customdata: yearPoints.map(p => ({
-            state: p.state,
-            stateCode: p.stateCode,
-            year: p.year,
-            region: p.region,
-            rate: p.rate,
-            vrePenetration: p.vrePenetration,
-            windPenetration: p.windPenetration,
-            solarPenetration: p.solarPenetration,
-            rateRankStr: p.rateRankStr,
-            rateDeltaStr: p.rateDeltaStr
-          })),
-          mode: 'markers' as const,
-          type: 'scatter' as const,
-          name: year.toString(),
-          marker: {
-            color: RETRO_COLORS[colorIndex],
-            size: filters.showTrendLine ? 9 : 11,
-            opacity: filters.showTrendLine ? 0.5 : 0.85,
-            line: {
-              color: COLORS.ink,
-              width: filters.showTrendLine ? 0.5 : 1
-            }
-          },
-          hovertemplate:
-            '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-            'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
-            `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
-            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
-            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
-            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
-            '<extra></extra>'
+      // No grouping - show individual state points (original behavior)
+      if (filters.colorBy === 'region') {
+        const regions = [...new Set(enrichedData.map(p => p.region))]
+        regions.forEach(region => {
+          const regionPoints = enrichedData.filter(p => p.region === region)
+          traces.push({
+            x: swapAxes ? regionPoints.map(p => p.rate) : regionPoints.map(p => p.vrePenetration),
+            y: swapAxes ? regionPoints.map(p => p.vrePenetration) : regionPoints.map(p => p.rate),
+            text: regionPoints.map(p => `${p.state} (${p.year})`),
+            customdata: regionPoints.map(p => ({
+              state: p.state,
+              stateCode: p.stateCode,
+              year: p.year,
+              region: p.region,
+              rate: p.rate,
+              vrePenetration: p.vrePenetration,
+              windPenetration: p.windPenetration,
+              solarPenetration: p.solarPenetration,
+              rateRankStr: p.rateRankStr,
+              rateDeltaStr: p.rateDeltaStr
+            })),
+            mode: 'markers' as const,
+            type: 'scatter' as const,
+            name: region,
+            marker: {
+              color: REGION_COLORS[region] || COLORS.inkMuted,
+              size: filters.showTrendLine ? 9 : 11,
+              opacity: filters.showTrendLine ? 0.5 : 0.85,
+              line: {
+                color: COLORS.ink,
+                width: filters.showTrendLine ? 0.5 : 1
+              }
+            },
+            hovertemplate: hoverTemplate
+          })
         })
-      })
+      } else {
+        const years = [...new Set(enrichedData.map(p => p.year))].sort()
+        years.forEach((year, i) => {
+          const yearPoints = enrichedData.filter(p => p.year === year)
+          const colorIndex = i % RETRO_COLORS.length
+          traces.push({
+            x: swapAxes ? yearPoints.map(p => p.rate) : yearPoints.map(p => p.vrePenetration),
+            y: swapAxes ? yearPoints.map(p => p.vrePenetration) : yearPoints.map(p => p.rate),
+            text: yearPoints.map(p => p.state),
+            customdata: yearPoints.map(p => ({
+              state: p.state,
+              stateCode: p.stateCode,
+              year: p.year,
+              region: p.region,
+              rate: p.rate,
+              vrePenetration: p.vrePenetration,
+              windPenetration: p.windPenetration,
+              solarPenetration: p.solarPenetration,
+              rateRankStr: p.rateRankStr,
+              rateDeltaStr: p.rateDeltaStr
+            })),
+            mode: 'markers' as const,
+            type: 'scatter' as const,
+            name: year.toString(),
+            marker: {
+              color: RETRO_COLORS[colorIndex],
+              size: filters.showTrendLine ? 9 : 11,
+              opacity: filters.showTrendLine ? 0.5 : 0.85,
+              line: {
+                color: COLORS.ink,
+                width: filters.showTrendLine ? 0.5 : 1
+              }
+            },
+            hovertemplate: hoverTemplate
+          })
+        })
+      }
     }
 
     // Add trend line and average reference
     if (regression && filters.showTrendLine) {
-      const xRange = filteredData.length > 0
+      const xRangeVre = filteredData.length > 0
         ? [Math.min(...filteredData.map(p => p.vrePenetration)), Math.max(...filteredData.map(p => p.vrePenetration))]
         : [0, 50]
 
-      // Average rate reference line
+      // Average rate reference line (horizontal normally, vertical when swapped)
       traces.push({
-        x: xRange,
-        y: [avgRate, avgRate],
+        x: swapAxes ? [avgRate, avgRate] : xRangeVre,
+        y: swapAxes ? xRangeVre : [avgRate, avgRate],
         mode: 'lines' as const,
         type: 'scatter' as const,
         name: `Avg Rate (${avgRate.toFixed(1)}¢)`,
@@ -382,26 +517,26 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     }
 
     return traces
-  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, regression, avgRate])
+  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, filters.groupBy, filters.showGroupMembers, aggregatedData, regression, avgRate, swapAxes])
 
   const layout = useMemo(() => ({
     ...baseLayout,
     title: { text: '' },
     xaxis: {
       ...axisStyle,
-      title: { text: 'VRE Penetration (%) — Higher = more renewables', ...axisTitleStyle },
-      ticksuffix: '%',
+      title: { text: swapAxes ? 'Electricity Rate (¢/kWh) — Higher = more expensive' : 'VRE Penetration (%) — Higher = more renewables', ...axisTitleStyle },
+      ticksuffix: swapAxes ? '¢' : '%',
       range: filters.xAxisRange || undefined,
       autorange: filters.xAxisRange ? false : true
     },
     yaxis: {
       ...axisStyle,
-      title: { text: 'Electricity Rate (¢/kWh) — Higher = more expensive', ...axisTitleStyle },
-      ticksuffix: '¢',
+      title: { text: swapAxes ? 'VRE Penetration (%) — Higher = more renewables' : 'Electricity Rate (¢/kWh) — Higher = more expensive', ...axisTitleStyle },
+      ticksuffix: swapAxes ? '%' : '¢',
       range: filters.yAxisRange || undefined,
       autorange: filters.yAxisRange ? false : true
     }
-  }), [filters.xAxisRange, filters.yAxisRange])
+  }), [filters.xAxisRange, filters.yAxisRange, swapAxes])
 
   const config = {
     ...baseConfig,
@@ -477,11 +612,18 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
           <select
             value={filters.colorBy}
             onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
+            disabled={!!filters.groupBy}
+            title={filters.groupBy ? 'Disabled when grouping is active' : undefined}
           >
             <option value="year">Year</option>
             <option value="region">Region</option>
           </select>
         </div>
+
+        <GroupSelector
+          selection={groupSelection}
+          onChange={handleGroupChange}
+        />
 
         <div className="control-group">
           <label>Filter States</label>
@@ -509,13 +651,21 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
 
         <div className="control-group">
           <label>View</label>
-          <button
-            onClick={onResetViewport}
-            disabled={!filters.xAxisRange && !filters.yAxisRange}
-            title="Reset to default zoom level"
-          >
-            Reset Zoom
-          </button>
+          <div className="button-group">
+            <button
+              onClick={onResetViewport}
+              disabled={!filters.xAxisRange && !filters.yAxisRange}
+              title="Reset to default zoom level"
+            >
+              Reset Zoom
+            </button>
+            <button
+              onClick={() => onFilterChange({ swapAxes: !filters.swapAxes })}
+              title="Swap X and Y axes"
+            >
+              ⇄ Swap Axes
+            </button>
+          </div>
         </div>
 
         <div className="control-group">
