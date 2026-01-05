@@ -1,10 +1,11 @@
-import { useMemo, useState, useCallback, useRef } from 'react'
+import { useMemo, useState, useCallback, useRef, useEffect } from 'react'
 import Plot from 'react-plotly.js'
-import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint } from '../types'
+import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint, UtilityData } from '../types'
 import { downloadCSV, downloadJSON } from '../utils/export'
 import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
 import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
-import { aggregateCategoryOverTime } from '../utils/aggregation'
+import { UTILITY_GROUP_CATEGORIES } from '../data/groups/utilityGroups'
+import { aggregateCategoryOverTime, aggregateUtilitiesByField } from '../utils/aggregation'
 import GroupSelector, { GroupSelection } from './filters/GroupSelector'
 
 interface Props {
@@ -255,29 +256,78 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     }
   }, [regression, metric])
 
+  // Load utility data when needed for utility-level aggregation
+  const [utilityData, setUtilityData] = useState<UtilityData | null>(null)
+
+  useEffect(() => {
+    if (filters.groupLevel === 'utility' && filters.groupBy && !utilityData) {
+      fetch('/data/utilities.json')
+        .then(res => res.json())
+        .then(data => setUtilityData(data))
+        .catch(err => console.error('Failed to load utility data:', err))
+    }
+  }, [filters.groupLevel, filters.groupBy, utilityData])
+
   // Calculate aggregated data when groupBy is set
   const aggregatedData = useMemo((): AggregatedDataPoint[] => {
     if (!filters.groupBy) return []
 
-    const category = STATE_GROUP_CATEGORIES.find(c => c.id === filters.groupBy)
-    if (!category) return []
-
     const years = [...new Set(data.points.map(p => p.year))]
       .filter(y => y >= filters.yearStart && y <= filters.yearEnd)
 
-    return aggregateCategoryOverTime(data.points, category, years)
-      .filter(agg => agg[metric] !== null)
-  }, [data.points, filters.groupBy, filters.yearStart, filters.yearEnd, metric])
+    // State-level aggregation
+    if (filters.groupLevel === 'state') {
+      const category = STATE_GROUP_CATEGORIES.find(c => c.id === filters.groupBy)
+      if (!category) return []
+      return aggregateCategoryOverTime(data.points, category, years)
+        .filter(agg => agg[metric] !== null)
+    }
+
+    // Utility-level aggregation
+    if (filters.groupLevel === 'utility' && utilityData) {
+      const category = UTILITY_GROUP_CATEGORIES.find(c => c.id === filters.groupBy)
+      if (!category) return []
+
+      const results: AggregatedDataPoint[] = []
+      for (const year of years) {
+        for (const group of category.groups) {
+          // Match utilities by field value
+          for (const fieldValue of group.values) {
+            const agg = aggregateUtilitiesByField(
+              utilityData.utilities,
+              category.field,
+              fieldValue,
+              group.id,
+              group.name,
+              year
+            )
+            if (agg && agg[metric] !== null) {
+              // Merge results for same group (if multiple field values)
+              const existing = results.find(r => r.groupId === group.id && r.year === year)
+              if (!existing) {
+                results.push(agg)
+              }
+            }
+          }
+        }
+      }
+      return results
+    }
+
+    return []
+  }, [data.points, filters.groupBy, filters.groupLevel, filters.yearStart, filters.yearEnd, metric, utilityData])
 
   // Get group selection state for the GroupSelector component
   const groupSelection: GroupSelection = {
     categoryId: filters.groupBy,
+    level: filters.groupLevel,
     showMembers: filters.showGroupMembers
   }
 
   const handleGroupChange = useCallback((selection: GroupSelection) => {
     onFilterChange({
       groupBy: selection.categoryId,
+      groupLevel: selection.level,
       showGroupMembers: selection.showMembers
     })
   }, [onFilterChange])

@@ -11,6 +11,7 @@ const DEFAULT_FILTERS: ChartFilters = {
   reliabilityMetric: 'saidi',
   swapAxes: false,
   groupBy: null,
+  groupLevel: 'state',
   showGroupMembers: false,
   xAxisRange: null,
   yAxisRange: null,
@@ -42,6 +43,7 @@ export function useUrlFilters() {
     reliabilityMetric: (searchParams.get('metric') as 'saidi' | 'saifi') || DEFAULT_FILTERS.reliabilityMetric,
     swapAxes: searchParams.get('swap') === 'true',
     groupBy: searchParams.get('groupBy') || null,
+    groupLevel: (searchParams.get('groupLevel') as 'state' | 'utility') || DEFAULT_FILTERS.groupLevel,
     showGroupMembers: searchParams.get('showMembers') === 'true',
     xAxisRange: parseAxisRange(searchParams.get('xRange')),
     yAxisRange: parseAxisRange(searchParams.get('yRange')),
@@ -70,6 +72,9 @@ export function useUrlFilters() {
       }
       if (filters.groupBy) {
         params.set('groupBy', filters.groupBy)
+        if (filters.groupLevel !== 'state') {
+          params.set('groupLevel', filters.groupLevel)
+        }
       }
       if (filters.showGroupMembers) {
         params.set('showMembers', 'true')

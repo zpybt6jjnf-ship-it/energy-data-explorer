@@ -84,7 +84,8 @@ export interface ChartFilters {
   swapAxes: boolean
   // Aggregation settings
   groupBy: string | null           // Group category ID (e.g., 'rto-regions', 'market-structure')
-  showGroupMembers: boolean        // Show individual state points behind aggregated
+  groupLevel: 'state' | 'utility'  // Whether grouping at state or utility level
+  showGroupMembers: boolean        // Show individual state/utility points behind aggregated
   // Viewport state for shareable zoom/pan (scatter chart)
   xAxisRange: [number, number] | null
   yAxisRange: [number, number] | null
