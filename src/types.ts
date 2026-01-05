@@ -2,8 +2,8 @@ export interface StateDataPoint {
   state: string
   stateCode: string
   year: number
-  saidi: number // System Average Interruption Duration Index (minutes)
-  saifi: number // System Average Interruption Frequency Index
+  saidi: number | null // System Average Interruption Duration Index (minutes)
+  saifi: number | null // System Average Interruption Frequency Index
   vrePenetration: number // % of generation from wind + solar
   windPenetration: number
   solarPenetration: number

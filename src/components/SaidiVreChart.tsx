@@ -141,14 +141,15 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     })
   }, [])
 
-  // Filter data by year and state
+  // Filter data by year, state, and valid SAIDI (exclude null values)
   const filteredData = useMemo(() => {
     return data.points.filter(point => {
       const yearMatch = point.year >= filters.yearStart && point.year <= filters.yearEnd
       const stateMatch = filters.selectedStates.length === 0 ||
         filters.selectedStates.includes(point.stateCode)
-      return yearMatch && stateMatch
-    })
+      const hasSaidi = point.saidi !== null
+      return yearMatch && stateMatch && hasSaidi
+    }) as Array<typeof data.points[0] & { saidi: number; saifi: number }>
   }, [data.points, filters.yearStart, filters.yearEnd, filters.selectedStates])
 
   // Calculate regression statistics

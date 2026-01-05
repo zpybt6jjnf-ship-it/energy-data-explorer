@@ -2,7 +2,7 @@ import { useMemo, useCallback, useRef } from 'react'
 import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, REGION_COLORS } from '../types'
 import { downloadCSV, downloadJSON } from '../utils/export'
-import { COLORS, RETRO_COLORS, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
+import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
 
 interface Props {
   data: ChartData
@@ -69,6 +69,7 @@ function calculateRegression(points: { x: number; y: number }[]) {
   const se = Math.sqrt(mse)
 
   const sxx = points.reduce((acc, p) => acc + (p.x - meanX) ** 2, 0)
+  const seSlope = se / Math.sqrt(sxx)
 
   const minX = Math.min(...points.map(p => p.x))
   const maxX = Math.max(...points.map(p => p.x))
@@ -92,11 +93,18 @@ function calculateRegression(points: { x: number; y: number }[]) {
     r,
     r2,
     pValue,
+    tStat,
+    se,
+    seSlope,
     n,
+    isSignificant: pValue < 0.05,
+    lineX: [minX, maxX],
+    lineY: [slope * minX + intercept, slope * maxX + intercept],
     xRange,
     yLine: xRange.map(x => slope * x + intercept),
     ciUpper,
-    ciLower
+    ciLower,
+    meanX
   }
 }
 
@@ -147,15 +155,14 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     })
   }, [data.points, filters.yearStart, filters.yearEnd, filters.selectedStates])
 
-  // Calculate regression for trend line
+  // Calculate regression statistics (always, for summary availability)
   const regression = useMemo(() => {
-    if (!filters.showTrendLine) return null
     const points = filteredData.map(p => ({
       x: p.vrePenetration,
       y: getRate(p) ?? 0
     }))
     return calculateRegression(points)
-  }, [filteredData, filters.showTrendLine])
+  }, [filteredData])
 
   // Calculate average rate for reference
   const avgRate = useMemo(() => {
@@ -168,6 +175,7 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
   const enrichedData = useMemo(() => {
     if (filteredData.length === 0) return []
 
+    // Rank by rate (lower = more affordable)
     const sortedByRate = [...filteredData].sort((a, b) => {
       const rateA = getRate(a) ?? 0
       const rateB = getRate(b) ?? 0
@@ -178,42 +186,61 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
       rateRankMap.set(`${p.stateCode}-${p.year}`, i + 1)
     })
 
+    // Rank by VRE (higher = more renewable)
+    const sortedByVre = [...filteredData].sort((a, b) => b.vrePenetration - a.vrePenetration)
+    const vreRankMap = new Map<string, number>()
+    sortedByVre.forEach((p, i) => {
+      vreRankMap.set(`${p.stateCode}-${p.year}`, i + 1)
+    })
+
     const total = filteredData.length
+    const avgVre = filteredData.reduce((sum, p) => sum + p.vrePenetration, 0) / filteredData.length
 
     return filteredData.map(p => {
       const key = `${p.stateCode}-${p.year}`
       const rateRank = rateRankMap.get(key) || 0
+      const vreRank = vreRankMap.get(key) || 0
       const rate = getRate(p) ?? 0
 
       return {
         ...p,
         rate,
         rateRank,
+        vreRank,
         total,
-        rateDeltaStr: formatPercentDelta(rate, avgRate)
+        rateRankStr: formatRank(rateRank, total, 'most affordable'),
+        rateDeltaStr: formatPercentDelta(rate, avgRate),
+        vreDeltaStr: formatPercentDelta(p.vrePenetration, avgVre)
       }
     })
   }, [filteredData, avgRate])
 
+  // Generate plain-language summary
+  const summary = useMemo(() => {
+    if (!regression) return null
+
+    const strength = Math.abs(regression.r) < 0.1 ? 'no' :
+                     Math.abs(regression.r) < 0.3 ? 'a weak' :
+                     Math.abs(regression.r) < 0.5 ? 'a moderate' : 'a strong'
+
+    const direction = regression.r > 0 ? 'positive' : 'negative'
+
+    const slopeText = regression.slope > 0
+      ? `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(2)}¢ higher electricity rates`
+      : `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(2)}¢ lower electricity rates`
+
+    return {
+      strength,
+      direction,
+      slopeText,
+      r: regression.r,
+      n: regression.n
+    }
+  }, [regression])
+
   // Build plot traces
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
-
-    // Add confidence interval band first (behind other traces)
-    if (regression && filters.showTrendLine) {
-      traces.push({
-        x: [...regression.xRange, ...regression.xRange.slice().reverse()],
-        y: [...regression.ciUpper, ...regression.ciLower.slice().reverse()],
-        fill: 'toself',
-        fillcolor: 'rgba(42, 157, 143, 0.15)',
-        line: { color: 'transparent' },
-        type: 'scatter',
-        mode: 'lines',
-        name: '95% CI',
-        hoverinfo: 'skip',
-        showlegend: false
-      })
-    }
 
     if (filters.colorBy === 'region') {
       const regions = [...new Set(enrichedData.map(p => p.region))]
@@ -230,6 +257,9 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
             region: p.region,
             rate: p.rate,
             vrePenetration: p.vrePenetration,
+            windPenetration: p.windPenetration,
+            solarPenetration: p.solarPenetration,
+            rateRankStr: p.rateRankStr,
             rateDeltaStr: p.rateDeltaStr
           })),
           mode: 'markers' as const,
@@ -237,15 +267,21 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
           name: region,
           marker: {
             color: REGION_COLORS[region] || COLORS.inkMuted,
-            size: 11,
-            opacity: 0.85,
-            line: { color: COLORS.ink, width: 1 }
+            size: filters.showTrendLine ? 9 : 11,
+            opacity: filters.showTrendLine ? 0.5 : 0.85,
+            line: {
+              color: COLORS.ink,
+              width: filters.showTrendLine ? 0.5 : 1
+            }
           },
           hovertemplate:
             '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
             `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
             'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
-            'VRE: %{customdata.vrePenetration:.1f}%' +
+            `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
+            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
             '<extra></extra>'
         })
       })
@@ -265,6 +301,9 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
             region: p.region,
             rate: p.rate,
             vrePenetration: p.vrePenetration,
+            windPenetration: p.windPenetration,
+            solarPenetration: p.solarPenetration,
+            rateRankStr: p.rateRankStr,
             rateDeltaStr: p.rateDeltaStr
           })),
           mode: 'markers' as const,
@@ -272,48 +311,78 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
           name: year.toString(),
           marker: {
             color: RETRO_COLORS[colorIndex],
-            size: 11,
-            opacity: 0.85,
-            line: { color: COLORS.ink, width: 1 }
+            size: filters.showTrendLine ? 9 : 11,
+            opacity: filters.showTrendLine ? 0.5 : 0.85,
+            line: {
+              color: COLORS.ink,
+              width: filters.showTrendLine ? 0.5 : 1
+            }
           },
           hovertemplate:
             '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
             `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
             'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
-            'VRE: %{customdata.vrePenetration:.1f}%' +
+            `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
+            'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+            '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
+            '  └ Solar: %{customdata.solarPenetration:.1f}%' +
             '<extra></extra>'
         })
       })
     }
 
-    // Add trend line
+    // Add trend line and average reference
     if (regression && filters.showTrendLine) {
-      const significanceLabel = regression.pValue < 0.001 ? 'p < 0.001' :
-        regression.pValue < 0.01 ? 'p < 0.01' :
-        regression.pValue < 0.05 ? 'p < 0.05' : `p = ${regression.pValue.toFixed(2)}`
+      const xRange = filteredData.length > 0
+        ? [Math.min(...filteredData.map(p => p.vrePenetration)), Math.max(...filteredData.map(p => p.vrePenetration))]
+        : [0, 50]
 
+      // Average rate reference line
       traces.push({
-        x: regression.xRange,
-        y: regression.yLine,
-        mode: 'lines',
-        type: 'scatter',
-        name: `Trend (R² = ${(regression.r2 * 100).toFixed(1)}%)`,
+        x: xRange,
+        y: [avgRate, avgRate],
+        mode: 'lines' as const,
+        type: 'scatter' as const,
+        name: `Avg Rate (${avgRate.toFixed(1)}¢)`,
         line: {
-          color: COLORS.teal,
-          width: 2.5,
-          dash: 'solid'
+          color: COLORS.inkMuted,
+          width: 1,
+          dash: 'dot'
         },
-        hovertemplate:
-          `<b>Linear Regression</b><br>` +
-          `R² = ${(regression.r2 * 100).toFixed(1)}% (${significanceLabel})<br>` +
-          `Slope: ${regression.slope > 0 ? '+' : ''}${regression.slope.toFixed(3)} ¢/kWh per 1% VRE<br>` +
-          `n = ${regression.n} observations` +
-          '<extra></extra>'
+        hoverinfo: 'skip' as const
+      })
+
+      // Confidence interval band
+      traces.push({
+        x: [...regression.xRange, ...regression.xRange.slice().reverse()],
+        y: [...regression.ciUpper, ...regression.ciLower.slice().reverse()],
+        fill: 'toself',
+        fillcolor: `${COLORS.ink}26`,
+        line: { color: `${COLORS.ink}4D`, width: 1 },
+        type: 'scatter' as const,
+        mode: 'lines' as const,
+        name: '95% CI',
+        hoverinfo: 'skip' as const,
+        showlegend: true
+      })
+
+      // Trend line
+      traces.push({
+        x: regression.lineX,
+        y: regression.lineY,
+        mode: 'lines' as const,
+        type: 'scatter' as const,
+        name: regression.isSignificant ? 'Trend (p<0.05)' : 'Trend (n.s.)',
+        line: {
+          color: COLORS.ink,
+          width: 3
+        },
+        hoverinfo: 'skip' as const
       })
     }
 
     return traces
-  }, [enrichedData, filters.colorBy, filters.showTrendLine, regression])
+  }, [enrichedData, filteredData, filters.colorBy, filters.showTrendLine, regression, avgRate])
 
   const layout = useMemo(() => ({
     ...baseLayout,
@@ -415,18 +484,6 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
         </div>
 
         <div className="control-group">
-          <label>Analysis</label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={filters.showTrendLine}
-              onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
-            />
-            Show Trend Line
-          </label>
-        </div>
-
-        <div className="control-group">
           <label>Filter States</label>
           <select
             multiple
@@ -478,18 +535,60 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
             </button>
           </div>
         </div>
+
+        <div className="control-group">
+          <label>Analysis</label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={filters.showTrendLine}
+              onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
+            />
+            Show Trend Line
+          </label>
+        </div>
       </div>
 
-      {regression && filters.showTrendLine && (
-        <div className="regression-stats">
-          <strong>Regression Analysis:</strong>{' '}
-          R² = {(regression.r2 * 100).toFixed(1)}% |
-          Slope: {regression.slope > 0 ? '+' : ''}{regression.slope.toFixed(3)} ¢/kWh per 1% VRE |
-          {regression.pValue < 0.05 ? (
-            <span className="stat-significant">Statistically significant (p {'<'} 0.05)</span>
-          ) : (
-            <span className="stat-not-significant">Not statistically significant (p = {regression.pValue.toFixed(2)})</span>
-          )}
+      {filters.showTrendLine && regression && summary && (
+        <div className="stats-panel">
+          <div className="stats-summary">
+            <p className="summary-main">
+              The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between
+              renewable energy penetration and electricity rates.
+            </p>
+            <p className="summary-detail">
+              Based on {summary.n} state-year observations, {summary.slopeText}.
+            </p>
+          </div>
+          <details className="stats-technical">
+            <summary>Technical details</summary>
+            <div className="stats-grid">
+              <div className="stat">
+                <span className="stat-label">Correlation (r)</span>
+                <span className="stat-value">{regression.r.toFixed(3)}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">R² <span className="stat-hint">(variance explained)</span></span>
+                <span className="stat-value">{(regression.r2 * 100).toFixed(1)}%</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">p-value</span>
+                <span className="stat-value">{regression.pValue < 0.001 ? '< 0.001' : regression.pValue.toFixed(3)}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Slope <span className="stat-hint">(¢/kWh per 1% VRE)</span></span>
+                <span className="stat-value">{regression.slope.toFixed(3)} ± {(regression.seSlope * getTCritical(regression.n - 2)).toFixed(3)}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Std. Error</span>
+                <span className="stat-value">{regression.se.toFixed(2)}¢</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Sample size</span>
+                <span className="stat-value">{regression.n}</span>
+              </div>
+            </div>
+          </details>
         </div>
       )}
 

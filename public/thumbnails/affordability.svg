@@ -1,0 +1,112 @@
+<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf8f5" />
+      <stop offset="100%" style="stop-color:#f5f3f0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="320" height="180" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#e8e6e1" stroke-width="1">
+    <line x1="50" y1="20" x2="50" y2="150" />
+    <line x1="50" y1="150" x2="300" y2="150" />
+    <line x1="50" y1="124" x2="300" y2="124" stroke-dasharray="4,4" />
+    <line x1="50" y1="98" x2="300" y2="98" stroke-dasharray="4,4" />
+    <line x1="50" y1="72" x2="300" y2="72" stroke-dasharray="4,4" />
+    <line x1="50" y1="46" x2="300" y2="46" stroke-dasharray="4,4" />
+    <line x1="100" y1="20" x2="100" y2="150" stroke-dasharray="4,4" />
+    <line x1="150" y1="20" x2="150" y2="150" stroke-dasharray="4,4" />
+    <line x1="200" y1="20" x2="200" y2="150" stroke-dasharray="4,4" />
+    <line x1="250" y1="20" x2="250" y2="150" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Axis labels -->
+  <text x="175" y="172" text-anchor="middle" fill="#8a8a9a" font-family="DM Sans, sans-serif" font-size="9">VRE Penetration (%)</text>
+  <text x="12" y="85" text-anchor="middle" fill="#8a8a9a" font-family="DM Sans, sans-serif" font-size="9" transform="rotate(-90 12 85)">Rate (cents/kWh)</text>
+
+  <!-- Trend line (slight negative slope) -->
+  <line x1="50" y1="85" x2="300" y2="105" stroke="#1a1a2e" stroke-width="2" opacity="0.6" />
+
+  <!-- Data points - showing rate vs VRE with negative correlation -->
+  <!-- Low VRE, varied rates (left side) -->
+  <g>
+    <!-- Hawaii - high rate, low VRE -->
+    <circle cx="58" cy="28" r="3.5" fill="#e76f51" opacity="0.75" />
+    <!-- Connecticut - high rate, low VRE -->
+    <circle cx="52" cy="42" r="3.5" fill="#e76f51" opacity="0.75" />
+    <!-- California - high rate, moderate VRE -->
+    <circle cx="115" cy="45" r="3.5" fill="#e76f51" opacity="0.75" />
+    <!-- Massachusetts -->
+    <circle cx="68" cy="44" r="3.5" fill="#e76f51" opacity="0.75" />
+    <!-- New Hampshire -->
+    <circle cx="56" cy="48" r="3.5" fill="#e76f51" opacity="0.75" />
+
+    <!-- Medium rate states -->
+    <circle cx="55" cy="78" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="62" cy="82" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="58" cy="95" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="68" cy="88" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="72" cy="92" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="78" cy="85" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="85" cy="90" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="65" cy="100" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="75" cy="105" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="82" cy="98" r="3" fill="#2a9d8f" opacity="0.7" />
+
+    <!-- Low-medium VRE cluster -->
+    <circle cx="92" cy="95" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="98" cy="88" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="105" cy="92" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="88" cy="102" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="95" cy="108" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="102" cy="100" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="110" cy="85" r="3" fill="#2a9d8f" opacity="0.7" />
+    <circle cx="118" cy="95" r="3" fill="#2a9d8f" opacity="0.7" />
+
+    <!-- Medium VRE states -->
+    <circle cx="125" cy="102" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="132" cy="95" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="140" cy="105" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="145" cy="98" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="138" cy="112" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="150" cy="108" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="155" cy="95" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="162" cy="102" r="3" fill="#264653" opacity="0.7" />
+
+    <!-- High VRE states (right side) - lower rates -->
+    <!-- Texas -->
+    <circle cx="168" cy="115" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- Oklahoma -->
+    <circle cx="205" cy="118" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- Kansas -->
+    <circle cx="225" cy="112" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- Nebraska -->
+    <circle cx="185" cy="120" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- South Dakota -->
+    <circle cx="258" cy="115" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- Iowa - highest VRE, low rate -->
+    <circle cx="285" cy="112" r="3.5" fill="#e9c46a" opacity="0.8" />
+    <!-- North Dakota -->
+    <circle cx="195" cy="122" r="3" fill="#e9c46a" opacity="0.75" />
+    <!-- New Mexico -->
+    <circle cx="218" cy="108" r="3" fill="#e9c46a" opacity="0.75" />
+
+    <!-- More scattered points for realism -->
+    <circle cx="175" cy="105" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="182" cy="112" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="190" cy="108" r="3" fill="#264653" opacity="0.7" />
+    <circle cx="198" cy="115" r="3" fill="#e9c46a" opacity="0.7" />
+    <circle cx="210" cy="105" r="3" fill="#e9c46a" opacity="0.7" />
+    <circle cx="235" cy="118" r="3" fill="#e9c46a" opacity="0.7" />
+    <circle cx="245" cy="110" r="3" fill="#e9c46a" opacity="0.7" />
+    <circle cx="268" cy="108" r="3" fill="#e9c46a" opacity="0.7" />
+
+    <!-- Low rate, low VRE states (Washington, Idaho - hydro) -->
+    <circle cx="60" cy="125" r="3" fill="#a7c4a0" opacity="0.7" />
+    <circle cx="70" cy="122" r="3" fill="#a7c4a0" opacity="0.7" />
+    <circle cx="80" cy="128" r="3" fill="#a7c4a0" opacity="0.7" />
+  </g>
+</svg>

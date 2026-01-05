@@ -42,11 +42,13 @@ export default function SaidiOverTimeChart({ data, filters, onFilterChange, onRe
     })
   }, [])
 
-  // Filter data by year range
+  // Filter data by year range and valid SAIDI (exclude null values)
   const filteredData = useMemo(() => {
     return data.points.filter(point =>
-      point.year >= filters.yearStart && point.year <= filters.yearEnd
-    )
+      point.year >= filters.yearStart &&
+      point.year <= filters.yearEnd &&
+      point.saidi !== null
+    ) as Array<typeof data.points[0] & { saidi: number }>
   }, [data.points, filters.yearStart, filters.yearEnd])
 
   // Get unique states
