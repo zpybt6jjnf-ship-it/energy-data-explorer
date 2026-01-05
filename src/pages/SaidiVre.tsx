@@ -73,7 +73,7 @@ export default function SaidiVre() {
 
             <div className="share-url">
               <strong>Shareable link:</strong>
-              <code>{window.location.href}</code>
+              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
             </div>
 
             <div className="source-info">

@@ -45,7 +45,7 @@ export default function Layout({ children }: LayoutProps) {
       {children}
 
       <footer>
-        <p>Energy Data Explorer · Bottlenecks Labs · Updated Jan 2025</p>
+        <p>Energy Data Explorer · Bottlenecks Labs · Updated Jan 2026</p>
         <p className="footer-disclaimer">Demo project for portfolio purposes only</p>
       </footer>
     </>

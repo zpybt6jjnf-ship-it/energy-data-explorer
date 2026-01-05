@@ -746,7 +746,8 @@ details[open] .description-toggle::before {
   color: var(--color-ink-muted);
 }
 
-.share-url code {
+.share-url code,
+.share-link-url {
   flex: 1;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -754,6 +755,11 @@ details[open] .description-toggle::before {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-decoration: none;
+}
+
+.share-link-url:hover {
+  text-decoration: underline;
 }
 
 /* Source Info */

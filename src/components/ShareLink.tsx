@@ -8,7 +8,7 @@ export default function ShareLink({ url }: ShareLinkProps) {
   return (
     <div className="share-url">
       <strong>Shareable link:</strong>
-      <code>{displayUrl}</code>
+      <a href={displayUrl} className="share-link-url">{displayUrl}</a>
     </div>
   )
 }
