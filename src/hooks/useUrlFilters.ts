@@ -6,7 +6,7 @@ const DEFAULT_FILTERS: ChartFilters = {
   yearStart: 2013,
   yearEnd: 2023,
   selectedStates: [],
-  colorBy: 'year',
+  colorBy: 'region',  // Default to region for clearer visual grouping (4 colors vs 11)
   showTrendLine: false,
   reliabilityMetric: 'saidi',
   swapAxes: false,
@@ -62,7 +62,9 @@ export function useUrlFilters() {
       if (filters.selectedStates.length > 0) {
         params.set('states', filters.selectedStates.join(','))
       }
-      params.set('colorBy', filters.colorBy)
+      if (filters.colorBy !== 'region') {
+        params.set('colorBy', filters.colorBy)
+      }
       if (filters.showTrendLine) {
         params.set('trend', 'true')
       }

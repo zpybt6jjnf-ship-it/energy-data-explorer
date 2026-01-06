@@ -7,9 +7,56 @@ import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
 import { UTILITY_GROUP_CATEGORIES } from '../data/groups/utilityGroups'
 import { aggregateCategoryOverTime, aggregateUtilitiesByField } from '../utils/aggregation'
 import GroupSelector, { GroupSelection } from './filters/GroupSelector'
+import StateFilter from './filters/StateFilter'
 
 // WebGL threshold - use scattergl for better performance with many points
 const WEBGL_THRESHOLD = 1000
+
+// Export dropdown component
+function ExportDropdown({ onExportCSV, onExportJSON }: { onExportCSV: () => void; onExportJSON: () => void }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <div className="export-dropdown" ref={dropdownRef}>
+      <button
+        className="export-dropdown-btn"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        Export
+      </button>
+      {isOpen && (
+        <div className="export-dropdown-menu" role="menu">
+          <button
+            role="menuitem"
+            onClick={() => { onExportCSV(); setIsOpen(false) }}
+          >
+            Download CSV
+          </button>
+          <button
+            role="menuitem"
+            onClick={() => { onExportJSON(); setIsOpen(false) }}
+          >
+            Download JSON
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
 
 interface Props {
   data: ChartData
@@ -235,8 +282,8 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     const direction = regression.r > 0 ? 'positive' : 'negative'
 
     const slopeText = regression.slope > 0
-      ? `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(2)}¢ higher electricity rates`
-      : `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(2)}¢ lower electricity rates`
+      ? `each 1% increase in renewable share is associated with ${Math.abs(regression.slope).toFixed(2)}¢ higher electricity rates`
+      : `each 1% increase in renewable share is associated with ${Math.abs(regression.slope).toFixed(2)}¢ lower electricity rates`
 
     return {
       strength,
@@ -366,6 +413,26 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     })
   }, [onFilterChange])
 
+  // Handle click on chart points to toggle state filter
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handlePlotClick = useCallback((event: any) => {
+    if (!event.points || event.points.length === 0) return
+
+    const point = event.points[0]
+    const customdata = point.customdata as { stateCode?: string } | undefined
+    const stateCode = customdata?.stateCode
+
+    // Toggle state filter on click
+    if (stateCode) {
+      const isSelected = filters.selectedStates.includes(stateCode)
+      if (isSelected) {
+        onFilterChange({ selectedStates: filters.selectedStates.filter(s => s !== stateCode) })
+      } else {
+        onFilterChange({ selectedStates: [...filters.selectedStates, stateCode] })
+      }
+    }
+  }, [filters.selectedStates, onFilterChange])
+
   // Build plot traces
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
@@ -376,7 +443,7 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
       `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
       'Rate: %{customdata.rate:.1f} ¢/kWh (%{customdata.rateDeltaStr})<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.rateRankStr}</span><br><br>` +
-      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
@@ -386,17 +453,17 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
       '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} states</span><br><br>` +
       'Rate: %{customdata.avgRate:.1f} ¢/kWh<br>' +
-      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
 
-    // Hover template for utility points (note: shows SAIDI vs state VRE since utilities don't have rate data)
+    // Hover template for utility points (note: shows outage duration vs state renewables since utilities don't have rate data)
     const utilityHoverTemplate =
       '<b>%{customdata.utilityName}</b><br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.state} · %{customdata.ownership}</span><br><br>` +
-      'SAIDI: %{customdata.saidi:.1f} minutes<br>' +
-      'State VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'Outage Duration: %{customdata.saidi:.1f} minutes<br>' +
+      'State Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.customers:,.0f} customers</span>` +
       '<extra></extra>'
 
@@ -670,14 +737,14 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
     title: { text: '' },
     xaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? 'Electricity Rate (¢/kWh) — Higher = more expensive' : 'VRE Penetration (%) — Higher = more renewables', ...axisTitleStyle },
+      title: { text: swapAxes ? 'Electricity Rate (¢/kWh)' : 'Renewable Energy Share (%)', ...axisTitleStyle },
       ticksuffix: swapAxes ? '¢' : '%',
       range: filters.xAxisRange || undefined,
       autorange: filters.xAxisRange ? false : true
     },
     yaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? 'VRE Penetration (%) — Higher = more renewables' : 'Electricity Rate (¢/kWh) — Higher = more expensive', ...axisTitleStyle },
+      title: { text: swapAxes ? 'Renewable Energy Share (%)' : 'Electricity Rate (¢/kWh)', ...axisTitleStyle },
       ticksuffix: swapAxes ? '%' : '¢',
       range: filters.yAxisRange || undefined,
       autorange: filters.yAxisRange ? false : true
@@ -702,8 +769,43 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
       aria-label={`Scatter plot showing electricity rates versus VRE penetration for ${filteredData.length} state-year observations`}
     >
       <div className="chart-header">
-        <h2>Electricity Rates vs. Renewable Penetration</h2>
-        <p>Do states with more wind and solar have higher electricity prices?</p>
+        <h2>Electricity Rates vs. Renewable Energy</h2>
+        <p className="chart-subtitle">
+          {filteredData.length} observations from {filters.yearStart}–{filters.yearEnd}
+          {regression && ` · Correlation: ${regression.r >= 0 ? '+' : ''}${regression.r.toFixed(2)}`}
+        </p>
+      </div>
+
+      {/* Quick view presets */}
+      <div className="quick-views">
+        <span className="quick-views-label">Quick views:</span>
+        <button
+          className={filters.colorBy === 'region' && !filters.groupBy ? 'active' : ''}
+          onClick={() => onFilterChange({ colorBy: 'region', groupBy: null })}
+        >
+          By Region
+        </button>
+        <button
+          className={filters.yearStart === 2020 && filters.yearEnd === 2023 ? 'active' : ''}
+          onClick={() => onFilterChange({ yearStart: 2020, yearEnd: 2023 })}
+        >
+          Recent (2020–23)
+        </button>
+        <button
+          className={filters.selectedStates.includes('IA') && filters.selectedStates.includes('KS') ? 'active' : ''}
+          onClick={() => onFilterChange({
+            selectedStates: ['IA', 'KS', 'OK', 'SD', 'ND', 'NE', 'MN', 'TX', 'CO', 'NM'],
+            colorBy: 'year'
+          })}
+        >
+          High Renewables
+        </button>
+        <button
+          className={filters.yearStart === filters.yearEnd && filters.yearEnd === 2023 ? 'active' : ''}
+          onClick={() => onFilterChange({ yearStart: 2023, yearEnd: 2023 })}
+        >
+          Latest Year
+        </button>
       </div>
 
       <details className="chart-description" open>
@@ -728,97 +830,139 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
         </div>
       </details>
 
-      <div className="controls">
-        <div className="control-group">
-          <label>Start Year</label>
-          <select
-            value={filters.yearStart}
-            onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
-          >
-            {data.metadata.yearsAvailable.map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
+      <div className="controls-unified">
+        {/* Main controls row */}
+        <div className="control-row">
+          <div className="control-group">
+            <label>Years</label>
+            <select
+              value={filters.yearStart}
+              onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
+            >
+              {data.metadata.yearsAvailable.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <select
+              value={filters.yearEnd}
+              onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
+            >
+              {data.metadata.yearsAvailable.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+
+          <StateFilter
+            selectedStates={filters.selectedStates}
+            availableStates={data.metadata.states}
+            onChange={(states) => onFilterChange({ selectedStates: states })}
+          />
+
+          <div className="control-group">
+            <label>Color</label>
+            <select
+              value={filters.colorBy}
+              onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
+              disabled={!!filters.groupBy || filters.viewMode === 'utilities'}
+              title={filters.viewMode === 'utilities' ? 'Utilities are colored by ownership type' : filters.groupBy ? 'Disabled when grouping is active' : undefined}
+            >
+              <option value="region">Region</option>
+              <option value="year">Year</option>
+            </select>
+          </div>
+
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={filters.showTrendLine}
+                onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
+              />
+              Trend Line
+            </label>
+          </div>
         </div>
 
-        <div className="control-group">
-          <label>End Year</label>
-          <select
-            value={filters.yearEnd}
-            onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
-          >
-            {data.metadata.yearsAvailable.map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-        </div>
+        {/* Advanced Options (collapsible) */}
+        <details>
+          <summary className="control-advanced-toggle">Advanced</summary>
+          <div className="control-row">
+            <div className="control-group">
+              <label>Data Level</label>
+              <select
+                value={filters.viewMode}
+                onChange={(e) => onFilterChange({
+                  viewMode: e.target.value as 'states' | 'utilities',
+                  groupBy: e.target.value === 'utilities' ? null : filters.groupBy
+                })}
+              >
+                <option value="states">States ({filteredData.length} state-years)</option>
+                <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length})` : '(loading...)'}</option>
+              </select>
+              {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
+                <span className="control-hint">WebGL enabled</span>
+              )}
+              {filters.viewMode === 'utilities' && (
+                <span className="control-hint">Shows SAIDI vs VRE (no rate data)</span>
+              )}
+            </div>
 
-        <div className="control-group">
-          <label>View</label>
-          <select
-            value={filters.viewMode}
-            onChange={(e) => onFilterChange({
-              viewMode: e.target.value as 'states' | 'utilities',
-              // Clear grouping when switching to utilities view
-              groupBy: e.target.value === 'utilities' ? null : filters.groupBy
-            })}
-          >
-            <option value="states">States ({filteredData.length} pts)</option>
-            <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length} pts)` : '(loading...)'}</option>
-          </select>
-          {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
-            <span className="control-hint">WebGL enabled</span>
-          )}
-          {filters.viewMode === 'utilities' && (
-            <span className="control-hint">Shows SAIDI vs VRE</span>
-          )}
-        </div>
+            <GroupSelector
+              selection={groupSelection}
+              onChange={handleGroupChange}
+            />
 
-        <div className="control-group">
-          <label>Color By</label>
-          <select
-            value={filters.colorBy}
-            onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
-            disabled={!!filters.groupBy || filters.viewMode === 'utilities'}
-            title={filters.viewMode === 'utilities' ? 'Utilities are colored by ownership type' : filters.groupBy ? 'Disabled when grouping is active' : undefined}
-          >
-            <option value="year">Year</option>
-            <option value="region">Region</option>
-          </select>
-        </div>
+            <div className="control-group">
+              <label>&nbsp;</label>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={filters.swapAxes}
+                  onChange={(e) => onFilterChange({ swapAxes: e.target.checked })}
+                />
+                Swap Axes
+              </label>
+            </div>
+          </div>
+        </details>
 
-        <GroupSelector
-          selection={groupSelection}
-          onChange={handleGroupChange}
-        />
-
-        <div className="control-group">
-          <label>Filter States</label>
-          <select
-            multiple
-            size={5}
-            value={filters.selectedStates}
-            onChange={(e) => {
-              const selected = Array.from(e.target.selectedOptions, opt => opt.value)
-              onFilterChange({ selectedStates: selected })
-            }}
-          >
-            {data.metadata.states.map(state => (
-              <option key={state} value={state}>{state}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="control-group">
-          <label>&nbsp;</label>
-          <button onClick={() => onFilterChange({ selectedStates: [] })}>
-            Clear Selection
-          </button>
-        </div>
-
-        <div className="control-group">
-          <label>Zoom</label>
-          <div className="button-group">
+        {/* Actions Row */}
+        <div className="control-actions">
+          <div className="control-actions-left">
+            <button
+              onClick={() => {
+                onFilterChange({
+                  yearStart: 2013,
+                  yearEnd: 2023,
+                  selectedStates: [],
+                  colorBy: 'region',
+                  showTrendLine: false,
+                  swapAxes: false,
+                  viewMode: 'states',
+                  groupBy: null,
+                  xAxisRange: null,
+                  yAxisRange: null
+                })
+              }}
+              disabled={
+                filters.selectedStates.length === 0 &&
+                !filters.showTrendLine &&
+                !filters.groupBy &&
+                !filters.xAxisRange &&
+                filters.viewMode === 'states' &&
+                filters.colorBy === 'region' &&
+                !filters.swapAxes
+              }
+              title="Reset all filters to defaults"
+            >
+              Reset All
+            </button>
             <button
               onClick={onResetViewport}
               disabled={!filters.xAxisRange && !filters.yAxisRange}
@@ -826,55 +970,26 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
             >
               Reset Zoom
             </button>
-            <button
-              onClick={() => onFilterChange({ swapAxes: !filters.swapAxes })}
-              title="Swap X and Y axes"
-            >
-              ⇄ Swap Axes
-            </button>
           </div>
-        </div>
-
-        <div className="control-group">
-          <label>Export</label>
-          <div className="button-group">
-            <button
-              onClick={() => downloadCSV(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
-              title="Download filtered data as CSV"
-            >
-              CSV
-            </button>
-            <button
-              onClick={() => downloadJSON(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
-              title="Download filtered data as JSON"
-            >
-              JSON
-            </button>
-          </div>
-        </div>
-
-        <div className="control-group">
-          <label>Analysis</label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={filters.showTrendLine}
-              onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
+          <div className="control-actions-right">
+            <ExportDropdown
+              onExportCSV={() => downloadCSV(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
+              onExportJSON={() => downloadJSON(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
             />
-            Show Trend Line
-          </label>
+          </div>
         </div>
       </div>
 
+      {/* Stats panel - above chart when trend line is shown */}
       {filters.showTrendLine && regression && summary && (
         <div className="stats-panel">
           <div className="stats-summary">
             <p className="summary-main">
               The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between
-              renewable energy penetration and electricity rates.
+              renewable energy share and electricity rates.
             </p>
             <p className="summary-detail">
-              Based on {summary.n} state-year observations, {summary.slopeText}.
+              Based on {summary.n} observations across {filters.yearEnd - filters.yearStart + 1} years, {summary.slopeText}.
             </p>
           </div>
           <details className="stats-technical">
@@ -893,7 +1008,7 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
                 <span className="stat-value">{regression.pValue < 0.001 ? '< 0.001' : regression.pValue.toFixed(3)}</span>
               </div>
               <div className="stat">
-                <span className="stat-label">Slope <span className="stat-hint">(¢/kWh per 1% VRE)</span></span>
+                <span className="stat-label">Slope <span className="stat-hint">(¢/kWh per 1% renewables)</span></span>
                 <span className="stat-value">{regression.slope.toFixed(3)} ± {(regression.seSlope * getTCritical(regression.n - 2)).toFixed(3)}</span>
               </div>
               <div className="stat">
@@ -909,11 +1024,15 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
         </div>
       )}
 
+      <p className="chart-interaction-hint">
+        Click any point to filter by that state · Drag to zoom · Double-click to reset
+      </p>
       <Plot
         data={plotData}
         layout={layout}
         config={config}
         style={{ width: '100%', height: '480px' }}
+        onClick={handlePlotClick}
         onInitialized={handleInitialized}
         onUpdate={handleInitialized}
       />

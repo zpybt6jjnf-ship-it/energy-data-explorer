@@ -86,13 +86,13 @@ export default function GroupSelector({ selection, onChange }: Props) {
   return (
     <div className="group-selector">
       <div className="control-group">
-        <label>Aggregate By</label>
+        <label>Compare</label>
         <select
           value={selection.categoryId || ''}
           onChange={(e) => handleCategoryChange(e.target.value)}
-          title="Group states or utilities and show aggregated data points"
+          title="Compare groups of states or utilities"
         >
-          <option value="">No grouping (show all states)</option>
+          <option value="">Individual states</option>
           <optgroup label="State-Level Groups">
             {options.filter(o => o.level === 'state').map(opt => (
               <option

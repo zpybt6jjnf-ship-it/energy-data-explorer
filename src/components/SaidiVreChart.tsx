@@ -7,6 +7,7 @@ import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
 import { UTILITY_GROUP_CATEGORIES } from '../data/groups/utilityGroups'
 import { aggregateCategoryOverTime, aggregateUtilitiesByField } from '../utils/aggregation'
 import GroupSelector, { GroupSelection } from './filters/GroupSelector'
+import StateFilter from './filters/StateFilter'
 
 interface Props {
   data: ChartData
@@ -17,23 +18,71 @@ interface Props {
 
 type ReliabilityMetric = 'saidi' | 'saifi'
 
-const METRIC_INFO: Record<ReliabilityMetric, { label: string; unit: string; description: string; yAxisLabel: string }> = {
+const METRIC_INFO: Record<ReliabilityMetric, { label: string; shortLabel: string; unit: string; description: string; yAxisLabel: string }> = {
   saidi: {
-    label: 'SAIDI',
+    label: 'Outage Duration',
+    shortLabel: 'Duration',
     unit: 'minutes',
-    description: 'System Average Interruption Duration Index - average outage minutes per customer per year',
-    yAxisLabel: 'SAIDI (minutes) — Higher = longer outages'
+    description: 'Average outage minutes per customer per year (SAIDI)',
+    yAxisLabel: 'Outage Duration (minutes/customer/year)'
   },
   saifi: {
-    label: 'SAIFI',
+    label: 'Outage Frequency',
+    shortLabel: 'Frequency',
     unit: 'interruptions',
-    description: 'System Average Interruption Frequency Index - average number of outages per customer per year',
-    yAxisLabel: 'SAIFI (interruptions) — Higher = more frequent outages'
+    description: 'Average number of outages per customer per year (SAIFI)',
+    yAxisLabel: 'Outage Frequency (interruptions/customer/year)'
   }
 }
 
 // WebGL threshold - use scattergl for better performance with many points
 const WEBGL_THRESHOLD = 1000
+
+// Export dropdown component
+function ExportDropdown({ onExportCSV, onExportJSON }: { onExportCSV: () => void; onExportJSON: () => void }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <div className="export-dropdown" ref={dropdownRef}>
+      <button
+        className="export-dropdown-btn"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        Export
+      </button>
+      {isOpen && (
+        <div className="export-dropdown-menu" role="menu">
+          <button
+            role="menuitem"
+            onClick={() => { onExportCSV(); setIsOpen(false) }}
+          >
+            Download CSV
+          </button>
+          <button
+            role="menuitem"
+            onClick={() => { onExportJSON(); setIsOpen(false) }}
+          >
+            Download JSON
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
 
 // T-distribution critical values for 95% CI (two-tailed)
 function getTCritical(df: number): number {
@@ -247,8 +296,8 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
     const unitLabel = metric === 'saidi' ? 'minutes of outages' : 'interruptions'
     const slopeText = regression.slope > 0
-      ? `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} more ${unitLabel}`
-      : `each 1% increase in renewable penetration is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} fewer ${unitLabel}`
+      ? `each 1% increase in renewable share is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} more ${unitLabel}`
+      : `each 1% increase in renewable share is associated with ${Math.abs(regression.slope).toFixed(metric === 'saidi' ? 1 : 2)} fewer ${unitLabel}`
 
     return {
       strength,
@@ -358,13 +407,25 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
 
     const point = event.points[0]
     const customdata = point.customdata as { stateCode?: string; year?: number } | undefined
-    const clickedTexas2021 = customdata?.stateCode === 'TX' && customdata?.year === 2021
+    const stateCode = customdata?.stateCode
 
+    // Toggle state filter on click
+    if (stateCode) {
+      const isSelected = filters.selectedStates.includes(stateCode)
+      if (isSelected) {
+        onFilterChange({ selectedStates: filters.selectedStates.filter(s => s !== stateCode) })
+      } else {
+        onFilterChange({ selectedStates: [...filters.selectedStates, stateCode] })
+      }
+    }
+
+    // Easter egg: Texas 2021 winter storm
+    const clickedTexas2021 = stateCode === 'TX' && customdata?.year === 2021
     if (clickedTexas2021) {
       setShowSnowflake(true)
       setTimeout(() => setShowSnowflake(false), 5000)
     }
-  }, [])
+  }, [filters.selectedStates, onFilterChange])
 
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
@@ -376,7 +437,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
       `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit} (%{customdata.metricDeltaStr})<br>` +
       `<span style="color:${COLORS.inkMuted}">%{customdata.metricRankStr}</span><br><br>` +
-      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
@@ -386,7 +447,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       '<b>%{customdata.utilityName}</b><br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.state} · %{customdata.ownership}</span><br><br>` +
       `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
-      'State VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'State Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.customers:,.0f} customers</span>` +
       '<extra></extra>'
 
@@ -395,7 +456,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} states</span><br><br>` +
       `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
-      'VRE: %{customdata.vrePenetration:.1f}%<br>' +
+      'Renewables: %{customdata.vrePenetration:.1f}%<br>' +
       '  ├ Wind: %{customdata.windPenetration:.1f}%<br>' +
       '  └ Solar: %{customdata.solarPenetration:.1f}%' +
       '<extra></extra>'
@@ -673,14 +734,14 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
     title: { text: '' },
     xaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? metricInfo.yAxisLabel : 'VRE Penetration (%) → More renewables', ...axisTitleStyle },
+      title: { text: swapAxes ? metricInfo.yAxisLabel : 'Renewable Energy Share (%)', ...axisTitleStyle },
       ticksuffix: swapAxes ? undefined : '%',
       range: filters.xAxisRange || undefined,
       autorange: filters.xAxisRange ? false : true
     },
     yaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? 'VRE Penetration (%) → More renewables' : metricInfo.yAxisLabel, ...axisTitleStyle },
+      title: { text: swapAxes ? 'Renewable Energy Share (%)' : metricInfo.yAxisLabel, ...axisTitleStyle },
       ticksuffix: swapAxes ? '%' : undefined,
       range: filters.yAxisRange || undefined,
       autorange: filters.yAxisRange ? false : true
@@ -705,8 +766,43 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       aria-label={`Scatter plot showing ${metricInfo.label} versus VRE penetration for ${filteredData.length} state-year observations from ${filters.yearStart} to ${filters.yearEnd}. ${summary ? `Shows ${summary.strength} ${summary.direction} correlation.` : ''}`}
     >
       <div className="chart-header">
-        <h2>Reliability vs. Renewable Penetration</h2>
-        <p>Do states with more wind and solar experience more outages?</p>
+        <h2>Grid Reliability vs. Renewable Energy</h2>
+        <p className="chart-subtitle">
+          {filteredData.length} observations from {filters.yearStart}–{filters.yearEnd}
+          {regression && ` · Correlation: ${regression.r >= 0 ? '+' : ''}${regression.r.toFixed(2)}`}
+        </p>
+      </div>
+
+      {/* Quick view presets */}
+      <div className="quick-views">
+        <span className="quick-views-label">Quick views:</span>
+        <button
+          className={filters.colorBy === 'region' && !filters.groupBy ? 'active' : ''}
+          onClick={() => onFilterChange({ colorBy: 'region', groupBy: null })}
+        >
+          By Region
+        </button>
+        <button
+          className={filters.yearStart === 2020 && filters.yearEnd === 2023 ? 'active' : ''}
+          onClick={() => onFilterChange({ yearStart: 2020, yearEnd: 2023 })}
+        >
+          Recent (2020–23)
+        </button>
+        <button
+          className={filters.selectedStates.includes('IA') && filters.selectedStates.includes('KS') ? 'active' : ''}
+          onClick={() => onFilterChange({
+            selectedStates: ['IA', 'KS', 'OK', 'SD', 'ND', 'NE', 'MN', 'TX', 'CO', 'NM'],
+            colorBy: 'year'
+          })}
+        >
+          High Renewables
+        </button>
+        <button
+          className={filters.yearStart === filters.yearEnd && filters.yearEnd === 2023 ? 'active' : ''}
+          onClick={() => onFilterChange({ yearStart: 2023, yearEnd: 2023 })}
+        >
+          Latest Year
+        </button>
       </div>
 
       <details className="chart-description" open>
@@ -734,107 +830,150 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
         </div>
       </details>
 
-      <div className="controls">
-        <div className="control-group">
-          <label>Start Year</label>
-          <select
-            value={filters.yearStart}
-            onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
-          >
-            {data.metadata.yearsAvailable.map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
+      <div className="controls-unified">
+        {/* Main controls row */}
+        <div className="control-row">
+          <div className="control-group">
+            <label>Years</label>
+            <select
+              value={filters.yearStart}
+              onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
+            >
+              {data.metadata.yearsAvailable.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <select
+              value={filters.yearEnd}
+              onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
+            >
+              {data.metadata.yearsAvailable.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+          </div>
+
+          <StateFilter
+            selectedStates={filters.selectedStates}
+            availableStates={data.metadata.states}
+            onChange={(states) => onFilterChange({ selectedStates: states })}
+          />
+
+          <div className="control-group">
+            <label>Color</label>
+            <select
+              value={filters.colorBy}
+              onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
+              disabled={!!filters.groupBy || filters.viewMode === 'utilities'}
+              title={filters.viewMode === 'utilities' ? 'Utilities are colored by ownership type' : filters.groupBy ? 'Disabled when grouping is active' : undefined}
+            >
+              <option value="region">Region</option>
+              <option value="year">Year</option>
+            </select>
+          </div>
+
+          <div className="control-group">
+            <label>Measure</label>
+            <select
+              value={filters.reliabilityMetric}
+              onChange={(e) => onFilterChange({ reliabilityMetric: e.target.value as 'saidi' | 'saifi' })}
+              title={METRIC_INFO[filters.reliabilityMetric].description}
+            >
+              <option value="saidi">Duration</option>
+              <option value="saifi">Frequency</option>
+            </select>
+          </div>
+
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={filters.showTrendLine}
+                onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
+              />
+              Trend Line
+            </label>
+          </div>
         </div>
 
-        <div className="control-group">
-          <label>End Year</label>
-          <select
-            value={filters.yearEnd}
-            onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
-          >
-            {data.metadata.yearsAvailable.map(year => (
-              <option key={year} value={year}>{year}</option>
-            ))}
-          </select>
-        </div>
+        {/* Advanced Options (collapsible) */}
+        <details>
+          <summary className="control-advanced-toggle">Advanced</summary>
+          <div className="control-row">
+            <div className="control-group">
+              <label>Data Level</label>
+              <select
+                value={filters.viewMode}
+                onChange={(e) => onFilterChange({
+                  viewMode: e.target.value as 'states' | 'utilities',
+                  groupBy: e.target.value === 'utilities' ? null : filters.groupBy
+                })}
+              >
+                <option value="states">States ({filteredData.length} state-years)</option>
+                <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length})` : '(loading...)'}</option>
+              </select>
+              {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
+                <span className="control-hint">WebGL enabled</span>
+              )}
+            </div>
 
-        <div className="control-group">
-          <label>View</label>
-          <select
-            value={filters.viewMode}
-            onChange={(e) => onFilterChange({
-              viewMode: e.target.value as 'states' | 'utilities',
-              // Clear grouping when switching to utilities view
-              groupBy: e.target.value === 'utilities' ? null : filters.groupBy
-            })}
-          >
-            <option value="states">States ({filteredData.length} pts)</option>
-            <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length} pts)` : '(loading...)'}</option>
-          </select>
-          {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
-            <span className="control-hint">WebGL enabled</span>
-          )}
-        </div>
+            <GroupSelector
+              selection={groupSelection}
+              onChange={handleGroupChange}
+            />
 
-        <div className="control-group">
-          <label>Color By</label>
-          <select
-            value={filters.colorBy}
-            onChange={(e) => onFilterChange({ colorBy: e.target.value as 'year' | 'region' })}
-            disabled={!!filters.groupBy || filters.viewMode === 'utilities'}
-            title={filters.viewMode === 'utilities' ? 'Utilities are colored by ownership type' : filters.groupBy ? 'Disabled when grouping is active' : undefined}
-          >
-            <option value="year">Year</option>
-            <option value="region">Region</option>
-          </select>
-        </div>
+            <div className="control-group">
+              <label>&nbsp;</label>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={filters.swapAxes}
+                  onChange={(e) => onFilterChange({ swapAxes: e.target.checked })}
+                />
+                Swap Axes
+              </label>
+            </div>
+          </div>
+        </details>
 
-        <GroupSelector
-          selection={groupSelection}
-          onChange={handleGroupChange}
-        />
-
-        <div className="control-group">
-          <label>Metric</label>
-          <select
-            value={filters.reliabilityMetric}
-            onChange={(e) => onFilterChange({ reliabilityMetric: e.target.value as 'saidi' | 'saifi' })}
-            title={METRIC_INFO[filters.reliabilityMetric].description}
-          >
-            <option value="saidi">SAIDI (Duration)</option>
-            <option value="saifi">SAIFI (Frequency)</option>
-          </select>
-          <span className="control-hint">{metric === 'saidi' ? 'Outage minutes per customer' : 'Outages per customer'}</span>
-        </div>
-
-        <div className="control-group">
-          <label>Filter States</label>
-          <select
-            multiple
-            size={5}
-            value={filters.selectedStates}
-            onChange={(e) => {
-              const selected = Array.from(e.target.selectedOptions, opt => opt.value)
-              onFilterChange({ selectedStates: selected })
-            }}
-          >
-            {data.metadata.states.map(state => (
-              <option key={state} value={state}>{state}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="control-group">
-          <label>&nbsp;</label>
-          <button onClick={() => onFilterChange({ selectedStates: [] })}>
-            Clear Selection
-          </button>
-        </div>
-
-        <div className="control-group">
-          <label>Zoom</label>
-          <div className="button-group">
+        {/* Actions Row */}
+        <div className="control-actions">
+          <div className="control-actions-left">
+            <button
+              onClick={() => {
+                onFilterChange({
+                  yearStart: 2013,
+                  yearEnd: 2023,
+                  selectedStates: [],
+                  colorBy: 'region',
+                  showTrendLine: false,
+                  reliabilityMetric: 'saidi',
+                  swapAxes: false,
+                  viewMode: 'states',
+                  groupBy: null,
+                  xAxisRange: null,
+                  yAxisRange: null
+                })
+              }}
+              disabled={
+                filters.selectedStates.length === 0 &&
+                !filters.showTrendLine &&
+                !filters.groupBy &&
+                !filters.xAxisRange &&
+                filters.viewMode === 'states' &&
+                filters.reliabilityMetric === 'saidi' &&
+                filters.colorBy === 'region' &&
+                !filters.swapAxes
+              }
+              title="Reset all filters to defaults"
+            >
+              Reset All
+            </button>
             <button
               onClick={onResetViewport}
               disabled={!filters.xAxisRange && !filters.yAxisRange}
@@ -842,55 +981,26 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
             >
               Reset Zoom
             </button>
-            <button
-              onClick={() => onFilterChange({ swapAxes: !filters.swapAxes })}
-              title="Swap X and Y axes"
-            >
-              ⇄ Swap Axes
-            </button>
           </div>
-        </div>
-
-        <div className="control-group">
-          <label>Export</label>
-          <div className="button-group">
-            <button
-              onClick={() => downloadCSV(filteredData, `saidi-vre-${filters.yearStart}-${filters.yearEnd}`)}
-              title="Download filtered data as CSV"
-            >
-              CSV
-            </button>
-            <button
-              onClick={() => downloadJSON(filteredData, `saidi-vre-${filters.yearStart}-${filters.yearEnd}`)}
-              title="Download filtered data as JSON"
-            >
-              JSON
-            </button>
-          </div>
-        </div>
-
-        <div className="control-group">
-          <label>Analysis</label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={filters.showTrendLine}
-              onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
+          <div className="control-actions-right">
+            <ExportDropdown
+              onExportCSV={() => downloadCSV(filteredData, `saidi-vre-${filters.yearStart}-${filters.yearEnd}`)}
+              onExportJSON={() => downloadJSON(filteredData, `saidi-vre-${filters.yearStart}-${filters.yearEnd}`)}
             />
-            Show Trend Line
-          </label>
+          </div>
         </div>
       </div>
 
+      {/* Stats panel - above chart when trend line is shown */}
       {filters.showTrendLine && regression && summary && (
         <div className="stats-panel">
           <div className="stats-summary">
             <p className="summary-main">
               The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between
-              renewable energy penetration and {metric === 'saidi' ? 'grid outage duration' : 'outage frequency'}.
+              renewable energy share and {metric === 'saidi' ? 'outage duration' : 'outage frequency'}.
             </p>
             <p className="summary-detail">
-              Based on {summary.n} state-year observations, {summary.slopeText}.
+              Based on {summary.n} observations across {filters.yearEnd - filters.yearStart + 1} years, {summary.slopeText}.
             </p>
           </div>
           <details className="stats-technical">
@@ -909,7 +1019,7 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
                 <span className="stat-value">{regression.pValue < 0.001 ? '< 0.001' : regression.pValue.toFixed(3)}</span>
               </div>
               <div className="stat">
-                <span className="stat-label">Slope <span className="stat-hint">({metricInfo.unit} per 1% VRE)</span></span>
+                <span className="stat-label">Slope <span className="stat-hint">({metricInfo.unit} per 1% renewables)</span></span>
                 <span className="stat-value">{regression.slope.toFixed(metric === 'saidi' ? 2 : 3)} ± {(regression.seSlope * getTCritical(regression.n - 2)).toFixed(metric === 'saidi' ? 2 : 3)}</span>
               </div>
               <div className="stat">
@@ -926,6 +1036,9 @@ export default function SaidiVreChart({ data, filters, onFilterChange, onResetVi
       )}
 
       <div ref={plotRef}>
+        <p className="chart-interaction-hint">
+          Click any point to filter by that state · Drag to zoom · Double-click to reset
+        </p>
         <Plot
           data={plotData}
           layout={layout}
