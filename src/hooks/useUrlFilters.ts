@@ -7,7 +7,7 @@ const DEFAULT_FILTERS: ChartFilters = {
   yearEnd: 2023,
   selectedStates: [],
   colorBy: 'region',  // Default to region for clearer visual grouping (4 colors vs 11)
-  showTrendLine: false,
+  showTrendLine: true,  // Show trend line by default for analysis
   reliabilityMetric: 'saidi',
   swapAxes: false,
   viewMode: 'states',
@@ -40,7 +40,7 @@ export function useUrlFilters() {
     yearEnd: parseInt(searchParams.get('yearEnd') || String(DEFAULT_FILTERS.yearEnd)),
     selectedStates: searchParams.get('states')?.split(',').filter(Boolean) || [],
     colorBy: (searchParams.get('colorBy') as 'year' | 'region') || DEFAULT_FILTERS.colorBy,
-    showTrendLine: searchParams.get('trend') === 'true',
+    showTrendLine: searchParams.get('trend') !== 'false',  // Default to true unless explicitly disabled
     reliabilityMetric: (searchParams.get('metric') as 'saidi' | 'saifi') || DEFAULT_FILTERS.reliabilityMetric,
     swapAxes: searchParams.get('swap') === 'true',
     viewMode: (searchParams.get('view') as 'states' | 'utilities') || DEFAULT_FILTERS.viewMode,
@@ -65,8 +65,8 @@ export function useUrlFilters() {
       if (filters.colorBy !== 'region') {
         params.set('colorBy', filters.colorBy)
       }
-      if (filters.showTrendLine) {
-        params.set('trend', 'true')
+      if (!filters.showTrendLine) {
+        params.set('trend', 'false')  // Only add param when disabled (true is default)
       }
       if (filters.reliabilityMetric !== 'saidi') {
         params.set('metric', filters.reliabilityMetric)

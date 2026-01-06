@@ -159,13 +159,25 @@ def detect_data_source() -> str:
 
 def process_generation_data(gen_data: Dict) -> Dict[str, Dict]:
     """
-    Process generation data into state-level VRE penetration.
-    Returns dict keyed by state code with wind, solar, total generation.
+    Process generation data into state-level VRE penetration and generation mix.
+    Returns dict keyed by state code with wind, solar, total, and other fuel types.
     """
     state_gen = {}
 
+    # Map EIA fuel type codes to our field names
+    FUEL_MAPPING = {
+        "ALL": "total",
+        "WND": "wind",
+        "SUN": "solar",
+        "NG": "gas",
+        "COW": "coal",
+        "NUC": "nuclear",
+        "HYC": "hydro",
+        "OTH": "other"
+    }
+
     # Process each fuel type
-    for fuel_type in ["ALL", "WND", "SUN"]:
+    for fuel_type, field_name in FUEL_MAPPING.items():
         if fuel_type not in gen_data:
             continue
 
@@ -190,15 +202,15 @@ def process_generation_data(gen_data: Dict) -> Dict[str, Dict]:
                 state_gen[location] = {
                     "total": 0,
                     "wind": 0,
-                    "solar": 0
+                    "solar": 0,
+                    "gas": 0,
+                    "coal": 0,
+                    "nuclear": 0,
+                    "hydro": 0,
+                    "other": 0
                 }
 
-            if fuel_type == "ALL":
-                state_gen[location]["total"] = generation
-            elif fuel_type == "WND":
-                state_gen[location]["wind"] = generation
-            elif fuel_type == "SUN":
-                state_gen[location]["solar"] = generation
+            state_gen[location][field_name] = generation
 
     # Calculate VRE penetration percentages
     for state, data in state_gen.items():
@@ -290,7 +302,15 @@ def build_chart_json():
                 "rateResidential": state_rates.get("RES"),
                 "rateCommercial": state_rates.get("COM"),
                 "rateIndustrial": state_rates.get("IND"),
-                "rateAll": state_rates.get("ALL")
+                "rateAll": state_rates.get("ALL"),
+                # Generation by fuel type (MWh) for Energy Mix chart
+                "generationWind": round(gen_info.get("wind", 0), 0),
+                "generationSolar": round(gen_info.get("solar", 0), 0),
+                "generationGas": round(gen_info.get("gas", 0), 0),
+                "generationCoal": round(gen_info.get("coal", 0), 0),
+                "generationNuclear": round(gen_info.get("nuclear", 0), 0),
+                "generationHydro": round(gen_info.get("hydro", 0), 0),
+                "generationOther": round(gen_info.get("other", 0), 0)
             }
 
             all_points.append(point)

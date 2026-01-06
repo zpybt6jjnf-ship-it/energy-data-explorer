@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import RateVreChart from '../components/RateVreChart'
-import RatesOverTimeChart from '../components/charts/RatesOverTimeChart'
+import EnergyMixChart from '../components/charts/EnergyMixChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function Affordability() {
-  const { filters, handleFilterChange, resetViewport } = useUrlFilters()
+export default function EnergyMix() {
+  const { filters, handleFilterChange, resetTimeViewport } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -34,10 +33,10 @@ export default function Affordability() {
       <section className="page-hero">
         <p className="hero-eyebrow">Data Explorer</p>
         <h1 className="hero-title">
-          <span className="hero-topic">U.S. Electricity Affordability</span>
+          <span className="hero-topic">U.S. Energy Generation Mix</span>
         </h1>
         <p className="hero-subtitle">
-          Exploring electricity prices across states and their relationship to energy sources
+          Exploring how states generate electricity and how the mix is changing over time
         </p>
       </section>
 
@@ -57,18 +56,11 @@ export default function Affordability() {
 
         {data && (
           <>
-            <RateVreChart
+            <EnergyMixChart
               data={data}
               filters={filters}
               onFilterChange={handleFilterChange}
-              onResetViewport={resetViewport}
-            />
-
-            <RatesOverTimeChart
-              data={data}
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onResetViewport={resetViewport}
+              onResetViewport={resetTimeViewport}
             />
 
             <div className="share-url">
@@ -80,13 +72,7 @@ export default function Affordability() {
               <strong>Data Sources</strong>
               <ul>
                 <li>
-                  Retail Electricity Rates —{' '}
-                  <a href="https://www.eia.gov/electricity/sales_revenue_price/" target="_blank" rel="noopener noreferrer">
-                    EIA Electric Sales, Revenue, and Price
-                  </a>
-                </li>
-                <li>
-                  VRE Penetration (Wind + Solar generation share) —{' '}
+                  Generation by Fuel Type —{' '}
                   <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
                     EIA State Electricity Profiles
                   </a>

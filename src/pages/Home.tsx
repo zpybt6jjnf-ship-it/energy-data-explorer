@@ -16,6 +16,14 @@ const AVAILABLE_CHARTS = [
     href: '/explore/affordability',
     thumbnail: '/thumbnails/affordability.svg',
     tags: ['Rates', 'VRE', 'Affordability', 'Prices']
+  },
+  {
+    id: 'energy-mix',
+    title: 'Energy Mix Explorer',
+    description: 'Visualize how each U.S. state generates electricity. See the transition from coal to natural gas and renewables over time.',
+    href: '/explore/energy-mix',
+    thumbnail: '/thumbnails/energy-mix.svg',
+    tags: ['Generation', 'Fuel Mix', 'Trends', 'Decarbonization']
   }
 ]
 

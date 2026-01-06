@@ -15,6 +15,14 @@ export interface StateDataPoint {
   rateCommercial: number | null
   rateIndustrial: number | null
   rateAll: number | null
+  // Generation by fuel type (MWh) for Energy Mix chart
+  generationWind: number
+  generationSolar: number
+  generationGas: number
+  generationCoal: number
+  generationNuclear: number
+  generationHydro: number
+  generationOther: number
 }
 
 export interface UtilityDataPoint {
@@ -80,7 +88,7 @@ export interface ChartFilters {
   selectedStates: string[]
   colorBy: 'year' | 'region'
   showTrendLine: boolean
-  reliabilityMetric: 'saidi' | 'saifi'
+  reliabilityMetric: 'saidi' | 'saifi' | 'rateResidential' | 'rateCommercial' | 'rateIndustrial' | 'rateAll'
   swapAxes: boolean
   // View mode: states (default), utilities (individual utility points)
   viewMode: 'states' | 'utilities'

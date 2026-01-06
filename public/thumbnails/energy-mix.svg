@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150">
+  <!-- Background -->
+  <rect width="200" height="150" fill="#fafaf9"/>
+
+  <!-- Stacked area chart representation -->
+  <!-- Coal (bottom) - dark gray -->
+  <path d="M 20 130 L 20 80 Q 50 75, 80 70 Q 110 65, 140 55 Q 170 50, 180 45 L 180 130 Z" fill="#4d4d4d"/>
+
+  <!-- Gas - red/pink -->
+  <path d="M 20 80 Q 50 75, 80 70 Q 110 65, 140 55 Q 170 50, 180 45 L 180 40 Q 170 35, 140 30 Q 110 28, 80 32 Q 50 35, 20 40 Z" fill="#eb6b6b"/>
+
+  <!-- Nuclear - orange -->
+  <path d="M 20 40 Q 50 35, 80 32 Q 110 28, 140 30 Q 170 35, 180 40 L 180 35 Q 170 32, 140 28 Q 110 26, 80 28 Q 50 30, 20 32 Z" fill="#f18e5b"/>
+
+  <!-- Wind - green -->
+  <path d="M 20 32 Q 50 30, 80 28 Q 110 26, 140 28 Q 170 32, 180 35 L 180 28 Q 170 22, 140 18 Q 110 16, 80 18 Q 50 20, 20 25 Z" fill="#65c295"/>
+
+  <!-- Solar - yellow (top, growing) -->
+  <path d="M 20 25 Q 50 20, 80 18 Q 110 16, 140 18 Q 170 22, 180 28 L 180 25 Q 170 18, 140 14 Q 110 12, 80 14 Q 50 17, 20 22 Z" fill="#f9d057"/>
+
+  <!-- Axis lines -->
+  <line x1="20" y1="130" x2="180" y2="130" stroke="#78716c" stroke-width="1"/>
+  <line x1="20" y1="130" x2="20" y2="20" stroke="#78716c" stroke-width="1"/>
+</svg>

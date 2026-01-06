@@ -18,11 +18,17 @@ PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "raw_data"
 API_BASE = "https://api.eia.gov/v2"
 
-# Fuel types for VRE calculation
+# Fuel types for VRE calculation and Energy Mix chart
 FUEL_TYPES = {
     "WND": "wind",
     "SUN": "solar",
-    "ALL": "total"
+    "ALL": "total",
+    # Additional fuel types for Energy Mix chart
+    "NG": "gas",           # Natural gas
+    "COW": "coal",         # Coal
+    "NUC": "nuclear",      # Nuclear
+    "HYC": "hydro",        # Conventional hydroelectric
+    "OTH": "other"         # Other (geothermal, biomass, etc.)
 }
 
 
