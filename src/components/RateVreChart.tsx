@@ -1,7 +1,7 @@
 import { useMemo, useCallback, useRef, useState, useEffect } from 'react'
 import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint, UtilityData } from '../types'
-import { downloadCSV, downloadJSON } from '../utils/export'
+import { downloadCSV } from '../utils/export'
 import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../utils/plotly'
 import { STATE_GROUP_CATEGORIES } from '../data/groups/stateGroups'
 import { UTILITY_GROUP_CATEGORIES } from '../data/groups/utilityGroups'
@@ -11,52 +11,6 @@ import StateFilter from './filters/StateFilter'
 
 // WebGL threshold - use scattergl for better performance with many points
 const WEBGL_THRESHOLD = 1000
-
-// Export dropdown component
-function ExportDropdown({ onExportCSV, onExportJSON }: { onExportCSV: () => void; onExportJSON: () => void }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
-  return (
-    <div className="export-dropdown" ref={dropdownRef}>
-      <button
-        className="export-dropdown-btn"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      >
-        Export
-      </button>
-      {isOpen && (
-        <div className="export-dropdown-menu" role="menu">
-          <button
-            role="menuitem"
-            onClick={() => { onExportCSV(); setIsOpen(false) }}
-          >
-            Download CSV
-          </button>
-          <button
-            role="menuitem"
-            onClick={() => { onExportJSON(); setIsOpen(false) }}
-          >
-            Download JSON
-          </button>
-        </div>
-      )}
-    </div>
-  )
-}
 
 interface Props {
   data: ChartData
@@ -776,38 +730,6 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
         </p>
       </div>
 
-      {/* Quick view presets */}
-      <div className="quick-views">
-        <span className="quick-views-label">Quick views:</span>
-        <button
-          className={filters.colorBy === 'region' && !filters.groupBy ? 'active' : ''}
-          onClick={() => onFilterChange({ colorBy: 'region', groupBy: null })}
-        >
-          By Region
-        </button>
-        <button
-          className={filters.yearStart === 2020 && filters.yearEnd === 2023 ? 'active' : ''}
-          onClick={() => onFilterChange({ yearStart: 2020, yearEnd: 2023 })}
-        >
-          Recent (2020–23)
-        </button>
-        <button
-          className={filters.selectedStates.includes('IA') && filters.selectedStates.includes('KS') ? 'active' : ''}
-          onClick={() => onFilterChange({
-            selectedStates: ['IA', 'KS', 'OK', 'SD', 'ND', 'NE', 'MN', 'TX', 'CO', 'NM'],
-            colorBy: 'year'
-          })}
-        >
-          High Renewables
-        </button>
-        <button
-          className={filters.yearStart === filters.yearEnd && filters.yearEnd === 2023 ? 'active' : ''}
-          onClick={() => onFilterChange({ yearStart: 2023, yearEnd: 2023 })}
-        >
-          Latest Year
-        </button>
-      </div>
-
       <details className="chart-description" open>
         <summary>About this chart</summary>
         <div className="chart-description-content">
@@ -835,26 +757,25 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
         <div className="control-row">
           <div className="control-group">
             <label>Years</label>
-            <select
-              value={filters.yearStart}
-              onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
-            >
-              {data.metadata.yearsAvailable.map(year => (
-                <option key={year} value={year}>{year}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="control-group">
-            <label>&nbsp;</label>
-            <select
-              value={filters.yearEnd}
-              onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
-            >
-              {data.metadata.yearsAvailable.map(year => (
-                <option key={year} value={year}>{year}</option>
-              ))}
-            </select>
+            <div className="year-range">
+              <select
+                value={filters.yearStart}
+                onChange={(e) => onFilterChange({ yearStart: parseInt(e.target.value) })}
+              >
+                {data.metadata.yearsAvailable.map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
+              <span className="year-separator">–</span>
+              <select
+                value={filters.yearEnd}
+                onChange={(e) => onFilterChange({ yearEnd: parseInt(e.target.value) })}
+              >
+                {data.metadata.yearsAvailable.map(year => (
+                  <option key={year} value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <StateFilter
@@ -884,8 +805,39 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
                 checked={filters.showTrendLine}
                 onChange={(e) => onFilterChange({ showTrendLine: e.target.checked })}
               />
-              Trend Line
+              Trend
             </label>
+          </div>
+
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <button
+              onClick={() => onFilterChange({ selectedStates: [] })}
+              disabled={filters.selectedStates.length === 0}
+            >
+              Clear Selection
+            </button>
+          </div>
+
+          <div className="control-group">
+            <label>View</label>
+            <button
+              onClick={onResetViewport}
+              disabled={!filters.xAxisRange && !filters.yAxisRange}
+              title="Reset to default zoom level"
+            >
+              Reset Zoom
+            </button>
+          </div>
+
+          <div className="control-group">
+            <label>Export</label>
+            <button
+              onClick={() => downloadCSV(filteredData, `rates-vre-${filters.yearStart}-${filters.yearEnd}`)}
+              title="Download filtered data as CSV"
+            >
+              CSV
+            </button>
           </div>
         </div>
 
@@ -902,15 +854,9 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
                   groupBy: e.target.value === 'utilities' ? null : filters.groupBy
                 })}
               >
-                <option value="states">States ({filteredData.length} state-years)</option>
-                <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length})` : '(loading...)'}</option>
+                <option value="states">States ({filteredData.length})</option>
+                <option value="utilities">Utilities {utilityData ? `(${filteredUtilities.length})` : '(...)'}</option>
               </select>
-              {filters.viewMode === 'utilities' && filteredUtilities.length > WEBGL_THRESHOLD && (
-                <span className="control-hint">WebGL enabled</span>
-              )}
-              {filters.viewMode === 'utilities' && (
-                <span className="control-hint">Shows SAIDI vs VRE (no rate data)</span>
-              )}
             </div>
 
             <GroupSelector
@@ -931,53 +877,6 @@ export default function RateVreChart({ data, filters, onFilterChange, onResetVie
             </div>
           </div>
         </details>
-
-        {/* Actions Row */}
-        <div className="control-actions">
-          <div className="control-actions-left">
-            <button
-              onClick={() => {
-                onFilterChange({
-                  yearStart: 2013,
-                  yearEnd: 2023,
-                  selectedStates: [],
-                  colorBy: 'region',
-                  showTrendLine: false,
-                  swapAxes: false,
-                  viewMode: 'states',
-                  groupBy: null,
-                  xAxisRange: null,
-                  yAxisRange: null
-                })
-              }}
-              disabled={
-                filters.selectedStates.length === 0 &&
-                !filters.showTrendLine &&
-                !filters.groupBy &&
-                !filters.xAxisRange &&
-                filters.viewMode === 'states' &&
-                filters.colorBy === 'region' &&
-                !filters.swapAxes
-              }
-              title="Reset all filters to defaults"
-            >
-              Reset All
-            </button>
-            <button
-              onClick={onResetViewport}
-              disabled={!filters.xAxisRange && !filters.yAxisRange}
-              title="Reset to default zoom level"
-            >
-              Reset Zoom
-            </button>
-          </div>
-          <div className="control-actions-right">
-            <ExportDropdown
-              onExportCSV={() => downloadCSV(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
-              onExportJSON={() => downloadJSON(filteredData, `rate-vre-${filters.yearStart}-${filters.yearEnd}`)}
-            />
-          </div>
-        </div>
       </div>
 
       {/* Stats panel - above chart when trend line is shown */}

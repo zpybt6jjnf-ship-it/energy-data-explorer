@@ -1283,22 +1283,33 @@ footer p::after {
   display: contents;
 }
 
-.region-buttons {
+.state-filter-stack {
   display: flex;
+  flex-direction: column;
   gap: var(--space-1);
 }
 
+.state-filter-stack select {
+  width: 100%;
+  min-width: 90px;
+}
+
+.region-buttons {
+  display: flex;
+  gap: 2px;
+}
+
 .region-btn {
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-xs);
+  padding: 2px 6px;
+  font-size: 10px;
   font-weight: 600;
   font-family: var(--font-mono);
   background: var(--color-paper);
   border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   cursor: pointer;
   transition: all 0.15s ease;
-  min-width: 32px;
+  flex: 1;
 }
 
 .region-btn:hover {
@@ -1329,22 +1340,21 @@ footer p::after {
 .state-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1);
+  gap: 3px;
   align-items: center;
 }
 
 .state-chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-xs);
+  padding: 2px 5px;
+  font-size: 10px;
   font-weight: 500;
   font-family: var(--font-mono);
   background: var(--color-teal);
   color: white;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -1353,29 +1363,19 @@ footer p::after {
   background: var(--color-coral);
 }
 
-.chip-remove {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  opacity: 0.7;
-}
-
-.state-chip:hover .chip-remove {
-  opacity: 1;
-}
-
 .chip-overflow {
-  font-size: var(--text-xs);
+  font-size: 10px;
   color: var(--color-ink-muted);
-  padding: var(--space-1);
+  padding: 2px 4px;
 }
 
 .clear-all-btn {
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-xs);
+  padding: 2px 6px;
+  font-size: 10px;
   font-weight: 500;
   background: transparent;
   border: 1px dashed var(--color-border-dark);
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   color: var(--color-ink-muted);
   cursor: pointer;
   transition: all 0.15s ease;
@@ -1406,49 +1406,6 @@ footer p::after {
   margin-top: var(--space-2);
 }
 
-/* Quick view preset buttons */
-.quick-views {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-  padding: var(--space-3);
-  background: var(--color-cream);
-  border-radius: var(--radius-md);
-  flex-wrap: wrap;
-}
-
-.quick-views-label {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-ink-muted);
-}
-
-.quick-views button {
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  background: var(--color-paper);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
-  color: var(--color-ink-light);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.quick-views button:hover {
-  border-color: var(--color-teal);
-  color: var(--color-teal);
-}
-
-.quick-views button.active {
-  background: var(--color-teal);
-  border-color: var(--color-teal);
-  color: white;
-}
-
 /* Unified Controls Box */
 .controls-unified {
   background: var(--color-cream);
@@ -1466,6 +1423,18 @@ footer p::after {
 
 .control-row + .control-row {
   border-top: 1px solid var(--color-border);
+}
+
+/* Year range inline */
+.year-range {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.year-separator {
+  color: var(--color-ink-muted);
+  font-size: var(--text-sm);
 }
 
 /* Advanced toggle within controls */
@@ -1499,128 +1468,4 @@ details[open] > .control-advanced-toggle::before {
 
 .control-advanced-toggle:hover {
   color: var(--color-ink);
-}
-
-/* Actions row */
-.control-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  border-top: 1px solid var(--color-border);
-  background: var(--color-paper);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-}
-
-.control-actions-left,
-.control-actions-right {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.control-actions button {
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-paper);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-ink-light);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.control-actions button:hover:not(:disabled) {
-  border-color: var(--color-teal);
-  color: var(--color-teal);
-}
-
-.control-actions button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Export dropdown */
-.export-dropdown {
-  position: relative;
-}
-
-.export-dropdown-btn {
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-paper);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-ink-light);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.export-dropdown-btn:hover {
-  border-color: var(--color-teal);
-  color: var(--color-teal);
-}
-
-.export-dropdown-btn::after {
-  content: '▼';
-  font-size: 0.6em;
-}
-
-.export-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: var(--space-1);
-  background: var(--color-paper);
-  border: 1px solid var(--color-border-dark);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px var(--color-shadow);
-  min-width: 120px;
-  z-index: 100;
-}
-
-.export-dropdown-menu button {
-  display: block;
-  width: 100%;
-  padding: var(--space-2) var(--space-3);
-  background: none;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  color: var(--color-ink);
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.export-dropdown-menu button:hover {
-  background: var(--color-cream);
-}
-
-.export-dropdown-menu button:first-child {
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-}
-
-.export-dropdown-menu button:last-child {
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-}
-
-@media (max-width: 768px) {
-  .control-actions {
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .control-actions-left,
-  .control-actions-right {
-    width: 100%;
-    justify-content: center;
-  }
 }

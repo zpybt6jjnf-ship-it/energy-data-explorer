@@ -85,63 +85,51 @@ export default function StateFilter({ selectedStates, availableStates, onChange 
 
   return (
     <div className="state-filter">
-      {/* Region quick-select buttons */}
-      <div className="control-group">
-        <label>Regions</label>
-        <div className="region-buttons">
-          {REGIONS.map(region => {
-            const stateCount = getStatesByRegion(region).filter(s => availableStates.includes(s)).length
-            return (
-              <button
-                key={region}
-                onClick={() => toggleRegion(region)}
-                className={`region-btn ${regionStatus[region]}`}
-                title={`${region} (${stateCount} states): ${REGION_DESCRIPTIONS[region]}`}
-              >
-                {REGION_ABBREVIATIONS[region]}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* State dropdown */}
+      {/* Combined region + states control */}
       <div className="control-group">
         <label>
           States
           <span className="state-count">
             {selectedCount === 0
               ? `(all ${totalStates})`
-              : `(${selectedCount} of ${totalStates})`}
+              : `(${selectedCount})`}
           </span>
         </label>
-        <select
-          multiple
-          size={5}
-          value={selectedStates}
-          onChange={(e) => {
-            const clickedState = e.target.value
-            // For multi-select, we handle individual clicks
-            if (e.nativeEvent instanceof MouseEvent && !e.nativeEvent.ctrlKey && !e.nativeEvent.metaKey) {
-              toggleState(clickedState)
-            } else {
-              onChange(Array.from(e.target.selectedOptions, opt => opt.value))
-            }
-          }}
-          onClick={(e) => {
-            // Handle single clicks without modifier keys
-            const target = e.target as HTMLOptionElement
-            if (target.tagName === 'OPTION') {
-              e.preventDefault()
-              toggleState(target.value)
-            }
-          }}
-        >
-          {availableStates.map(state => (
-            <option key={state} value={state}>{state}</option>
-          ))}
-        </select>
-        <span className="control-hint">Click to toggle · Ctrl-click for range</span>
+        <div className="state-filter-stack">
+          <div className="region-buttons">
+            {REGIONS.map(region => (
+              <button
+                key={region}
+                onClick={() => toggleRegion(region)}
+                className={`region-btn ${regionStatus[region]}`}
+                title={`${region}: ${REGION_DESCRIPTIONS[region]}`}
+              >
+                {REGION_ABBREVIATIONS[region]}
+              </button>
+            ))}
+          </div>
+          <select
+            multiple
+            size={4}
+            value={selectedStates}
+            onMouseDown={(e) => {
+              // Handle clicks on options for toggle behavior
+              const target = e.target as HTMLElement
+              if (target.tagName === 'OPTION') {
+                e.preventDefault()
+                const option = target as HTMLOptionElement
+                toggleState(option.value)
+              }
+            }}
+            onChange={() => {
+              // Prevent default multi-select behavior - we handle it in onMouseDown
+            }}
+          >
+            {availableStates.map(state => (
+              <option key={state} value={state}>{state}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Selected state chips */}
@@ -149,7 +137,7 @@ export default function StateFilter({ selectedStates, availableStates, onChange 
         <div className="control-group">
           <label>&nbsp;</label>
           <div className="state-chips">
-            {selectedStates.length <= 8 ? (
+            {selectedStates.length <= 6 ? (
               selectedStates.map(state => (
                 <button
                   key={state}
@@ -157,28 +145,28 @@ export default function StateFilter({ selectedStates, availableStates, onChange 
                   onClick={() => removeState(state)}
                   title={`Remove ${state}`}
                 >
-                  {state} <span className="chip-remove">×</span>
+                  {state} ×
                 </button>
               ))
             ) : (
               <>
-                {selectedStates.slice(0, 6).map(state => (
+                {selectedStates.slice(0, 5).map(state => (
                   <button
                     key={state}
                     className="state-chip"
                     onClick={() => removeState(state)}
                     title={`Remove ${state}`}
                   >
-                    {state} <span className="chip-remove">×</span>
+                    {state} ×
                   </button>
                 ))}
-                <span className="chip-overflow">+{selectedStates.length - 6} more</span>
+                <span className="chip-overflow">+{selectedStates.length - 5}</span>
               </>
             )}
             <button
               className="clear-all-btn"
               onClick={() => onChange([])}
-              title="Clear all selected states"
+              title="Clear all"
             >
               Clear
             </button>
