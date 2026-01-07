@@ -20,7 +20,10 @@ const DEFAULT_FILTERS: ChartFilters = {
   xAxisRange: null,
   yAxisRange: null,
   timeXRange: null,
-  timeYRange: null
+  timeYRange: null,
+  // Zeke plot defaults (compare earliest to latest year)
+  changeYearStart: 2013,
+  changeYearEnd: 2023
 }
 
 // Parse axis range from URL param (e.g., "0,50" -> [0, 50])
@@ -56,7 +59,9 @@ export function useUrlFilters() {
     xAxisRange: parseAxisRange(searchParams.get('xRange')),
     yAxisRange: parseAxisRange(searchParams.get('yRange')),
     timeXRange: parseAxisRange(searchParams.get('timeXRange')),
-    timeYRange: parseAxisRange(searchParams.get('timeYRange'))
+    timeYRange: parseAxisRange(searchParams.get('timeYRange')),
+    changeYearStart: parseInt(searchParams.get('changeStart') || String(DEFAULT_FILTERS.changeYearStart)),
+    changeYearEnd: parseInt(searchParams.get('changeEnd') || String(DEFAULT_FILTERS.changeYearEnd))
   }))
 
   // Sync filters to URL (debounced for viewport changes)
@@ -113,6 +118,13 @@ export function useUrlFilters() {
       }
       if (filters.timeYRange) {
         params.set('timeYRange', filters.timeYRange.map(n => n.toFixed(2)).join(','))
+      }
+      // Zeke plot year comparison - only add if different from defaults
+      if (filters.changeYearStart !== DEFAULT_FILTERS.changeYearStart) {
+        params.set('changeStart', filters.changeYearStart.toString())
+      }
+      if (filters.changeYearEnd !== DEFAULT_FILTERS.changeYearEnd) {
+        params.set('changeEnd', filters.changeYearEnd.toString())
       }
 
       setSearchParams(params, { replace: true })

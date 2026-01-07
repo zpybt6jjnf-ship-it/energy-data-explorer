@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChart from '../components/ReliabilityChart'
-import ReliabilityOverTimeChart from '../components/ReliabilityOverTimeChart'
-import ReliabilityChangeScatter from '../components/charts/ReliabilityChangeScatter'
-import OwnershipBoxPlot from '../components/charts/OwnershipBoxPlot'
+import GenerationSankeyChart from '../components/charts/GenerationSankeyChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function Reliability() {
-  const { filters, handleFilterChange, resetViewport, resetTimeViewport } = useUrlFilters()
+export default function EnergyTransitions() {
+  const { filters, handleFilterChange } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -36,10 +33,10 @@ export default function Reliability() {
       <section className="page-hero">
         <p className="hero-eyebrow">Data Explorer</p>
         <h1 className="hero-title">
-          <span className="hero-topic">U.S. Grid Reliability</span>
+          <span className="hero-topic">Energy Transition Flows</span>
         </h1>
         <p className="hero-subtitle">
-          Exploring power outage patterns across states, over time, and in relation to energy sources
+          Visualize how electricity generation sources have shifted over time
         </p>
       </section>
 
@@ -59,42 +56,13 @@ export default function Reliability() {
 
         {data && (
           <>
-            <ReliabilityChart
+            <GenerationSankeyChart
               data={data}
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onResetViewport={resetViewport}
-            />
-
-            <ReliabilityChangeScatter
-              data={data}
-              yearStart={filters.changeYearStart}
-              yearEnd={filters.changeYearEnd}
-              reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
-              includeMED={filters.includeMED}
-              onYearStartChange={(year) => handleFilterChange({ changeYearStart: year })}
-              onYearEndChange={(year) => handleFilterChange({ changeYearEnd: year })}
-              onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
-              onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
-            />
-
-            <ReliabilityOverTimeChart
-              data={data}
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onResetViewport={resetTimeViewport}
-            />
-
-            <OwnershipBoxPlot
               yearStart={filters.yearStart}
               yearEnd={filters.yearEnd}
-              reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
-              includeMED={filters.includeMED}
               yearsAvailable={data.metadata.yearsAvailable}
               onYearStartChange={(year) => handleFilterChange({ yearStart: year })}
               onYearEndChange={(year) => handleFilterChange({ yearEnd: year })}
-              onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
-              onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
             />
 
             <div className="share-url">
@@ -106,13 +74,7 @@ export default function Reliability() {
               <strong>Data Sources</strong>
               <ul>
                 <li>
-                  SAIDI (System Average Interruption Duration Index) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
-                  </a>
-                </li>
-                <li>
-                  VRE Penetration (Wind + Solar generation share) —{' '}
+                  State Electricity Generation by Fuel Type —{' '}
                   <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
                     EIA State Electricity Profiles
                   </a>

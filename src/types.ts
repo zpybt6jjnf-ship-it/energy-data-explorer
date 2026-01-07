@@ -114,6 +114,9 @@ export interface ChartFilters {
   // Viewport state for time chart
   timeXRange: [number, number] | null
   timeYRange: [number, number] | null
+  // Zeke plot (Change in reliability vs change in VRE) year comparison
+  changeYearStart: number
+  changeYearEnd: number
 }
 
 // State to region mapping

@@ -4,6 +4,10 @@ import Home from './pages/Home'
 import Reliability from './pages/Reliability'
 import Affordability from './pages/Affordability'
 import EnergyMix from './pages/EnergyMix'
+import ReliabilityVsRates from './pages/ReliabilityVsRates'
+import ReliabilityMap from './pages/ReliabilityMap'
+import RtoAnalysis from './pages/RtoAnalysis'
+import EnergyTransitions from './pages/EnergyTransitions'
 
 export default function App() {
   return (
@@ -13,6 +17,10 @@ export default function App() {
         <Route path="/explore/reliability" element={<Reliability />} />
         <Route path="/explore/affordability" element={<Affordability />} />
         <Route path="/explore/energy-mix" element={<EnergyMix />} />
+        <Route path="/explore/reliability-rates" element={<ReliabilityVsRates />} />
+        <Route path="/explore/reliability-map" element={<ReliabilityMap />} />
+        <Route path="/explore/rto-analysis" element={<RtoAnalysis />} />
+        <Route path="/explore/energy-transitions" element={<EnergyTransitions />} />
       </Routes>
     </Layout>
   )

@@ -1,5 +1,66 @@
 import { StateDataPoint } from '../types'
 
+// Generic record type for flexible exports
+type ExportRecord = Record<string, string | number | null | undefined>
+
+/**
+ * Escape CSV field values that contain special characters
+ */
+function escapeField(field: string | number | null | undefined): string {
+  const str = String(field ?? '')
+  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+    return `"${str.replace(/"/g, '""')}"`
+  }
+  return str
+}
+
+/**
+ * Download any array of objects as CSV file (generic)
+ */
+export function downloadGenericCSV(data: ExportRecord[], filename: string): void {
+  if (data.length === 0) return
+
+  // Use keys from first object as headers
+  const headers = Object.keys(data[0])
+  const rows = data.map(row => headers.map(key => row[key]))
+
+  const csvContent = [
+    headers.map(escapeField).join(','),
+    ...rows.map(row => row.map(escapeField).join(','))
+  ].join('\n')
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+
+  const link = document.createElement('a')
+  link.href = url
+  link.download = `${filename}.csv`
+  link.click()
+
+  URL.revokeObjectURL(url)
+}
+
+/**
+ * Download any array of objects as JSON file (generic)
+ */
+export function downloadGenericJSON(data: ExportRecord[], filename: string): void {
+  const exportData = {
+    exportedAt: new Date().toISOString(),
+    recordCount: data.length,
+    data
+  }
+
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+
+  const link = document.createElement('a')
+  link.href = url
+  link.download = `${filename}.json`
+  link.click()
+
+  URL.revokeObjectURL(url)
+}
+
 /**
  * Download filtered data as CSV file
  */

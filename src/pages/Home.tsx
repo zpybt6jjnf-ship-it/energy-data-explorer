@@ -24,6 +24,38 @@ const AVAILABLE_CHARTS = [
     href: '/explore/energy-mix',
     thumbnail: '/thumbnails/energy-mix.svg',
     tags: ['Generation', 'Fuel Mix', 'Trends', 'Decarbonization']
+  },
+  {
+    id: 'reliability-rates',
+    title: 'Reliability vs. Prices',
+    description: 'Do higher electricity rates lead to better grid reliability? Explore the relationship between what customers pay and service quality.',
+    href: '/explore/reliability-rates',
+    thumbnail: '/thumbnails/reliability.svg',
+    tags: ['SAIDI', 'Rates', 'Reliability', 'Prices']
+  },
+  {
+    id: 'reliability-map',
+    title: 'Reliability Change Map',
+    description: 'Interactive U.S. map showing which states improved or degraded in grid reliability between any two years.',
+    href: '/explore/reliability-map',
+    thumbnail: '/thumbnails/reliability.svg',
+    tags: ['Map', 'SAIDI', 'YoY Change', 'States']
+  },
+  {
+    id: 'rto-analysis',
+    title: 'RTO Region Analysis',
+    description: 'Compare grid reliability across Regional Transmission Organizations (RTOs). See how PJM, MISO, ERCOT, and other regions perform over time.',
+    href: '/explore/rto-analysis',
+    thumbnail: '/thumbnails/reliability.svg',
+    tags: ['RTO', 'SAIDI', 'Regions', 'Comparison']
+  },
+  {
+    id: 'energy-transitions',
+    title: 'Energy Transition Flows',
+    description: 'Sankey diagram showing how electricity generation sources have shifted over time. See the rise of renewables and decline of coal.',
+    href: '/explore/energy-transitions',
+    thumbnail: '/thumbnails/energy-mix.svg',
+    tags: ['Sankey', 'Generation', 'Transition', 'Fuel Mix']
   }
 ]
 

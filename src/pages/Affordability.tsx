@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import RateVreChart from '../components/RateVreChart'
 import RatesOverTimeChart from '../components/charts/RatesOverTimeChart'
+import RateVolatilityChart from '../components/charts/RateVolatilityChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -69,6 +70,14 @@ export default function Affordability() {
               filters={filters}
               onFilterChange={handleFilterChange}
               onResetViewport={resetViewport}
+            />
+
+            <RateVolatilityChart
+              data={data}
+              yearStart={filters.yearStart}
+              yearEnd={filters.yearEnd}
+              onYearStartChange={(year) => handleFilterChange({ yearStart: year })}
+              onYearEndChange={(year) => handleFilterChange({ yearEnd: year })}
             />
 
             <div className="share-url">
