@@ -96,6 +96,10 @@ export interface ChartFilters {
   groupBy: string | null           // Group category ID (e.g., 'rto-regions', 'market-structure')
   groupLevel: 'state' | 'utility'  // Whether grouping at state or utility level
   showGroupMembers: boolean        // Show individual state/utility points behind aggregated
+  // Time series chart compare mode: 'states' (individual) or category ID (e.g., 'rto-regions')
+  timeCompareMode: string
+  // Selected groups within the category for comparison (empty = show all)
+  timeSelectedGroups: string[]
   // Viewport state for shareable zoom/pan (scatter chart)
   xAxisRange: [number, number] | null
   yAxisRange: [number, number] | null

@@ -629,6 +629,44 @@ details[open] .description-toggle::before {
   cursor: pointer;
 }
 
+/* Group checkboxes for comparison mode */
+.group-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.group-checkboxes .checkbox-label {
+  padding: var(--space-1) var(--space-2);
+  min-height: 32px;
+  font-size: var(--text-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-paper);
+}
+
+.group-checkboxes .checkbox-label:hover {
+  border-color: var(--color-teal);
+}
+
+.group-checkboxes .checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+/* Copy button feedback states */
+button.copy-success {
+  background-color: var(--color-teal) !important;
+  color: white !important;
+  border-color: var(--color-teal) !important;
+}
+
+button.copy-error {
+  background-color: #d62728 !important;
+  color: white !important;
+  border-color: #d62728 !important;
+}
+
 /* Stats Panel */
 .stats-panel {
   padding: var(--space-4);
@@ -1086,42 +1124,6 @@ select:active,
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-2);
   }
-}
-
-/* Easter Eggs */
-.watt-tooltip {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--color-ink);
-  color: var(--color-gold);
-  padding: var(--space-4) var(--space-6);
-  border-radius: var(--radius-lg);
-  font-family: var(--font-mono);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  z-index: 9999;
-  animation: wattAppear 2s ease-out forwards;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes wattAppear {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-  30% { transform: translate(-50%, -50%) scale(1); }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.hero-vs.spinning {
-  animation: spinSymbol 0.5s ease-out;
-}
-
-@keyframes spinSymbol {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.2); }
-  100% { transform: rotate(360deg) scale(1); }
 }
 
 /* Texas 2021 Easter Egg */

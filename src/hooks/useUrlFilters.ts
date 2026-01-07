@@ -14,6 +14,8 @@ const DEFAULT_FILTERS: ChartFilters = {
   groupBy: null,
   groupLevel: 'state',
   showGroupMembers: false,
+  timeCompareMode: 'states',  // 'states' for individual states, or category ID for group averages
+  timeSelectedGroups: [],     // Selected groups within category for comparison (empty = all)
   xAxisRange: null,
   yAxisRange: null,
   timeXRange: null,
@@ -47,6 +49,8 @@ export function useUrlFilters() {
     groupBy: searchParams.get('groupBy') || null,
     groupLevel: (searchParams.get('groupLevel') as 'state' | 'utility') || DEFAULT_FILTERS.groupLevel,
     showGroupMembers: searchParams.get('showMembers') === 'true',
+    timeCompareMode: searchParams.get('compare') || DEFAULT_FILTERS.timeCompareMode,
+    timeSelectedGroups: searchParams.get('groups')?.split(',').filter(Boolean) || [],
     xAxisRange: parseAxisRange(searchParams.get('xRange')),
     yAxisRange: parseAxisRange(searchParams.get('yRange')),
     timeXRange: parseAxisRange(searchParams.get('timeXRange')),
@@ -85,6 +89,12 @@ export function useUrlFilters() {
       }
       if (filters.showGroupMembers) {
         params.set('showMembers', 'true')
+      }
+      if (filters.timeCompareMode !== 'states') {
+        params.set('compare', filters.timeCompareMode)
+      }
+      if (filters.timeSelectedGroups.length > 0) {
+        params.set('groups', filters.timeSelectedGroups.join(','))
       }
       // Only include viewport state if set (keeps URLs cleaner)
       if (filters.xAxisRange) {

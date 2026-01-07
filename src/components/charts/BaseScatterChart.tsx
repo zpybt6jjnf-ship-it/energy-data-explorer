@@ -247,6 +247,38 @@ export default function BaseScatterChart({
     })
   }, [utilityData, filters.viewMode, filters.yearStart, filters.yearEnd, filters.selectedStates, metricKey])
 
+  // Build state generation lookup for utility view (stateCode+year -> generation data)
+  const stateGenerationLookup = useMemo(() => {
+    const lookup = new Map<string, {
+      gas: number
+      coal: number
+      nuclear: number
+      hydro: number
+      wind: number
+      solar: number
+      other: number
+      total: number
+    }>()
+
+    data.points.forEach(p => {
+      const key = `${p.stateCode}-${p.year}`
+      const total = p.generationGas + p.generationCoal + p.generationNuclear +
+                   p.generationHydro + p.generationWind + p.generationSolar + p.generationOther
+      lookup.set(key, {
+        gas: total > 0 ? (p.generationGas / total) * 100 : 0,
+        coal: total > 0 ? (p.generationCoal / total) * 100 : 0,
+        nuclear: total > 0 ? (p.generationNuclear / total) * 100 : 0,
+        hydro: total > 0 ? (p.generationHydro / total) * 100 : 0,
+        wind: total > 0 ? (p.generationWind / total) * 100 : 0,
+        solar: total > 0 ? (p.generationSolar / total) * 100 : 0,
+        other: total > 0 ? (p.generationOther / total) * 100 : 0,
+        total
+      })
+    })
+
+    return lookup
+  }, [data.points])
+
   // Calculate aggregated data when groupBy is set
   const aggregatedData = useMemo((): AggregatedDataPoint[] => {
     if (!filters.groupBy || !config.features.aggregation) return []
@@ -355,13 +387,20 @@ export default function BaseScatterChart({
       `<span style="color:${COLORS.inkMuted}">%{customdata.state} · %{customdata.ownership}</span><br><br>` +
       `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
       `State ${config.xAxis.label}: %{customdata.xValue:.1f}${config.xAxis.suffix || ''}<br>` +
-      `<span style="color:${COLORS.inkMuted}">%{customdata.customers:,.0f} customers</span>` +
+      `<span style="color:${COLORS.inkMuted}">%{customdata.customers:,.0f} customers</span><br><br>` +
+      `<b>State Generation Mix</b><br>` +
+      `<span style="color:#eb6b6b">Gas: %{customdata.genGas:.0f}%</span> · ` +
+      `<span style="color:#4d4d4d">Coal: %{customdata.genCoal:.0f}%</span><br>` +
+      `<span style="color:#f18e5b">Nuclear: %{customdata.genNuclear:.0f}%</span> · ` +
+      `<span style="color:#65c295">Wind: %{customdata.genWind:.0f}%</span> · ` +
+      `<span style="color:#f9d057">Solar: %{customdata.genSolar:.0f}%</span>` +
       '<extra></extra>'
 
     const groupHoverTemplate =
       '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
       `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} members</span><br><br>` +
-      `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit}<br>` +
+      `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${metricInfo.unit} (%{customdata.metricDeltaStr})<br>` +
+      `<span style="color:${COLORS.inkMuted}">Avg: %{customdata.avgMetric:${metricFormat}} ${metricInfo.unit}</span><br><br>` +
       `${config.xAxis.label}: %{customdata.xValue:.1f}${config.xAxis.suffix || ''}` +
       '<extra></extra>'
 
@@ -391,16 +430,25 @@ export default function BaseScatterChart({
           y: swapAxes
             ? ownershipUtilities.map(u => u.stateVrePenetration)
             : ownershipUtilities.map(u => u[metricKey as keyof typeof u] as number),
-          customdata: ownershipUtilities.map(u => ({
-            utilityName: u.utilityName,
-            utilityId: u.utilityId,
-            state: u.state,
-            stateCode: u.stateCode,
-            ownership: u.ownership,
-            metricValue: u[metricKey as keyof typeof u],
-            xValue: u.stateVrePenetration,
-            customers: u.customers || 0
-          })),
+          customdata: ownershipUtilities.map(u => {
+            const gen = stateGenerationLookup.get(`${u.stateCode}-${u.year}`)
+            return {
+              utilityName: u.utilityName,
+              utilityId: u.utilityId,
+              state: u.state,
+              stateCode: u.stateCode,
+              ownership: u.ownership,
+              metricValue: u[metricKey as keyof typeof u],
+              xValue: u.stateVrePenetration,
+              customers: u.customers || 0,
+              genGas: gen?.gas || 0,
+              genCoal: gen?.coal || 0,
+              genNuclear: gen?.nuclear || 0,
+              genHydro: gen?.hydro || 0,
+              genWind: gen?.wind || 0,
+              genSolar: gen?.solar || 0
+            }
+          }),
           mode: 'markers' as const,
           type: chartType as 'scatter',
           name: ownership,
@@ -466,15 +514,20 @@ export default function BaseScatterChart({
             ? groupPoints.map(p => p.vrePenetration)
             : groupPoints.map(p => p[metricKey as keyof AggregatedDataPoint] as number),
           text: groupPoints.map(p => `${groupName} (${p.year})`),
-          customdata: groupPoints.map(p => ({
-            groupName: p.groupName,
-            groupId: p.groupId,
-            year: p.year,
-            metricValue: p[metricKey as keyof AggregatedDataPoint],
-            xValue: p.vrePenetration,
-            memberCount: p.memberCount,
-            members: p.members.join(', ')
-          })),
+          customdata: groupPoints.map(p => {
+            const metricValue = p[metricKey as keyof AggregatedDataPoint] as number
+            return {
+              groupName: p.groupName,
+              groupId: p.groupId,
+              year: p.year,
+              metricValue,
+              xValue: p.vrePenetration,
+              memberCount: p.memberCount,
+              members: p.members.join(', '),
+              avgMetric: avgMetricValue,
+              metricDeltaStr: formatPercentDelta(metricValue, avgMetricValue)
+            }
+          }),
           mode: 'markers+text' as const,
           type: 'scatter' as const,
           name: groupName,
@@ -793,7 +846,7 @@ export default function BaseScatterChart({
         </div>
 
         <ExportButtons
-          data={filteredData}
+          data={data.points}
           filename={`${config.exportFilename || config.id}-${filters.yearStart}-${filters.yearEnd}`}
         />
       </ChartControlsWrapper>

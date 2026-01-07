@@ -2,11 +2,11 @@ import { StateDataPoint } from '../../types'
 import { downloadCSV, downloadJSON } from '../../utils/export'
 
 interface Props {
-  /** Data to export */
+  /** Full dataset for CSV/JSON export */
   data: StateDataPoint[]
   /** Filename prefix (without extension) */
   filename: string
-  /** Which formats to show (default: both CSV and JSON) */
+  /** Which formats to show (default: CSV and JSON) */
   formats?: ('csv' | 'json')[]
   /** Label for the control group */
   label?: string
@@ -28,7 +28,7 @@ export default function ExportButtons({
         {formats.includes('csv') && (
           <button
             onClick={() => downloadCSV(data, filename)}
-            title="Download filtered data as CSV"
+            title="Download full dataset as CSV"
           >
             CSV
           </button>
@@ -36,7 +36,7 @@ export default function ExportButtons({
         {formats.includes('json') && (
           <button
             onClick={() => downloadJSON(data, filename)}
-            title="Download filtered data as JSON"
+            title="Download full dataset as JSON"
           >
             JSON
           </button>

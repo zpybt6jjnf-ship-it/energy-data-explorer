@@ -3,9 +3,13 @@ import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, StateDataPoint } from '../../types'
 import { LineChartConfig, MetricOption } from '../../types/chartConfig'
 // Export functions are used via ExportButtons component
-import { COLORS, LINE_COLORS, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
+import { COLORS, LINE_COLORS, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
+import { STATE_GROUP_CATEGORIES, GroupCategory } from '../../data/groups/stateGroups'
 import StateFilter from '../filters/StateFilter'
 import { YearRangeSelector, ExportButtons, ChartControlsWrapper } from '../controls'
+
+/** Compare mode - individual states or a group category */
+export type CompareMode = 'states' | string // string is category ID like 'rto-regions'
 
 export interface BaseLineChartProps {
   config: LineChartConfig
@@ -15,6 +19,8 @@ export interface BaseLineChartProps {
   onResetViewport?: () => void
   /** Number of default states to show when none selected */
   defaultStateCount?: number
+  /** Enable grouping feature (Compare dropdown) */
+  enableGrouping?: boolean
 }
 
 interface MetricInfo {
@@ -35,10 +41,19 @@ export default function BaseLineChart({
   filters,
   onFilterChange,
   onResetViewport,
-  defaultStateCount = 5
+  defaultStateCount = 5,
+  enableGrouping = true
 }: BaseLineChartProps) {
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
+  const plotRef = useRef<HTMLDivElement>(null)
+
+  // Compare mode from filters (defaults to 'states')
+  const compareMode: CompareMode = filters.timeCompareMode || 'states'
+  const selectedCategory: GroupCategory | undefined = STATE_GROUP_CATEGORIES.find(c => c.id === compareMode)
+
+  // Selected groups within the category (for comparison filtering)
+  const selectedGroups: string[] = filters.timeSelectedGroups || []
 
   // Handle plot initialization for zoom persistence
   const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {
@@ -123,7 +138,47 @@ export default function BaseLineChart({
     })
   }, [filteredData, getYValue])
 
-  // Get state info for selected states
+  // Compute group averages when in group mode
+  const groupAverages = useMemo(() => {
+    if (!selectedCategory) return []
+
+    const years = [...new Set(filteredData.map(p => p.year))].sort()
+    const result: Array<{
+      groupId: string
+      groupName: string
+      points: Array<{ year: number; avg: number; count: number }>
+      color: string
+    }> = []
+
+    // Filter to selected groups if any are specified
+    const groupsToShow = selectedGroups.length > 0
+      ? selectedCategory.groups.filter(g => selectedGroups.includes(g.id))
+      : selectedCategory.groups
+
+    groupsToShow.forEach((group, i) => {
+      const groupPoints = years.map(year => {
+        const yearData = filteredData.filter(
+          p => p.year === year && group.states.includes(p.stateCode)
+        )
+        if (yearData.length === 0) return null
+        const avg = yearData.reduce((sum, p) => sum + getYValue(p)!, 0) / yearData.length
+        return { year, avg, count: yearData.length }
+      }).filter((p): p is { year: number; avg: number; count: number } => p !== null)
+
+      if (groupPoints.length > 0) {
+        result.push({
+          groupId: group.id,
+          groupName: group.name,
+          points: groupPoints,
+          color: LINE_COLORS[i % LINE_COLORS.length]
+        })
+      }
+    })
+
+    return result
+  }, [filteredData, selectedCategory, selectedGroups, getYValue])
+
+  // Get state info for selected states (used in 'states' compare mode)
   const selectedStateData = useMemo(() => {
     const states = filters.selectedStates.length > 0
       ? filters.selectedStates
@@ -147,11 +202,32 @@ export default function BaseLineChart({
     })
   }, [filteredData, filters.selectedStates, availableStates, defaultStateCount])
 
+  // Handle click on plot to toggle state filter
+  const handlePlotClick = useCallback((event: unknown) => {
+    const e = event as { points?: Array<{ customdata?: { stateCode?: string } }> }
+    if (!e.points || e.points.length === 0) return
+
+    const point = e.points[0]
+    const stateCode = point.customdata?.stateCode
+    if (!stateCode) return
+
+    // Toggle state in filter
+    const isSelected = filters.selectedStates.includes(stateCode)
+    if (isSelected) {
+      onFilterChange({ selectedStates: filters.selectedStates.filter(s => s !== stateCode) })
+    } else {
+      onFilterChange({ selectedStates: [...filters.selectedStates, stateCode] })
+    }
+  }, [filters.selectedStates, onFilterChange])
+
   // Build plot traces
   const plotData = useMemo(() => {
     const traces: Array<Record<string, unknown>> = []
     const metricFormat = metricInfo.format
     const unitLabel = metricInfo.unit
+    const overallAvg = nationalAverage.length > 0
+      ? nationalAverage.reduce((s, p) => s + p.avg, 0) / nationalAverage.length
+      : 0
 
     // National average reference line
     traces.push({
@@ -168,48 +244,94 @@ export default function BaseLineChart({
       hovertemplate: `<b>National Average</b><br>Year: %{x}<br>${metricInfo.label}: %{y:${metricFormat}} ${unitLabel}<extra></extra>`
     })
 
-    // State lines
-    selectedStateData.forEach(state => {
-      const stateAvg = state.points.length > 0
-        ? state.points.reduce((s, p) => s + getYValue(p)!, 0) / state.points.length
-        : 0
+    // Group mode: show group averages
+    if (selectedCategory && groupAverages.length > 0) {
+      groupAverages.forEach(group => {
+        const groupAvg = group.points.reduce((s, p) => s + p.avg, 0) / group.points.length
 
-      traces.push({
-        x: state.points.map(p => p.year),
-        y: state.points.map(p => getYValue(p)),
-        mode: 'lines+markers',
-        type: 'scatter',
-        name: `${state.stateName} (${state.stateCode})`,
-        line: {
-          color: state.color,
-          width: 2.5
-        },
-        marker: {
-          color: state.color,
-          size: 7,
-          line: { color: COLORS.ink, width: 1 }
-        },
-        customdata: state.points.map(p => ({
-          state: p.state,
-          stateCode: p.stateCode,
-          year: p.year,
-          region: p.region,
-          metricValue: getYValue(p),
-          stateAvg: stateAvg.toFixed(metricInfo.format === '.2f' ? 2 : 1),
-          natAvg: (nationalAverage.find(n => n.year === p.year)?.avg || 0).toFixed(metricInfo.format === '.2f' ? 2 : 1)
-        })),
-        hovertemplate:
-          '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
-          `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
-          `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${unitLabel}<br>` +
-          `State avg: %{customdata.stateAvg} ${unitLabel}<br>` +
-          `National avg: %{customdata.natAvg} ${unitLabel}` +
-          '<extra></extra>'
+        traces.push({
+          x: group.points.map(p => p.year),
+          y: group.points.map(p => p.avg),
+          mode: 'lines+markers',
+          type: 'scatter',
+          name: group.groupName,
+          line: {
+            color: group.color,
+            width: 3
+          },
+          marker: {
+            color: group.color,
+            size: 8,
+            line: { color: COLORS.ink, width: 1 }
+          },
+          customdata: group.points.map(p => ({
+            groupName: group.groupName,
+            groupId: group.groupId,
+            year: p.year,
+            metricValue: p.avg,
+            memberCount: p.count,
+            groupAvg: groupAvg.toFixed(metricInfo.format === '.2f' ? 2 : 1),
+            natAvg: (nationalAverage.find(n => n.year === p.year)?.avg || 0).toFixed(metricInfo.format === '.2f' ? 2 : 1),
+            deltaVsNat: formatPercentDelta(p.avg, nationalAverage.find(n => n.year === p.year)?.avg || overallAvg)
+          })),
+          hovertemplate:
+            '<b>%{customdata.groupName}</b> (%{customdata.year})<br>' +
+            `<span style="color:${COLORS.inkMuted}">%{customdata.memberCount} states</span><br><br>` +
+            `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${unitLabel} (%{customdata.deltaVsNat})<br>` +
+            `Group avg: %{customdata.groupAvg} ${unitLabel}<br>` +
+            `National avg: %{customdata.natAvg} ${unitLabel}` +
+            '<extra></extra>'
+        })
       })
-    })
+    } else {
+      // State mode: show individual state lines
+      selectedStateData.forEach(state => {
+        const stateAvg = state.points.length > 0
+          ? state.points.reduce((s, p) => s + getYValue(p)!, 0) / state.points.length
+          : 0
+
+        traces.push({
+          x: state.points.map(p => p.year),
+          y: state.points.map(p => getYValue(p)),
+          mode: 'lines+markers',
+          type: 'scatter',
+          name: `${state.stateName} (${state.stateCode})`,
+          line: {
+            color: state.color,
+            width: 2.5
+          },
+          marker: {
+            color: state.color,
+            size: 7,
+            line: { color: COLORS.ink, width: 1 }
+          },
+          customdata: state.points.map(p => {
+            const natAvgForYear = nationalAverage.find(n => n.year === p.year)?.avg || overallAvg
+            const metricValue = getYValue(p)!
+            return {
+              state: p.state,
+              stateCode: p.stateCode,
+              year: p.year,
+              region: p.region,
+              metricValue,
+              stateAvg: stateAvg.toFixed(metricInfo.format === '.2f' ? 2 : 1),
+              natAvg: natAvgForYear.toFixed(metricInfo.format === '.2f' ? 2 : 1),
+              deltaVsNat: formatPercentDelta(metricValue, natAvgForYear)
+            }
+          }),
+          hovertemplate:
+            '<b>%{customdata.state}</b> (%{customdata.year})<br>' +
+            `<span style="color:${COLORS.inkMuted}">%{customdata.region}</span><br><br>` +
+            `${metricInfo.label}: %{customdata.metricValue:${metricFormat}} ${unitLabel} (%{customdata.deltaVsNat})<br>` +
+            `State avg: %{customdata.stateAvg} ${unitLabel}<br>` +
+            `National avg: %{customdata.natAvg} ${unitLabel}` +
+            '<extra></extra>'
+        })
+      })
+    }
 
     return traces
-  }, [selectedStateData, nationalAverage, metricInfo, getYValue])
+  }, [selectedStateData, groupAverages, selectedCategory, nationalAverage, metricInfo, getYValue])
 
   const layout = useMemo(() => ({
     ...baseLayout,
@@ -240,13 +362,6 @@ export default function BaseLineChart({
     }
   }
 
-  // Get data for selected states only (for export)
-  const exportData = useMemo(() => {
-    const stateCodes = filters.selectedStates.length > 0
-      ? filters.selectedStates
-      : availableStates.slice(0, defaultStateCount)
-    return filteredData.filter(p => stateCodes.includes(p.stateCode))
-  }, [filteredData, filters.selectedStates, availableStates, defaultStateCount])
 
   return (
     <div className="chart-container" role="figure" aria-label={`Line chart showing ${metricInfo.label} trends over time by state`}>
@@ -309,11 +424,81 @@ export default function BaseLineChart({
           </div>
         )}
 
-        <StateFilter
-          selectedStates={filters.selectedStates}
-          availableStates={availableStates}
-          onChange={(states) => onFilterChange({ selectedStates: states })}
-        />
+        {enableGrouping && (
+          <div className="control-group">
+            <label>Compare</label>
+            <select
+              value={compareMode}
+              onChange={(e) => onFilterChange({
+                timeCompareMode: e.target.value,
+                timeSelectedGroups: [] // Reset group selection when category changes
+              })}
+            >
+              <option value="states">Individual States</option>
+              {STATE_GROUP_CATEGORIES.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {compareMode === 'states' && (
+          <StateFilter
+            selectedStates={filters.selectedStates}
+            availableStates={availableStates}
+            onChange={(states) => onFilterChange({ selectedStates: states })}
+          />
+        )}
+
+        {selectedCategory && (
+          <div className="control-group">
+            <label>Groups</label>
+            <div className="group-checkboxes">
+              {selectedCategory.groups.map(group => (
+                <label key={group.id} className="checkbox-label" title={group.description}>
+                  <input
+                    type="checkbox"
+                    checked={selectedGroups.length === 0 || selectedGroups.includes(group.id)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        // If checking and currently showing all (empty), select just this one
+                        if (selectedGroups.length === 0) {
+                          onFilterChange({ timeSelectedGroups: [group.id] })
+                        } else {
+                          // Add to selection
+                          const newSelection = [...selectedGroups, group.id]
+                          // If all are now selected, reset to empty (show all)
+                          if (newSelection.length === selectedCategory.groups.length) {
+                            onFilterChange({ timeSelectedGroups: [] })
+                          } else {
+                            onFilterChange({ timeSelectedGroups: newSelection })
+                          }
+                        }
+                      } else {
+                        // Unchecking
+                        if (selectedGroups.length === 0) {
+                          // Currently showing all - select all except this one
+                          onFilterChange({
+                            timeSelectedGroups: selectedCategory.groups
+                              .filter(g => g.id !== group.id)
+                              .map(g => g.id)
+                          })
+                        } else {
+                          // Remove from selection (but keep at least one)
+                          const newSelection = selectedGroups.filter(id => id !== group.id)
+                          if (newSelection.length > 0) {
+                            onFilterChange({ timeSelectedGroups: newSelection })
+                          }
+                        }
+                      }
+                    }}
+                  />
+                  {group.name}
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="control-group">
           <label>View</label>
@@ -327,21 +512,22 @@ export default function BaseLineChart({
         </div>
 
         <ExportButtons
-          data={exportData}
+          data={data.points}
           filename={`${config.exportFilename || config.id}-${filters.yearStart}-${filters.yearEnd}`}
         />
       </ChartControlsWrapper>
 
       <p className="chart-interaction-hint">
-        Drag to zoom · Double-click to reset
+        {compareMode === 'states' ? 'Click a line to toggle state filter · ' : ''}Drag to zoom · Double-click to reset
       </p>
 
-      <div className="chart-plot-wrapper">
+      <div ref={plotRef} className="chart-plot-wrapper">
         <Plot
           data={plotData}
           layout={layout}
           config={plotConfig}
           style={{ width: '100%', height: '100%' }}
+          onClick={compareMode === 'states' ? handlePlotClick : undefined}
           onInitialized={handleInitialized}
           onUpdate={handleInitialized}
         />

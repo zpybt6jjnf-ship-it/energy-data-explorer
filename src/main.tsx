@@ -17,9 +17,9 @@ console.log(`
      |||
     /|||\\       Try these other secrets:
    / ||| \\      • Click the logo for lightning
-  /  |||  \\     • Type "watt" anywhere
- /   |||   \\    • Click the "&" in the title
-/    |||    \\   • TX only, click 2021... brrrr
+  /  |||  \\     • TX only, click 2021... brrrr
+ /   |||   \\
+/    |||    \\
 =====|||=====
      |||        Built with ⚡ by Bottlenecks Labs
     =====

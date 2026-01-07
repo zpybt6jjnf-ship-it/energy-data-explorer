@@ -44,6 +44,7 @@ export default function BaseStackedAreaChart({
 }: BaseStackedAreaChartProps) {
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
+  const plotRef = useRef<HTMLDivElement>(null)
 
   // Handle plot initialization for zoom persistence
   const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {
@@ -203,7 +204,8 @@ export default function BaseStackedAreaChart({
         stackgroup: 'one',
         fillcolor: series.color,
         line: { color: series.color, width: 0 },
-        hovertemplate: `<b>${series.label}</b><br>Year: %{x}<br>Generation: %{y:${format}} ${unit}<extra></extra>`
+        hovertemplate: `<b>${series.label}</b> (%{x})<br>` +
+          `${isPercentage ? 'Share' : 'Generation'}: %{y:${format}} ${unit}<extra></extra>`
       }
     })
   }, [chartData, config.series, advancedOptions.displayMode])
@@ -350,7 +352,7 @@ export default function BaseStackedAreaChart({
         </div>
 
         <ExportButtons
-          data={filteredData}
+          data={data.points}
           filename={`${config.exportFilename || config.id}-${selectedRegion}-${filters.yearStart}-${filters.yearEnd}`}
         />
       </ChartControlsWrapper>
@@ -359,7 +361,7 @@ export default function BaseStackedAreaChart({
         Drag to zoom · Double-click to reset · Showing: <strong>{regionName}</strong>
       </p>
 
-      <div className="chart-plot-wrapper">
+      <div ref={plotRef} className="chart-plot-wrapper">
         <Plot
           data={plotData}
           layout={layout}

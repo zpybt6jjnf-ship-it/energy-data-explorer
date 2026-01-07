@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react'
+import { ReactNode } from 'react'
 import Logo from './Logo'
 
 interface LayoutProps {
@@ -6,26 +6,6 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const [showWattTooltip, setShowWattTooltip] = useState(false)
-
-  // Easter egg: Type "watt" anywhere
-  useEffect(() => {
-    let buffer = ''
-    const handleKeyPress = (e: KeyboardEvent) => {
-      buffer += e.key.toLowerCase()
-      buffer = buffer.slice(-4) // Keep last 4 chars
-
-      if (buffer === 'watt') {
-        setShowWattTooltip(true)
-        buffer = ''
-        setTimeout(() => setShowWattTooltip(false), 2000)
-      }
-    }
-
-    window.addEventListener('keypress', handleKeyPress)
-    return () => window.removeEventListener('keypress', handleKeyPress)
-  }, [])
-
   return (
     <>
       <header className="site-header">
@@ -37,10 +17,6 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </header>
-
-      {showWattTooltip && (
-        <div className="watt-tooltip">⚡ Watt are you looking for? ⚡</div>
-      )}
 
       {children}
 
