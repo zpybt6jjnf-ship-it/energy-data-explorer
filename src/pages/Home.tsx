@@ -2,11 +2,11 @@ import ChartCard from '../components/ChartCard'
 
 const AVAILABLE_CHARTS = [
   {
-    id: 'saidi-vre',
+    id: 'reliability',
     title: 'Grid Reliability Explorer',
     description: 'Explore U.S. power grid reliability data. Compare outages against renewable energy mix, or track reliability trends over time.',
-    href: '/explore/saidi-vre',
-    thumbnail: '/thumbnails/saidi-vre.svg',
+    href: '/explore/reliability',
+    thumbnail: '/thumbnails/reliability.svg',
     tags: ['SAIDI', 'VRE', 'Trends', 'Reliability']
   },
   {

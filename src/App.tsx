@@ -10,7 +10,7 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/explore/saidi-vre" element={<Reliability />} />
+        <Route path="/explore/reliability" element={<Reliability />} />
         <Route path="/explore/affordability" element={<Affordability />} />
         <Route path="/explore/energy-mix" element={<EnergyMix />} />
       </Routes>
