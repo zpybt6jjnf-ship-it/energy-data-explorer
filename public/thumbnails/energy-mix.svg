@@ -1,24 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
   <!-- Background -->
-  <rect width="200" height="150" fill="#fafaf9"/>
+  <rect width="320" height="180" fill="#fafaf9"/>
 
-  <!-- Stacked area chart representation -->
-  <!-- Coal (bottom) - dark gray -->
-  <path d="M 20 130 L 20 80 Q 50 75, 80 70 Q 110 65, 140 55 Q 170 50, 180 45 L 180 130 Z" fill="#4d4d4d"/>
+  <!-- Grid lines -->
+  <g stroke="#e8e6e1" stroke-width="1">
+    <line x1="40" y1="150" x2="300" y2="150" />
+    <line x1="40" y1="150" x2="40" y2="25" />
+    <line x1="40" y1="118" x2="300" y2="118" stroke-dasharray="4,4" />
+    <line x1="40" y1="87" x2="300" y2="87" stroke-dasharray="4,4" />
+    <line x1="40" y1="56" x2="300" y2="56" stroke-dasharray="4,4" />
+  </g>
 
-  <!-- Gas - red/pink -->
-  <path d="M 20 80 Q 50 75, 80 70 Q 110 65, 140 55 Q 170 50, 180 45 L 180 40 Q 170 35, 140 30 Q 110 28, 80 32 Q 50 35, 20 40 Z" fill="#eb6b6b"/>
+  <!-- Axis labels -->
+  <text x="170" y="172" text-anchor="middle" fill="#78716c" font-family="system-ui, sans-serif" font-size="9">Year</text>
+  <text x="12" y="87" text-anchor="middle" fill="#78716c" font-family="system-ui, sans-serif" font-size="9" transform="rotate(-90 12 87)">Share (%)</text>
 
-  <!-- Nuclear - orange -->
-  <path d="M 20 40 Q 50 35, 80 32 Q 110 28, 140 30 Q 170 35, 180 40 L 180 35 Q 170 32, 140 28 Q 110 26, 80 28 Q 50 30, 20 32 Z" fill="#f18e5b"/>
+  <!-- Stacked area chart - U.S. energy mix (percentage, 2013-2023 style) -->
+  <!-- Coal (bottom) - dark gray #4d4d4d - declining -->
+  <path d="M 40 150 L 40 100 Q 80 95, 120 90 Q 160 88, 200 92 Q 240 98, 280 105 L 300 108 L 300 150 Z" fill="#4d4d4d"/>
 
-  <!-- Wind - green -->
-  <path d="M 20 32 Q 50 30, 80 28 Q 110 26, 140 28 Q 170 32, 180 35 L 180 28 Q 170 22, 140 18 Q 110 16, 80 18 Q 50 20, 20 25 Z" fill="#65c295"/>
+  <!-- Gas - red/pink #eb6b6b - growing -->
+  <path d="M 40 100 Q 80 95, 120 90 Q 160 88, 200 92 Q 240 98, 280 105 L 300 108 L 300 68 Q 280 62, 240 58 Q 200 52, 160 48 Q 120 50, 80 55 L 40 60 Z" fill="#eb6b6b"/>
 
-  <!-- Solar - yellow (top, growing) -->
-  <path d="M 20 25 Q 50 20, 80 18 Q 110 16, 140 18 Q 170 22, 180 28 L 180 25 Q 170 18, 140 14 Q 110 12, 80 14 Q 50 17, 20 22 Z" fill="#f9d057"/>
+  <!-- Nuclear - orange #f18e5b - stable -->
+  <path d="M 40 60 Q 80 55, 120 50 Q 160 48, 200 52 Q 240 58, 280 62 L 300 68 L 300 52 Q 280 48, 240 45 Q 200 42, 160 40 Q 120 42, 80 45 L 40 48 Z" fill="#f18e5b"/>
 
-  <!-- Axis lines -->
-  <line x1="20" y1="130" x2="180" y2="130" stroke="#78716c" stroke-width="1"/>
-  <line x1="20" y1="130" x2="20" y2="20" stroke="#78716c" stroke-width="1"/>
+  <!-- Hydro - blue #4c97d0 - stable -->
+  <path d="M 40 48 Q 80 45, 120 42 Q 160 40, 200 42 Q 240 45, 280 48 L 300 52 L 300 45 Q 280 42, 240 40 Q 200 38, 160 36 Q 120 38, 80 40 L 40 42 Z" fill="#4c97d0"/>
+
+  <!-- Wind - green #65c295 - growing -->
+  <path d="M 40 42 Q 80 40, 120 38 Q 160 36, 200 38 Q 240 40, 280 42 L 300 45 L 300 35 Q 280 30, 240 28 Q 200 26, 160 28 Q 120 32, 80 36 L 40 38 Z" fill="#65c295"/>
+
+  <!-- Solar - yellow #f9d057 - growing fast (top) -->
+  <path d="M 40 38 Q 80 36, 120 32 Q 160 28, 200 26 Q 240 28, 280 30 L 300 35 L 300 32 Q 280 28, 240 26 Q 200 25, 160 26 Q 120 30, 80 34 L 40 36 Z" fill="#f9d057"/>
+
+  <!-- Other - purple #9d8ec7 - small slice at top -->
+  <path d="M 40 36 Q 80 34, 120 30 Q 160 26, 200 25 Q 240 26, 280 28 L 300 32 L 300 28 Q 280 25, 240 24 Q 200 23, 160 24 Q 120 27, 80 30 L 40 32 Z" fill="#9d8ec7"/>
 </svg>
