@@ -160,33 +160,3 @@ export const STATE_GROUP_CATEGORIES: GroupCategory[] = [
   RTO_REGIONS
 ];
 
-/**
- * Helper to get all states in a group
- */
-export function getGroupStates(categoryId: string, groupId: string): string[] {
-  const category = STATE_GROUP_CATEGORIES.find(c => c.id === categoryId);
-  if (!category) return [];
-  const group = category.groups.find(g => g.id === groupId);
-  return group?.states ?? [];
-}
-
-/**
- * Helper to find which groups a state belongs to
- */
-export function getStateGroups(stateCode: string): { categoryId: string; groupId: string; groupName: string }[] {
-  const result: { categoryId: string; groupId: string; groupName: string }[] = [];
-
-  for (const category of STATE_GROUP_CATEGORIES) {
-    for (const group of category.groups) {
-      if (group.states.includes(stateCode)) {
-        result.push({
-          categoryId: category.id,
-          groupId: group.id,
-          groupName: group.name
-        });
-      }
-    }
-  }
-
-  return result;
-}

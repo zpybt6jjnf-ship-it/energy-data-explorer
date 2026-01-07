@@ -147,21 +147,3 @@ export default function GroupSelector({ selection, onChange }: Props) {
   )
 }
 
-// Helper to get state group by category and group ID
-export function getStateGroupById(categoryId: string, groupId: string) {
-  const category = STATE_GROUP_CATEGORIES.find(c => c.id === categoryId)
-  if (!category) return null
-  return category.groups.find(g => g.id === groupId) || null
-}
-
-// Helper to get utility group by category and group ID
-export function getUtilityGroupById(categoryId: string, groupId: string) {
-  const category = UTILITY_GROUP_CATEGORIES.find(c => c.id === categoryId)
-  if (!category) return null
-  return category.groups.find(g => g.id === groupId) || null
-}
-
-// Helper to check if a category ID is a utility-level group
-export function isUtilityCategory(categoryId: string): boolean {
-  return UTILITY_GROUP_CATEGORIES.some(c => c.id === categoryId)
-}

@@ -108,15 +108,6 @@ export interface ChartFilters {
   timeYRange: [number, number] | null
 }
 
-export interface TooltipData {
-  state: string
-  year: number
-  saidi: number
-  vrePenetration: number
-  x: number
-  y: number
-}
-
 // State to region mapping
 export const STATE_REGIONS: Record<string, string> = {
   // Northeast

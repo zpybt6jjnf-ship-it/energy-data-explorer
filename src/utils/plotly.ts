@@ -37,39 +37,6 @@ export const RETRO_COLORS = [
 // Line chart colors (using accent palette)
 export const LINE_COLORS = RETRO_COLORS
 
-// Standard hover template for data points
-export function buildHoverTemplate(fields: {
-  state?: boolean
-  year?: boolean
-  saidi?: boolean
-  vre?: boolean
-  breakdown?: boolean
-}) {
-  const parts: string[] = []
-
-  if (fields.state && fields.year) {
-    parts.push('<b>%{customdata.state}</b> (%{customdata.year})<br><br>')
-  } else if (fields.state) {
-    parts.push('<b>%{customdata.state}</b><br><br>')
-  }
-
-  if (fields.saidi) {
-    parts.push('SAIDI: %{customdata.saidi:.1f} min<br>')
-  }
-
-  if (fields.vre) {
-    parts.push('VRE: %{customdata.vrePenetration:.1f}%<br>')
-  }
-
-  if (fields.breakdown) {
-    parts.push('  ├ Wind: %{customdata.windPenetration:.1f}%<br>')
-    parts.push('  └ Solar: %{customdata.solarPenetration:.1f}%')
-  }
-
-  parts.push('<extra></extra>')
-  return parts.join('')
-}
-
 // Typography
 const FONT_SANS = 'DM Sans, sans-serif'
 
