@@ -4,7 +4,7 @@ const AVAILABLE_CHARTS = [
   {
     id: 'saidi-vre',
     title: 'Grid Reliability Explorer',
-    description: 'Explore U.S. power grid reliability data. Compare SAIDI against renewable energy penetration, or track reliability trends over time by state.',
+    description: 'Explore U.S. power grid reliability data. Compare outages against renewable energy mix, or track reliability trends over time.',
     href: '/explore/saidi-vre',
     thumbnail: '/thumbnails/saidi-vre.svg',
     tags: ['SAIDI', 'VRE', 'Trends', 'Reliability']
@@ -12,7 +12,7 @@ const AVAILABLE_CHARTS = [
   {
     id: 'affordability',
     title: 'Electricity Affordability Explorer',
-    description: 'Explore retail electricity prices across U.S. states. Compare rates against renewable energy penetration to see how clean energy affects costs.',
+    description: 'Explore retail electricity prices across U.S. Compare rates against renewable mix to see how clean energy affects costs.',
     href: '/explore/affordability',
     thumbnail: '/thumbnails/affordability.svg',
     tags: ['Rates', 'VRE', 'Affordability', 'Prices']
@@ -20,7 +20,7 @@ const AVAILABLE_CHARTS = [
   {
     id: 'energy-mix',
     title: 'Energy Mix Explorer',
-    description: 'Visualize how each U.S. state generates electricity. See the transition from coal to natural gas and renewables over time.',
+    description: 'Visualize how the U.S. generates electricity.',
     href: '/explore/energy-mix',
     thumbnail: '/thumbnails/energy-mix.svg',
     tags: ['Generation', 'Fuel Mix', 'Trends', 'Decarbonization']

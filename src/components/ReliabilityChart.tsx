@@ -75,7 +75,7 @@ const RELIABILITY_CONFIG: ScatterChartConfig = {
   exportFilename: 'reliability-vre'
 }
 
-export default function SaidiVreChart({ data, filters, onFilterChange, onResetViewport }: Props) {
+export default function ReliabilityChart({ data, filters, onFilterChange, onResetViewport }: Props) {
   // Easter egg state: Texas 2021 winter storm
   const [showSnowflake, setShowSnowflake] = useState(false)
 

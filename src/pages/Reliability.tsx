@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import SaidiVreChart from '../components/SaidiVreChart'
+import ReliabilityChart from '../components/ReliabilityChart'
 import SaidiOverTimeChart from '../components/SaidiOverTimeChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function SaidiVre() {
+export default function Reliability() {
   const { filters, handleFilterChange, resetViewport, resetTimeViewport } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
@@ -57,7 +57,7 @@ export default function SaidiVre() {
 
         {data && (
           <>
-            <SaidiVreChart
+            <ReliabilityChart
               data={data}
               filters={filters}
               onFilterChange={handleFilterChange}
