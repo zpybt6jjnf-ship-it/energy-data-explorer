@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import RtoDashboard from '../components/charts/RtoDashboard'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -73,20 +74,17 @@ export default function RtoAnalysis() {
               <a href={window.location.href} className="share-link-url">{window.location.href}</a>
             </div>
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  Utility reliability and RTO membership —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'RTO Membership',
+                  description: 'Utility reliability and RTO membership',
+                  url: 'https://www.eia.gov/electricity/data/eia861/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

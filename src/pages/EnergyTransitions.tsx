@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import GenerationSankeyChart from '../components/charts/GenerationSankeyChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -70,20 +71,17 @@ export default function EnergyTransitions() {
               <a href={window.location.href} className="share-link-url">{window.location.href}</a>
             </div>
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  State Electricity Generation by Fuel Type —{' '}
-                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
-                    EIA State Electricity Profiles
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'Generation',
+                  description: 'State Electricity Generation by Fuel Type',
+                  url: 'https://www.eia.gov/electricity/data/state/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

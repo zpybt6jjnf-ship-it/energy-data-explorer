@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import RateVreChart from '../components/RateVreChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -63,26 +64,22 @@ export default function AffordabilityVre() {
               onResetViewport={resetViewport}
             />
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  Retail Electricity Rates —{' '}
-                  <a href="https://www.eia.gov/electricity/sales_revenue_price/" target="_blank" rel="noopener noreferrer">
-                    EIA Electric Sales, Revenue, and Price
-                  </a>
-                </li>
-                <li>
-                  VRE Penetration (Wind + Solar generation share) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
-                    EIA State Electricity Profiles
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'Retail Rates',
+                  description: 'Electric Sales, Revenue, and Price',
+                  url: 'https://www.eia.gov/electricity/sales_revenue_price/'
+                },
+                {
+                  label: 'VRE Penetration',
+                  description: 'Wind + Solar generation share',
+                  url: 'https://www.eia.gov/electricity/data/state/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

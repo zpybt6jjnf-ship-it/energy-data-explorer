@@ -134,8 +134,14 @@ export default function ChartCard({
   tags,
   isDemo = false
 }: ChartCardProps) {
+  const ariaLabel = `${title} - ${CHART_TYPE_LABELS[chartType]}${isDemo ? ' (Demo)' : ''}`
+
   return (
-    <Link to={href} className={`chart-card ${isDemo ? 'chart-card-demo' : ''}`}>
+    <Link
+      to={href}
+      className={`chart-card ${isDemo ? 'chart-card-demo' : ''}`}
+      aria-label={ariaLabel}
+    >
       <div className="chart-card-thumbnail">
         <ChartTypeIcon type={chartType} />
         <span className="chart-type-label">{CHART_TYPE_LABELS[chartType]}</span>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReliabilityChart from '../components/ReliabilityChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -63,26 +64,22 @@ export default function ReliabilityVre() {
               onResetViewport={resetViewport}
             />
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  SAIDI (System Average Interruption Duration Index) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
-                  </a>
-                </li>
-                <li>
-                  VRE Penetration (Wind + Solar generation share) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
-                    EIA State Electricity Profiles
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'SAIDI/SAIFI',
+                  description: 'System Average Interruption Duration/Frequency Index',
+                  url: 'https://www.eia.gov/electricity/data/eia861/'
+                },
+                {
+                  label: 'VRE Penetration',
+                  description: 'Wind + Solar generation share',
+                  url: 'https://www.eia.gov/electricity/data/state/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

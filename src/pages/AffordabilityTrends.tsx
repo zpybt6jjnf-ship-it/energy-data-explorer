@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import RatesOverTimeChart from '../components/charts/RatesOverTimeChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -63,20 +64,17 @@ export default function AffordabilityTrends() {
               onResetViewport={resetViewport}
             />
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  Retail Electricity Rates —{' '}
-                  <a href="https://www.eia.gov/electricity/sales_revenue_price/" target="_blank" rel="noopener noreferrer">
-                    EIA Electric Sales, Revenue, and Price
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'Retail Rates',
+                  description: 'Electric Sales, Revenue, and Price',
+                  url: 'https://www.eia.gov/electricity/sales_revenue_price/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

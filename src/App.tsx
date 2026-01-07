@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 
@@ -27,12 +27,6 @@ import WholesaleTrends from './pages/WholesaleTrends'
 // Outages pages
 import OutageCauses from './pages/OutageCauses'
 import WeatherVulnerability from './pages/WeatherVulnerability'
-
-// Legacy multi-chart pages (keep for backwards compatibility)
-import Reliability from './pages/Reliability'
-import Affordability from './pages/Affordability'
-import WholesaleAnalysis from './pages/WholesaleAnalysis'
-import OutageAnalysis from './pages/OutageAnalysis'
 
 export default function App() {
   return (
@@ -66,16 +60,16 @@ export default function App() {
         <Route path="/explore/outages/causes" element={<OutageCauses />} />
         <Route path="/explore/outages/weather-map" element={<WeatherVulnerability />} />
 
-        {/* Legacy routes for backwards compatibility */}
-        <Route path="/explore/reliability" element={<Reliability />} />
-        <Route path="/explore/affordability" element={<Affordability />} />
-        <Route path="/explore/energy-mix" element={<EnergyMix />} />
-        <Route path="/explore/reliability-rates" element={<ReliabilityVsRates />} />
-        <Route path="/explore/reliability-map" element={<ReliabilityMap />} />
-        <Route path="/explore/rto-analysis" element={<RtoAnalysis />} />
-        <Route path="/explore/energy-transitions" element={<EnergyTransitions />} />
-        <Route path="/explore/wholesale" element={<WholesaleAnalysis />} />
-        <Route path="/explore/outage-analysis" element={<OutageAnalysis />} />
+        {/* Legacy redirects */}
+        <Route path="/explore/reliability" element={<Navigate to="/explore/reliability/vre" replace />} />
+        <Route path="/explore/affordability" element={<Navigate to="/explore/affordability/vre" replace />} />
+        <Route path="/explore/energy-mix" element={<Navigate to="/explore/generation/mix" replace />} />
+        <Route path="/explore/reliability-rates" element={<Navigate to="/explore/reliability/rates" replace />} />
+        <Route path="/explore/reliability-map" element={<Navigate to="/explore/reliability/map" replace />} />
+        <Route path="/explore/rto-analysis" element={<Navigate to="/explore/reliability/rto" replace />} />
+        <Route path="/explore/energy-transitions" element={<Navigate to="/explore/generation/transitions" replace />} />
+        <Route path="/explore/wholesale" element={<Navigate to="/explore/markets/wholesale-retail" replace />} />
+        <Route path="/explore/outage-analysis" element={<Navigate to="/explore/outages/causes" replace />} />
       </Routes>
     </Layout>
   )

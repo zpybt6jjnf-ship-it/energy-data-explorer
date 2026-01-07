@@ -34,7 +34,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Track how grid reliability has changed over time for states and regions.',
     href: '/explore/reliability/trends',
     chartType: 'line',
-    tags: ['SAIDI', 'Trends'],
+    tags: ['SAIDI', 'SAIFI', 'Trends'],
     category: 'reliability',
     status: 'ready'
   },
@@ -82,7 +82,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Compare change in reliability vs change in renewables between any two years.',
     href: '/explore/reliability/change',
     chartType: 'scatter',
-    tags: ['SAIDI', 'VRE', 'Change'],
+    tags: ['SAIDI', 'SAIFI', 'VRE'],
     category: 'reliability',
     status: 'demo'
   },
@@ -92,7 +92,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Choropleth map showing which states improved or degraded in reliability.',
     href: '/explore/reliability/map',
     chartType: 'map',
-    tags: ['SAIDI', 'Choropleth'],
+    tags: ['SAIDI', 'SAIFI', 'Map'],
     category: 'reliability',
     status: 'demo'
   },
@@ -102,7 +102,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Do higher rates buy better reliability? Explore the relationship.',
     href: '/explore/reliability/rates',
     chartType: 'scatter',
-    tags: ['SAIDI', 'Rates'],
+    tags: ['SAIDI', 'SAIFI', 'Rates'],
     category: 'reliability',
     status: 'demo'
   },
@@ -112,7 +112,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Compare reliability across IOUs, co-ops, and municipal utilities.',
     href: '/explore/reliability/ownership',
     chartType: 'box',
-    tags: ['SAIDI', 'Ownership'],
+    tags: ['SAIDI', 'SAIFI', 'Ownership'],
     category: 'reliability',
     status: 'demo'
   },
@@ -122,7 +122,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Compare reliability trends across Regional Transmission Organizations.',
     href: '/explore/reliability/rto',
     chartType: 'line',
-    tags: ['RTO', 'SAIDI'],
+    tags: ['RTO', 'SAIDI', 'SAIFI'],
     category: 'reliability',
     status: 'demo'
   },
@@ -168,7 +168,7 @@ const CHARTS: ChartConfig[] = [
     description: 'Track wholesale electricity prices at major trading hubs over time.',
     href: '/explore/markets/trends',
     chartType: 'line',
-    tags: ['Wholesale', 'Hubs'],
+    tags: ['Wholesale', 'Trends'],
     category: 'markets',
     status: 'demo'
   },

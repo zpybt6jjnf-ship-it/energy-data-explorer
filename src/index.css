@@ -853,11 +853,46 @@ button.copy-error {
   text-decoration: underline;
 }
 
-.source-info > p {
-  font-size: var(--text-xs);
-  color: var(--color-ink-muted);
+.source-info .source-label {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.source-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+}
+
+.source-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.source-meta strong {
+  font-size: var(--text-xs);
+  color: var(--color-ink-light);
+  display: inline;
+  margin-bottom: 0;
+}
+
+.source-meta strong::before {
+  content: none;
+}
+
+.source-coverage::before {
+  content: '📅';
+  margin-right: var(--space-1);
+}
+
+.source-updated::before {
+  content: '🔄';
+  margin-right: var(--space-1);
 }
 
 /* Footer */

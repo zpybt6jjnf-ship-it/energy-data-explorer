@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReliabilityOverTimeChart from '../components/ReliabilityOverTimeChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -63,20 +64,17 @@ export default function ReliabilityTrends() {
               onResetViewport={resetTimeViewport}
             />
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  SAIDI/SAIFI (Reliability metrics) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'SAIDI/SAIFI',
+                  description: 'Reliability metrics',
+                  url: 'https://www.eia.gov/electricity/data/eia861/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReliabilityRatesChart from '../components/charts/ReliabilityRatesChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -68,26 +69,22 @@ export default function ReliabilityVsRates() {
               <a href={window.location.href} className="share-link-url">{window.location.href}</a>
             </div>
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  SAIDI/SAIFI (Reliability metrics) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
-                  </a>
-                </li>
-                <li>
-                  Retail Electricity Rates —{' '}
-                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
-                    EIA State Electricity Profiles
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'SAIDI/SAIFI',
+                  description: 'Reliability metrics',
+                  url: 'https://www.eia.gov/electricity/data/eia861/'
+                },
+                {
+                  label: 'Retail Rates',
+                  description: 'State Electricity Profiles',
+                  url: 'https://www.eia.gov/electricity/data/state/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>

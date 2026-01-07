@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import WholesaleRetailChart from '../components/charts/WholesaleRetailChart'
+import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -64,26 +65,22 @@ export default function WholesaleRetail() {
               onYearEndChange={(year) => handleFilterChange({ yearEnd: year })}
             />
 
-            <div className="source-info">
-              <strong>Data Sources</strong>
-              <ul>
-                <li>
-                  Wholesale Electricity Prices —{' '}
-                  <a href="https://www.eia.gov/electricity/wholesalemarkets/" target="_blank" rel="noopener noreferrer">
-                    EIA Wholesale Electricity Markets (ICE data)
-                  </a>
-                </li>
-                <li>
-                  Retail Electricity Rates —{' '}
-                  <a href="https://www.eia.gov/electricity/sales_revenue_price/" target="_blank" rel="noopener noreferrer">
-                    EIA Electric Sales, Revenue, and Price
-                  </a>
-                </li>
-              </ul>
-              <p>
-                Last updated: {data?.metadata?.lastUpdated?.split('T')[0] || 'Unknown'}
-              </p>
-            </div>
+            <SourceInfo
+              sources={[
+                {
+                  label: 'Wholesale Prices',
+                  description: 'Wholesale Electricity Markets (ICE data)',
+                  url: 'https://www.eia.gov/electricity/wholesalemarkets/'
+                },
+                {
+                  label: 'Retail Rates',
+                  description: 'Electric Sales, Revenue, and Price',
+                  url: 'https://www.eia.gov/electricity/sales_revenue_price/'
+                }
+              ]}
+              yearsAvailable={data?.metadata?.yearsAvailable}
+              lastUpdated={data?.metadata?.lastUpdated}
+            />
           </>
         )}
       </main>
