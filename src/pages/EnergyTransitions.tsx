@@ -31,7 +31,7 @@ export default function EnergyTransitions() {
   return (
     <>
       <section className="page-hero">
-        <p className="hero-eyebrow">Data Explorer</p>
+        <p className="hero-eyebrow">Generation</p>
         <h1 className="hero-title">
           <span className="hero-topic">Energy Transition Flows</span>
         </h1>

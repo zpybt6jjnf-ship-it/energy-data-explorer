@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChangeMap from '../components/charts/ReliabilityChangeMap'
+import ReliabilityChart from '../components/ReliabilityChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function ReliabilityMapPage() {
-  const { filters, handleFilterChange } = useUrlFilters()
+export default function ReliabilityVre() {
+  const { filters, handleFilterChange, resetViewport } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -33,10 +33,10 @@ export default function ReliabilityMapPage() {
       <section className="page-hero">
         <p className="hero-eyebrow">Reliability</p>
         <h1 className="hero-title">
-          <span className="hero-topic">Reliability Change Map</span>
+          <span className="hero-topic">Reliability vs. Renewables</span>
         </h1>
         <p className="hero-subtitle">
-          See which states improved or degraded in grid reliability between any two years
+          Exploring the relationship between grid reliability and renewable energy adoption
         </p>
       </section>
 
@@ -56,30 +56,26 @@ export default function ReliabilityMapPage() {
 
         {data && (
           <>
-            <ReliabilityChangeMap
+            <ReliabilityChart
               data={data}
-              yearStart={filters.changeYearStart}
-              yearEnd={filters.changeYearEnd}
-              reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
-              includeMED={filters.includeMED}
-              onYearStartChange={(year) => handleFilterChange({ changeYearStart: year })}
-              onYearEndChange={(year) => handleFilterChange({ changeYearEnd: year })}
-              onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
-              onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              onResetViewport={resetViewport}
             />
-
-            <div className="share-url">
-              <strong>Shareable link:</strong>
-              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
-            </div>
 
             <div className="source-info">
               <strong>Data Sources</strong>
               <ul>
                 <li>
-                  SAIDI/SAIFI (Reliability metrics) —{' '}
+                  SAIDI (System Average Interruption Duration Index) —{' '}
                   <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
                     EIA Form 861
+                  </a>
+                </li>
+                <li>
+                  VRE Penetration (Wind + Solar generation share) —{' '}
+                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
+                    EIA State Electricity Profiles
                   </a>
                 </li>
               </ul>

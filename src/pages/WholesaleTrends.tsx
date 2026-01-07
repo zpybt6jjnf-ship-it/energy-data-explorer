@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChangeMap from '../components/charts/ReliabilityChangeMap'
+import WholesaleTrendsChart from '../components/charts/WholesaleTrendsChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function ReliabilityMapPage() {
+export default function WholesaleTrends() {
   const { filters, handleFilterChange } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
@@ -31,12 +31,12 @@ export default function ReliabilityMapPage() {
   return (
     <>
       <section className="page-hero">
-        <p className="hero-eyebrow">Reliability</p>
+        <p className="hero-eyebrow">Markets</p>
         <h1 className="hero-title">
-          <span className="hero-topic">Reliability Change Map</span>
+          <span className="hero-topic">Wholesale Price Trends</span>
         </h1>
         <p className="hero-subtitle">
-          See which states improved or degraded in grid reliability between any two years
+          Track wholesale electricity prices at major trading hubs over time
         </p>
       </section>
 
@@ -56,30 +56,21 @@ export default function ReliabilityMapPage() {
 
         {data && (
           <>
-            <ReliabilityChangeMap
-              data={data}
-              yearStart={filters.changeYearStart}
-              yearEnd={filters.changeYearEnd}
-              reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
-              includeMED={filters.includeMED}
-              onYearStartChange={(year) => handleFilterChange({ changeYearStart: year })}
-              onYearEndChange={(year) => handleFilterChange({ changeYearEnd: year })}
-              onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
-              onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
+            <WholesaleTrendsChart
+              yearStart={filters.yearStart}
+              yearEnd={filters.yearEnd}
+              yearsAvailable={data.metadata.yearsAvailable}
+              onYearStartChange={(year) => handleFilterChange({ yearStart: year })}
+              onYearEndChange={(year) => handleFilterChange({ yearEnd: year })}
             />
-
-            <div className="share-url">
-              <strong>Shareable link:</strong>
-              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
-            </div>
 
             <div className="source-info">
               <strong>Data Sources</strong>
               <ul>
                 <li>
-                  SAIDI/SAIFI (Reliability metrics) —{' '}
-                  <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
-                    EIA Form 861
+                  Wholesale Electricity Prices —{' '}
+                  <a href="https://www.eia.gov/electricity/wholesalemarkets/" target="_blank" rel="noopener noreferrer">
+                    EIA Wholesale Electricity Markets (ICE data)
                   </a>
                 </li>
               </ul>

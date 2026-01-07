@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChangeMap from '../components/charts/ReliabilityChangeMap'
+import OwnershipBoxPlot from '../components/charts/OwnershipBoxPlot'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function ReliabilityMapPage() {
+export default function ReliabilityOwnership() {
   const { filters, handleFilterChange } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
@@ -33,10 +33,10 @@ export default function ReliabilityMapPage() {
       <section className="page-hero">
         <p className="hero-eyebrow">Reliability</p>
         <h1 className="hero-title">
-          <span className="hero-topic">Reliability Change Map</span>
+          <span className="hero-topic">Reliability by Ownership</span>
         </h1>
         <p className="hero-subtitle">
-          See which states improved or degraded in grid reliability between any two years
+          Comparing reliability across IOUs, co-ops, and municipal utilities
         </p>
       </section>
 
@@ -56,28 +56,23 @@ export default function ReliabilityMapPage() {
 
         {data && (
           <>
-            <ReliabilityChangeMap
-              data={data}
-              yearStart={filters.changeYearStart}
-              yearEnd={filters.changeYearEnd}
+            <OwnershipBoxPlot
+              yearStart={filters.yearStart}
+              yearEnd={filters.yearEnd}
               reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
               includeMED={filters.includeMED}
-              onYearStartChange={(year) => handleFilterChange({ changeYearStart: year })}
-              onYearEndChange={(year) => handleFilterChange({ changeYearEnd: year })}
+              yearsAvailable={data.metadata.yearsAvailable}
+              onYearStartChange={(year) => handleFilterChange({ yearStart: year })}
+              onYearEndChange={(year) => handleFilterChange({ yearEnd: year })}
               onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
               onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
             />
-
-            <div className="share-url">
-              <strong>Shareable link:</strong>
-              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
-            </div>
 
             <div className="source-info">
               <strong>Data Sources</strong>
               <ul>
                 <li>
-                  SAIDI/SAIFI (Reliability metrics) —{' '}
+                  Utility reliability and ownership data —{' '}
                   <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
                     EIA Form 861
                   </a>

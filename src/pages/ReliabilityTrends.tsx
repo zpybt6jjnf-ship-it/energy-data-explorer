@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChangeMap from '../components/charts/ReliabilityChangeMap'
+import ReliabilityOverTimeChart from '../components/ReliabilityOverTimeChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function ReliabilityMapPage() {
-  const { filters, handleFilterChange } = useUrlFilters()
+export default function ReliabilityTrends() {
+  const { filters, handleFilterChange, resetTimeViewport } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -33,10 +33,10 @@ export default function ReliabilityMapPage() {
       <section className="page-hero">
         <p className="hero-eyebrow">Reliability</p>
         <h1 className="hero-title">
-          <span className="hero-topic">Reliability Change Map</span>
+          <span className="hero-topic">Reliability Trends</span>
         </h1>
         <p className="hero-subtitle">
-          See which states improved or degraded in grid reliability between any two years
+          Track how grid reliability has changed over time for states and regions
         </p>
       </section>
 
@@ -56,22 +56,12 @@ export default function ReliabilityMapPage() {
 
         {data && (
           <>
-            <ReliabilityChangeMap
+            <ReliabilityOverTimeChart
               data={data}
-              yearStart={filters.changeYearStart}
-              yearEnd={filters.changeYearEnd}
-              reliabilityMetric={filters.reliabilityMetric as 'saidi' | 'saifi'}
-              includeMED={filters.includeMED}
-              onYearStartChange={(year) => handleFilterChange({ changeYearStart: year })}
-              onYearEndChange={(year) => handleFilterChange({ changeYearEnd: year })}
-              onMetricChange={(metric) => handleFilterChange({ reliabilityMetric: metric })}
-              onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
+              filters={filters}
+              onFilterChange={handleFilterChange}
+              onResetViewport={resetTimeViewport}
             />
-
-            <div className="share-url">
-              <strong>Shareable link:</strong>
-              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
-            </div>
 
             <div className="source-info">
               <strong>Data Sources</strong>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import ReliabilityChangeMap from '../components/charts/ReliabilityChangeMap'
+import ReliabilityChangeScatter from '../components/charts/ReliabilityChangeScatter'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
-export default function ReliabilityMapPage() {
+export default function ReliabilityChange() {
   const { filters, handleFilterChange } = useUrlFilters()
 
   const [data, setData] = useState<ChartData | null>(null)
@@ -33,10 +33,10 @@ export default function ReliabilityMapPage() {
       <section className="page-hero">
         <p className="hero-eyebrow">Reliability</p>
         <h1 className="hero-title">
-          <span className="hero-topic">Reliability Change Map</span>
+          <span className="hero-topic">Reliability Change</span>
         </h1>
         <p className="hero-subtitle">
-          See which states improved or degraded in grid reliability between any two years
+          Compare change in reliability vs change in renewables between any two years
         </p>
       </section>
 
@@ -56,7 +56,7 @@ export default function ReliabilityMapPage() {
 
         {data && (
           <>
-            <ReliabilityChangeMap
+            <ReliabilityChangeScatter
               data={data}
               yearStart={filters.changeYearStart}
               yearEnd={filters.changeYearEnd}
@@ -68,11 +68,6 @@ export default function ReliabilityMapPage() {
               onIncludeMEDChange={(include) => handleFilterChange({ includeMED: include })}
             />
 
-            <div className="share-url">
-              <strong>Shareable link:</strong>
-              <a href={window.location.href} className="share-link-url">{window.location.href}</a>
-            </div>
-
             <div className="source-info">
               <strong>Data Sources</strong>
               <ul>
@@ -80,6 +75,12 @@ export default function ReliabilityMapPage() {
                   SAIDI/SAIFI (Reliability metrics) —{' '}
                   <a href="https://www.eia.gov/electricity/data/eia861/" target="_blank" rel="noopener noreferrer">
                     EIA Form 861
+                  </a>
+                </li>
+                <li>
+                  VRE Penetration —{' '}
+                  <a href="https://www.eia.gov/electricity/data/state/" target="_blank" rel="noopener noreferrer">
+                    EIA State Electricity Profiles
                   </a>
                 </li>
               </ul>

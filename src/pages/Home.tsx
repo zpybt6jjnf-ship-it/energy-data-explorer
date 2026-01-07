@@ -1,102 +1,300 @@
 import ChartCard from '../components/ChartCard'
 
-const AVAILABLE_CHARTS = [
+type ChartType = 'scatter' | 'line' | 'area' | 'bar' | 'map' | 'box' | 'sankey'
+
+interface ChartConfig {
+  id: string
+  title: string
+  description: string
+  href: string
+  chartType: ChartType
+  tags: string[]
+  category: 'reliability' | 'affordability' | 'generation' | 'markets' | 'outages'
+  status: 'ready' | 'demo'
+}
+
+// All available charts organized by status and category
+const CHARTS: ChartConfig[] = [
+  // === READY CHARTS (tested with real data) ===
+
+  // Reliability category
   {
-    id: 'reliability',
-    title: 'Grid Reliability Explorer',
-    description: 'Explore U.S. power grid reliability data. Compare outages against renewable energy mix, or track reliability trends over time.',
-    href: '/explore/reliability',
-    thumbnail: '/thumbnails/reliability.svg',
-    tags: ['SAIDI', 'VRE', 'Trends', 'Reliability']
+    id: 'reliability-vre',
+    title: 'Reliability vs. Renewables',
+    description: 'Compare grid reliability metrics (SAIDI outage duration, SAIFI outage frequency) against renewable energy penetration by state.',
+    href: '/explore/reliability/vre',
+    chartType: 'scatter',
+    tags: ['SAIDI', 'SAIFI', 'VRE'],
+    category: 'reliability',
+    status: 'ready'
   },
   {
-    id: 'affordability',
-    title: 'Electricity Affordability Explorer',
-    description: 'Explore retail electricity prices across U.S. Compare rates against renewable mix to see how clean energy affects costs.',
-    href: '/explore/affordability',
-    thumbnail: '/thumbnails/affordability.svg',
-    tags: ['Rates', 'VRE', 'Affordability', 'Prices']
+    id: 'reliability-trends',
+    title: 'Reliability Trends',
+    description: 'Track how grid reliability has changed over time for states and regions.',
+    href: '/explore/reliability/trends',
+    chartType: 'line',
+    tags: ['SAIDI', 'Trends'],
+    category: 'reliability',
+    status: 'ready'
   },
+
+  // Affordability category
+  {
+    id: 'rates-vre',
+    title: 'Rates vs. Renewables',
+    description: 'Explore how retail electricity rates relate to renewable energy adoption.',
+    href: '/explore/affordability/vre',
+    chartType: 'scatter',
+    tags: ['Rates', 'VRE'],
+    category: 'affordability',
+    status: 'ready'
+  },
+  {
+    id: 'rates-trends',
+    title: 'Rate Trends',
+    description: 'Track electricity rate changes over time by state and sector.',
+    href: '/explore/affordability/trends',
+    chartType: 'line',
+    tags: ['Rates', 'Trends'],
+    category: 'affordability',
+    status: 'ready'
+  },
+
+  // Generation category
   {
     id: 'energy-mix',
-    title: 'Energy Mix Explorer',
-    description: 'Visualize how the U.S. generates electricity.',
-    href: '/explore/energy-mix',
-    thumbnail: '/thumbnails/energy-mix.svg',
-    tags: ['Generation', 'Fuel Mix', 'Trends', 'Decarbonization']
+    title: 'Generation Mix',
+    description: 'Stacked area chart showing electricity generation by fuel source over time.',
+    href: '/explore/generation/mix',
+    chartType: 'area',
+    tags: ['Fuel Mix'],
+    category: 'generation',
+    status: 'ready'
   },
+
+  // === DEMO CHARTS (sample data, work in progress) ===
+
+  // Reliability demos
   {
-    id: 'reliability-rates',
-    title: 'Reliability vs. Prices',
-    description: 'Do higher electricity rates lead to better grid reliability? Explore the relationship between what customers pay and service quality.',
-    href: '/explore/reliability-rates',
-    thumbnail: '/thumbnails/reliability.svg',
-    tags: ['SAIDI', 'Rates', 'Reliability', 'Prices']
+    id: 'reliability-change',
+    title: 'Reliability Change',
+    description: 'Compare change in reliability vs change in renewables between any two years.',
+    href: '/explore/reliability/change',
+    chartType: 'scatter',
+    tags: ['SAIDI', 'VRE', 'Change'],
+    category: 'reliability',
+    status: 'demo'
   },
   {
     id: 'reliability-map',
     title: 'Reliability Change Map',
-    description: 'Interactive U.S. map showing which states improved or degraded in grid reliability between any two years.',
-    href: '/explore/reliability-map',
-    thumbnail: '/thumbnails/reliability.svg',
-    tags: ['Map', 'SAIDI', 'YoY Change', 'States']
+    description: 'Choropleth map showing which states improved or degraded in reliability.',
+    href: '/explore/reliability/map',
+    chartType: 'map',
+    tags: ['SAIDI', 'Choropleth'],
+    category: 'reliability',
+    status: 'demo'
+  },
+  {
+    id: 'reliability-rates',
+    title: 'Reliability vs. Rates',
+    description: 'Do higher rates buy better reliability? Explore the relationship.',
+    href: '/explore/reliability/rates',
+    chartType: 'scatter',
+    tags: ['SAIDI', 'Rates'],
+    category: 'reliability',
+    status: 'demo'
+  },
+  {
+    id: 'reliability-ownership',
+    title: 'Reliability by Ownership',
+    description: 'Compare reliability across IOUs, co-ops, and municipal utilities.',
+    href: '/explore/reliability/ownership',
+    chartType: 'box',
+    tags: ['SAIDI', 'Ownership'],
+    category: 'reliability',
+    status: 'demo'
   },
   {
     id: 'rto-analysis',
-    title: 'RTO Region Analysis',
-    description: 'Compare grid reliability across Regional Transmission Organizations (RTOs). See how PJM, MISO, ERCOT, and other regions perform over time.',
-    href: '/explore/rto-analysis',
-    thumbnail: '/thumbnails/reliability.svg',
-    tags: ['RTO', 'SAIDI', 'Regions', 'Comparison']
+    title: 'RTO Region Comparison',
+    description: 'Compare reliability trends across Regional Transmission Organizations.',
+    href: '/explore/reliability/rto',
+    chartType: 'line',
+    tags: ['RTO', 'SAIDI'],
+    category: 'reliability',
+    status: 'demo'
   },
+
+  // Affordability demos
+  {
+    id: 'rate-volatility',
+    title: 'Rate Volatility',
+    description: 'How does fuel mix exposure affect electricity rate stability?',
+    href: '/explore/affordability/volatility',
+    chartType: 'scatter',
+    tags: ['Rates', 'Volatility'],
+    category: 'affordability',
+    status: 'demo'
+  },
+
+  // Generation demos
   {
     id: 'energy-transitions',
     title: 'Energy Transition Flows',
-    description: 'Sankey diagram showing how electricity generation sources have shifted over time. See the rise of renewables and decline of coal.',
-    href: '/explore/energy-transitions',
-    thumbnail: '/thumbnails/energy-mix.svg',
-    tags: ['Sankey', 'Generation', 'Transition', 'Fuel Mix']
+    description: 'Sankey diagram showing how generation sources have shifted between years.',
+    href: '/explore/generation/transitions',
+    chartType: 'sankey',
+    tags: ['Transition', 'Fuel Mix'],
+    category: 'generation',
+    status: 'demo'
+  },
+
+  // Markets demos
+  {
+    id: 'wholesale-retail',
+    title: 'Wholesale vs. Retail Prices',
+    description: 'Compare wholesale hub prices to retail rates. See the markup by region.',
+    href: '/explore/markets/wholesale-retail',
+    chartType: 'scatter',
+    tags: ['Wholesale', 'Retail'],
+    category: 'markets',
+    status: 'demo'
   },
   {
-    id: 'wholesale',
-    title: 'Wholesale Markets',
-    description: 'Explore wholesale electricity prices at major trading hubs and compare to retail rates. See how much markup customers pay.',
-    href: '/explore/wholesale',
-    thumbnail: '/thumbnails/affordability.svg',
-    tags: ['Wholesale', 'Prices', 'Markets', 'Trading Hubs']
+    id: 'wholesale-trends',
+    title: 'Wholesale Price Trends',
+    description: 'Track wholesale electricity prices at major trading hubs over time.',
+    href: '/explore/markets/trends',
+    chartType: 'line',
+    tags: ['Wholesale', 'Hubs'],
+    category: 'markets',
+    status: 'demo'
+  },
+
+  // Outages demos
+  {
+    id: 'outage-causes',
+    title: 'Outage Causes',
+    description: 'What causes major power outages? Breakdown by cause category over time.',
+    href: '/explore/outages/causes',
+    chartType: 'bar',
+    tags: ['Causes', 'Weather'],
+    category: 'outages',
+    status: 'demo'
   },
   {
-    id: 'outage-analysis',
-    title: 'Power Outage Analysis',
-    description: 'What causes major power outages? Explore weather vulnerability and outage patterns across U.S. states.',
-    href: '/explore/outage-analysis',
-    thumbnail: '/thumbnails/reliability.svg',
-    tags: ['Outages', 'Weather', 'DOE-417', 'Vulnerability']
+    id: 'weather-vulnerability',
+    title: 'Weather Vulnerability Map',
+    description: 'Which states are most vulnerable to weather-driven outages?',
+    href: '/explore/outages/weather-map',
+    chartType: 'map',
+    tags: ['Weather', 'Vulnerability'],
+    category: 'outages',
+    status: 'demo'
   }
 ]
 
+const CATEGORY_LABELS: Record<string, string> = {
+  reliability: 'Grid Reliability',
+  affordability: 'Electricity Prices',
+  generation: 'Generation Mix',
+  markets: 'Wholesale Markets',
+  outages: 'Power Outages'
+}
+
+const CATEGORY_ICONS: Record<string, string> = {
+  reliability: '⚡',
+  affordability: '$',
+  generation: '🔋',
+  markets: '📊',
+  outages: '⚠'
+}
+
+const CATEGORY_ORDER = ['reliability', 'affordability', 'generation', 'markets', 'outages']
+
 export default function Home() {
+  const readyCharts = CHARTS.filter(c => c.status === 'ready')
+  const demoCharts = CHARTS.filter(c => c.status === 'demo')
+
+  // Group ready charts by category
+  const readyByCategory = CATEGORY_ORDER.map(cat => ({
+    category: cat,
+    label: CATEGORY_LABELS[cat],
+    icon: CATEGORY_ICONS[cat],
+    charts: readyCharts.filter(c => c.category === cat)
+  })).filter(g => g.charts.length > 0)
+
   return (
     <>
       <section className="home-hero">
-        <h1 className="home-title">Energy Data Explorer</h1>
+        <h1 className="home-title">
+          <span className="title-highlight">Energy Data Explorer</span>
+        </h1>
         <p className="home-subtitle">
-          Interactive visualizations exploring the U.S. electricity sector
+          Interactive visualizations exploring <strong>reliability</strong>, <strong>affordability</strong>, and <strong>generation</strong> across the U.S. electricity sector
+        </p>
+        <p className="home-stats">
+          {readyCharts.length} production charts &bull; {demoCharts.length} in development &bull; 10+ years of EIA data
         </p>
       </section>
 
       <main className="container">
+        {/* Ready Charts Section - grouped by category */}
         <section className="chart-gallery">
-          <h2 className="gallery-title">Explore the Data</h2>
+          <div className="gallery-header">
+            <h2 className="gallery-title">Explore the Data</h2>
+            <p className="gallery-subtitle">
+              Production-ready visualizations built with real data from the U.S. Energy Information Administration
+            </p>
+          </div>
+
+          {readyByCategory.map(group => (
+            <div key={group.category} className="category-group">
+              <h3 className="category-title">
+                <span className="category-icon">{group.icon}</span>
+                <span className="category-name">{group.label}</span>
+                <span className="category-count">{group.charts.length}</span>
+              </h3>
+              <div className="chart-grid">
+                {group.charts.map(chart => (
+                  <ChartCard
+                    key={chart.id}
+                    title={chart.title}
+                    description={chart.description}
+                    href={chart.href}
+                    chartType={chart.chartType}
+                    tags={chart.tags}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        {/* Demo Charts Section */}
+        <section className="chart-gallery demo-gallery">
+          <div className="gallery-header">
+            <h2 className="gallery-title">
+              <span className="demo-badge">Preview</span>
+              In Development
+            </h2>
+            <p className="gallery-subtitle">
+              Experimental visualizations using sample data. Real data integration coming soon.
+            </p>
+          </div>
+
           <div className="chart-grid">
-            {AVAILABLE_CHARTS.map(chart => (
+            {demoCharts.map(chart => (
               <ChartCard
                 key={chart.id}
                 title={chart.title}
                 description={chart.description}
                 href={chart.href}
-                thumbnail={chart.thumbnail}
+                chartType={chart.chartType}
                 tags={chart.tags}
+                isDemo
               />
             ))}
           </div>
@@ -106,7 +304,7 @@ export default function Home() {
           <h2>About This Project</h2>
           <p>
             Energy Data Explorer is a collection of interactive visualizations that make U.S. electricity
-            sector data accessible and explorable. All data comes from the U.S. Energy Information
+            sector data accessible and explorable. Primary data comes from the U.S. Energy Information
             Administration (EIA).
           </p>
           <p className="about-disclaimer">

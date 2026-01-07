@@ -31,9 +31,9 @@ export default function EnergyMix() {
   return (
     <>
       <section className="page-hero">
-        <p className="hero-eyebrow">Data Explorer</p>
+        <p className="hero-eyebrow">Generation</p>
         <h1 className="hero-title">
-          <span className="hero-topic">U.S. Energy Generation Mix</span>
+          <span className="hero-topic">Generation Mix</span>
         </h1>
         <p className="hero-subtitle">
           Exploring how states generate electricity and how the mix is changing over time

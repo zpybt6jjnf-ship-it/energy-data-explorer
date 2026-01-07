@@ -31,7 +31,7 @@ export default function ReliabilityVsRates() {
   return (
     <>
       <section className="page-hero">
-        <p className="hero-eyebrow">Data Explorer</p>
+        <p className="hero-eyebrow">Reliability</p>
         <h1 className="hero-title">
           <span className="hero-topic">Reliability vs. Electricity Prices</span>
         </h1>
