@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 interface LayoutProps {
@@ -10,10 +11,12 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <header className="site-header">
         <div className="header-left">
-          <Logo size={44} />
+          <Link to="/" className="header-logo-link" aria-label="Go to homepage">
+            <Logo size={44} />
+          </Link>
           <div className="header-brand">
             <a href="/" className="brand-name">Bottlenecks Labs</a>
-            <span className="site-title">Energy Data Explorer</span>
+            <Link to="/" className="site-title">Energy Data Explorer</Link>
           </div>
         </div>
       </header>

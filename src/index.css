@@ -116,6 +116,11 @@ body {
   color: var(--color-ink-muted);
   letter-spacing: 0.02em;
   line-height: 1.2;
+  text-decoration: none;
+}
+
+.site-title:hover {
+  color: var(--color-teal);
 }
 
 /* Page Hero */
