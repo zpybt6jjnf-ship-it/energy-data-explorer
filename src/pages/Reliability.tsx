@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReliabilityChart from '../components/ReliabilityChart'
-import SaidiOverTimeChart from '../components/SaidiOverTimeChart'
+import ReliabilityOverTimeChart from '../components/ReliabilityOverTimeChart'
 import { useUrlFilters } from '../hooks/useUrlFilters'
 import { ChartData } from '../types'
 
@@ -64,7 +64,7 @@ export default function Reliability() {
               onResetViewport={resetViewport}
             />
 
-            <SaidiOverTimeChart
+            <ReliabilityOverTimeChart
               data={data}
               filters={filters}
               onFilterChange={handleFilterChange}

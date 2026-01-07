@@ -59,7 +59,7 @@ const RELIABILITY_TIME_CONFIG: LineChartConfig = {
   exportFilename: 'reliability-time'
 }
 
-export default function SaidiOverTimeChart({ data, filters, onFilterChange, onResetViewport }: Props) {
+export default function ReliabilityOverTimeChart({ data, filters, onFilterChange, onResetViewport }: Props) {
   return (
     <BaseLineChart
       config={RELIABILITY_TIME_CONFIG}
