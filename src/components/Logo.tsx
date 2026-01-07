@@ -33,10 +33,10 @@ export default function Logo({ size = 48 }: LogoProps) {
           </clipPath>
         </defs>
 
-        {/* Background - darkens during lightning */}
+        {/* Background - lightens during lightning */}
         <rect
           x="0" y="0" width="100" height="100"
-          fill={isFlashing ? '#1a1a2e' : '#faf8f5'}
+          fill={isFlashing ? '#faf8f5' : '#1a1a2e'}
           style={{ transition: 'fill 0.05s' }}
         />
 
