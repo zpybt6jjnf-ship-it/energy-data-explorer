@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BaseStackedAreaChart from './BaseStackedAreaChart'
+import BaseStackedAreaChart, { AdvancedOptions } from './BaseStackedAreaChart'
 import { StackedAreaChartConfig } from '../../types/chartConfig'
 import { ChartData, ChartFilters } from '../../types'
 
@@ -25,14 +25,14 @@ const ENERGY_COLORS = {
 const ENERGY_MIX_CONFIG: StackedAreaChartConfig = {
   id: 'energy-mix',
   title: 'Energy Generation Mix',
-  subtitle: 'How has the electricity generation mix changed over time?',
+  subtitle: 'How has the electricity generation mix changed over time? Select a region to explore.',
   xAxis: {
     field: 'year',
     label: 'Year'
   },
   yAxis: {
     field: 'totalGeneration',
-    label: 'Generation (MWh)'
+    label: 'Generation (TWh)'
   },
   series: [
     { field: 'generationCoal', label: 'Coal', color: ENERGY_COLORS.coal },
@@ -56,18 +56,25 @@ const ENERGY_MIX_CONFIG: StackedAreaChartConfig = {
         definition: 'Wind, solar, and hydroelectric are considered renewable sources. Natural gas and coal are fossil fuels. Nuclear is carbon-free but not renewable. The transition from coal to natural gas and renewables is a major trend in U.S. electricity generation.'
       }
     ],
-    whyCompare: 'Understanding a state\'s energy mix reveals its progress toward decarbonization, energy independence, and the reliability challenges it may face with different generation technologies.',
+    whyCompare: 'Electricity generation mix determines grid emissions, fuel cost exposure, and infrastructure requirements.',
     caveat: 'Note: Generation mix varies significantly by state based on natural resources, historical infrastructure, and policy decisions. Some states have no nuclear or limited renewable potential.'
   },
   exportFilename: 'energy-mix'
 }
 
 export default function EnergyMixChart({ data, filters, onFilterChange, onResetViewport }: Props) {
-  // Default to first state or CA as a common example
-  const [selectedState, setSelectedState] = useState<string>(() => {
-    const states = [...new Set(data.points.map(p => p.stateCode))].sort()
-    return states.includes('CA') ? 'CA' : states[0] || 'CA'
+  // Default to U.S. Total for national overview
+  const [selectedRegion, setSelectedRegion] = useState<string>('US')
+
+  // Display options state
+  const [advancedOptions, setAdvancedOptions] = useState<AdvancedOptions>({
+    displayMode: 'percentage',
+    groupBy: null
   })
+
+  const handleAdvancedOptionsChange = (options: Partial<AdvancedOptions>) => {
+    setAdvancedOptions(prev => ({ ...prev, ...options }))
+  }
 
   return (
     <BaseStackedAreaChart
@@ -76,8 +83,10 @@ export default function EnergyMixChart({ data, filters, onFilterChange, onResetV
       filters={filters}
       onFilterChange={onFilterChange}
       onResetViewport={onResetViewport}
-      selectedState={selectedState}
-      onStateChange={setSelectedState}
+      selectedRegion={selectedRegion}
+      onRegionChange={setSelectedRegion}
+      advancedOptions={advancedOptions}
+      onAdvancedOptionsChange={handleAdvancedOptionsChange}
     />
   )
 }

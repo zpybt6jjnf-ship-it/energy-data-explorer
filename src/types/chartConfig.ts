@@ -115,6 +115,15 @@ export interface LineChartConfig {
 }
 
 /**
+ * Configuration for a series in stacked area charts
+ */
+export interface SeriesConfig {
+  field: keyof StateDataPoint | string
+  label: string
+  color: string
+}
+
+/**
  * Configuration for stacked area chart
  */
 export interface StackedAreaChartConfig {
@@ -129,11 +138,7 @@ export interface StackedAreaChartConfig {
   /** Y-axis configuration */
   yAxis: AxisConfig
   /** Series definitions for stacking */
-  series: {
-    field: keyof StateDataPoint | string
-    label: string
-    color: string
-  }[]
+  series: SeriesConfig[]
   /** Whether to show as percentage (stacked 100%) or absolute values */
   showAsPercentage?: boolean
   /** Feature flags */

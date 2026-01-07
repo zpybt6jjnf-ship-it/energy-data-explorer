@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(curl:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(cat:*)",
+      "Bash(__NEW_LINE__ echo \"\")",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run data:update:*)"
     ]
   }
 }
