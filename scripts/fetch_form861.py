@@ -171,7 +171,10 @@ def extract_utility_reliability(df: pd.DataFrame) -> Optional[pd.DataFrame]:
     Extract utility-level reliability data with all available fields.
 
     Returns DataFrame with: utility_id, utility_name, state, ownership,
-    saidi, saifi, customers
+    saidi, saifi, saidi_with_med, saifi_with_med, customers
+
+    SAIDI/SAIFI without MED are the primary values (normalized baseline).
+    SAIDI/SAIFI with MED include major event day impacts.
     """
     cols_lower = {c.lower(): c for c in df.columns}
 
@@ -181,13 +184,34 @@ def extract_utility_reliability(df: pd.DataFrame) -> Optional[pd.DataFrame]:
     state_col = find_column(df, ['state'])
     ownership_col = find_column(df, ['ownership'])
 
-    # Find SAIDI (prefer without MED)
-    saidi_col = find_column(df, ['saidi without', 'saidi w/o', 'saidi_wo'])
+    # Find SAIDI without MED (primary/normalized value)
+    saidi_wo_med_col = find_column(df, ['saidi without', 'saidi w/o', 'saidi_wo'])
+
+    # Find SAIDI with MED (includes major events)
+    saidi_with_med_col = find_column(df, ['saidi with med', 'saidi w/ med', 'saidi_w_med'])
+    if not saidi_with_med_col:
+        # Try to find a generic SAIDI column that's different from without-MED
+        generic_saidi = find_column(df, ['saidi'])
+        if generic_saidi and generic_saidi != saidi_wo_med_col:
+            saidi_with_med_col = generic_saidi
+
+    # Use the best available column as primary SAIDI
+    saidi_col = saidi_wo_med_col if saidi_wo_med_col else saidi_with_med_col
     if not saidi_col:
         saidi_col = find_column(df, ['saidi'])
 
-    # Find SAIFI (prefer without MED)
-    saifi_col = find_column(df, ['saifi without', 'saifi w/o', 'saifi_wo'])
+    # Find SAIFI without MED (primary/normalized value)
+    saifi_wo_med_col = find_column(df, ['saifi without', 'saifi w/o', 'saifi_wo'])
+
+    # Find SAIFI with MED (includes major events)
+    saifi_with_med_col = find_column(df, ['saifi with med', 'saifi w/ med', 'saifi_w_med'])
+    if not saifi_with_med_col:
+        generic_saifi = find_column(df, ['saifi'])
+        if generic_saifi and generic_saifi != saifi_wo_med_col:
+            saifi_with_med_col = generic_saifi
+
+    # Use the best available column as primary SAIFI
+    saifi_col = saifi_wo_med_col if saifi_wo_med_col else saifi_with_med_col
     if not saifi_col:
         saifi_col = find_column(df, ['saifi'])
 
@@ -207,6 +231,17 @@ def extract_utility_reliability(df: pd.DataFrame) -> Optional[pd.DataFrame]:
     result['saidi'] = pd.to_numeric(df[saidi_col], errors='coerce')
     result['saifi'] = pd.to_numeric(df[saifi_col], errors='coerce') if saifi_col else None
     result['customers'] = pd.to_numeric(df[customers_col], errors='coerce') if customers_col else None
+
+    # Add "with MED" values if available (for MED toggle feature)
+    if saidi_with_med_col and saidi_with_med_col != saidi_col:
+        result['saidi_with_med'] = pd.to_numeric(df[saidi_with_med_col], errors='coerce')
+    else:
+        result['saidi_with_med'] = result['saidi']  # Same as primary if no separate column
+
+    if saifi_with_med_col and saifi_with_med_col != saifi_col:
+        result['saifi_with_med'] = pd.to_numeric(df[saifi_with_med_col], errors='coerce')
+    else:
+        result['saifi_with_med'] = result['saifi']  # Same as primary if no separate column
 
     # Filter to valid states
     result = result[result['state'].isin(VALID_STATES)]
@@ -304,12 +339,23 @@ def aggregate_to_state_level(df: pd.DataFrame) -> pd.DataFrame:
 
     Uses simple averaging (each utility weighted equally) to preserve
     visibility of smaller utility performance.
+
+    Includes both with-MED and without-MED values for the MED toggle feature.
     """
-    # Simple average across all utilities in the state
-    state_agg = df.groupby('state').agg({
+    # Build aggregation dict based on available columns
+    agg_dict = {
         'saidi': 'mean',
         'saifi': 'mean'
-    }).reset_index()
+    }
+
+    # Add MED columns if present
+    if 'saidi_with_med' in df.columns:
+        agg_dict['saidi_with_med'] = 'mean'
+    if 'saifi_with_med' in df.columns:
+        agg_dict['saifi_with_med'] = 'mean'
+
+    # Simple average across all utilities in the state
+    state_agg = df.groupby('state').agg(agg_dict).reset_index()
 
     # Add metadata
     state_agg['utility_count'] = df.groupby('state').size().values
@@ -321,6 +367,10 @@ def aggregate_to_state_level(df: pd.DataFrame) -> pd.DataFrame:
     state_agg['saidi'] = state_agg['saidi'].round(1)
     if 'saifi' in state_agg.columns:
         state_agg['saifi'] = state_agg['saifi'].round(2)
+    if 'saidi_with_med' in state_agg.columns:
+        state_agg['saidi_with_med'] = state_agg['saidi_with_med'].round(1)
+    if 'saifi_with_med' in state_agg.columns:
+        state_agg['saifi_with_med'] = state_agg['saifi_with_med'].round(2)
 
     return state_agg
 
@@ -392,12 +442,18 @@ def fetch_year(year: int) -> Tuple[Optional[List[Dict]], Optional[List[Dict]]]:
     # Convert state records to list of dicts
     state_records = []
     for _, row in state_df.iterrows():
-        state_records.append({
+        record = {
             'state': row['state'],
             'saidi': row['saidi'],
             'saifi': row['saifi'] if pd.notna(row.get('saifi')) else None,
             'year': year
-        })
+        }
+        # Add MED fields if available
+        if 'saidi_with_med' in row and pd.notna(row.get('saidi_with_med')):
+            record['saidi_with_med'] = row['saidi_with_med']
+        if 'saifi_with_med' in row and pd.notna(row.get('saifi_with_med')):
+            record['saifi_with_med'] = row['saifi_with_med']
+        state_records.append(record)
 
     # Convert utility records to list of dicts
     utility_records = []
@@ -414,6 +470,11 @@ def fetch_year(year: int) -> Tuple[Optional[List[Dict]], Optional[List[Dict]]]:
             'nerc_region': row.get('nerc_region', ''),
             'year': year
         }
+        # Add MED fields if available
+        if 'saidi_with_med' in row and pd.notna(row.get('saidi_with_med')):
+            record['saidi_with_med'] = round(row['saidi_with_med'], 1)
+        if 'saifi_with_med' in row and pd.notna(row.get('saifi_with_med')):
+            record['saifi_with_med'] = round(row['saifi_with_med'], 2)
         # Add RTO flags
         for rto_col in rto_cols:
             if rto_col in row:

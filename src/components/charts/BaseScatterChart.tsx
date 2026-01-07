@@ -108,15 +108,24 @@ export default function BaseScatterChart({
     format: config.yAxis.format || '.1f'
   }
 
-  // Helper to get Y value from a point
+  // Helper to get Y value from a point (handles MED toggle for reliability metrics)
   const getYValue = useCallback((point: StateDataPoint): number | null => {
     const field = config.yAxis.field as keyof StateDataPoint
     // Handle metric switching for reliability charts
     if (config.metrics && (metricKey === 'saidi' || metricKey === 'saifi')) {
+      // If MED toggle is on and we have "with MED" data, use it
+      if (filters.includeMED) {
+        const withMEDKey = metricKey === 'saidi' ? 'saidiWithMED' : 'saifiWithMED'
+        const withMEDValue = point[withMEDKey] as number | null
+        // Use "with MED" value if available, otherwise fall back to regular value
+        if (withMEDValue !== null) {
+          return withMEDValue
+        }
+      }
       return point[metricKey as keyof StateDataPoint] as number | null
     }
     return point[field] as number | null
-  }, [config.yAxis.field, config.metrics, metricKey])
+  }, [config.yAxis.field, config.metrics, metricKey, filters.includeMED])
 
   // Helper to get X value from a point
   const getXValue = useCallback((point: StateDataPoint): number => {
@@ -657,24 +666,29 @@ export default function BaseScatterChart({
     return traces
   }, [enrichedData, filteredData, filteredUtilities, filters.viewMode, filters.colorBy, filters.showTrendLine, filters.groupBy, filters.showGroupMembers, aggregatedData, regression, avgMetricValue, metricKey, metricInfo, swapAxes, config.xAxis, getXValue])
 
+  // Dynamic X-axis label - prefix with "State" in utility view to clarify data granularity
+  const xAxisLabel = filters.viewMode === 'utilities'
+    ? `State ${config.xAxis.label}`
+    : config.xAxis.label
+
   const layout = useMemo(() => ({
     ...baseLayout,
     title: { text: '' },
     xaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? metricInfo.yAxisLabel : `${config.xAxis.label}${config.xAxis.suffix ? ` (${config.xAxis.suffix})` : ''}`, ...axisTitleStyle },
+      title: { text: swapAxes ? metricInfo.yAxisLabel : `${xAxisLabel}${config.xAxis.suffix ? ` (${config.xAxis.suffix})` : ''}`, ...axisTitleStyle },
       ticksuffix: swapAxes ? undefined : config.xAxis.suffix,
       range: filters.xAxisRange || undefined,
       autorange: filters.xAxisRange ? false : true
     },
     yaxis: {
       ...axisStyle,
-      title: { text: swapAxes ? `${config.xAxis.label}${config.xAxis.suffix ? ` (${config.xAxis.suffix})` : ''}` : metricInfo.yAxisLabel, ...axisTitleStyle },
+      title: { text: swapAxes ? `${xAxisLabel}${config.xAxis.suffix ? ` (${config.xAxis.suffix})` : ''}` : metricInfo.yAxisLabel, ...axisTitleStyle },
       ticksuffix: swapAxes ? config.xAxis.suffix : undefined,
       range: filters.yAxisRange || undefined,
       autorange: filters.yAxisRange ? false : true
     }
-  }), [filters.xAxisRange, filters.yAxisRange, metricInfo.yAxisLabel, swapAxes, config.xAxis])
+  }), [filters.xAxisRange, filters.yAxisRange, metricInfo.yAxisLabel, swapAxes, config.xAxis, xAxisLabel, filters.viewMode])
 
   const plotConfig = {
     ...baseConfig,
@@ -695,7 +709,11 @@ export default function BaseScatterChart({
     >
       <div className="chart-header">
         <h2>{config.title}</h2>
-        {config.subtitle && <p>{config.subtitle}</p>}
+        {filters.viewMode === 'utilities' ? (
+          <p>Showing utility-level reliability metrics plotted against state-level renewable energy shares.</p>
+        ) : (
+          config.subtitle && <p>{config.subtitle}</p>
+        )}
       </div>
 
       {/* Description section */}
@@ -724,6 +742,24 @@ export default function BaseScatterChart({
                   {config.description.caveat && (
                     <p className="description-caveat">{config.description.caveat}</p>
                   )}
+                </div>
+              )}
+
+              {/* MED info section - only for reliability charts */}
+              {config.metrics && (
+                <div className="description-section">
+                  <h3>About Major Event Days (MED)</h3>
+                  <p>
+                    <strong>Major Event Days</strong> are days when system reliability metrics exceed
+                    a statistical threshold (typically 2.5 standard deviations above historical average),
+                    often due to severe weather, natural disasters, or other extraordinary circumstances.
+                  </p>
+                  <p>
+                    The EIA allows utilities to report SAIDI/SAIFI both with and without MED.
+                    By default, this chart shows data <em>excluding</em> MED to provide a &quot;normalized&quot;
+                    view of baseline reliability. Use the <strong>Include Major Events</strong> toggle
+                    in Advanced settings to see the full customer experience including extreme events.
+                  </p>
                 </div>
               )}
             </div>
@@ -769,6 +805,21 @@ export default function BaseScatterChart({
                       onChange={(e) => onFilterChange({ swapAxes: e.target.checked })}
                     />
                     Swap Axes
+                  </label>
+                </div>
+              )}
+
+              {/* MED toggle - only show for reliability metrics */}
+              {config.metrics && (metricKey === 'saidi' || metricKey === 'saifi') && (
+                <div className="control-group">
+                  <label>&nbsp;</label>
+                  <label className="checkbox-label" title="Include data from Major Event Days (extreme weather, disasters)">
+                    <input
+                      type="checkbox"
+                      checked={filters.includeMED}
+                      onChange={(e) => onFilterChange({ includeMED: e.target.checked })}
+                    />
+                    Include Major Events
                   </label>
                 </div>
               )}
@@ -856,8 +907,7 @@ export default function BaseScatterChart({
         <div className="stats-panel">
           <div className="stats-summary">
             <p className="summary-main">
-              The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between
-              {config.xAxis.label.toLowerCase()} and {metricInfo.label.toLowerCase()}.
+              The data shows <strong>{summary.strength} {summary.direction} correlation</strong> between {config.xAxis.label.toLowerCase()} and {metricInfo.label.toLowerCase()}.
             </p>
             <p className="summary-detail">
               Based on {summary.n} observations across {filters.yearEnd - filters.yearStart + 1} years, {summary.slopeText}.

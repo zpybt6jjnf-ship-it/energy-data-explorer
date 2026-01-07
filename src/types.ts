@@ -2,8 +2,11 @@ export interface StateDataPoint {
   state: string
   stateCode: string
   year: number
-  saidi: number | null // System Average Interruption Duration Index (minutes)
-  saifi: number | null // System Average Interruption Frequency Index
+  saidi: number | null // System Average Interruption Duration Index (minutes) - without MED
+  saifi: number | null // System Average Interruption Frequency Index - without MED
+  // MED (Major Event Day) values - includes extreme weather events
+  saidiWithMED: number | null // SAIDI including major event days (null if same as saidi)
+  saifiWithMED: number | null // SAIFI including major event days (null if same as saifi)
   vrePenetration: number // % of generation from wind + solar
   windPenetration: number
   solarPenetration: number
@@ -36,8 +39,11 @@ export interface UtilityDataPoint {
   primaryRto: string | null
   rtos: string[]
   year: number
-  saidi: number | null
-  saifi: number | null
+  saidi: number | null // SAIDI without MED (normalized baseline)
+  saifi: number | null // SAIFI without MED (normalized baseline)
+  // MED (Major Event Day) values - includes extreme weather events
+  saidiWithMED: number | null // SAIDI including major event days (null if same as saidi)
+  saifiWithMED: number | null // SAIFI including major event days (null if same as saifi)
   customers: number | null
   // State-level VRE for context
   stateVrePenetration: number
@@ -92,6 +98,8 @@ export interface ChartFilters {
   swapAxes: boolean
   // View mode: states (default), utilities (individual utility points)
   viewMode: 'states' | 'utilities'
+  // MED (Major Event Day) toggle - when true, show data including major events
+  includeMED: boolean
   // Aggregation settings
   groupBy: string | null           // Group category ID (e.g., 'rto-regions', 'market-structure')
   groupLevel: 'state' | 'utility'  // Whether grouping at state or utility level

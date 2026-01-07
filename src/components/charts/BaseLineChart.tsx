@@ -100,10 +100,19 @@ export default function BaseLineChart({
     format: config.yAxis.format || '.1f'
   }
 
-  // Helper to get Y value from a point
+  // Helper to get Y value from a point (handles MED toggle for reliability metrics)
   const getYValue = useCallback((point: StateDataPoint): number | null => {
     // Handle metric switching
     if (config.metrics && (metricKey === 'saidi' || metricKey === 'saifi')) {
+      // If MED toggle is on and we have "with MED" data, use it
+      if (filters.includeMED) {
+        const withMEDKey = metricKey === 'saidi' ? 'saidiWithMED' : 'saifiWithMED'
+        const withMEDValue = point[withMEDKey] as number | null
+        // Use "with MED" value if available, otherwise fall back to regular value
+        if (withMEDValue !== null) {
+          return withMEDValue
+        }
+      }
       return point[metricKey as keyof StateDataPoint] as number | null
     }
     // Handle rate metrics
@@ -112,7 +121,7 @@ export default function BaseLineChart({
     }
     const field = config.yAxis.field as keyof StateDataPoint
     return point[field] as number | null
-  }, [config.yAxis.field, config.metrics, metricKey])
+  }, [config.yAxis.field, config.metrics, metricKey, filters.includeMED])
 
   // Filter data by year range and valid metric
   const filteredData = useMemo(() => {
@@ -396,6 +405,24 @@ export default function BaseLineChart({
                 )}
               </div>
             )}
+
+            {/* MED info section - only for reliability charts */}
+            {config.metrics && (
+              <div className="description-section">
+                <h3>About Major Event Days (MED)</h3>
+                <p>
+                  <strong>Major Event Days</strong> are days when system reliability metrics exceed
+                  a statistical threshold (typically 2.5 standard deviations above historical average),
+                  often due to severe weather, natural disasters, or other extraordinary circumstances.
+                </p>
+                <p>
+                  The EIA allows utilities to report SAIDI/SAIFI both with and without MED.
+                  By default, this chart shows data <em>excluding</em> MED to provide a &quot;normalized&quot;
+                  view of baseline reliability. Use the <strong>Include Major Events</strong> toggle
+                  to see the full customer experience including extreme events.
+                </p>
+              </div>
+            )}
           </div>
         </details>
       )}
@@ -421,6 +448,21 @@ export default function BaseLineChart({
               ))}
             </select>
             <span className="control-hint">{metricInfo.description}</span>
+          </div>
+        )}
+
+        {/* MED toggle - only show for reliability metrics */}
+        {config.metrics && (metricKey === 'saidi' || metricKey === 'saifi') && (
+          <div className="control-group">
+            <label>&nbsp;</label>
+            <label className="checkbox-label" title="Include data from Major Event Days (extreme weather, disasters)">
+              <input
+                type="checkbox"
+                checked={filters.includeMED}
+                onChange={(e) => onFilterChange({ includeMED: e.target.checked })}
+              />
+              Include Major Events
+            </label>
           </div>
         )}
 

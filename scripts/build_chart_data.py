@@ -198,6 +198,10 @@ def process_generation_data(gen_data: Dict) -> Dict[str, Dict]:
             except (ValueError, TypeError):
                 continue
 
+            # Validate non-negative generation (EIA data can have negative adjustments)
+            if generation < 0:
+                generation = 0
+
             if location not in state_gen:
                 state_gen[location] = {
                     "total": 0,
@@ -212,13 +216,16 @@ def process_generation_data(gen_data: Dict) -> Dict[str, Dict]:
 
             state_gen[location][field_name] = generation
 
-    # Calculate VRE penetration percentages
+    # Calculate VRE penetration percentages (clamped to 0-100% range)
     for state, data in state_gen.items():
         total = data["total"]
         if total > 0:
-            data["windPenetration"] = round(data["wind"] / total * 100, 2)
-            data["solarPenetration"] = round(data["solar"] / total * 100, 2)
-            data["vrePenetration"] = round((data["wind"] + data["solar"]) / total * 100, 2)
+            wind_pct = max(0, min(100, data["wind"] / total * 100))
+            solar_pct = max(0, min(100, data["solar"] / total * 100))
+            vre_pct = max(0, min(100, (data["wind"] + data["solar"]) / total * 100))
+            data["windPenetration"] = round(wind_pct, 2)
+            data["solarPenetration"] = round(solar_pct, 2)
+            data["vrePenetration"] = round(vre_pct, 2)
         else:
             data["windPenetration"] = 0
             data["solarPenetration"] = 0
@@ -242,6 +249,7 @@ def build_chart_json():
         gen_data = load_generation_data(year)
         reliability_data = load_reliability_data(year)
         rate_data = load_rate_data(year)
+        utility_data = load_utility_data(year)
 
         if gen_data is None or reliability_data is None:
             print(f"  Skipping {year} - missing data")
@@ -265,6 +273,17 @@ def build_chart_json():
                 rates_by_state[state][sector] = r["price"]
             print(f"  Rate data for {len(rates_by_state)} states")
 
+        # Aggregate customer counts by state from utility data
+        customer_by_state = {}
+        if utility_data:
+            for u in utility_data:
+                state = u.get('state', '')
+                customers = u.get('customers')
+                if state and customers and customers > 0:
+                    customer_by_state[state] = customer_by_state.get(state, 0) + customers
+            if customer_by_state:
+                print(f"  Customer data for {len(customer_by_state)} states")
+
         # Combine data for each state
         year_point_count = 0
         for state_code, gen_info in state_generation.items():
@@ -277,6 +296,9 @@ def build_chart_json():
             rel_data = reliability_by_state.get(state_code, {})
             saidi = rel_data.get("saidi")
             saifi = rel_data.get("saifi")
+            # MED fields (if available from Form 861)
+            saidi_with_med = rel_data.get("saidi_with_med")
+            saifi_with_med = rel_data.get("saifi_with_med")
 
             # Get rate data for this state
             state_rates = rates_by_state.get(state_code, {})
@@ -292,11 +314,14 @@ def build_chart_json():
                 "year": year,
                 "saidi": saidi,
                 "saifi": saifi,
+                # MED fields for toggle feature (null if same as primary or unavailable)
+                "saidiWithMED": saidi_with_med if saidi_with_med != saidi else None,
+                "saifiWithMED": saifi_with_med if saifi_with_med != saifi else None,
                 "vrePenetration": gen_info["vrePenetration"],
                 "windPenetration": gen_info["windPenetration"],
                 "solarPenetration": gen_info["solarPenetration"],
                 "totalGeneration": round(gen_info["total"], 0),
-                "customerCount": 0,  # Not available from this data source
+                "customerCount": customer_by_state.get(state_code, 0),
                 "region": region,
                 # Rate data (cents per kWh)
                 "rateResidential": state_rates.get("RES"),
@@ -403,6 +428,12 @@ def build_utility_json():
             # Get VRE data for state
             state_vre = state_gen.get(state_code, {})
 
+            # Get MED fields if available
+            saidi = u.get('saidi')
+            saifi = u.get('saifi')
+            saidi_with_med = u.get('saidi_with_med')
+            saifi_with_med = u.get('saifi_with_med')
+
             utility_record = {
                 'utilityId': u.get('utility_id'),
                 'utilityName': u.get('utility_name', ''),
@@ -414,8 +445,11 @@ def build_utility_json():
                 'primaryRto': primary_rto,
                 'rtos': rto_list,
                 'year': year,
-                'saidi': u.get('saidi'),
-                'saifi': u.get('saifi'),
+                'saidi': saidi,
+                'saifi': saifi,
+                # MED fields for toggle feature (null if same as primary or unavailable)
+                'saidiWithMED': saidi_with_med if saidi_with_med != saidi else None,
+                'saifiWithMED': saifi_with_med if saifi_with_med != saifi else None,
                 'customers': u.get('customers'),
                 # Include state-level VRE for context
                 'stateVrePenetration': state_vre.get('vrePenetration', 0),
