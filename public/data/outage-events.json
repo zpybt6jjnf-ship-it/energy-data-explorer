@@ -1,0 +1,3078 @@
+{
+  "events": [
+    {
+      "eventId": "NC-2023-001",
+      "date": "2023-08-20",
+      "states": [
+        "NC"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 147808,
+      "durationHours": 12.9
+    },
+    {
+      "eventId": "NC-2023-002",
+      "date": "2023-08-14",
+      "states": [
+        "NC"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 189881,
+      "durationHours": 18.8
+    },
+    {
+      "eventId": "NC-2023-003",
+      "date": "2023-06-12",
+      "states": [
+        "NC"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 120379,
+      "durationHours": 21.3
+    },
+    {
+      "eventId": "NC-2023-004",
+      "date": "2023-08-06",
+      "states": [
+        "NC"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 457912,
+      "durationHours": 20.4
+    },
+    {
+      "eventId": "NC-2023-005",
+      "date": "2023-10-22",
+      "states": [
+        "NC"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 79895,
+      "durationHours": 2.4
+    },
+    {
+      "eventId": "NC-2023-006",
+      "date": "2023-12-09",
+      "states": [
+        "NC"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 34958,
+      "durationHours": 10.0
+    },
+    {
+      "eventId": "NC-2023-007",
+      "date": "2023-07-07",
+      "states": [
+        "NC"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 35907,
+      "durationHours": 7.1
+    },
+    {
+      "eventId": "NC-2023-008",
+      "date": "2023-12-05",
+      "states": [
+        "NC"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 24116,
+      "durationHours": 9.8
+    },
+    {
+      "eventId": "NC-2023-009",
+      "date": "2023-03-14",
+      "states": [
+        "NC"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 66995,
+      "durationHours": 9.9
+    },
+    {
+      "eventId": "NC-2023-010",
+      "date": "2023-11-17",
+      "states": [
+        "NC"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 70483,
+      "durationHours": 2.5
+    },
+    {
+      "eventId": "GA-2023-000",
+      "date": "2023-09-28",
+      "states": [
+        "GA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 265129,
+      "durationHours": 15.8
+    },
+    {
+      "eventId": "GA-2023-001",
+      "date": "2023-02-23",
+      "states": [
+        "GA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 307708,
+      "durationHours": 4.2
+    },
+    {
+      "eventId": "GA-2023-002",
+      "date": "2023-05-16",
+      "states": [
+        "GA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 95638,
+      "durationHours": 4.8
+    },
+    {
+      "eventId": "GA-2023-003",
+      "date": "2023-08-24",
+      "states": [
+        "GA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 449862,
+      "durationHours": 31.0
+    },
+    {
+      "eventId": "GA-2023-004",
+      "date": "2023-06-18",
+      "states": [
+        "GA"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 48864,
+      "durationHours": 3.9
+    },
+    {
+      "eventId": "GA-2023-005",
+      "date": "2023-05-12",
+      "states": [
+        "GA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 78071,
+      "durationHours": 11.3
+    },
+    {
+      "eventId": "GA-2023-006",
+      "date": "2023-06-28",
+      "states": [
+        "GA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 7599,
+      "durationHours": 5.5
+    },
+    {
+      "eventId": "GA-2023-007",
+      "date": "2023-04-19",
+      "states": [
+        "GA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 94074,
+      "durationHours": 11.6
+    },
+    {
+      "eventId": "GA-2023-008",
+      "date": "2023-09-06",
+      "states": [
+        "GA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 80483,
+      "durationHours": 8.1
+    },
+    {
+      "eventId": "NY-2023-000",
+      "date": "2023-08-25",
+      "states": [
+        "NY"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 180440,
+      "durationHours": 33.0
+    },
+    {
+      "eventId": "NY-2023-001",
+      "date": "2023-02-13",
+      "states": [
+        "NY"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 396151,
+      "durationHours": 22.6
+    },
+    {
+      "eventId": "NY-2023-002",
+      "date": "2023-11-05",
+      "states": [
+        "NY"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 331736,
+      "durationHours": 15.2
+    },
+    {
+      "eventId": "NY-2023-003",
+      "date": "2023-06-14",
+      "states": [
+        "NY"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 465217,
+      "durationHours": 9.7
+    },
+    {
+      "eventId": "NY-2023-004",
+      "date": "2023-07-28",
+      "states": [
+        "NY"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 340969,
+      "durationHours": 30.2
+    },
+    {
+      "eventId": "NY-2023-005",
+      "date": "2023-06-08",
+      "states": [
+        "NY"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 14351,
+      "durationHours": 1.9
+    },
+    {
+      "eventId": "NY-2023-006",
+      "date": "2023-05-23",
+      "states": [
+        "NY"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 46088,
+      "durationHours": 4.5
+    },
+    {
+      "eventId": "NY-2023-007",
+      "date": "2023-07-09",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 40058,
+      "durationHours": 7.7
+    },
+    {
+      "eventId": "NY-2023-008",
+      "date": "2023-06-24",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 63313,
+      "durationHours": 9.6
+    },
+    {
+      "eventId": "NY-2023-009",
+      "date": "2023-08-14",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 81928,
+      "durationHours": 6.7
+    },
+    {
+      "eventId": "NY-2023-010",
+      "date": "2023-01-05",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 26930,
+      "durationHours": 3.0
+    },
+    {
+      "eventId": "NY-2023-011",
+      "date": "2023-12-23",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 35753,
+      "durationHours": 8.3
+    },
+    {
+      "eventId": "NY-2023-012",
+      "date": "2023-07-04",
+      "states": [
+        "NY"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 15494,
+      "durationHours": 3.3
+    },
+    {
+      "eventId": "PA-2023-000",
+      "date": "2023-01-25",
+      "states": [
+        "PA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 258085,
+      "durationHours": 27.2
+    },
+    {
+      "eventId": "PA-2023-001",
+      "date": "2023-02-04",
+      "states": [
+        "PA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 218148,
+      "durationHours": 26.1
+    },
+    {
+      "eventId": "PA-2023-002",
+      "date": "2023-02-21",
+      "states": [
+        "PA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 147600,
+      "durationHours": 30.4
+    },
+    {
+      "eventId": "PA-2023-003",
+      "date": "2023-05-08",
+      "states": [
+        "PA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 498421,
+      "durationHours": 42.7
+    },
+    {
+      "eventId": "PA-2023-004",
+      "date": "2023-08-21",
+      "states": [
+        "PA"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 37426,
+      "durationHours": 9.1
+    },
+    {
+      "eventId": "PA-2023-005",
+      "date": "2023-03-01",
+      "states": [
+        "PA"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 21569,
+      "durationHours": 2.4
+    },
+    {
+      "eventId": "PA-2023-006",
+      "date": "2023-06-28",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 9607,
+      "durationHours": 8.3
+    },
+    {
+      "eventId": "PA-2023-007",
+      "date": "2023-09-09",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 67410,
+      "durationHours": 6.1
+    },
+    {
+      "eventId": "PA-2023-008",
+      "date": "2023-12-18",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 76898,
+      "durationHours": 5.9
+    },
+    {
+      "eventId": "PA-2023-009",
+      "date": "2023-08-21",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 28204,
+      "durationHours": 7.5
+    },
+    {
+      "eventId": "PA-2023-010",
+      "date": "2023-07-17",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 88342,
+      "durationHours": 10.7
+    },
+    {
+      "eventId": "PA-2023-011",
+      "date": "2023-05-12",
+      "states": [
+        "PA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 88858,
+      "durationHours": 8.0
+    },
+    {
+      "eventId": "OH-2023-000",
+      "date": "2023-06-14",
+      "states": [
+        "OH"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 56952,
+      "durationHours": 22.3
+    },
+    {
+      "eventId": "OH-2023-001",
+      "date": "2023-01-01",
+      "states": [
+        "OH"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 146213,
+      "durationHours": 9.2
+    },
+    {
+      "eventId": "OH-2023-002",
+      "date": "2023-03-12",
+      "states": [
+        "OH"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 73592,
+      "durationHours": 10.0
+    },
+    {
+      "eventId": "OH-2023-003",
+      "date": "2023-01-23",
+      "states": [
+        "OH"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 42586,
+      "durationHours": 6.2
+    },
+    {
+      "eventId": "OH-2023-004",
+      "date": "2023-08-10",
+      "states": [
+        "OH"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 69478,
+      "durationHours": 11.4
+    },
+    {
+      "eventId": "OH-2023-005",
+      "date": "2023-05-20",
+      "states": [
+        "OH"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 6197,
+      "durationHours": 9.4
+    },
+    {
+      "eventId": "OH-2023-006",
+      "date": "2023-09-12",
+      "states": [
+        "OH"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 35305,
+      "durationHours": 9.8
+    },
+    {
+      "eventId": "MI-2023-000",
+      "date": "2023-03-23",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 239169,
+      "durationHours": 20.2
+    },
+    {
+      "eventId": "MI-2023-001",
+      "date": "2023-07-08",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 396462,
+      "durationHours": 31.7
+    },
+    {
+      "eventId": "MI-2023-002",
+      "date": "2023-11-08",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 147877,
+      "durationHours": 5.6
+    },
+    {
+      "eventId": "MI-2023-003",
+      "date": "2023-10-26",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 280852,
+      "durationHours": 37.2
+    },
+    {
+      "eventId": "MI-2023-004",
+      "date": "2023-05-21",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 373816,
+      "durationHours": 33.5
+    },
+    {
+      "eventId": "MI-2023-005",
+      "date": "2023-05-14",
+      "states": [
+        "MI"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 399507,
+      "durationHours": 26.5
+    },
+    {
+      "eventId": "MI-2023-006",
+      "date": "2023-03-05",
+      "states": [
+        "MI"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 29641,
+      "durationHours": 10.4
+    },
+    {
+      "eventId": "MI-2023-007",
+      "date": "2023-08-20",
+      "states": [
+        "MI"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 42957,
+      "durationHours": 2.2
+    },
+    {
+      "eventId": "MI-2023-008",
+      "date": "2023-10-16",
+      "states": [
+        "MI"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 64345,
+      "durationHours": 4.0
+    },
+    {
+      "eventId": "MI-2023-009",
+      "date": "2023-03-02",
+      "states": [
+        "MI"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 29613,
+      "durationHours": 4.5
+    },
+    {
+      "eventId": "MI-2023-010",
+      "date": "2023-02-10",
+      "states": [
+        "MI"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 75119,
+      "durationHours": 1.2
+    },
+    {
+      "eventId": "MI-2023-011",
+      "date": "2023-08-24",
+      "states": [
+        "MI"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 40283,
+      "durationHours": 2.4
+    },
+    {
+      "eventId": "IL-2023-000",
+      "date": "2023-06-14",
+      "states": [
+        "IL"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 17720,
+      "durationHours": 24.7
+    },
+    {
+      "eventId": "IL-2023-001",
+      "date": "2023-08-12",
+      "states": [
+        "IL"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 173355,
+      "durationHours": 38.1
+    },
+    {
+      "eventId": "IL-2023-002",
+      "date": "2023-01-11",
+      "states": [
+        "IL"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 65776,
+      "durationHours": 8.7
+    },
+    {
+      "eventId": "IL-2023-003",
+      "date": "2023-03-02",
+      "states": [
+        "IL"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 15515,
+      "durationHours": 10.3
+    },
+    {
+      "eventId": "IL-2023-004",
+      "date": "2023-02-18",
+      "states": [
+        "IL"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 39931,
+      "durationHours": 9.5
+    },
+    {
+      "eventId": "IL-2023-005",
+      "date": "2023-05-27",
+      "states": [
+        "IL"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 66623,
+      "durationHours": 3.0
+    },
+    {
+      "eventId": "CA-2023-000",
+      "date": "2023-07-25",
+      "states": [
+        "CA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 412729,
+      "durationHours": 34.9
+    },
+    {
+      "eventId": "CA-2023-001",
+      "date": "2023-01-07",
+      "states": [
+        "CA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 242239,
+      "durationHours": 13.4
+    },
+    {
+      "eventId": "CA-2023-002",
+      "date": "2023-02-17",
+      "states": [
+        "CA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 251610,
+      "durationHours": 35.8
+    },
+    {
+      "eventId": "CA-2023-003",
+      "date": "2023-08-13",
+      "states": [
+        "CA"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 92294,
+      "durationHours": 11.8
+    },
+    {
+      "eventId": "CA-2023-004",
+      "date": "2023-06-06",
+      "states": [
+        "CA"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 94318,
+      "durationHours": 11.6
+    },
+    {
+      "eventId": "CA-2023-005",
+      "date": "2023-12-18",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 87465,
+      "durationHours": 9.0
+    },
+    {
+      "eventId": "CA-2023-006",
+      "date": "2023-08-21",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 73278,
+      "durationHours": 2.3
+    },
+    {
+      "eventId": "CA-2023-007",
+      "date": "2023-01-28",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 44166,
+      "durationHours": 3.2
+    },
+    {
+      "eventId": "CA-2023-008",
+      "date": "2023-02-08",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 92385,
+      "durationHours": 3.4
+    },
+    {
+      "eventId": "CA-2023-009",
+      "date": "2023-01-06",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 87956,
+      "durationHours": 5.8
+    },
+    {
+      "eventId": "CA-2023-010",
+      "date": "2023-07-26",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 41188,
+      "durationHours": 7.4
+    },
+    {
+      "eventId": "CA-2023-011",
+      "date": "2023-01-19",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 36862,
+      "durationHours": 1.1
+    },
+    {
+      "eventId": "CA-2023-012",
+      "date": "2023-10-05",
+      "states": [
+        "CA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 95538,
+      "durationHours": 6.2
+    },
+    {
+      "eventId": "WA-2023-000",
+      "date": "2023-11-20",
+      "states": [
+        "WA"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 92679,
+      "durationHours": 25.0
+    },
+    {
+      "eventId": "WA-2023-001",
+      "date": "2023-11-02",
+      "states": [
+        "WA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 49357,
+      "durationHours": 11.2
+    },
+    {
+      "eventId": "WA-2023-002",
+      "date": "2023-03-23",
+      "states": [
+        "WA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 12834,
+      "durationHours": 4.9
+    },
+    {
+      "eventId": "WA-2023-003",
+      "date": "2023-03-16",
+      "states": [
+        "WA"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 75300,
+      "durationHours": 9.7
+    },
+    {
+      "eventId": "AZ-2023-000",
+      "date": "2023-06-26",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 423433,
+      "durationHours": 31.7
+    },
+    {
+      "eventId": "AZ-2023-001",
+      "date": "2023-01-23",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Equipment Failure",
+      "causeCategory": "equipment",
+      "customersAffected": 62503,
+      "durationHours": 9.1
+    },
+    {
+      "eventId": "AZ-2023-002",
+      "date": "2023-03-09",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 54514,
+      "durationHours": 4.9
+    },
+    {
+      "eventId": "AZ-2023-003",
+      "date": "2023-08-18",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 10175,
+      "durationHours": 6.3
+    },
+    {
+      "eventId": "AZ-2023-004",
+      "date": "2023-08-07",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 43628,
+      "durationHours": 7.0
+    },
+    {
+      "eventId": "AZ-2023-005",
+      "date": "2023-06-11",
+      "states": [
+        "AZ"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 79278,
+      "durationHours": 3.1
+    },
+    {
+      "eventId": "CO-2023-000",
+      "date": "2023-09-06",
+      "states": [
+        "CO"
+      ],
+      "cause": "Severe Weather",
+      "causeCategory": "weather",
+      "customersAffected": 445866,
+      "durationHours": 29.5
+    },
+    {
+      "eventId": "CO-2023-001",
+      "date": "2023-08-10",
+      "states": [
+        "CO"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 14027,
+      "durationHours": 6.8
+    },
+    {
+      "eventId": "CO-2023-002",
+      "date": "2023-08-01",
+      "states": [
+        "CO"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 39517,
+      "durationHours": 7.0
+    },
+    {
+      "eventId": "CO-2023-003",
+      "date": "2023-12-06",
+      "states": [
+        "CO"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 88627,
+      "durationHours": 6.6
+    },
+    {
+      "eventId": "NV-2023-000",
+      "date": "2023-04-11",
+      "states": [
+        "NV"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 52720,
+      "durationHours": 9.5
+    },
+    {
+      "eventId": "NV-2023-001",
+      "date": "2023-09-27",
+      "states": [
+        "NV"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 99503,
+      "durationHours": 1.7
+    },
+    {
+      "eventId": "NV-2023-002",
+      "date": "2023-11-16",
+      "states": [
+        "NV"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 55789,
+      "durationHours": 3.1
+    },
+    {
+      "eventId": "NV-2023-003",
+      "date": "2023-05-11",
+      "states": [
+        "NV"
+      ],
+      "cause": "Other",
+      "causeCategory": "other",
+      "customersAffected": 77281,
+      "durationHours": 2.7
+    }
+  ],
+  "stateYearSummary": [
+    {
+      "stateCode": "FL",
+      "year": 2014,
+      "totalEvents": 16,
+      "weatherEvents": 11,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2820666,
+      "maxEventCustomers": 477759,
+      "avgDurationHours": 14.3
+    },
+    {
+      "stateCode": "TX",
+      "year": 2014,
+      "totalEvents": 24,
+      "weatherEvents": 14,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3882140,
+      "maxEventCustomers": 473828,
+      "avgDurationHours": 13.1
+    },
+    {
+      "stateCode": "LA",
+      "year": 2014,
+      "totalEvents": 12,
+      "weatherEvents": 8,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2148338,
+      "maxEventCustomers": 493621,
+      "avgDurationHours": 12.6
+    },
+    {
+      "stateCode": "NC",
+      "year": 2014,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1510107,
+      "maxEventCustomers": 362157,
+      "avgDurationHours": 8.9
+    },
+    {
+      "stateCode": "GA",
+      "year": 2014,
+      "totalEvents": 6,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1111129,
+      "maxEventCustomers": 355496,
+      "avgDurationHours": 14.5
+    },
+    {
+      "stateCode": "NY",
+      "year": 2014,
+      "totalEvents": 8,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 751494,
+      "maxEventCustomers": 433636,
+      "avgDurationHours": 6.3
+    },
+    {
+      "stateCode": "PA",
+      "year": 2014,
+      "totalEvents": 6,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 587948,
+      "maxEventCustomers": 402154,
+      "avgDurationHours": 10.9
+    },
+    {
+      "stateCode": "OH",
+      "year": 2014,
+      "totalEvents": 5,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 551657,
+      "maxEventCustomers": 284088,
+      "avgDurationHours": 9.5
+    },
+    {
+      "stateCode": "MI",
+      "year": 2014,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1495415,
+      "maxEventCustomers": 470990,
+      "avgDurationHours": 14.2
+    },
+    {
+      "stateCode": "IL",
+      "year": 2014,
+      "totalEvents": 7,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 717871,
+      "maxEventCustomers": 342547,
+      "avgDurationHours": 10.6
+    },
+    {
+      "stateCode": "CA",
+      "year": 2014,
+      "totalEvents": 14,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 8,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1151476,
+      "maxEventCustomers": 402942,
+      "avgDurationHours": 10.4
+    },
+    {
+      "stateCode": "WA",
+      "year": 2014,
+      "totalEvents": 6,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 283198,
+      "maxEventCustomers": 81099,
+      "avgDurationHours": 15.1
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2014,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 199735,
+      "maxEventCustomers": 99297,
+      "avgDurationHours": 7.7
+    },
+    {
+      "stateCode": "CO",
+      "year": 2014,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 115697,
+      "maxEventCustomers": 57743,
+      "avgDurationHours": 10.6
+    },
+    {
+      "stateCode": "NV",
+      "year": 2014,
+      "totalEvents": 2,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 133419,
+      "maxEventCustomers": 90813,
+      "avgDurationHours": 12.1
+    },
+    {
+      "stateCode": "FL",
+      "year": 2015,
+      "totalEvents": 15,
+      "weatherEvents": 10,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3748043,
+      "maxEventCustomers": 432871,
+      "avgDurationHours": 9.1
+    },
+    {
+      "stateCode": "TX",
+      "year": 2015,
+      "totalEvents": 25,
+      "weatherEvents": 15,
+      "equipmentEvents": 5,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 4442550,
+      "maxEventCustomers": 471717,
+      "avgDurationHours": 6.7
+    },
+    {
+      "stateCode": "LA",
+      "year": 2015,
+      "totalEvents": 9,
+      "weatherEvents": 6,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1468716,
+      "maxEventCustomers": 351707,
+      "avgDurationHours": 4.9
+    },
+    {
+      "stateCode": "NC",
+      "year": 2015,
+      "totalEvents": 11,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1181574,
+      "maxEventCustomers": 338855,
+      "avgDurationHours": 15.2
+    },
+    {
+      "stateCode": "GA",
+      "year": 2015,
+      "totalEvents": 7,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1034437,
+      "maxEventCustomers": 329989,
+      "avgDurationHours": 13.1
+    },
+    {
+      "stateCode": "NY",
+      "year": 2015,
+      "totalEvents": 13,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1625105,
+      "maxEventCustomers": 372695,
+      "avgDurationHours": 7.3
+    },
+    {
+      "stateCode": "PA",
+      "year": 2015,
+      "totalEvents": 10,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1321106,
+      "maxEventCustomers": 465323,
+      "avgDurationHours": 14.3
+    },
+    {
+      "stateCode": "OH",
+      "year": 2015,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1076829,
+      "maxEventCustomers": 398019,
+      "avgDurationHours": 5.4
+    },
+    {
+      "stateCode": "MI",
+      "year": 2015,
+      "totalEvents": 6,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 680827,
+      "maxEventCustomers": 402669,
+      "avgDurationHours": 14.7
+    },
+    {
+      "stateCode": "IL",
+      "year": 2015,
+      "totalEvents": 8,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1065427,
+      "maxEventCustomers": 363526,
+      "avgDurationHours": 8.9
+    },
+    {
+      "stateCode": "CA",
+      "year": 2015,
+      "totalEvents": 15,
+      "weatherEvents": 4,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 8,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1668466,
+      "maxEventCustomers": 357384,
+      "avgDurationHours": 9.5
+    },
+    {
+      "stateCode": "WA",
+      "year": 2015,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 197549,
+      "maxEventCustomers": 109934,
+      "avgDurationHours": 11.0
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2015,
+      "totalEvents": 5,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 496346,
+      "maxEventCustomers": 266712,
+      "avgDurationHours": 7.8
+    },
+    {
+      "stateCode": "CO",
+      "year": 2015,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 619062,
+      "maxEventCustomers": 488900,
+      "avgDurationHours": 10.3
+    },
+    {
+      "stateCode": "NV",
+      "year": 2015,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 201190,
+      "maxEventCustomers": 99692,
+      "avgDurationHours": 14.2
+    },
+    {
+      "stateCode": "FL",
+      "year": 2016,
+      "totalEvents": 19,
+      "weatherEvents": 13,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3893346,
+      "maxEventCustomers": 460542,
+      "avgDurationHours": 8.3
+    },
+    {
+      "stateCode": "TX",
+      "year": 2016,
+      "totalEvents": 18,
+      "weatherEvents": 10,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3823964,
+      "maxEventCustomers": 449530,
+      "avgDurationHours": 5.1
+    },
+    {
+      "stateCode": "LA",
+      "year": 2016,
+      "totalEvents": 11,
+      "weatherEvents": 7,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2141687,
+      "maxEventCustomers": 473593,
+      "avgDurationHours": 15.4
+    },
+    {
+      "stateCode": "NC",
+      "year": 2016,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1351784,
+      "maxEventCustomers": 399162,
+      "avgDurationHours": 10.8
+    },
+    {
+      "stateCode": "GA",
+      "year": 2016,
+      "totalEvents": 6,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1143590,
+      "maxEventCustomers": 436273,
+      "avgDurationHours": 8.3
+    },
+    {
+      "stateCode": "NY",
+      "year": 2016,
+      "totalEvents": 14,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 7,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1595388,
+      "maxEventCustomers": 417904,
+      "avgDurationHours": 11.9
+    },
+    {
+      "stateCode": "PA",
+      "year": 2016,
+      "totalEvents": 10,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1368656,
+      "maxEventCustomers": 443805,
+      "avgDurationHours": 15.0
+    },
+    {
+      "stateCode": "OH",
+      "year": 2016,
+      "totalEvents": 5,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 654549,
+      "maxEventCustomers": 312995,
+      "avgDurationHours": 13.8
+    },
+    {
+      "stateCode": "MI",
+      "year": 2016,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1490023,
+      "maxEventCustomers": 444876,
+      "avgDurationHours": 5.0
+    },
+    {
+      "stateCode": "IL",
+      "year": 2016,
+      "totalEvents": 5,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 308560,
+      "maxEventCustomers": 92528,
+      "avgDurationHours": 11.1
+    },
+    {
+      "stateCode": "CA",
+      "year": 2016,
+      "totalEvents": 16,
+      "weatherEvents": 4,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 9,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1524249,
+      "maxEventCustomers": 412312,
+      "avgDurationHours": 10.1
+    },
+    {
+      "stateCode": "WA",
+      "year": 2016,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 416190,
+      "maxEventCustomers": 277361,
+      "avgDurationHours": 6.1
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2016,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 326195,
+      "maxEventCustomers": 88269,
+      "avgDurationHours": 9.6
+    },
+    {
+      "stateCode": "CO",
+      "year": 2016,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 598429,
+      "maxEventCustomers": 427506,
+      "avgDurationHours": 11.1
+    },
+    {
+      "stateCode": "NV",
+      "year": 2016,
+      "totalEvents": 2,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 145011,
+      "maxEventCustomers": 81064,
+      "avgDurationHours": 6.3
+    },
+    {
+      "stateCode": "FL",
+      "year": 2017,
+      "totalEvents": 17,
+      "weatherEvents": 11,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2944208,
+      "maxEventCustomers": 491263,
+      "avgDurationHours": 10.1
+    },
+    {
+      "stateCode": "TX",
+      "year": 2017,
+      "totalEvents": 15,
+      "weatherEvents": 9,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2985707,
+      "maxEventCustomers": 483251,
+      "avgDurationHours": 11.3
+    },
+    {
+      "stateCode": "LA",
+      "year": 2017,
+      "totalEvents": 16,
+      "weatherEvents": 11,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2308925,
+      "maxEventCustomers": 499838,
+      "avgDurationHours": 6.9
+    },
+    {
+      "stateCode": "NC",
+      "year": 2017,
+      "totalEvents": 11,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1738874,
+      "maxEventCustomers": 484557,
+      "avgDurationHours": 11.5
+    },
+    {
+      "stateCode": "GA",
+      "year": 2017,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1948874,
+      "maxEventCustomers": 445360,
+      "avgDurationHours": 5.5
+    },
+    {
+      "stateCode": "NY",
+      "year": 2017,
+      "totalEvents": 12,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1944689,
+      "maxEventCustomers": 476347,
+      "avgDurationHours": 13.6
+    },
+    {
+      "stateCode": "PA",
+      "year": 2017,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 868477,
+      "maxEventCustomers": 419632,
+      "avgDurationHours": 5.4
+    },
+    {
+      "stateCode": "OH",
+      "year": 2017,
+      "totalEvents": 8,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1140869,
+      "maxEventCustomers": 379118,
+      "avgDurationHours": 13.5
+    },
+    {
+      "stateCode": "MI",
+      "year": 2017,
+      "totalEvents": 8,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1365049,
+      "maxEventCustomers": 424383,
+      "avgDurationHours": 8.1
+    },
+    {
+      "stateCode": "IL",
+      "year": 2017,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1655925,
+      "maxEventCustomers": 487475,
+      "avgDurationHours": 11.9
+    },
+    {
+      "stateCode": "CA",
+      "year": 2017,
+      "totalEvents": 18,
+      "weatherEvents": 5,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 10,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2118640,
+      "maxEventCustomers": 442661,
+      "avgDurationHours": 9.6
+    },
+    {
+      "stateCode": "WA",
+      "year": 2017,
+      "totalEvents": 6,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 556035,
+      "maxEventCustomers": 270765,
+      "avgDurationHours": 8.4
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2017,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 183771,
+      "maxEventCustomers": 86689,
+      "avgDurationHours": 15.7
+    },
+    {
+      "stateCode": "CO",
+      "year": 2017,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 619741,
+      "maxEventCustomers": 426755,
+      "avgDurationHours": 9.5
+    },
+    {
+      "stateCode": "NV",
+      "year": 2017,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 143088,
+      "maxEventCustomers": 72568,
+      "avgDurationHours": 10.1
+    },
+    {
+      "stateCode": "FL",
+      "year": 2018,
+      "totalEvents": 16,
+      "weatherEvents": 11,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2788160,
+      "maxEventCustomers": 416116,
+      "avgDurationHours": 13.3
+    },
+    {
+      "stateCode": "TX",
+      "year": 2018,
+      "totalEvents": 25,
+      "weatherEvents": 15,
+      "equipmentEvents": 5,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 4319447,
+      "maxEventCustomers": 499527,
+      "avgDurationHours": 8.8
+    },
+    {
+      "stateCode": "LA",
+      "year": 2018,
+      "totalEvents": 13,
+      "weatherEvents": 9,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2985810,
+      "maxEventCustomers": 496777,
+      "avgDurationHours": 9.4
+    },
+    {
+      "stateCode": "NC",
+      "year": 2018,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 859633,
+      "maxEventCustomers": 182818,
+      "avgDurationHours": 10.5
+    },
+    {
+      "stateCode": "GA",
+      "year": 2018,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1569693,
+      "maxEventCustomers": 490900,
+      "avgDurationHours": 10.2
+    },
+    {
+      "stateCode": "NY",
+      "year": 2018,
+      "totalEvents": 13,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1077037,
+      "maxEventCustomers": 438056,
+      "avgDurationHours": 12.1
+    },
+    {
+      "stateCode": "PA",
+      "year": 2018,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1282619,
+      "maxEventCustomers": 468861,
+      "avgDurationHours": 13.8
+    },
+    {
+      "stateCode": "OH",
+      "year": 2018,
+      "totalEvents": 8,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 938768,
+      "maxEventCustomers": 283285,
+      "avgDurationHours": 8.5
+    },
+    {
+      "stateCode": "MI",
+      "year": 2018,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1744932,
+      "maxEventCustomers": 459598,
+      "avgDurationHours": 15.5
+    },
+    {
+      "stateCode": "IL",
+      "year": 2018,
+      "totalEvents": 5,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 742807,
+      "maxEventCustomers": 405486,
+      "avgDurationHours": 7.1
+    },
+    {
+      "stateCode": "CA",
+      "year": 2018,
+      "totalEvents": 16,
+      "weatherEvents": 4,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 9,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1703670,
+      "maxEventCustomers": 409312,
+      "avgDurationHours": 9.5
+    },
+    {
+      "stateCode": "WA",
+      "year": 2018,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 612730,
+      "maxEventCustomers": 344353,
+      "avgDurationHours": 10.0
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2018,
+      "totalEvents": 5,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 475680,
+      "maxEventCustomers": 235744,
+      "avgDurationHours": 7.6
+    },
+    {
+      "stateCode": "CO",
+      "year": 2018,
+      "totalEvents": 5,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 297857,
+      "maxEventCustomers": 97123,
+      "avgDurationHours": 15.7
+    },
+    {
+      "stateCode": "NV",
+      "year": 2018,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 257243,
+      "maxEventCustomers": 95739,
+      "avgDurationHours": 15.1
+    },
+    {
+      "stateCode": "FL",
+      "year": 2019,
+      "totalEvents": 15,
+      "weatherEvents": 10,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2956696,
+      "maxEventCustomers": 480037,
+      "avgDurationHours": 12.9
+    },
+    {
+      "stateCode": "TX",
+      "year": 2019,
+      "totalEvents": 20,
+      "weatherEvents": 12,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2759341,
+      "maxEventCustomers": 482454,
+      "avgDurationHours": 7.5
+    },
+    {
+      "stateCode": "LA",
+      "year": 2019,
+      "totalEvents": 15,
+      "weatherEvents": 10,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3090626,
+      "maxEventCustomers": 439373,
+      "avgDurationHours": 11.8
+    },
+    {
+      "stateCode": "NC",
+      "year": 2019,
+      "totalEvents": 8,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1184521,
+      "maxEventCustomers": 401566,
+      "avgDurationHours": 14.0
+    },
+    {
+      "stateCode": "GA",
+      "year": 2019,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1186047,
+      "maxEventCustomers": 382652,
+      "avgDurationHours": 11.4
+    },
+    {
+      "stateCode": "NY",
+      "year": 2019,
+      "totalEvents": 11,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1705503,
+      "maxEventCustomers": 467168,
+      "avgDurationHours": 7.7
+    },
+    {
+      "stateCode": "PA",
+      "year": 2019,
+      "totalEvents": 7,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 940342,
+      "maxEventCustomers": 373560,
+      "avgDurationHours": 6.3
+    },
+    {
+      "stateCode": "OH",
+      "year": 2019,
+      "totalEvents": 7,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 851881,
+      "maxEventCustomers": 368978,
+      "avgDurationHours": 5.4
+    },
+    {
+      "stateCode": "MI",
+      "year": 2019,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2282532,
+      "maxEventCustomers": 468652,
+      "avgDurationHours": 8.2
+    },
+    {
+      "stateCode": "IL",
+      "year": 2019,
+      "totalEvents": 6,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 572831,
+      "maxEventCustomers": 292469,
+      "avgDurationHours": 9.9
+    },
+    {
+      "stateCode": "CA",
+      "year": 2019,
+      "totalEvents": 18,
+      "weatherEvents": 5,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 10,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1466477,
+      "maxEventCustomers": 280329,
+      "avgDurationHours": 8.8
+    },
+    {
+      "stateCode": "WA",
+      "year": 2019,
+      "totalEvents": 5,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 630414,
+      "maxEventCustomers": 376708,
+      "avgDurationHours": 9.1
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2019,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 55681,
+      "maxEventCustomers": 22973,
+      "avgDurationHours": 15.9
+    },
+    {
+      "stateCode": "CO",
+      "year": 2019,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 188368,
+      "maxEventCustomers": 87323,
+      "avgDurationHours": 12.2
+    },
+    {
+      "stateCode": "NV",
+      "year": 2019,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 140086,
+      "maxEventCustomers": 61280,
+      "avgDurationHours": 11.2
+    },
+    {
+      "stateCode": "FL",
+      "year": 2020,
+      "totalEvents": 20,
+      "weatherEvents": 14,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 4491499,
+      "maxEventCustomers": 499645,
+      "avgDurationHours": 12.8
+    },
+    {
+      "stateCode": "TX",
+      "year": 2020,
+      "totalEvents": 28,
+      "weatherEvents": 16,
+      "equipmentEvents": 5,
+      "demandEvents": 0,
+      "otherEvents": 7,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 4228051,
+      "maxEventCustomers": 481805,
+      "avgDurationHours": 13.6
+    },
+    {
+      "stateCode": "LA",
+      "year": 2020,
+      "totalEvents": 11,
+      "weatherEvents": 7,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2130689,
+      "maxEventCustomers": 498844,
+      "avgDurationHours": 6.8
+    },
+    {
+      "stateCode": "NC",
+      "year": 2020,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1514744,
+      "maxEventCustomers": 446155,
+      "avgDurationHours": 15.6
+    },
+    {
+      "stateCode": "GA",
+      "year": 2020,
+      "totalEvents": 8,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 650539,
+      "maxEventCustomers": 247083,
+      "avgDurationHours": 16.0
+    },
+    {
+      "stateCode": "NY",
+      "year": 2020,
+      "totalEvents": 11,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1701572,
+      "maxEventCustomers": 494511,
+      "avgDurationHours": 11.6
+    },
+    {
+      "stateCode": "PA",
+      "year": 2020,
+      "totalEvents": 11,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1548530,
+      "maxEventCustomers": 426728,
+      "avgDurationHours": 13.7
+    },
+    {
+      "stateCode": "OH",
+      "year": 2020,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1188211,
+      "maxEventCustomers": 489188,
+      "avgDurationHours": 13.3
+    },
+    {
+      "stateCode": "MI",
+      "year": 2020,
+      "totalEvents": 11,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1716648,
+      "maxEventCustomers": 461238,
+      "avgDurationHours": 15.1
+    },
+    {
+      "stateCode": "IL",
+      "year": 2020,
+      "totalEvents": 10,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1104494,
+      "maxEventCustomers": 474162,
+      "avgDurationHours": 13.9
+    },
+    {
+      "stateCode": "CA",
+      "year": 2020,
+      "totalEvents": 20,
+      "weatherEvents": 6,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 10,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2039880,
+      "maxEventCustomers": 393770,
+      "avgDurationHours": 9.3
+    },
+    {
+      "stateCode": "WA",
+      "year": 2020,
+      "totalEvents": 5,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 438107,
+      "maxEventCustomers": 253824,
+      "avgDurationHours": 10.3
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2020,
+      "totalEvents": 6,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 632312,
+      "maxEventCustomers": 370221,
+      "avgDurationHours": 4.5
+    },
+    {
+      "stateCode": "CO",
+      "year": 2020,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 191315,
+      "maxEventCustomers": 94538,
+      "avgDurationHours": 10.6
+    },
+    {
+      "stateCode": "NV",
+      "year": 2020,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 309181,
+      "maxEventCustomers": 96804,
+      "avgDurationHours": 10.8
+    },
+    {
+      "stateCode": "FL",
+      "year": 2021,
+      "totalEvents": 13,
+      "weatherEvents": 9,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2640559,
+      "maxEventCustomers": 492782,
+      "avgDurationHours": 15.0
+    },
+    {
+      "stateCode": "TX",
+      "year": 2021,
+      "totalEvents": 22,
+      "weatherEvents": 13,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3598181,
+      "maxEventCustomers": 491312,
+      "avgDurationHours": 7.6
+    },
+    {
+      "stateCode": "LA",
+      "year": 2021,
+      "totalEvents": 14,
+      "weatherEvents": 9,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3014106,
+      "maxEventCustomers": 432277,
+      "avgDurationHours": 8.3
+    },
+    {
+      "stateCode": "NC",
+      "year": 2021,
+      "totalEvents": 10,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1466746,
+      "maxEventCustomers": 488478,
+      "avgDurationHours": 10.4
+    },
+    {
+      "stateCode": "GA",
+      "year": 2021,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1424678,
+      "maxEventCustomers": 466575,
+      "avgDurationHours": 4.5
+    },
+    {
+      "stateCode": "NY",
+      "year": 2021,
+      "totalEvents": 11,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1314958,
+      "maxEventCustomers": 446851,
+      "avgDurationHours": 12.8
+    },
+    {
+      "stateCode": "PA",
+      "year": 2021,
+      "totalEvents": 10,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1384640,
+      "maxEventCustomers": 425302,
+      "avgDurationHours": 14.0
+    },
+    {
+      "stateCode": "OH",
+      "year": 2021,
+      "totalEvents": 6,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 969539,
+      "maxEventCustomers": 421440,
+      "avgDurationHours": 12.1
+    },
+    {
+      "stateCode": "MI",
+      "year": 2021,
+      "totalEvents": 12,
+      "weatherEvents": 6,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1533041,
+      "maxEventCustomers": 447902,
+      "avgDurationHours": 14.0
+    },
+    {
+      "stateCode": "IL",
+      "year": 2021,
+      "totalEvents": 9,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 818593,
+      "maxEventCustomers": 260738,
+      "avgDurationHours": 7.8
+    },
+    {
+      "stateCode": "CA",
+      "year": 2021,
+      "totalEvents": 20,
+      "weatherEvents": 6,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 10,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2397683,
+      "maxEventCustomers": 389465,
+      "avgDurationHours": 10.7
+    },
+    {
+      "stateCode": "WA",
+      "year": 2021,
+      "totalEvents": 6,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 413272,
+      "maxEventCustomers": 258058,
+      "avgDurationHours": 8.9
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2021,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 232877,
+      "maxEventCustomers": 88000,
+      "avgDurationHours": 13.3
+    },
+    {
+      "stateCode": "CO",
+      "year": 2021,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 574742,
+      "maxEventCustomers": 355220,
+      "avgDurationHours": 10.9
+    },
+    {
+      "stateCode": "NV",
+      "year": 2021,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 203689,
+      "maxEventCustomers": 84450,
+      "avgDurationHours": 9.4
+    },
+    {
+      "stateCode": "FL",
+      "year": 2022,
+      "totalEvents": 14,
+      "weatherEvents": 9,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2152311,
+      "maxEventCustomers": 382452,
+      "avgDurationHours": 13.4
+    },
+    {
+      "stateCode": "TX",
+      "year": 2022,
+      "totalEvents": 20,
+      "weatherEvents": 12,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3708071,
+      "maxEventCustomers": 463426,
+      "avgDurationHours": 10.3
+    },
+    {
+      "stateCode": "LA",
+      "year": 2022,
+      "totalEvents": 18,
+      "weatherEvents": 12,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3734217,
+      "maxEventCustomers": 490212,
+      "avgDurationHours": 13.3
+    },
+    {
+      "stateCode": "NC",
+      "year": 2022,
+      "totalEvents": 13,
+      "weatherEvents": 6,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1209862,
+      "maxEventCustomers": 250766,
+      "avgDurationHours": 8.7
+    },
+    {
+      "stateCode": "GA",
+      "year": 2022,
+      "totalEvents": 11,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1475045,
+      "maxEventCustomers": 468629,
+      "avgDurationHours": 11.7
+    },
+    {
+      "stateCode": "NY",
+      "year": 2022,
+      "totalEvents": 11,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 5,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1333193,
+      "maxEventCustomers": 390417,
+      "avgDurationHours": 8.3
+    },
+    {
+      "stateCode": "PA",
+      "year": 2022,
+      "totalEvents": 8,
+      "weatherEvents": 3,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 701372,
+      "maxEventCustomers": 299234,
+      "avgDurationHours": 6.7
+    },
+    {
+      "stateCode": "OH",
+      "year": 2022,
+      "totalEvents": 10,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1665244,
+      "maxEventCustomers": 432859,
+      "avgDurationHours": 9.6
+    },
+    {
+      "stateCode": "MI",
+      "year": 2022,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1126774,
+      "maxEventCustomers": 444974,
+      "avgDurationHours": 10.2
+    },
+    {
+      "stateCode": "IL",
+      "year": 2022,
+      "totalEvents": 7,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 747792,
+      "maxEventCustomers": 386073,
+      "avgDurationHours": 14.7
+    },
+    {
+      "stateCode": "CA",
+      "year": 2022,
+      "totalEvents": 14,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 8,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1325767,
+      "maxEventCustomers": 440599,
+      "avgDurationHours": 13.0
+    },
+    {
+      "stateCode": "WA",
+      "year": 2022,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 433118,
+      "maxEventCustomers": 355711,
+      "avgDurationHours": 15.3
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2022,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 205633,
+      "maxEventCustomers": 96318,
+      "avgDurationHours": 7.1
+    },
+    {
+      "stateCode": "CO",
+      "year": 2022,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 58279,
+      "maxEventCustomers": 46405,
+      "avgDurationHours": 9.1
+    },
+    {
+      "stateCode": "NV",
+      "year": 2022,
+      "totalEvents": 3,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 123872,
+      "maxEventCustomers": 52925,
+      "avgDurationHours": 6.1
+    },
+    {
+      "stateCode": "FL",
+      "year": 2023,
+      "totalEvents": 19,
+      "weatherEvents": 13,
+      "equipmentEvents": 3,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3137324,
+      "maxEventCustomers": 497946,
+      "avgDurationHours": 13.4
+    },
+    {
+      "stateCode": "TX",
+      "year": 2023,
+      "totalEvents": 23,
+      "weatherEvents": 13,
+      "equipmentEvents": 4,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 3607704,
+      "maxEventCustomers": 425964,
+      "avgDurationHours": 6.4
+    },
+    {
+      "stateCode": "LA",
+      "year": 2023,
+      "totalEvents": 12,
+      "weatherEvents": 8,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 2,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2565808,
+      "maxEventCustomers": 492443,
+      "avgDurationHours": 11.0
+    },
+    {
+      "stateCode": "NC",
+      "year": 2023,
+      "totalEvents": 11,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1559606,
+      "maxEventCustomers": 457912,
+      "avgDurationHours": 10.4
+    },
+    {
+      "stateCode": "GA",
+      "year": 2023,
+      "totalEvents": 9,
+      "weatherEvents": 4,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1427428,
+      "maxEventCustomers": 449862,
+      "avgDurationHours": 15.8
+    },
+    {
+      "stateCode": "NY",
+      "year": 2023,
+      "totalEvents": 13,
+      "weatherEvents": 5,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2038428,
+      "maxEventCustomers": 465217,
+      "avgDurationHours": 5.1
+    },
+    {
+      "stateCode": "PA",
+      "year": 2023,
+      "totalEvents": 12,
+      "weatherEvents": 4,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 6,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1540568,
+      "maxEventCustomers": 498421,
+      "avgDurationHours": 9.8
+    },
+    {
+      "stateCode": "OH",
+      "year": 2023,
+      "totalEvents": 7,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 430323,
+      "maxEventCustomers": 146213,
+      "avgDurationHours": 6.3
+    },
+    {
+      "stateCode": "MI",
+      "year": 2023,
+      "totalEvents": 12,
+      "weatherEvents": 6,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 2119641,
+      "maxEventCustomers": 399507,
+      "avgDurationHours": 4.1
+    },
+    {
+      "stateCode": "IL",
+      "year": 2023,
+      "totalEvents": 6,
+      "weatherEvents": 2,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 378920,
+      "maxEventCustomers": 173355,
+      "avgDurationHours": 8.6
+    },
+    {
+      "stateCode": "CA",
+      "year": 2023,
+      "totalEvents": 13,
+      "weatherEvents": 3,
+      "equipmentEvents": 2,
+      "demandEvents": 0,
+      "otherEvents": 8,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 1652028,
+      "maxEventCustomers": 412729,
+      "avgDurationHours": 8.5
+    },
+    {
+      "stateCode": "WA",
+      "year": 2023,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 230170,
+      "maxEventCustomers": 92679,
+      "avgDurationHours": 6.8
+    },
+    {
+      "stateCode": "AZ",
+      "year": 2023,
+      "totalEvents": 6,
+      "weatherEvents": 1,
+      "equipmentEvents": 1,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 673531,
+      "maxEventCustomers": 423433,
+      "avgDurationHours": 12.8
+    },
+    {
+      "stateCode": "CO",
+      "year": 2023,
+      "totalEvents": 4,
+      "weatherEvents": 1,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 3,
+      "primaryCause": "weather",
+      "totalCustomersAffected": 588037,
+      "maxEventCustomers": 445866,
+      "avgDurationHours": 14.6
+    },
+    {
+      "stateCode": "NV",
+      "year": 2023,
+      "totalEvents": 4,
+      "weatherEvents": 0,
+      "equipmentEvents": 0,
+      "demandEvents": 0,
+      "otherEvents": 4,
+      "primaryCause": "equipment",
+      "totalCustomersAffected": 285293,
+      "maxEventCustomers": 99503,
+      "avgDurationHours": 8.9
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-01-07T09:37:36.774182",
+    "yearsAvailable": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "causeTypes": [
+      "weather",
+      "equipment",
+      "demand",
+      "other"
+    ],
+    "dataSource": "Sample data for development"
+  }
+}

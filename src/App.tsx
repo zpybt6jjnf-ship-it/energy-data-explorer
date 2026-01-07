@@ -8,6 +8,8 @@ import ReliabilityVsRates from './pages/ReliabilityVsRates'
 import ReliabilityMap from './pages/ReliabilityMap'
 import RtoAnalysis from './pages/RtoAnalysis'
 import EnergyTransitions from './pages/EnergyTransitions'
+import WholesaleAnalysis from './pages/WholesaleAnalysis'
+import OutageAnalysis from './pages/OutageAnalysis'
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/explore/reliability-map" element={<ReliabilityMap />} />
         <Route path="/explore/rto-analysis" element={<RtoAnalysis />} />
         <Route path="/explore/energy-transitions" element={<EnergyTransitions />} />
+        <Route path="/explore/wholesale" element={<WholesaleAnalysis />} />
+        <Route path="/explore/outage-analysis" element={<OutageAnalysis />} />
       </Routes>
     </Layout>
   )

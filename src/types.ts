@@ -145,3 +145,83 @@ export const REGION_COLORS: Record<string, string> = {
   South: '#2ca02c',
   West: '#d62728'
 }
+
+// Wholesale price data types
+export interface WholesalePricePoint {
+  hub: string
+  year: number
+  avgPrice: number      // $/MWh
+  minPrice: number
+  maxPrice: number
+  volatility: number    // Std dev of daily prices
+  dataPoints: number
+  mappedStates: string[]
+  region: string
+}
+
+export interface WholesalePriceData {
+  points: WholesalePricePoint[]
+  metadata: {
+    lastUpdated: string
+    hubsAvailable: string[]
+    yearsAvailable: number[]
+    stateToHub: Record<string, string>
+    dataSource: string
+  }
+}
+
+// Outage event data types
+export interface OutageEvent {
+  eventId: string
+  date: string
+  states: string[]
+  cause: string
+  causeCategory: string
+  customersAffected: number
+  durationHours: number
+}
+
+export interface StateYearOutageSummary {
+  stateCode: string
+  year: number
+  totalEvents: number
+  weatherEvents: number
+  equipmentEvents: number
+  demandEvents: number
+  otherEvents: number
+  primaryCause: string
+  totalCustomersAffected: number
+  maxEventCustomers: number
+  avgDurationHours: number
+}
+
+export interface OutageEventData {
+  events: OutageEvent[]
+  stateYearSummary: StateYearOutageSummary[]
+  metadata: {
+    lastUpdated: string
+    yearsAvailable: number[]
+    causeTypes: string[]
+    dataSource: string
+  }
+}
+
+// Hub colors for wholesale price charts
+export const HUB_COLORS: Record<string, string> = {
+  'PJM West': '#1f77b4',
+  'Mass Hub': '#ff7f0e',
+  'Indiana Hub': '#2ca02c',
+  'Mid-C': '#d62728',
+  'Palo Verde': '#9467bd',
+  'NP15': '#8c564b',
+  'SP15': '#e377c2',
+  'ERCOT North': '#7f7f7f'
+}
+
+// Outage cause colors
+export const CAUSE_COLORS: Record<string, string> = {
+  weather: '#d62728',
+  equipment: '#ff7f0e',
+  demand: '#2ca02c',
+  other: '#7f7f7f'
+}

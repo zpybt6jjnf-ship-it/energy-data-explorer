@@ -10,8 +10,10 @@
     "data:form861": "python scripts/fetch_form861.py",
     "data:rates": "python scripts/fetch_rates.py",
     "data:fetch": "python scripts/fetch_eia_data.py",
+    "data:wholesale": "python scripts/fetch_wholesale_prices.py",
+    "data:outages": "python scripts/fetch_doe_outages.py",
     "data:process": "python scripts/build_chart_data.py",
-    "data:update": "npm run data:form861 && npm run data:rates && npm run data:fetch && npm run data:process"
+    "data:update": "npm run data:form861 && npm run data:rates && npm run data:fetch && npm run data:wholesale && npm run data:outages && npm run data:process"
   },
   "dependencies": {
     "plotly.js": "^2.27.0",

@@ -56,6 +56,22 @@ const AVAILABLE_CHARTS = [
     href: '/explore/energy-transitions',
     thumbnail: '/thumbnails/energy-mix.svg',
     tags: ['Sankey', 'Generation', 'Transition', 'Fuel Mix']
+  },
+  {
+    id: 'wholesale',
+    title: 'Wholesale Markets',
+    description: 'Explore wholesale electricity prices at major trading hubs and compare to retail rates. See how much markup customers pay.',
+    href: '/explore/wholesale',
+    thumbnail: '/thumbnails/affordability.svg',
+    tags: ['Wholesale', 'Prices', 'Markets', 'Trading Hubs']
+  },
+  {
+    id: 'outage-analysis',
+    title: 'Power Outage Analysis',
+    description: 'What causes major power outages? Explore weather vulnerability and outage patterns across U.S. states.',
+    href: '/explore/outage-analysis',
+    thumbnail: '/thumbnails/reliability.svg',
+    tags: ['Outages', 'Weather', 'DOE-417', 'Vulnerability']
   }
 ]
 

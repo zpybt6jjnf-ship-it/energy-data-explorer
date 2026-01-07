@@ -1,0 +1,1411 @@
+{
+  "points": [
+    {
+      "hub": "PJM West",
+      "year": 2013,
+      "avgPrice": 36.46,
+      "minPrice": 14.59,
+      "maxPrice": 91.16,
+      "volatility": 5.65,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2013,
+      "avgPrice": 41.96,
+      "minPrice": 16.79,
+      "maxPrice": 104.91,
+      "volatility": 8.17,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2013,
+      "avgPrice": 34.27,
+      "minPrice": 13.71,
+      "maxPrice": 85.68,
+      "volatility": 9.78,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2013,
+      "avgPrice": 31.29,
+      "minPrice": 12.52,
+      "maxPrice": 78.24,
+      "volatility": 5.24,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2013,
+      "avgPrice": 29.3,
+      "minPrice": 11.72,
+      "maxPrice": 73.24,
+      "volatility": 4.57,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2013,
+      "avgPrice": 36.62,
+      "minPrice": 14.65,
+      "maxPrice": 91.56,
+      "volatility": 9.2,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2013,
+      "avgPrice": 36.03,
+      "minPrice": 14.41,
+      "maxPrice": 90.09,
+      "volatility": 6.84,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2014,
+      "avgPrice": 37.31,
+      "minPrice": 14.92,
+      "maxPrice": 93.26,
+      "volatility": 9.66,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2014,
+      "avgPrice": 42.05,
+      "minPrice": 16.82,
+      "maxPrice": 105.13,
+      "volatility": 11.26,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2014,
+      "avgPrice": 35.67,
+      "minPrice": 14.27,
+      "maxPrice": 89.17,
+      "volatility": 5.4,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2014,
+      "avgPrice": 31.18,
+      "minPrice": 12.47,
+      "maxPrice": 77.95,
+      "volatility": 9.03,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2014,
+      "avgPrice": 29.13,
+      "minPrice": 11.65,
+      "maxPrice": 72.83,
+      "volatility": 5.28,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2014,
+      "avgPrice": 46.4,
+      "minPrice": 18.56,
+      "maxPrice": 115.99,
+      "volatility": 10.08,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2014,
+      "avgPrice": 37.61,
+      "minPrice": 15.04,
+      "maxPrice": 94.01,
+      "volatility": 6.37,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2014,
+      "avgPrice": 39.42,
+      "minPrice": 15.77,
+      "maxPrice": 98.55,
+      "volatility": 10.67,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2015,
+      "avgPrice": 39.75,
+      "minPrice": 15.9,
+      "maxPrice": 99.38,
+      "volatility": 11.77,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2015,
+      "avgPrice": 47.31,
+      "minPrice": 18.92,
+      "maxPrice": 118.27,
+      "volatility": 16.3,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2015,
+      "avgPrice": 32.07,
+      "minPrice": 12.83,
+      "maxPrice": 80.17,
+      "volatility": 8.35,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2015,
+      "avgPrice": 32.0,
+      "minPrice": 12.8,
+      "maxPrice": 79.99,
+      "volatility": 8.76,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2015,
+      "avgPrice": 34.59,
+      "minPrice": 13.83,
+      "maxPrice": 86.46,
+      "volatility": 9.18,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2015,
+      "avgPrice": 44.15,
+      "minPrice": 17.66,
+      "maxPrice": 110.38,
+      "volatility": 7.03,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2015,
+      "avgPrice": 40.11,
+      "minPrice": 16.05,
+      "maxPrice": 100.29,
+      "volatility": 8.34,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2015,
+      "avgPrice": 31.81,
+      "minPrice": 12.72,
+      "maxPrice": 79.53,
+      "volatility": 6.25,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2016,
+      "avgPrice": 32.66,
+      "minPrice": 13.06,
+      "maxPrice": 81.65,
+      "volatility": 6.71,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2016,
+      "avgPrice": 49.64,
+      "minPrice": 19.86,
+      "maxPrice": 124.1,
+      "volatility": 11.07,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2016,
+      "avgPrice": 32.6,
+      "minPrice": 13.04,
+      "maxPrice": 81.5,
+      "volatility": 6.26,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2016,
+      "avgPrice": 27.61,
+      "minPrice": 11.04,
+      "maxPrice": 69.01,
+      "volatility": 9.31,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2016,
+      "avgPrice": 33.21,
+      "minPrice": 13.28,
+      "maxPrice": 83.03,
+      "volatility": 9.03,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2016,
+      "avgPrice": 38.22,
+      "minPrice": 15.29,
+      "maxPrice": 95.54,
+      "volatility": 11.31,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2016,
+      "avgPrice": 40.02,
+      "minPrice": 16.01,
+      "maxPrice": 100.06,
+      "volatility": 9.04,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2016,
+      "avgPrice": 42.55,
+      "minPrice": 17.02,
+      "maxPrice": 106.37,
+      "volatility": 11.83,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2017,
+      "avgPrice": 38.45,
+      "minPrice": 15.38,
+      "maxPrice": 96.11,
+      "volatility": 11.03,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2017,
+      "avgPrice": 53.6,
+      "minPrice": 21.44,
+      "maxPrice": 134.0,
+      "volatility": 16.36,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2017,
+      "avgPrice": 31.75,
+      "minPrice": 12.7,
+      "maxPrice": 79.38,
+      "volatility": 4.97,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2017,
+      "avgPrice": 28.57,
+      "minPrice": 11.43,
+      "maxPrice": 71.41,
+      "volatility": 5.81,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2017,
+      "avgPrice": 29.59,
+      "minPrice": 11.84,
+      "maxPrice": 73.98,
+      "volatility": 10.02,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2017,
+      "avgPrice": 48.08,
+      "minPrice": 19.23,
+      "maxPrice": 120.19,
+      "volatility": 10.24,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2017,
+      "avgPrice": 47.48,
+      "minPrice": 18.99,
+      "maxPrice": 118.69,
+      "volatility": 10.88,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2017,
+      "avgPrice": 42.5,
+      "minPrice": 17.0,
+      "maxPrice": 106.25,
+      "volatility": 10.28,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2018,
+      "avgPrice": 35.78,
+      "minPrice": 14.31,
+      "maxPrice": 89.46,
+      "volatility": 7.13,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2018,
+      "avgPrice": 50.41,
+      "minPrice": 20.16,
+      "maxPrice": 126.03,
+      "volatility": 10.21,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2018,
+      "avgPrice": 36.09,
+      "minPrice": 14.44,
+      "maxPrice": 90.23,
+      "volatility": 11.9,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2018,
+      "avgPrice": 29.87,
+      "minPrice": 11.95,
+      "maxPrice": 74.68,
+      "volatility": 5.79,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2018,
+      "avgPrice": 37.93,
+      "minPrice": 15.17,
+      "maxPrice": 94.81,
+      "volatility": 9.55,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2018,
+      "avgPrice": 38.6,
+      "minPrice": 15.44,
+      "maxPrice": 96.5,
+      "volatility": 6.15,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2018,
+      "avgPrice": 40.79,
+      "minPrice": 16.32,
+      "maxPrice": 101.97,
+      "volatility": 11.24,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2018,
+      "avgPrice": 41.87,
+      "minPrice": 16.75,
+      "maxPrice": 104.68,
+      "volatility": 9.82,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2019,
+      "avgPrice": 34.07,
+      "minPrice": 13.63,
+      "maxPrice": 85.17,
+      "volatility": 7.71,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2019,
+      "avgPrice": 57.9,
+      "minPrice": 23.16,
+      "maxPrice": 144.75,
+      "volatility": 14.81,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2019,
+      "avgPrice": 40.91,
+      "minPrice": 16.36,
+      "maxPrice": 102.26,
+      "volatility": 13.18,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2019,
+      "avgPrice": 26.76,
+      "minPrice": 10.71,
+      "maxPrice": 66.91,
+      "volatility": 7.87,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2019,
+      "avgPrice": 35.43,
+      "minPrice": 14.17,
+      "maxPrice": 88.58,
+      "volatility": 9.12,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2019,
+      "avgPrice": 41.67,
+      "minPrice": 16.67,
+      "maxPrice": 104.17,
+      "volatility": 11.59,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2019,
+      "avgPrice": 41.56,
+      "minPrice": 16.62,
+      "maxPrice": 103.9,
+      "volatility": 9.85,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2019,
+      "avgPrice": 38.66,
+      "minPrice": 15.46,
+      "maxPrice": 96.64,
+      "volatility": 13.17,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2020,
+      "avgPrice": 44.4,
+      "minPrice": 17.76,
+      "maxPrice": 111.0,
+      "volatility": 9.0,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2020,
+      "avgPrice": 51.31,
+      "minPrice": 20.52,
+      "maxPrice": 128.27,
+      "volatility": 9.53,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2020,
+      "avgPrice": 41.0,
+      "minPrice": 16.4,
+      "maxPrice": 102.49,
+      "volatility": 13.29,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2020,
+      "avgPrice": 29.99,
+      "minPrice": 12.0,
+      "maxPrice": 74.97,
+      "volatility": 8.33,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2020,
+      "avgPrice": 35.32,
+      "minPrice": 14.13,
+      "maxPrice": 88.3,
+      "volatility": 6.38,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2020,
+      "avgPrice": 49.19,
+      "minPrice": 19.68,
+      "maxPrice": 122.98,
+      "volatility": 12.69,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2020,
+      "avgPrice": 51.88,
+      "minPrice": 20.75,
+      "maxPrice": 129.71,
+      "volatility": 13.29,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2020,
+      "avgPrice": 33.92,
+      "minPrice": 13.57,
+      "maxPrice": 84.8,
+      "volatility": 7.29,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2021,
+      "avgPrice": 34.75,
+      "minPrice": 13.9,
+      "maxPrice": 86.87,
+      "volatility": 11.67,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2021,
+      "avgPrice": 58.13,
+      "minPrice": 23.25,
+      "maxPrice": 145.33,
+      "volatility": 18.39,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2021,
+      "avgPrice": 34.98,
+      "minPrice": 13.99,
+      "maxPrice": 87.44,
+      "volatility": 5.65,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2021,
+      "avgPrice": 36.16,
+      "minPrice": 14.47,
+      "maxPrice": 90.41,
+      "volatility": 12.27,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2021,
+      "avgPrice": 30.47,
+      "minPrice": 12.19,
+      "maxPrice": 76.19,
+      "volatility": 7.53,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2021,
+      "avgPrice": 40.4,
+      "minPrice": 16.16,
+      "maxPrice": 101.01,
+      "volatility": 12.21,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2021,
+      "avgPrice": 52.61,
+      "minPrice": 21.04,
+      "maxPrice": 131.51,
+      "volatility": 9.24,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2021,
+      "avgPrice": 40.3,
+      "minPrice": 16.12,
+      "maxPrice": 100.75,
+      "volatility": 10.48,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2022,
+      "avgPrice": 38.39,
+      "minPrice": 15.36,
+      "maxPrice": 95.97,
+      "volatility": 12.46,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2022,
+      "avgPrice": 51.88,
+      "minPrice": 20.75,
+      "maxPrice": 129.69,
+      "volatility": 9.98,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2022,
+      "avgPrice": 38.21,
+      "minPrice": 15.28,
+      "maxPrice": 95.51,
+      "volatility": 11.31,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2022,
+      "avgPrice": 30.08,
+      "minPrice": 12.03,
+      "maxPrice": 75.19,
+      "volatility": 6.39,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2022,
+      "avgPrice": 40.66,
+      "minPrice": 16.26,
+      "maxPrice": 101.65,
+      "volatility": 11.38,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2022,
+      "avgPrice": 46.32,
+      "minPrice": 18.53,
+      "maxPrice": 115.81,
+      "volatility": 11.74,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2022,
+      "avgPrice": 43.93,
+      "minPrice": 17.57,
+      "maxPrice": 109.81,
+      "volatility": 8.56,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2022,
+      "avgPrice": 39.29,
+      "minPrice": 15.72,
+      "maxPrice": 98.23,
+      "volatility": 10.52,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    },
+    {
+      "hub": "PJM West",
+      "year": 2023,
+      "avgPrice": 38.6,
+      "minPrice": 15.44,
+      "maxPrice": 96.5,
+      "volatility": 7.49,
+      "dataPoints": 365,
+      "mappedStates": [
+        "PA",
+        "OH",
+        "WV",
+        "VA",
+        "MD",
+        "DE",
+        "NJ",
+        "DC"
+      ],
+      "region": "Mid-Atlantic"
+    },
+    {
+      "hub": "Mass Hub",
+      "year": 2023,
+      "avgPrice": 47.05,
+      "minPrice": 18.82,
+      "maxPrice": 117.63,
+      "volatility": 13.0,
+      "dataPoints": 365,
+      "mappedStates": [
+        "MA",
+        "CT",
+        "RI",
+        "NH",
+        "VT",
+        "ME"
+      ],
+      "region": "New England"
+    },
+    {
+      "hub": "Indiana Hub",
+      "year": 2023,
+      "avgPrice": 35.28,
+      "minPrice": 14.11,
+      "maxPrice": 88.19,
+      "volatility": 11.68,
+      "dataPoints": 365,
+      "mappedStates": [
+        "IN",
+        "IL",
+        "MI"
+      ],
+      "region": "Midwest"
+    },
+    {
+      "hub": "Mid-C",
+      "year": 2023,
+      "avgPrice": 37.23,
+      "minPrice": 14.89,
+      "maxPrice": 93.06,
+      "volatility": 6.11,
+      "dataPoints": 365,
+      "mappedStates": [
+        "WA",
+        "OR",
+        "ID",
+        "MT"
+      ],
+      "region": "Northwest"
+    },
+    {
+      "hub": "Palo Verde",
+      "year": 2023,
+      "avgPrice": 33.17,
+      "minPrice": 13.27,
+      "maxPrice": 82.93,
+      "volatility": 9.41,
+      "dataPoints": 365,
+      "mappedStates": [
+        "AZ",
+        "NM",
+        "NV",
+        "UT"
+      ],
+      "region": "Southwest"
+    },
+    {
+      "hub": "NP15",
+      "year": 2023,
+      "avgPrice": 43.89,
+      "minPrice": 17.55,
+      "maxPrice": 109.71,
+      "volatility": 7.74,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "SP15",
+      "year": 2023,
+      "avgPrice": 56.98,
+      "minPrice": 22.79,
+      "maxPrice": 142.46,
+      "volatility": 15.06,
+      "dataPoints": 365,
+      "mappedStates": [
+        "CA"
+      ],
+      "region": "California"
+    },
+    {
+      "hub": "ERCOT North",
+      "year": 2023,
+      "avgPrice": 41.66,
+      "minPrice": 16.66,
+      "maxPrice": 104.14,
+      "volatility": 12.79,
+      "dataPoints": 365,
+      "mappedStates": [
+        "TX"
+      ],
+      "region": "Texas"
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-01-07T09:37:35.359078",
+    "hubsAvailable": [
+      "PJM West",
+      "Mass Hub",
+      "Indiana Hub",
+      "Mid-C",
+      "Palo Verde",
+      "NP15",
+      "SP15",
+      "ERCOT North"
+    ],
+    "yearsAvailable": [
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "stateToHub": {
+      "PA": "PJM West",
+      "OH": "PJM West",
+      "WV": "PJM West",
+      "VA": "PJM West",
+      "MD": "PJM West",
+      "DE": "PJM West",
+      "NJ": "PJM West",
+      "DC": "PJM West",
+      "MA": "Mass Hub",
+      "CT": "Mass Hub",
+      "RI": "Mass Hub",
+      "NH": "Mass Hub",
+      "VT": "Mass Hub",
+      "ME": "Mass Hub",
+      "IN": "Indiana Hub",
+      "IL": "Indiana Hub",
+      "MI": "Indiana Hub",
+      "WA": "Mid-C",
+      "OR": "Mid-C",
+      "ID": "Mid-C",
+      "MT": "Mid-C",
+      "AZ": "Palo Verde",
+      "NM": "Palo Verde",
+      "NV": "Palo Verde",
+      "UT": "Palo Verde",
+      "CA": "NP15",
+      "TX": "ERCOT North"
+    },
+    "dataSource": "Sample data for development"
+  }
+}
