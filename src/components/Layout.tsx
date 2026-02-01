@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
+import ThemeToggle from './ThemeToggle'
 
 interface LayoutProps {
   children: ReactNode
@@ -18,6 +19,9 @@ export default function Layout({ children }: LayoutProps) {
             <a href="/" className="brand-name">Bottlenecks Labs</a>
             <Link to="/" className="site-title">Energy Data Explorer</Link>
           </div>
+        </div>
+        <div className="header-right">
+          <ThemeToggle />
         </div>
       </header>
 

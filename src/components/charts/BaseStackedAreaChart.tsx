@@ -2,7 +2,8 @@ import { useMemo, useCallback, useRef } from 'react'
 import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, StateDataPoint } from '../../types'
 import { StackedAreaChartConfig } from '../../types/chartConfig'
-import { COLORS, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
+import { baseConfig } from '../../utils/plotly'
+import { useChartTheme } from '../../hooks/useChartTheme'
 import { YearRangeSelector, ExportButtons, ChartControlsWrapper } from '../controls'
 import { STATE_GROUP_CATEGORIES, GroupCategory } from '../../data/groups/stateGroups'
 
@@ -45,6 +46,9 @@ export default function BaseStackedAreaChart({
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
   const plotRef = useRef<HTMLDivElement>(null)
+
+  // Theme-aware chart configuration
+  const { baseLayout, axisStyle, axisTitleStyle, colors: COLORS } = useChartTheme()
 
   // Handle plot initialization for zoom persistence
   const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {

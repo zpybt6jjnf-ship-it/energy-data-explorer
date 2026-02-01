@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { ThemeProvider } from './context/ThemeContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 
@@ -30,8 +31,9 @@ import WeatherVulnerability from './pages/WeatherVulnerability'
 
 export default function App() {
   return (
-    <Layout>
-      <Routes>
+    <ThemeProvider>
+      <Layout>
+        <Routes>
         <Route path="/" element={<Home />} />
 
         {/* Reliability routes */}
@@ -70,7 +72,8 @@ export default function App() {
         <Route path="/explore/energy-transitions" element={<Navigate to="/explore/generation/transitions" replace />} />
         <Route path="/explore/wholesale" element={<Navigate to="/explore/markets/wholesale-retail" replace />} />
         <Route path="/explore/outage-analysis" element={<Navigate to="/explore/outages/causes" replace />} />
-      </Routes>
-    </Layout>
+        </Routes>
+      </Layout>
+    </ThemeProvider>
   )
 }

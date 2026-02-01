@@ -2,8 +2,8 @@
 // Design System Constants (matching index.css)
 // ============================================
 
-// Core colors (from CSS variables)
-export const COLORS = {
+// Light mode colors
+const LIGHT_COLORS = {
   ink: '#1a1a2e',
   inkLight: '#4a4a5a',
   inkMuted: '#8a8a9a',
@@ -11,13 +11,42 @@ export const COLORS = {
   cream: '#faf8f5',
   border: '#e8e6e1',
   borderDark: '#d4d2cd',
-  // Accent colors
   teal: '#2a9d8f',
   coral: '#e76f51',
   gold: '#e9c46a',
   navy: '#264653',
   sage: '#a7c4a0',
 } as const
+
+// Dark mode colors - Stripe/Linear inspired palette
+const DARK_COLORS = {
+  ink: '#f1f5f9',       // Slate-100
+  inkLight: '#94a3b8',  // Slate-400
+  inkMuted: '#64748b',  // Slate-500
+  paper: '#1a1a21',
+  cream: '#0f0f13',
+  border: '#1e1e26',
+  borderDark: '#2a2a35',
+  teal: '#6366f1',      // Indigo-500 (primary)
+  coral: '#f472b6',     // Pink-400
+  gold: '#fbbf24',      // Amber-400
+  navy: '#22d3ee',      // Cyan-400 (electric)
+  sage: '#34d399',      // Emerald-400
+} as const
+
+// Helper to detect current theme
+function isDarkMode(): boolean {
+  if (typeof document === 'undefined') return false
+  return document.documentElement.getAttribute('data-theme') === 'dark'
+}
+
+// Dynamic color getter that respects current theme
+export function getThemeColors() {
+  return isDarkMode() ? DARK_COLORS : LIGHT_COLORS
+}
+
+// Core colors (from CSS variables) - for backwards compatibility
+export const COLORS = LIGHT_COLORS
 
 // Retro-inspired color palette for year-based coloring
 export const RETRO_COLORS = [
@@ -40,7 +69,7 @@ export const LINE_COLORS = RETRO_COLORS
 // Typography
 const FONT_SANS = 'DM Sans, sans-serif'
 
-// Standard layout configuration
+// Standard layout configuration (static, for backwards compatibility)
 export const baseLayout = {
   hovermode: 'closest' as const,
   hoverlabel: {
@@ -63,7 +92,33 @@ export const baseLayout = {
   dragmode: 'zoom' as const
 }
 
-// Axis styling
+// Theme-aware layout configuration
+export function getBaseLayout() {
+  const colors = getThemeColors()
+  return {
+    hovermode: 'closest' as const,
+    hoverlabel: {
+      bgcolor: colors.paper,
+      bordercolor: colors.borderDark,
+      font: { family: FONT_SANS, size: 12, color: colors.ink }
+    },
+    legend: {
+      orientation: 'h' as const,
+      y: -0.18,
+      x: 0.5,
+      xanchor: 'center' as const,
+      font: { family: FONT_SANS, size: 11, color: colors.inkLight },
+      bgcolor: 'transparent',
+      borderwidth: 0
+    },
+    margin: { t: 10, r: 20, b: 100, l: 65 },
+    paper_bgcolor: 'transparent',
+    plot_bgcolor: 'transparent',
+    dragmode: 'zoom' as const
+  }
+}
+
+// Axis styling (static, for backwards compatibility)
 export const axisStyle = {
   tickfont: { family: FONT_SANS, size: 11, color: COLORS.inkMuted },
   zeroline: false,
@@ -72,8 +127,28 @@ export const axisStyle = {
   showline: true
 }
 
+// Theme-aware axis styling
+export function getAxisStyle() {
+  const colors = getThemeColors()
+  return {
+    tickfont: { family: FONT_SANS, size: 11, color: colors.inkMuted },
+    zeroline: false,
+    gridcolor: colors.border,
+    linecolor: colors.borderDark,
+    showline: true
+  }
+}
+
 export const axisTitleStyle = {
   font: { family: FONT_SANS, size: 13, color: COLORS.inkLight }
+}
+
+// Theme-aware axis title styling
+export function getAxisTitleStyle() {
+  const colors = getThemeColors()
+  return {
+    font: { family: FONT_SANS, size: 13, color: colors.inkLight }
+  }
 }
 
 // Standard Plotly config

@@ -3,7 +3,8 @@ import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, StateDataPoint } from '../../types'
 import { LineChartConfig, MetricOption } from '../../types/chartConfig'
 // Export functions are used via ExportButtons component
-import { COLORS, LINE_COLORS, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
+import { LINE_COLORS, formatPercentDelta, baseConfig } from '../../utils/plotly'
+import { useChartTheme } from '../../hooks/useChartTheme'
 import { STATE_GROUP_CATEGORIES, GroupCategory } from '../../data/groups/stateGroups'
 import StateFilter from '../filters/StateFilter'
 import { YearRangeSelector, ExportButtons, ChartControlsWrapper } from '../controls'
@@ -47,6 +48,9 @@ export default function BaseLineChart({
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
   const plotRef = useRef<HTMLDivElement>(null)
+
+  // Theme-aware chart configuration
+  const { baseLayout, axisStyle, axisTitleStyle, colors: COLORS } = useChartTheme()
 
   // Compare mode from filters (defaults to 'states')
   const compareMode: CompareMode = filters.timeCompareMode || 'states'

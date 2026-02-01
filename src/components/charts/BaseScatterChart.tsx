@@ -3,7 +3,8 @@ import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint, UtilityData, StateDataPoint } from '../../types'
 import { ScatterChartConfig, MetricOption } from '../../types/chartConfig'
 // Export functions are used via ExportButtons component
-import { COLORS, RETRO_COLORS, formatRank, formatPercentDelta, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
+import { RETRO_COLORS, formatRank, formatPercentDelta, baseConfig } from '../../utils/plotly'
+import { useChartTheme } from '../../hooks/useChartTheme'
 import { calculateRegression, RegressionResult, getTCritical } from '../../utils/statistics'
 import { STATE_GROUP_CATEGORIES } from '../../data/groups/stateGroups'
 import { UTILITY_GROUP_CATEGORIES } from '../../data/groups/utilityGroups'
@@ -60,6 +61,9 @@ export default function BaseScatterChart({
   const plotRef = useRef<HTMLDivElement>(null)
   const onFilterChangeRef = useRef(onFilterChange)
   onFilterChangeRef.current = onFilterChange
+
+  // Theme-aware chart configuration
+  const { baseLayout, axisStyle, axisTitleStyle, colors: COLORS } = useChartTheme()
 
   // Handle plot initialization - attach relayout event for zoom/pan persistence
   const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {

@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { useTheme } from '../context/ThemeContext'
 
 interface LogoProps {
   size?: number
@@ -6,12 +7,24 @@ interface LogoProps {
 
 export default function Logo({ size = 48 }: LogoProps) {
   const [isFlashing, setIsFlashing] = useState(false)
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
 
   const handleClick = useCallback(() => {
     if (isFlashing) return // Prevent multiple flashes
     setIsFlashing(true)
     setTimeout(() => setIsFlashing(false), 3000)
   }, [isFlashing])
+
+  // Theme-aware colors - Stripe/Linear inspired for dark mode
+  const bgColor = isDark ? '#f1f5f9' : '#1a1a2e'
+  const flashBgColor = isDark ? '#1a1a21' : '#faf8f5'
+  const towerColor = isDark ? '#0f0f13' : '#1a1a2e'
+  const wireColor = isDark ? '#64748b' : '#4a4a5a'
+  const borderColor = isDark ? '#f1f5f9' : '#1a1a2e'
+  const tealColor = isDark ? '#6366f1' : '#2a9d8f'   // Indigo-500
+  const goldColor = isDark ? '#fbbf24' : '#e9c46a'   // Amber-400
+  const coralColor = isDark ? '#f472b6' : '#e76f51'  // Pink-400
 
   return (
     <div
@@ -23,9 +36,9 @@ export default function Logo({ size = 48 }: LogoProps) {
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="siteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style={{ stopColor: '#2a9d8f' }} />
-            <stop offset="50%" style={{ stopColor: '#e9c46a' }} />
-            <stop offset="100%" style={{ stopColor: '#e76f51' }} />
+            <stop offset="0%" style={{ stopColor: tealColor }} />
+            <stop offset="50%" style={{ stopColor: goldColor }} />
+            <stop offset="100%" style={{ stopColor: coralColor }} />
           </linearGradient>
 
           <clipPath id="mountainClip">
@@ -33,10 +46,10 @@ export default function Logo({ size = 48 }: LogoProps) {
           </clipPath>
         </defs>
 
-        {/* Background - lightens during lightning */}
+        {/* Background - inverts during lightning */}
         <rect
           x="0" y="0" width="100" height="100"
-          fill={isFlashing ? '#faf8f5' : '#1a1a2e'}
+          fill={isFlashing ? flashBgColor : bgColor}
           style={{ transition: 'fill 0.05s' }}
         />
 
@@ -53,7 +66,7 @@ export default function Logo({ size = 48 }: LogoProps) {
         <g clipPath="url(#mountainClip)">
 
           {/* Transmission tower pylons - static */}
-          <g className="towers" stroke="#1a1a2e" strokeWidth="1.5" fill="none">
+          <g className="towers" stroke={towerColor} strokeWidth="1.5" fill="none">
             {/* Tower 1 */}
             <path d="M 25,100 L 25,58 M 21,58 L 25,52 L 29,58 M 21,58 L 29,58" />
             <line x1="20" y1="64" x2="30" y2="64" />
@@ -99,7 +112,7 @@ export default function Logo({ size = 48 }: LogoProps) {
         {/* Outer border */}
         <rect
           x="1" y="1" width="98" height="98"
-          stroke="#1a1a2e"
+          stroke={borderColor}
           strokeWidth="2"
           fill="none"
         />
@@ -117,14 +130,14 @@ export default function Logo({ size = 48 }: LogoProps) {
           /* Static transmission wires */
           .wire {
             fill: none;
-            stroke: #4a4a5a;
+            stroke: ${wireColor};
             stroke-width: 1.5;
           }
 
           /* Electricity pulses */
           .pulse {
             fill: none;
-            stroke: #e9c46a;
+            stroke: ${goldColor};
             stroke-width: 2.5;
             stroke-linecap: round;
             stroke-dasharray: 8, 40;

@@ -50,6 +50,53 @@
   --radius-lg: 12px;
 }
 
+/* Dark Mode Theme - Inspired by Stripe, Linear, Spotify */
+[data-theme="dark"] {
+  /* Core surfaces - deep with subtle blue undertone like Stripe */
+  --color-cream: #0f0f13;      /* Deep base with blue undertone */
+  --color-paper: #1a1a21;      /* Elevated surface */
+  --color-ink: #f1f5f9;        /* Slate-100: crisp but not harsh */
+  --color-ink-light: #94a3b8;  /* Slate-400: readable secondary */
+  --color-ink-muted: #64748b;  /* Slate-500: subtle tertiary */
+
+  /* Accent colors - sophisticated indigo + electric cyan */
+  --color-teal: #6366f1;       /* Indigo-500: primary accent (Stripe-inspired) */
+  --color-coral: #f472b6;      /* Pink-400: warm, attention-grabbing */
+  --color-gold: #fbbf24;       /* Amber-400: warnings, highlights */
+  --color-navy: #22d3ee;       /* Cyan-400: electric, energy feel */
+  --color-sage: #34d399;       /* Emerald-400: success, positive */
+
+  /* Functional - refined borders */
+  --color-border: #1e1e26;     /* Subtle */
+  --color-border-dark: #2a2a35;/* More visible */
+  --color-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth transition when switching themes */
+html {
+  color-scheme: light;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Transition support for key elements */
+body,
+.site-header,
+.chart-container,
+.shared-controls,
+.description-box,
+.source-info,
+.about-section,
+.chart-card,
+.stats-panel,
+.controls-unified,
+footer {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -1851,4 +1898,266 @@ details[open] > .control-advanced-toggle::before {
 
 .control-advanced-toggle:hover {
   color: var(--color-ink);
+}
+
+/* ============================================
+   Dark Mode Overrides
+   ============================================ */
+
+/* Box shadows - Stripe-inspired subtle elevation */
+[data-theme="dark"] .chart-container,
+[data-theme="dark"] .shared-controls,
+[data-theme="dark"] .description-box,
+[data-theme="dark"] .source-info,
+[data-theme="dark"] .about-section,
+[data-theme="dark"] .chart-card {
+  background: #1a1a21;
+  border-color: #2a2a35;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .chart-card:hover {
+  background: #22222b;
+  border-color: #6366f1;  /* Indigo accent border on hover */
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15), 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Chart card demo styling in dark mode */
+[data-theme="dark"] .chart-card-demo {
+  box-shadow: 0 0 0 1px var(--color-border), 0 2px 12px var(--color-shadow);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .chart-card-demo:hover {
+  box-shadow: 0 0 0 1px var(--color-border-dark), 0 4px 20px var(--color-shadow);
+}
+
+/* Chart card thumbnail gradient */
+[data-theme="dark"] .chart-card-thumbnail {
+  background: linear-gradient(135deg, #0f0f13 0%, #1a1a21 100%);
+  border-bottom-color: #2a2a35;
+}
+
+/* Error state */
+[data-theme="dark"] .error {
+  background: rgba(231, 111, 81, 0.1);
+  border-color: var(--color-coral);
+}
+
+[data-theme="dark"] .error code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Form controls */
+[data-theme="dark"] .control-group select,
+[data-theme="dark"] .control-group input {
+  background: var(--color-cream);
+  border-color: var(--color-border-dark);
+  color: var(--color-ink);
+}
+
+[data-theme="dark"] .control-group select option {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+[data-theme="dark"] .control-group button {
+  background: var(--color-paper);
+  border-color: var(--color-border-dark);
+  color: var(--color-ink-light);
+}
+
+[data-theme="dark"] .control-group button:hover:not(:disabled) {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Hero highlights - indigo-tinted gradients */
+[data-theme="dark"] .hero-topic,
+[data-theme="dark"] .title-highlight {
+  background: linear-gradient(180deg, transparent 50%, rgba(99, 102, 241, 0.25) 50%);
+}
+
+[data-theme="dark"] .chart-header h2 {
+  background: linear-gradient(180deg, transparent 55%, rgba(244, 114, 182, 0.2) 55%);
+}
+
+[data-theme="dark"] .category-name {
+  background: linear-gradient(180deg, transparent 60%, rgba(99, 102, 241, 0.2) 60%);
+}
+
+/* Demo gallery */
+[data-theme="dark"] .demo-gallery {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--color-border);
+}
+
+/* Scrollbar */
+[data-theme="dark"]::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-muted);
+}
+
+/* Selection */
+[data-theme="dark"] ::selection {
+  background: var(--color-gold);
+  color: #1a1a2e;
+}
+
+/* Footer */
+[data-theme="dark"] footer {
+  background: #0a0a0f;
+  border-top-color: #6366f1;  /* Indigo accent */
+}
+
+/* Plotly charts */
+[data-theme="dark"] .js-plotly-plot .plotly .modebar-btn {
+  fill: var(--color-ink-muted) !important;
+}
+
+[data-theme="dark"] .js-plotly-plot .plotly .modebar-btn:hover {
+  fill: var(--color-ink) !important;
+}
+
+/* Stats panel */
+[data-theme="dark"] .stats-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--color-border);
+}
+
+/* Caveats and disclaimers */
+[data-theme="dark"] .description-caveat,
+[data-theme="dark"] .about-disclaimer {
+  background: rgba(240, 208, 128, 0.08);
+  border-left-color: var(--color-gold);
+}
+
+/* Chart interaction hints */
+[data-theme="dark"] .chart-interaction-hint,
+[data-theme="dark"] .chart-transition {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Share URL */
+[data-theme="dark"] .share-url {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--color-border);
+}
+
+/* Region buttons */
+[data-theme="dark"] .region-btn {
+  background: var(--color-paper);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .region-btn:hover {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+/* Group checkboxes */
+[data-theme="dark"] .group-checkboxes .checkbox-label {
+  background: var(--color-paper);
+  border-color: var(--color-border);
+}
+
+/* Unified controls box */
+[data-theme="dark"] .controls-unified {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .control-advanced-toggle {
+  background: var(--color-cream);
+  border-top-color: var(--color-border);
+}
+
+/* Category count badge */
+[data-theme="dark"] .category-count {
+  color: #22d3ee;  /* Cyan accent */
+  background: rgba(34, 211, 238, 0.12);
+}
+
+/* Chart card tags */
+[data-theme="dark"] .chart-card-tag {
+  color: #6366f1;  /* Indigo accent */
+  background: rgba(99, 102, 241, 0.12);
+}
+
+[data-theme="dark"] .chart-card-demo .chart-card-tag {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Demo badge */
+[data-theme="dark"] .demo-badge {
+  background: rgba(240, 128, 96, 0.15);
+}
+
+/* Category icon */
+[data-theme="dark"] .category-icon {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Texas 2021 Easter Egg - dark mode adjustments */
+[data-theme="dark"] .snowflake {
+  color: #88c8e8;
+  text-shadow: 0 0 20px rgba(136, 200, 232, 0.6), 0 0 40px rgba(136, 200, 232, 0.3);
+}
+
+[data-theme="dark"] .brrr-text {
+  color: #6eb8d8;
+  text-shadow: 0 0 10px rgba(110, 184, 216, 0.5);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-ink-light);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--color-cream);
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: #252525;
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header right section */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
