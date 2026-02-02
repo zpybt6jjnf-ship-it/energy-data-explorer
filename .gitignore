@@ -40,3 +40,7 @@ npm-debug.log*
 # Local Netlify folder
 .netlify
 .worktrees/
+
+# Claude Code
+CLAUDE.md
+tasks/
