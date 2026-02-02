@@ -22,3 +22,5 @@
   for = "/data/*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+    Content-Type = "application/json; charset=utf-8"
+    Vary = "Accept-Encoding"

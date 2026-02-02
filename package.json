@@ -7,6 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "data:form861": "python scripts/fetch_form861.py",
     "data:rates": "python scripts/fetch_rates.py",
     "data:fetch": "python scripts/fetch_eia_data.py",
@@ -23,11 +26,16 @@
     "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/react-plotly.js": "^2.6.4",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "jsdom": "^27.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vitest": "^4.0.18"
   }
 }

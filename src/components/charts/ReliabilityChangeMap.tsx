@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import Plot from 'react-plotly.js'
 import { ChartData, StateDataPoint } from '../../types'
 import { COLORS, baseLayout, baseConfig } from '../../utils/plotly'
-import { downloadGenericCSV, downloadGenericJSON } from '../../utils/export'
+import { downloadGenericCSV, downloadGenericJSON } from '../../utils/exportUtils'
 import { ChartControlsWrapper } from '../controls'
 
 interface Props {

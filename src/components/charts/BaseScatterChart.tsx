@@ -2,9 +2,9 @@ import { useMemo, useState, useCallback, useRef, useEffect, ReactNode } from 're
 import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, REGION_COLORS, AggregatedDataPoint, UtilityData, StateDataPoint } from '../../types'
 import { ScatterChartConfig, MetricOption } from '../../types/chartConfig'
-// Export functions are used via ExportButtons component
 import { RETRO_COLORS, formatRank, formatPercentDelta, baseConfig } from '../../utils/plotly'
 import { useChartTheme } from '../../hooks/useChartTheme'
+import { usePlotlyViewport, SCATTER_VIEWPORT_KEYS } from '../../hooks/usePlotlyViewport'
 import { calculateRegression, RegressionResult, getTCritical } from '../../utils/statistics'
 import { STATE_GROUP_CATEGORIES } from '../../data/groups/stateGroups'
 import { UTILITY_GROUP_CATEGORIES } from '../../data/groups/utilityGroups'
@@ -59,38 +59,12 @@ export default function BaseScatterChart({
   descriptionContent
 }: BaseScatterChartProps) {
   const plotRef = useRef<HTMLDivElement>(null)
-  const onFilterChangeRef = useRef(onFilterChange)
-  onFilterChangeRef.current = onFilterChange
 
   // Theme-aware chart configuration
   const { baseLayout, axisStyle, axisTitleStyle, colors: COLORS } = useChartTheme()
 
-  // Handle plot initialization - attach relayout event for zoom/pan persistence
-  const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {
-    const plotlyDiv = graphDiv as HTMLElement & {
-      on: (event: string, callback: (event: unknown) => void) => void
-    }
-
-    plotlyDiv.on('plotly_relayout', (event: unknown) => {
-      const e = event as Record<string, unknown>
-
-      const xRange = e['xaxis.range'] as [number, number] | undefined ||
-        (e['xaxis.range[0]'] !== undefined ? [e['xaxis.range[0]'], e['xaxis.range[1]']] as [number, number] : null)
-      const yRange = e['yaxis.range'] as [number, number] | undefined ||
-        (e['yaxis.range[0]'] !== undefined ? [e['yaxis.range[0]'], e['yaxis.range[1]']] as [number, number] : null)
-
-      if (xRange && yRange) {
-        onFilterChangeRef.current({
-          xAxisRange: xRange,
-          yAxisRange: yRange
-        })
-      }
-
-      if (e['xaxis.autorange'] === true || e['yaxis.autorange'] === true) {
-        onFilterChangeRef.current({ xAxisRange: null, yAxisRange: null })
-      }
-    })
-  }, [])
+  // Viewport persistence for zoom/pan
+  const { handleInitialized } = usePlotlyViewport(onFilterChange, SCATTER_VIEWPORT_KEYS)
 
   // Get metric info based on config and current filter
   const metricKey = filters.reliabilityMetric || config.defaultMetric || config.metrics?.[0]?.value || 'saidi'

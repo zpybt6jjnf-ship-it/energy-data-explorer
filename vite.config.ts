@@ -6,7 +6,15 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'plotly': ['plotly.js', 'react-plotly.js'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        }
+      }
+    }
   },
   server: {
     port: 3000,

@@ -1,5 +1,5 @@
 import { StateDataPoint } from '../../types'
-import { downloadCSV, downloadJSON } from '../../utils/export'
+import { downloadCSV, downloadJSON } from '../../utils/exportUtils'
 
 interface Props {
   /** Full dataset for CSV/JSON export */

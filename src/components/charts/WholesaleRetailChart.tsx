@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js'
 import { WholesalePriceData, ChartData, HUB_COLORS, REGION_COLORS } from '../../types'
 import { COLORS, baseLayout, axisStyle, axisTitleStyle, baseConfig } from '../../utils/plotly'
 import { calculateRegression } from '../../utils/statistics'
-import { downloadGenericCSV, downloadGenericJSON } from '../../utils/export'
+import { downloadGenericCSV, downloadGenericJSON } from '../../utils/exportUtils'
 import { ChartControlsWrapper } from '../controls'
 
 interface Props {

@@ -1,10 +1,10 @@
-import { useMemo, useCallback, useRef } from 'react'
+import { useMemo, useRef, useCallback } from 'react'
 import Plot from 'react-plotly.js'
 import { ChartData, ChartFilters, StateDataPoint } from '../../types'
 import { LineChartConfig, MetricOption } from '../../types/chartConfig'
-// Export functions are used via ExportButtons component
 import { LINE_COLORS, formatPercentDelta, baseConfig } from '../../utils/plotly'
 import { useChartTheme } from '../../hooks/useChartTheme'
+import { usePlotlyViewport, TIME_VIEWPORT_KEYS } from '../../hooks/usePlotlyViewport'
 import { STATE_GROUP_CATEGORIES, GroupCategory } from '../../data/groups/stateGroups'
 import StateFilter from '../filters/StateFilter'
 import { YearRangeSelector, ExportButtons, ChartControlsWrapper } from '../controls'
@@ -45,12 +45,13 @@ export default function BaseLineChart({
   defaultStateCount = 5,
   enableGrouping = true
 }: BaseLineChartProps) {
-  const onFilterChangeRef = useRef(onFilterChange)
-  onFilterChangeRef.current = onFilterChange
   const plotRef = useRef<HTMLDivElement>(null)
 
   // Theme-aware chart configuration
   const { baseLayout, axisStyle, axisTitleStyle, colors: COLORS } = useChartTheme()
+
+  // Viewport persistence for zoom/pan
+  const { handleInitialized } = usePlotlyViewport(onFilterChange, TIME_VIEWPORT_KEYS)
 
   // Compare mode from filters (defaults to 'states')
   const compareMode: CompareMode = filters.timeCompareMode || 'states'
@@ -58,33 +59,6 @@ export default function BaseLineChart({
 
   // Selected groups within the category (for comparison filtering)
   const selectedGroups: string[] = filters.timeSelectedGroups || []
-
-  // Handle plot initialization for zoom persistence
-  const handleInitialized = useCallback((_figure: unknown, graphDiv: HTMLElement) => {
-    const plotlyDiv = graphDiv as HTMLElement & {
-      on: (event: string, callback: (event: unknown) => void) => void
-    }
-
-    plotlyDiv.on('plotly_relayout', (event: unknown) => {
-      const e = event as Record<string, unknown>
-
-      const xRange = e['xaxis.range'] as [number, number] | undefined ||
-        (e['xaxis.range[0]'] !== undefined ? [e['xaxis.range[0]'], e['xaxis.range[1]']] as [number, number] : null)
-      const yRange = e['yaxis.range'] as [number, number] | undefined ||
-        (e['yaxis.range[0]'] !== undefined ? [e['yaxis.range[0]'], e['yaxis.range[1]']] as [number, number] : null)
-
-      if (xRange && yRange) {
-        onFilterChangeRef.current({
-          timeXRange: xRange,
-          timeYRange: yRange
-        })
-      }
-
-      if (e['xaxis.autorange'] === true || e['yaxis.autorange'] === true) {
-        onFilterChangeRef.current({ timeXRange: null, timeYRange: null })
-      }
-    })
-  }, [])
 
   // Get metric info based on config and current filter
   const metricKey = filters.reliabilityMetric || config.defaultMetric || config.metrics?.[0]?.value || 'saidi'

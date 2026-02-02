@@ -1,33 +1,12 @@
-import { useState, useEffect } from 'react'
 import ReliabilityRatesChart from '../components/charts/ReliabilityRatesChart'
 import SourceInfo from '../components/SourceInfo'
 import { useUrlFilters } from '../hooks/useUrlFilters'
+import { useAsyncData } from '../hooks/useAsyncData'
 import { ChartData } from '../types'
 
 export default function ReliabilityVsRates() {
   const { filters, handleFilterChange, resetViewport } = useUrlFilters()
-
-  const [data, setData] = useState<ChartData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const response = await fetch('/data/saidi-vre.json')
-        if (!response.ok) {
-          throw new Error('Failed to load data')
-        }
-        const jsonData = await response.json()
-        setData(jsonData)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error')
-      } finally {
-        setLoading(false)
-      }
-    }
-    loadData()
-  }, [])
+  const { data, loading, error } = useAsyncData<ChartData>('/data/saidi-vre.json')
 
   return (
     <>
