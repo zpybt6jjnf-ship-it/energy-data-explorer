@@ -19,6 +19,7 @@
     "data:update": "npm run data:form861 && npm run data:rates && npm run data:fetch && npm run data:wholesale && npm run data:outages && npm run data:process"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "plotly.js": "^2.27.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
